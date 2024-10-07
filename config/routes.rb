@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  resources :comments
   resources :ratings
   resources :favorites
-  resources :questions
+  resources :questions do
+    resources :comments, only: [:create]
+  end
   resources :collections
   resources :assets
   resources :users

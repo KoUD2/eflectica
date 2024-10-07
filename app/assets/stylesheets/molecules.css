@@ -44,3 +44,50 @@ ul{
     display: flex;
     gap: 50px;
 }
+
+.comment{
+    box-sizing: border-box;
+    width: fit-content;
+    height: fit-content;
+    background-color: lightsteelblue;
+    border-radius: 20px;
+    padding: 10px;
+
+    p{
+        color: darkblue;
+    }
+}
+
+.comments{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.createComment{
+    margin-top: 30px;
+    box-sizing: border-box;
+    width: fit-content;
+    height: fit-content;
+    background-color: lightsteelblue;
+    border-radius: 20px;
+    padding: 10px;
+
+    p{
+        color: darkblue;
+    }
+
+    textarea{
+        resize: none;
+        border-radius: 5px;
+        height: 100px;
+        width: 300px;
+    }
+}
+
+input[type="submit"]{
+    border-radius: 100vw;
+    border: none;
+    background-color: white;
+    color: darkblue;
+}

@@ -8,6 +8,8 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1 or /questions/1.json
   def show
+    @question = Question.find(params[:id])
+    @comments = @question.comments
   end
 
   # GET /questions/new
