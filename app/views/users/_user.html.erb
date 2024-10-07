@@ -1,0 +1,50 @@
+<div id="<%= dom_id user %>" class='M_classContainer M_classContainer2'>
+  <h1>
+    <%= user.username %>
+  </h1>
+
+  <p>
+    <strong>Bio:</strong>
+    <%= user.bio %>
+  </p>
+
+  <p>
+    <strong>Contact:</strong>
+    <%= user.contact %>
+  </p>
+
+  <p>
+    <strong>Portfolio:</strong>
+    <%= user.portfolio %>
+  </p>
+
+  <p>
+    <strong>Speed:</strong>
+    <%= user.speed %>
+  </p>
+
+  <p>
+    <strong>Is admin:</strong>
+    <%= user.is_admin %>
+  </p>
+
+  <p>
+    <strong>Avatar:</strong>
+    <%= user.avatar %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= user.email %>
+  </p>
+
+  <p>
+    <strong>Password:</strong>
+    <%= user.password %>
+  </p>
+
+  <button>
+    <%= link_to "Show this user", user %>
+  </button>
+
+</div>

@@ -1,0 +1,46 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.M_classContainer{
+    box-sizing: border-box;
+    width: 300px;
+    height: 284px;
+    background-color: lightsteelblue;
+    border-radius: 20px;
+    padding: 10px;
+
+    h1{
+        color: navy;
+    }
+
+    p{
+        color: darkblue;
+    }
+}
+
+.M_classContainer2{
+    height: 430px;
+}
+
+#questions, #users{
+    width: 1230px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.titleQuestion{
+    text-align: center
+}
+
+.buttonNewQuestion{
+    margin-top: 20px;
+}
+
+ul{
+    display: flex;
+    gap: 50px;
+}

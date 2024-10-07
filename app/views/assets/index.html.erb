@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Assets" %>
+
+<h1>Routes</h1>
+
+<ul>
+  <li><%= link_to 'Users', users_path %></li>
+  <li><%= link_to 'Questions', questions_path %></li>
+  <li><%= link_to 'Favorites', favorites_path %></li>
+  <li><%= link_to 'Comments', comments_path %></li>
+  <li><%= link_to 'Ratings', ratings_path %></li>
+  <li><%= link_to 'Collections', collections_path %></li>
+  <li><%= link_to 'Assets', assets_path %></li>
+</ul>
+
+<h1>Assets</h1>
+
+<div id="assets">
+  <% @assets.each do |asset| %>
+    <%= render asset %>
+    <p>
+      <%= link_to "Show this asset", asset %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New asset", new_asset_path %>

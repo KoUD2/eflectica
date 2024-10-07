@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Questions" %>
+
+<h1>Routes</h1>
+
+<ul>
+  <li><%= link_to 'Users', users_path %></li>
+  <li><%= link_to 'Questions', questions_path %></li>
+  <li><%= link_to 'Favorites', favorites_path %></li>
+  <li><%= link_to 'Comments', comments_path %></li>
+  <li><%= link_to 'Ratings', ratings_path %></li>
+  <li><%= link_to 'Collections', collections_path %></li>
+  <li><%= link_to 'Assets', assets_path %></li>
+</ul>
+
+<h1 class="titleQuestion">Questions</h1>
+
+<div id="questions">
+  <% @questions.each do |question| %>
+    <%= render question %>
+  <% end %>
+</div>
+
+<button class='buttonNewQuestion'><%= link_to "New question", new_question_path %></button>

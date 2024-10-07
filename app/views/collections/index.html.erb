@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Collections" %>
+
+<h1>Routes</h1>
+
+<ul>
+  <li><%= link_to 'Users', users_path %></li>
+  <li><%= link_to 'Questions', questions_path %></li>
+  <li><%= link_to 'Favorites', favorites_path %></li>
+  <li><%= link_to 'Comments', comments_path %></li>
+  <li><%= link_to 'Ratings', ratings_path %></li>
+  <li><%= link_to 'Collections', collections_path %></li>
+  <li><%= link_to 'Assets', assets_path %></li>
+</ul>
+
+<h1>Collections</h1>
+
+<div id="collections">
+  <% @collections.each do |collection| %>
+    <%= render collection %>
+    <p>
+      <%= link_to "Show this collection", collection %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New collection", new_collection_path %>

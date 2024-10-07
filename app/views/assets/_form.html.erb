@@ -1,0 +1,52 @@
+<%= form_with(model: asset) do |form| %>
+  <% if asset.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(asset.errors.count, "error") %> prohibited this asset from being saved:</h2>
+
+      <ul>
+        <% asset.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :img, style: "display: block" %>
+    <%= form.text_field :img %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :devices, style: "display: block" %>
+    <%= form.text_area :devices %>
+  </div>
+
+  <div>
+    <%= form.label :manual, style: "display: block" %>
+    <%= form.text_area :manual %>
+  </div>
+
+  <div>
+    <%= form.label :link_to, style: "display: block" %>
+    <%= form.text_field :link_to %>
+  </div>
+
+  <div>
+    <%= form.label :is_secure, style: "display: block" %>
+    <%= form.check_box :is_secure %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

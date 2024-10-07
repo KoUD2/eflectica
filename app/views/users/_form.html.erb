@@ -1,0 +1,62 @@
+<%= form_with(model: user) do |form| %>
+  <% if user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :username, style: "display: block" %>
+    <%= form.text_field :username %>
+  </div>
+
+  <div>
+    <%= form.label :bio, style: "display: block" %>
+    <%= form.text_area :bio %>
+  </div>
+
+  <div>
+    <%= form.label :contact, style: "display: block" %>
+    <%= form.text_field :contact %>
+  </div>
+
+  <div>
+    <%= form.label :portfolio, style: "display: block" %>
+    <%= form.text_field :portfolio %>
+  </div>
+
+  <div>
+    <%= form.label :speed, style: "display: block" %>
+    <%= form.number_field :speed %>
+  </div>
+
+  <div>
+    <%= form.label :is_admin, style: "display: block" %>
+    <%= form.check_box :is_admin %>
+  </div>
+
+  <div>
+    <%= form.label :avatar, style: "display: block" %>
+    <%= form.text_field :avatar %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :password, style: "display: block" %>
+    <%= form.text_field :password %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
