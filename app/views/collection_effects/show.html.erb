@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @collection_effect %>
+
+<div>
+  <%= link_to "Edit this collection effect", edit_collection_effect_path(@collection_effect) %> |
+  <%= link_to "Back to collection effects", collection_effects_path %>
+
+  <%= button_to "Destroy this collection effect", @collection_effect, method: :delete %>
+</div>

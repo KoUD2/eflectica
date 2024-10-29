@@ -1,0 +1,11 @@
+<% content_for :title, "New effect" %>
+
+<h1>Создание эффекта</h1>
+
+<%= render "form", effect: @effect %>
+
+<br>
+
+<div>
+  <%= link_to "Back to effects", effects_path %>
+</div>

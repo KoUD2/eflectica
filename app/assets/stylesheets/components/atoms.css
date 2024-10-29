@@ -1,0 +1,170 @@
+.A_logoFooter{
+	> img {
+		width: 23.681vw;
+		height: auto;
+	}	
+}
+
+.A_logoHeader{
+	> img {
+		width: 5.069vw;
+		height: auto;
+	}	
+}
+
+.A_logoPromo{
+	> img {
+		width: 24.236vw;
+		height: auto;
+	}	
+}
+
+.A_imgVideo{
+	overflow: hidden;
+	position: relative;
+	border-radius: 0.347vw;
+	width: 36.088vw;
+	height: 36.382vw;
+	z-index: 3;
+
+	> img {
+		width: 36.188vw;
+		height: 36.482vw;
+	}
+}
+
+.A_imgPhoto{
+	overflow: hidden;
+	position: relative;
+	border-radius: 0.347vw;
+	width: 20.462vw;
+	height: 25.296vw;
+	z-index: 3;
+
+	> img {
+		width: 20.462vw;
+		height: 25.296vw;
+	}
+}
+
+.A_header2Promo {
+	text-align: center;
+	width: 83.331vw;
+	font-family: "Basis Grotesque Pro";
+	font-size: 3.056vw;
+	font-weight: 700;
+	line-height: 120%;
+	text-transform: uppercase;
+}
+
+.A_header1Promo {
+	font-family: "Basis Grotesque Pro";
+	font-size: 4.678vw;
+	font-weight: 700;
+	line-height: 115%;
+	text-transform: uppercase;
+}
+
+.A_header2Promo2 {
+	width: 69.418vw;
+}
+
+.A_h2About {
+	color: #050507;
+	width: 31.667vw;
+	text-align: center;
+	font-family: "Basis Grotesque Pro";
+	font-size: 3.056vw;
+	font-weight: 700;
+	line-height: 120%;
+	text-transform: uppercase;
+}
+
+.A_pAbout {
+	width: 39.514vw;
+	text-align: center;
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.944vw;
+	font-weight: 500;
+	line-height: 122.765%;
+}
+
+.A_pAbout2 {
+	width: 47.153vw;
+}
+.A_pAbout3 {
+	width: 44.153vw;
+}
+
+.A_h2About2 {
+	width: 37.514vw;
+}
+
+@media screen and (max-width: 912px) {
+	.A_logoFooter {
+		> img {
+			height: 67.907vw;
+			width: auto;
+		}
+	}
+
+	.A_logoHeader {
+		> img {
+			width: 15.814vw;
+		}
+	}
+
+	.A_logoPromo {
+		> img {
+			width: 79.153vw;
+		}
+	}
+
+	.A_imgVideo {
+		border-radius: 0.801vw;
+		width: 83.463vw;
+		height: 84.141vw;
+
+		> img {
+			border-radius: 0.801vw;
+			width: 83.463vw;
+			height: 84.141vw;
+		}
+	}
+
+	.A_imgPhoto{
+		width: 39.307vw;
+		height: 47.413vw;
+		border-radius: 0.801vw;
+		> img {
+			width: 39.307vw;
+			height: 47.413vw;
+		}
+	}
+
+	.A_header2Promo {
+    width: 89.793vw;
+    font-size: 6.512vw;
+	}
+
+	.A_header1Promo {
+		font-size: 8.372vw;
+		text-align: center;
+		width: 66.13vw;
+	}
+
+	.A_h2About {
+		width: 64.667vw;
+    font-size: 6.512vw;
+	}
+	.A_h2About2 {
+		width: 74.667vw;
+	}
+	.A_pAbout {
+		width: 62.514vw;
+    font-size: 3.721vw;
+	}
+	.A_pAbout3 {
+		width: 72.312vw;
+	}
+}

@@ -1,0 +1,22 @@
+<div class='createComment'>
+  <%= form_with(model: [parent, Comment.new], local: true) do |form| %>
+    <% if comment.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+        <ul>
+          <% comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= form.text_area :body %>
+    </div>
+
+    <div>
+      <%= form.submit "Добавить" %>
+    </div>
+  <% end %>
+</div>

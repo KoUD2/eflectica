@@ -1,0 +1,116 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render "header" %>
+
+<div class='W_headerPromo'>
+  <div class='A_logoPromo'><%= image_tag("efixLogoPromo.svg", alt: "Картинка логотипа") %></div>
+
+  <h1>об&nbsp;эффектах, пресетах, фильтрах и&nbsp;вдохновении</h1>
+</div>
+
+<div class='M_allPicturesDescribe'>
+  <div class='W_imgThreeBacsDesc'>
+    <div class='W_imgThreeBacsDescMini'>
+      <div></div>
+      <div></div>
+      <div class='A_imgVideo'><%= image_tag("Promo_img1.webp", alt: "Картинка обработки видео") %></div>
+    </div>
+    <p>Обработка видео</p>
+  </div>
+
+  <div class='M_imgsEffects'>
+    <div class='W_imgThreeBacsDesc'>
+      <div class='W_imgThreeBacsDescMini2'>
+        <div></div>
+        <div></div>
+        <div class='A_imgPhoto'><%= image_tag("Promo_img2.webp", alt: "Картинка обработки видео") %></div>
+      </div>
+      <p>Эффекты для фото</p>
+    </div>
+    <div class='W_imgThreeBacsDesc'>
+      <div class='W_imgThreeBacsDescMini2'>
+        <div></div>
+        <div></div>
+        <div class='A_imgPhoto'><%= image_tag("Promo_img3.webp", alt: "Картинка обработки видео") %></div>
+      </div>
+      <p>Пресеты для 3д</p>
+    </div>
+  </div>
+</div>
+
+<div class="M_opportunityService">
+  <h1 class='A_header2Promo'>Наш медиасервис даёт возможность находить, обмениваться и&nbsp;обсуждать пресеты и&nbsp;эффекты для фото, видео и&nbsp;3D-графики</h1>
+
+  <div class='W_imgsOpportunity' id='desctop_imgsOpportunity'><%= image_tag("Promo_img4.png", alt: "Картинка обработки видео") %></div>
+  <div class='W_imgsOpportunity' id='mobile_imgsOpportunity'><%= image_tag("Promo_img4small.png", alt: "Картинка обработки видео") %></div>
+</div>
+
+<div class="M_presetsToCollections">
+  <h1 class='A_header2Promo A_header2Promo2'>с&nbsp;нами ты&nbsp;можешь собирать&nbsp;референсы и&nbsp;полезные&nbsp;пресеты в&nbsp;коллекции</h1>
+
+  <div class='W_allImagesCollections'>
+    <div class='C_allImagesCollections C_allImagesCollections1'>
+      <p>Halftone effect</p>
+      <div>
+        <%= image_tag("Promo_img5.webp", alt: "Картинка обработки видео") %>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div class='C_allImagesCollections C_allImagesCollections2'>
+      <p>Motion blur effect</p>
+      <div>
+        <%= image_tag("Promo_img6.webp", alt: "Картинка обработки видео") %>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div class='C_allImagesCollections C_allImagesCollections3'>
+      <p>Glass photo effect</p>
+      <div>
+        <%= image_tag("Promo_img7.webp", alt: "Картинка обработки видео") %>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="M_groopsPromo">
+  <h1 class='A_header2Promo A_header2Promo2'>открывай для себя новые эффекты и&nbsp;улучшай с&nbsp;помощью советов сообщества</h1>
+
+  <div class='W_allUsersInfo'>
+    <div class='C_usersInfo1'>
+      <%= render 'userComment', name: 'Надежда', date: '01 декабря 2023, 08:02', content: 'Попробуй добавить приглушенные и теплые оттенки', image_path: 'Promo_img8.webp' %>
+
+      <div class='userComment2'>
+        <%= render 'userComment', name: 'Олег', date: '18 декабря 2023, 09:09', content: 'Плавные переходы улучшают восприятие', image_path: 'Promo_img9.webp' %>
+      </div>
+    </div>
+
+    <div class='C_usersInfo2'>
+      <%= render 'userComment', name: 'Рената', date: '18 августа 2023, 13:16', content: 'Подчеркни детали увеличением резкости', image_path: 'Promo_img10.webp' %>
+
+      <div class='userComment2'>
+        <%= render 'userComment', name: 'Ева', date: '13 мая 2024, 13:16', content: 'Можно настроить баланс белого, чтобы кадры выглядели теплее', image_path: 'Promo_img11.webp' %>
+      </div>
+    </div>
+
+    <div class='C_usersInfo1'>
+      <%= render 'userComment', name: 'Ангелина', date: '13 сентября 2023, 18:18', content: 'Настрой кривые для создания уникального контраста', image_path: 'Promo_img12.webp' %>
+
+      <div class='M_userCommentLast userComment2'>
+        <%= render 'userComment', name: 'Валентина', date: '04 июня 2023, 09:26', content: 'Создай зернистость для стиля с помощью легкого шума', image_path: 'Promo_img13.webp' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="M_emailsPromo">
+  <h1 class='A_header1Promo'>узнай первым о запуске</h1>
+  <p>Не пропусти свежие новости от нашего сервиса</p>
+
+  <div id='subscriptionForm'>
+    <%= render 'subscriptions/form' %>
+  </div>
+</div>

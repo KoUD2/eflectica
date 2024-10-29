@@ -1,0 +1,116 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render "header" %>
+
+<div class='O_headerAbout'>
+	<div>
+		<div></div>
+		<div></div>
+	</div>
+	<div>
+		<%= image_tag("About_img1.webp", alt: "Картинка обработки видео") %>
+		<%= image_tag("About_img2.webp", alt: "Картинка обработки видео") %>
+	</div>
+	<h1>об&nbsp;эффектах, пресетах, фильтрах и&nbsp;вдохновении</h1>
+</div>
+
+<div class='O_headerAboutMobile'>
+	<div>
+		<div></div>
+		<%= image_tag("About_img2.webp", alt: "Картинка обработки видео") %>
+	</div>
+	<h1>об&nbsp;эффектах, пресетах, фильтрах и&nbsp;вдохновении</h1>
+	<div>
+		<div></div>
+		<%= image_tag("About_img1.webp", alt: "Картинка обработки видео") %>
+	</div>
+</div>
+
+<div class='O_inspireAbout'>
+	<div>
+		<div>
+			<h2 class='A_h2About'>находи новое и&nbsp;вдохновляйся</h2>
+			<p class='A_pAbout'>Выбирай категории на главной странице по программам и конкретным задачам или используй умный поиск</p>
+		</div>
+		<div>
+			<%= render 'imgWithBackground', image_path: 'About_img3.webp' %>
+			<%= render 'imgWithBackground', image_path: 'About_img4.webp' %>
+		</div>
+	</div>
+	<div>
+		<%= render 'imgWithBackground', image_path: 'About_img5.webp' %>
+		<%= render 'imgWithBackground', image_path: 'About_img6.webp' %>
+	</div>
+</div>
+
+<div class='O_inspireAboutMobile'>
+	<div>
+		<h2 class='A_h2About'>находи новое и&nbsp;вдохновляйся</h2>
+		<p class='A_pAbout'>Выбирай категории на&nbsp;главной странице по&nbsp;программам и&nbsp;конкретным задачам или используй умный поиск</p>
+	</div>
+	<div>
+		<%= render 'imgWithBackground', image_path: 'About_img3.webp' %>
+		<%= render 'imgWithBackground', image_path: 'About_img4.webp' %>
+		<%= render 'imgWithBackground', image_path: 'About_img5.webp' %>
+		<%= render 'imgWithBackground', image_path: 'About_img6.webp' %>
+	</div>
+</div>
+
+<div class='O_collectionsAbout'>
+	<h2 class='A_h2About'>объединяй идеи в&nbsp;коллекции</h2>
+	<p class='A_pAbout A_pAbout2'>Сохраняй референсы, необходимые эффекты и&nbsp;ссылки на&nbsp;другие ресурсы в&nbsp;единой папке, доступной с&nbsp;разных устройств</p>
+	<div class='W_imgsOpportunity' id='desctop_imgsOpportunity'><%= image_tag("Promo_img4.png", alt: "Картинка обработки видео") %></div>
+  <div class='W_imgsOpportunity' id='mobile_imgsOpportunity'><%= image_tag("Promo_img4small.png", alt: "Картинка обработки видео") %></div>
+</div>
+
+<div class='O_groopsAbout'>
+	<h2 class='A_h2About A_h2About2'>обсуждай эффекты с сообществом</h2>
+	<p class='A_pAbout A_pAbout3'>Получай фидбэк от&nbsp;людей из&nbsp;индустрии и&nbsp;улучшай свои работы. Публикуй свои пресеты для сообщества</p>
+	
+	<div class='W_allUsersInfo'>
+    <div class='C_usersInfo1'>
+      <%= render 'userComment', name: 'Надежда', date: '01 декабря 2023, 08:02', content: 'Попробуй добавить приглушенные и теплые оттенки', image_path: 'Promo_img8.webp' %>
+
+			<div class='userComment2'>
+      	<%= render 'userComment', name: 'Олег', date: '18 декабря 2023, 09:09', content: 'Плавные переходы улучшают восприятие', image_path: 'Promo_img9.webp' %>
+			</div>
+    </div>
+
+    <div class='C_usersInfo2'>
+      <%= render 'userComment', name: 'Рената', date: '18 августа 2023, 13:16', content: 'Подчеркни детали увеличением резкости', image_path: 'Promo_img10.webp' %>
+
+			<div class='userComment2'>
+      	<%= render 'userComment', name: 'Ева', date: '13 мая 2024, 13:16', content: 'Можно настроить баланс белого, чтобы кадры выглядели теплее', image_path: 'Promo_img11.webp' %>
+			</div>
+    </div>
+
+    <div class='C_usersInfo1'>
+      <%= render 'userComment', name: 'Ангелина', date: '13 сентября 2023, 18:18', content: 'Настрой кривые для создания уникального контраста', image_path: 'Promo_img12.webp' %>
+
+      <div class='M_userCommentLast userComment2'>
+        <%= render 'userComment', name: 'Валентина', date: '04 июня 2023, 09:26', content: 'Создай зернистость для стиля с помощью легкого шума', image_path: 'Promo_img13.webp' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class='O_subscribtionsAbout'>
+	<h2 class='A_h2About A_h2About2'>настраивай ленту&nbsp;под себя</h2>
+	<p class='A_pAbout A_pAbout3'>Подписывайся на&nbsp;чужие коллекции и&nbsp;просматривай их&nbsp;обновления в&nbsp;ленте&nbsp;на&nbsp;главной странице</p>
+
+	<div>
+		<%= render "scrollBarSettingsImgs", desc: "Kaleidoscope effect", image_path: "About_img7.webp" %>
+		<%= render "scrollBarSettingsImgs", desc: "Motion blur effect", image_path: "About_img8.webp" %>
+		<%= render "scrollBarSettingsImgs", desc: "Ripped paper effect", image_path: "About_img9.webp" %>
+		<%= render "scrollBarSettingsImgs", desc: "Bad print effect", image_path: "About_img10.webp" %>
+	</div>
+</div>
+
+<div class="M_emailsPromo" id="emailsPromo">
+  <h1 class='A_header1Promo'>ты с нами?</h1>
+  <p>Подпишись на&nbsp;нашу рассылку, чтобы быть в&nbsp;курсе новостей</p>
+
+  <div id='subscriptionForm'>
+    <%= render 'subscriptions/form' %>
+  </div>
+</div>

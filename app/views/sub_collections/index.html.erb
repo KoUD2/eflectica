@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Sub collections" %>
+
+<h1>Sub collections</h1>
+
+<div id="sub_collections">
+  <% @sub_collections.each do |sub_collection| %>
+    <%= render sub_collection %>
+    <p>
+      <%= link_to "Show this sub collection", sub_collection %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New sub collection", new_sub_collection_path %>

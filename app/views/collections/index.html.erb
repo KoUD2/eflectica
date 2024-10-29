@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Collections" %>
+
+<h1>Коллекции</h1>
+<div id="collections">
+  <% @collections.each do |collection| %>
+    <div class='M_classContainer'>
+      <div class='imgEffect'>
+        <% if collection.effects.any? %>
+          <%= image_tag(collection.effects.first.img.url, alt: "Картинка") %>
+        <% else %>
+          <%= image_tag("About_img1.webp", alt: "Картинка") %>
+        <% end %>
+      </div>
+      <div>
+        <h1><%= link_to collection.name, collection_path(collection) %></h1>
+        <p><%= collection.description %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<button class='buttonNewQuestion'><%= link_to "Создать коллекцию", new_collection_path %></button>

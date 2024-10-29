@@ -1,0 +1,27 @@
+<%= form_with(model: sub_collection) do |form| %>
+  <% if sub_collection.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(sub_collection.errors.count, "error") %> prohibited this sub_collection from being saved:</h2>
+
+      <ul>
+        <% sub_collection.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :collection_id, style: "display: block" %>
+    <%= form.text_field :collection_id %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

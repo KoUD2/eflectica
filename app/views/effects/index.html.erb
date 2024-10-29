@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Effects" %>
+
+<h1>Эффекты</h1>
+
+<div id="effects">
+  <% @effects.each do |effect| %>
+    <%= render effect %>
+  <% end %>
+</div>
+
+<button class="buttonNewQuestion"><%= link_to "Создать эффект", new_effect_path %></button>

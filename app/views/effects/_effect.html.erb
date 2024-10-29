@@ -1,0 +1,29 @@
+<div class='M_classContainer'>
+  <div class='imgEffect'>
+    <%= image_tag(effect.img.url, alt: "Картинка") %>
+  </div>
+
+  <div>
+    <h1><%= effect.name %></h1>
+    <p><%= effect.description %></p>
+    <p><%= effect.devices %></p>
+
+    <% unless current_user.favorites.exists?(effect_id: effect.id) %>
+      <%= form_with url: favorites_path, method: :post, data: { behavior: 'prevent-navigation' } do %>
+        <%= hidden_field_tag "favorite[effect_id]", effect.id %>
+        <button type="submit" class="button">
+          Добавить в закладки
+        </button>
+      <% end %>
+    <% end %>
+
+    <%= form_with(model: CollectionEffect.new, url: collection_effects_path, local: false, data: { behavior: 'prevent-navigation' }) do |form| %>
+      <%= form.hidden_field :effect_id, value: effect.id %>
+      <%= form.label :collection_id, "Выберите коллекцию:" %>
+      <%= form.collection_select :collection_id, current_user.collections, :id, :name %>
+      <%= form.submit "Добавить в коллекцию", class: 'button' %>
+    <% end %>
+
+    <button class='redirect'><%= link_to "Показать эффект", effect %></button>
+  </div>
+</div>

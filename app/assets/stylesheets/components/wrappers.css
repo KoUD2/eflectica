@@ -1,0 +1,328 @@
+.W_infoCourse{
+	display: flex;
+	align-items: center;
+	gap: 3.301vw;
+	margin-left: 5.103vw;
+	margin-right: 8.56vw;
+
+	> h2 {
+		color: #050507;
+		font-family: "Basis Grotesque Pro";
+		font-weight: bold;
+		font-size: 1.944vw;
+		line-height: 101%;
+		text-transform: uppercase;
+	}
+}
+
+.W_allInfo{
+	display: flex;
+	align-items: flex-end;
+}
+
+.W_allLinksHeader{
+	display: flex;
+	gap: 4.931vw;
+
+	> a {
+		color: black;
+		font-family: "Basis Grotesque Pro";
+		font-size: 1.667vw;
+		font-weight: 400;
+		line-height: 101%;
+	}
+}
+
+.W_headerPromo{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	> h1 {
+		font-family: "Basis Grotesque Pro";
+		font-size: 4.578vw;
+		font-weight: 700;
+		line-height: 115%;
+		text-transform: uppercase;
+		flex-shrink: 2;
+		width: 65.206vw;
+	}
+}
+
+.W_imgThreeBacsDesc{
+	display: flex;
+	flex-direction: column;
+	gap: 0.849vw;
+
+	> p {
+		font-family: "Basis Grotesque Pro";
+		font-size: 1.667vw;
+		font-weight: 500;
+		line-height: 122.765%;
+	}
+}
+
+.W_imgThreeBacsDescMini{
+	position: relative;
+
+	div:nth-child(1), div:nth-child(2) {
+		position: absolute;
+		width: 36.188vw;
+		height: 36.482vw;
+		flex-shrink: 0;
+		border-radius: 0.347vw;
+		border: 1px solid #8F8F8F;
+	}
+
+	> div:nth-child(1) {
+		top: -0.616vw;
+		left: 0.574vw;
+	}
+
+	> div:nth-child(2) {
+		top: -1.231vw;
+		left: 1.21vw;
+	}
+}
+
+.W_imgThreeBacsDescMini2{
+	position: relative;
+
+	div:nth-child(1), div:nth-child(2) {
+		position: absolute;
+		width: 20.462vw;
+		height: 25.296vw;
+		border-radius: 0.347vw;
+		border: 1px solid #8F8F8F;
+	}
+
+	> div:nth-child(1) {
+		top: -0.616vw;
+		left: 0.574vw;
+	}
+
+	> div:nth-child(2) {
+		top: -1.231vw;
+		left: 1.21vw;
+	}
+}
+
+.W_imgsOpportunity {
+	margin-top: 3.373vw;
+
+	img {
+		width: 62.71vw;
+		height: 30.535vw;
+	}
+}
+
+.W_allImagesCollections {
+	margin-top: 4.981vw;
+	display: flex;
+	align-items: flex-end;
+}
+
+.W_aboutUser {
+	display: inline-flex;
+	align-items: center;
+	gap: 1.175vw;
+
+	> img {
+		width: 3.598vw;
+		height: 3.598vw;
+	}
+
+	> div {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.661vw;
+
+		> h2:nth-child(1) {
+			color: #343434;
+			font-family: "Suisse Intl";
+			font-size: 1.346vw;
+			font-weight: 500;
+			line-height: 1.162vw;
+		}
+
+		> h2:nth-child(2) {
+			color: #343434;
+			font-family: "SuisseIntl-Medium";
+			font-size: 0.856vw;
+			font-weight: 500;
+			line-height: 0.856vw;
+		}
+	}
+}
+
+.W_allUserInfo {
+	display: flex;
+	flex-direction: column;
+	gap: 1.124vw;
+	position: relative;
+	z-index: 5;
+	width: 29.768vw;
+	height: 11.177vw;
+	border-radius: 0.347vw;
+	border: 1px solid #E8E2F0;
+	background:#E8E2F0;
+	padding: 1.126vw 1.431vw 1.301vw 1.142vw;
+
+	> p {
+		font-family: "Basis Grotesque Pro";
+		font-size: 1.667vw;
+		font-weight: 500;
+		line-height: 122.765%;
+	}
+}
+
+.W_allUsersInfo {
+	margin-top: 4.426vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2.802vw;
+}
+
+@media screen and (max-width: 912px) {
+	.W_allInfo {
+		margin-top: 9.302vw;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.W_infoCourse {
+		margin-left: 0;
+    margin-right: 0;
+		gap: 8.363vw;
+
+		> h2 {
+			font-size: 3.721vw;
+		}
+	}
+
+	.W_allLinksHeader {
+		gap: 8.372vw;
+
+		> a {
+			font-size: 3.721vw;
+		}
+	}
+
+	.W_headerPromo{
+		flex-direction: column;
+
+		> h1 {
+			margin-top: 16.744vw;
+			width: 89.792vw;
+			font-size: 8.372vw;
+			text-align: center;
+		}
+	}
+
+	.W_imgThreeBacsDesc {
+		gap: 1.772vw;
+
+		> p {
+			font-size: 3.721vw;
+		}
+	}
+
+	.W_imgThreeBacsDescMini {
+		> div:nth-child(1), > div:nth-child(2) {
+			width: 83.463vw;
+			height: 84.141vw;
+		}
+	}
+
+	.W_imgThreeBacsDescMini {
+		> div:nth-child(1) {
+			top: -1.421vw;
+			left: 1.323vw;
+		}
+		> div:nth-child(2) {
+			top: -2.84vw;
+			left: 2.791vw;
+		}
+	}
+
+	.W_imgThreeBacsDescMini2 {
+    div:nth-child(1), div:nth-child(2) {
+        width: 39.307vw;
+        height: 47.413vw;
+        border-radius: 0.801vw;
+    }
+
+		> div:nth-child(1) {
+			top: -1.163vw;
+			left: 1.163vw;
+		}
+		> div:nth-child(2) {
+			top: -2.326vw;
+			left: 2.326vw;
+		}
+	}
+
+	.W_imgsOpportunity {
+		margin-top: 9.419vw;
+		img {
+			width: 86.512vw;
+			height: 99.336vw;
+		}
+	}
+
+	.W_allImagesCollections{
+		flex-wrap: wrap;
+		margin-top: 11.765vw;
+	}
+
+	.W_allUsersInfo {
+		gap: 8.323vw;
+		margin-top: 11.97vw;
+	}
+
+	.W_allUserInfo {
+    gap: 2.593vw;
+    width: 68.656vw;
+    height: 25.78vw;
+    border-radius: 0.801vw;
+    padding: 2.598vw 3.3vw 2.988vw 2.633vw;
+
+		> p {
+			font-size: 3.844vw;
+		}
+	}
+
+	.W_aboutUser {
+		gap: 2.709vw;
+
+		> img {
+			width: 8.298vw;
+			height: 8.298vw;
+		}
+
+		> div {
+			gap: 1.523vw;
+
+			> h2:nth-child(1) {
+				font-size: 3.104vw;
+				line-height: 2.68vw;
+			}
+			> h2:nth-child(2) {
+				font-size: 1.975vw;
+				line-height: 1.975vw;
+			}
+		}
+	}
+
+	.M_userCommentLast {
+    & > div {
+        & .W_allUserInfo {
+            > p {
+							width: 56.373vw;
+            }
+        }
+    }
+	}
+}

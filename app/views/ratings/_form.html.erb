@@ -1,0 +1,22 @@
+<%= form_with(model: [@question, @rating], local: true) do |form| %>
+  <% if @rating.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
+
+      <ul>
+        <% @rating.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :number %>
+    <%= form.number_field :number, in: 1..5 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Submit Rating" %>
+  </div>
+<% end %>

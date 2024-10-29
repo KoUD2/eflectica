@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @sub_collection %>
+
+<div>
+  <%= link_to "Edit this sub collection", edit_sub_collection_path(@sub_collection) %> |
+  <%= link_to "Back to sub collections", sub_collections_path %>
+
+  <%= button_to "Destroy this sub collection", @sub_collection, method: :delete %>
+</div>

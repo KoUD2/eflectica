@@ -1,0 +1,290 @@
+.M_imgsEffects{
+	display: flex;
+	gap: 3.033vw;
+}
+
+.M_allPicturesDescribe{
+	margin-top: 3.436vw;
+	display: flex;
+	gap: 9.514vw;
+}
+
+.M_opportunityService, .M_presetsToCollections, .M_groopsPromo, .M_emailsPromo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.M_opportunityService{
+	margin-top: 10.969vw;
+}
+
+.M_presetsToCollections{
+	margin-top: 9.375vw;
+}
+
+.M_groopsPromo{
+	margin-top: 10.042vw;
+}
+
+.M_emailsPromo {
+	margin-top: 10.106vw;
+
+	> p {
+		width: 28.352vw;
+		margin-top: 1.726vw;
+		text-align: center;
+		font-family: "Basis Grotesque Pro";
+		font-size: 1.944vw;
+		font-weight: 500;
+		line-height: 122.765%;
+	}
+}
+
+.M_userComment {
+	position: relative;
+
+	> div:nth-child(1), > div:nth-child(2) {
+		position: absolute;
+		width: 29.768vw;
+		height: 11.177vw;
+		border-radius: 0.347vw;
+		border: 1px solid #8F8F8F;
+	}
+
+	> div:nth-child(1) {
+		top: -7.45px;
+		left: 7.67px;
+	}
+
+	> div:nth-child(2) {
+		top: -15.45px;
+		left: 15.67px;
+	}
+}
+
+.M_userCommentLast {
+	> div {
+		.W_allUserInfo {
+			> p {
+				width: 24.442vw;
+			}
+		}
+	}
+}
+
+.M_formSubscription {
+	display: flex;
+	margin-top: 3.343vw;
+	gap: 0.908vw;
+
+	> input[type="email"] {
+		width: 36.716vw;
+		height: 4.281vw;
+		padding: 0.519vw 0.778vw 0.778vw 1.946vw;
+		border-radius: 2.595vw;
+		background: #E8E2F0;
+		font-family: "Basis Grotesque Pro";
+		font-size: 1.944vw;
+		font-weight: 400;
+		line-height: 105.092%;
+
+		&::placeholder {
+			color: rgba(0, 0, 0, 0.70);
+		}
+	}
+
+	> input[type="submit"] {
+		cursor: pointer;
+		display: flex;
+		width: 15.347vw;
+		height: 4.281vw;
+		align-items: center;
+		border-radius: 2.595vw;
+		border: 0.195vw solid #000;
+		background: #000;
+		color: #fff;
+		font-family: "Basis Grotesque Pro";
+		font-size: 1.944vw;
+		font-weight: 400;
+		line-height: 105.092%;
+	}
+}
+
+.M_imgWithBackground {
+	position: relative;
+
+	> img, > div {
+		width: 21.778vw;
+		height: 21.778vw;
+		border-radius: 0.347vw;
+	}
+
+	> img {
+		position: relative;
+		z-index: 3;
+	}
+
+	> div {
+		position: absolute;
+		border: 1px solid #8F8F8F;
+	}
+
+	> div:nth-child(1) {
+		top: -0.683vw;
+		left: 0.764vw;
+	}
+	> div:nth-child(2) {
+		top: -1.377vw;
+		left: 1.528vw;
+	}
+}
+
+.M_scrollBarSettingsImgs {
+	display: flex;
+	flex-direction: column;
+	gap: 0.885vw;
+
+	> p {
+		font-family: "Basis Grotesque Pro";
+		font-size: 1.667vw;
+		font-weight: 500;
+		line-height: 122.765%;
+	}
+
+	> div {
+		position: relative;
+
+		> img, > div {
+			width: 20.139vw;
+			height: 20.139vw;
+			border-radius: 0.347vw;
+		}
+
+		> img {
+			position: relative;
+			z-index: 3;
+		}
+
+		> div {
+			position: absolute;
+			border: 1px solid #8F8F8F;
+		}
+
+		> div:nth-child(1) {
+			top: -9px;
+			left: 11px;
+		}
+		> div:nth-child(2) {
+			top: -18px;
+			left: 22px;
+		}
+	}
+}
+
+@media screen and (max-width: 912px) {
+	.M_allPicturesDescribe {
+		flex-direction: column;
+		margin-top: 12.219vw;
+		gap: 7.94vw;
+	}
+
+	.M_imgsEffects {
+		gap: 5.826vw;
+	}
+
+	.M_opportunityService{
+		margin-top: 16.712vw;
+	}
+
+	.M_presetsToCollections {
+    margin-top: 16.888vw;
+	}
+
+	.M_groopsPromo {
+		align-items: flex-start;
+    margin-top: 16.844vw;
+	}
+
+	.M_userComment {
+		> div:nth-child(1), > div:nth-child(2) {
+			width: 68.656vw;
+			height: 25.78vw;
+			border-radius: 0.801vw;
+		}
+
+		> div:nth-child(1) {
+			top: -1.193vw;
+			left: 1.228vw;
+		}
+		> div:nth-child(2) {
+			top: -2.474vw;
+			left: 2.509vw;
+		}
+	}
+
+	.M_emailsPromo {
+		margin-top: 16.772vw;
+
+		> p {
+			width: 52.558vw;
+			margin-top: 2.791vw;
+			font-size: 3.721vw;
+		}
+	}
+
+	.M_formSubscription {
+		flex-direction: column;
+		margin-top: 9.256vw;
+		gap: 2.988vw;
+	
+		> input[type="email"] {
+			width: 86.977vw;
+			height: 10.142vw;
+			padding: 1.229vw 1.844vw 1.844vw 4.61vw;
+			border-radius: 6.147vw;
+			font-size: 3.721vw;
+		}
+	
+		> input[type="submit"] {
+			width: 86.977vw;
+			height: 10.142vw;
+			border-radius: 6.147vw;
+			border: 0.195vw solid #000;
+			font-size: 3.721vw;
+		}
+	}
+
+	.M_scrollBarSettingsImgs {
+    gap: 1.628vw;
+
+		> div {
+			> img, > div {
+				width: 39.07vw;
+				height: 38.605vw;
+				border-radius: 0.797vw;
+			}
+		}
+
+		> p {
+			font-size: 3.721vw;
+		}
+	}
+
+	.M_imgWithBackground {
+		> img, > div {
+			width: 38.14vw;
+			height: 38.14vw;
+			border-radius: 0.797vw;
+		}
+
+		> div:nth-child(1) {
+			top: -1.163vw;
+			left: 1.163vw;
+		}
+		> div:nth-child(2) {
+			top: -2.326vw;
+			left: 2.326vw;
+		}
+	}
+}

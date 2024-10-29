@@ -1,0 +1,11 @@
+<% content_for :title, "New sub collection" %>
+
+<h1>New sub collection</h1>
+
+<%= render "form", sub_collection: @sub_collection %>
+
+<br>
+
+<div>
+  <%= link_to "Back to sub collections", sub_collections_path %>
+</div>

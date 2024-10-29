@@ -1,0 +1,303 @@
+[
+	{
+		"username": "design_guru",
+		"bio": "Passionate about minimalism and user-centered design.",
+		"contact": "guru@example.com",
+		"portfolio": "https://designguru.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar1.png",
+		"email": "design_guru@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "creative_spark",
+		"bio": "Turning ideas into beautiful visuals.",
+		"contact": "spark@example.com",
+		"portfolio": "https://creativespark.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar2.png",
+		"email": "creative_spark@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "color_master",
+		"bio": "Color is my playground. Let's create something vibrant!",
+		"contact": "master@example.com",
+		"portfolio": "https://colormaster.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar3.png",
+		"email": "color_master@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "ux_wizard",
+		"bio": "Crafting seamless user experiences with a sprinkle of magic.",
+		"contact": "wizard@example.com",
+		"portfolio": "https://uxwizard.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar4.png",
+		"email": "ux_wizard@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "branding_expert",
+		"bio": "Specializing in creating memorable brand identities.",
+		"contact": "expert@example.com",
+		"portfolio": "https://brandingexpert.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar5.png",
+		"email": "branding_expert@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "vector_king",
+		"bio": "Master of vector graphics and illustration.",
+		"contact": "king@example.com",
+		"portfolio": "https://vectorking.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar6.png",
+		"email": "vector_king@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "layout_pro",
+		"bio": "Creating layouts that speak volumes.",
+		"contact": "pro@example.com",
+		"portfolio": "https://layoutpro.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar7.png",
+		"email": "layout_pro@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "web_artisan",
+		"bio": "Building beautiful, responsive websites from the ground up.",
+		"contact": "artisan@example.com",
+		"portfolio": "https://webartisan.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar8.png",
+		"email": "web_artisan@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "illustration_pro",
+		"bio": "Illustrating stories that captivate and inspire.",
+		"contact": "illustration@example.com",
+		"portfolio": "https://illustrationpro.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar9.png",
+		"email": "illustration_pro@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "motion_master",
+		"bio": "Bringing ideas to life through motion graphics.",
+		"contact": "motion@example.com",
+		"portfolio": "https://motionmaster.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar10.png",
+		"email": "motion_master@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "typography_enthusiast",
+		"bio": "Exploring the art of typography in every project.",
+		"contact": "typography@example.com",
+		"portfolio": "https://typographyenthusiast.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar11.png",
+		"email": "typography_enthusiast@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "graphic_guru",
+		"bio": "Transforming concepts into visual masterpieces.",
+		"contact": "graphic_guru@example.com",
+		"portfolio": "https://graphicguru.com",
+		"is_admin": false,	
+		"avatar": "https://example.com/avatar12.png",
+		"email": "graphic_guru@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "creative_chameleon",
+		"bio": "Adapting to various styles while keeping creativity alive.",
+		"contact": "chameleon@example.com",
+		"portfolio": "https://creativechameleon.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar13.png",
+		"email": "creative_chameleon@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "digital_ninja",
+		"bio": "Expert in digital design and visual storytelling.",
+		"contact": "ninja@example.com",
+		"portfolio": "https://digitalninja.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar14.png",
+		"email": "digital_ninja@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "design_savant",
+		"bio": "Combining aesthetics and functionality in every design.",
+		"contact": "savant@example.com",
+		"portfolio": "https://designsavant.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar15.png",
+		"email": "design_savant@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "pixel_perfectionist",
+		"bio": "Obsessed with pixel-perfect design.",
+		"contact": "perfectionist@example.com",
+		"portfolio": "https://pixelperfectionist.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar16.png",
+		"email": "pixel_perfectionist@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "branding_buff",
+		"bio": "Building brands that resonate and endure.",
+		"contact": "buff@example.com",
+		"portfolio": "https://brandingbuff.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar17.png",
+		"email": "branding_buff@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "user_experience_guru",
+		"bio": "Enhancing user experiences through insightful design.",
+		"contact": "uxguru@example.com",
+		"portfolio": "https://userexperienceguru.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar18.png",
+		"email": "user_experience_guru@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "product_design_pro",
+		"bio": "Innovating product designs that delight users.",
+		"contact": "productpro@example.com",
+		"portfolio": "https://productdesignpro.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar19.png",
+		"email": "product_design_pro@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "responsive_design_specialist",
+		"bio": "Creating responsive designs that look great on any device.",
+		"contact": "responsive@example.com",
+		"portfolio": "https://responsivedesignspecialist.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar20.png",
+		"email": "responsive_design_specialist@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "illustrative_artist",
+		"bio": "Bringing imagination to life through illustrations.",
+		"contact": "illustrative@example.com",
+		"portfolio": "https://illustrativeartist.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar21.png",
+		"email": "illustrative_artist@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "conceptual_creator",
+		"bio": "Transforming concepts into compelling designs.",
+		"contact": "conceptual@example.com",
+		"portfolio": "https://conceptualcreator.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar22.png",
+		"email": "conceptual_creator@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "visual_vanguard",
+		"bio": "Pushing the boundaries of visual design.",
+		"contact": "vanguard@example.com",
+		"portfolio": "https://visualvanguard.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar23.png",
+		
+		"email": "visual_vanguard@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "design_dynamo",
+		"bio": "A dynamic designer focused on impactful visuals.",
+		"contact": "dynamo@example.com",
+		"portfolio": "https://designdynamo.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar24.png",
+		"email": "design_dynamo@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "branding_beacon",
+		"bio": "Illuminating brands with creative design solutions.",
+		"contact": "beacon@example.com",
+		"portfolio": "https://brandingbeacon.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar25.png",
+		"email": "branding_beacon@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "graphic_goddess",
+		"bio": "Creating divine designs that stand out.",
+		"contact": "goddess@example.com",
+		"portfolio": "https://graphicgoddess.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar26.png",
+		"email": "graphic_goddess@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "artistic_visionary",
+		"bio": "Envisioning the future of design with creativity.",
+		"contact": "visionary@example.com",
+		"portfolio": "https://artisticvisionary.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar27.png",
+		"email": "artistic_visionary@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "design_pioneer",
+		"bio": "Leading the way in innovative design solutions.",
+		"contact": "pioneer@example.com",
+		"portfolio": "https://designpioneer.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar28.png",
+		"email": "design_pioneer@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "style_savant",
+		"bio": "Expert in styling and aesthetic design.",
+		"contact": "savantstyle@example.com",
+		"portfolio": "https://stylesavant.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar29.png",
+		"email": "style_savant@example.com",
+		"password": "password123"
+	},
+	{
+		"username": "design_futurist",
+		"bio": "Imagining the design trends of tomorrow.",
+		"contact": "futurist@example.com",
+		"portfolio": "https://designfuturist.com",
+		"is_admin": false,
+		"avatar": "https://example.com/avatar30.png",
+		"email": "design_futurist@example.com",
+		"password": "password123"
+	}
+]

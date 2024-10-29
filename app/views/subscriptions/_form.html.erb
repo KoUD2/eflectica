@@ -1,0 +1,7 @@
+<%= form_with(model: Subscription.build) do |form| %>
+  <div class='M_formSubscription'>
+    <!-- <%= form.label :email, style: "display: block" %> -->
+    <%= form.email_field :email, placeholder: 'твой email' %>
+		<%= form.submit 'Подписаться' %>
+  </div>
+<% end %>

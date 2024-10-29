@@ -1,0 +1,27 @@
+<% image_filenames = ['About_img1.webp', 'About_img2.webp', 'About_img3.webp', 'About_img4.webp', 'About_img5.webp', 'About_img6.webp', 'About_img7.webp', 'About_img8.webp', 'About_img9.webp', 'About_img10.webp'] %>
+
+<div id="<%= dom_id question %>" class='M_classContainer'>
+  <div class='imgEffect'>
+    <% selected_image = image_filenames.sample %>
+    <%= image_tag(selected_image, alt: 'Random Effect Image') %>
+  </div>
+
+  <div>
+    <h1>
+      <%= question.title %>
+    </h1>
+
+    <p>
+      <%= question.description %>
+    </p>
+
+    <p>
+      <strong>User:</strong>
+      <%= question.user_id %>
+    </p>
+
+    <p>
+      <%= link_to "Показать", question %>
+    </p>
+  </div>
+</div>

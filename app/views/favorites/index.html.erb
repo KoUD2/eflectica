@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Favorites" %>
+
+<h1 class="titleQuestion">Избранное</h1>
+
+<div id="favorites">
+  <% @favorites.each do |favorite| %>
+    <div class="favorite-item">
+      <%= render partial: "effects/effect", locals: { effect: favorite.effect } %>
+    </div>
+  <% end %>
+</div>

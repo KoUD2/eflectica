@@ -1,0 +1,22 @@
+<div id="<%= dom_id collection %>" class='M_classContainer'>
+  <div class='imgEffect'>
+    <%= image_tag(effect.img.url, alt: "Картинка") %>
+  </div>
+
+  <div>
+    <p>
+      <strong>Name:</strong>
+      <%= collection.name %>
+    </p>
+
+    <p>
+      <strong>Description:</strong>
+      <%= collection.description %>
+    </p>
+
+    <p>
+      <strong>User:</strong>
+      <%= collection.user_id %>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+<p style="color: green"><%= notice %></p>
+
+<div class='effectShowAll'><%= render @effect %></div>
+
+<div class='effectShowAllInfo'>
+  <div>
+    <% if @effect.user_id == current_user.id || current_user.is_admin? %>
+      <%= link_to 'Редактировать', edit_effect_path(@effect), class: 'button' %>
+      <%= link_to 'Удалить', @effect, data: { turbo_method: :delete, confirm: 'Вы уверены?' }, class: 'button' %>
+    <% end %>
+  </div>
+
+  <div class='stars'>
+    <div class="rating" data-effect-id="<%= @effect.id %>">
+      <div id="stars" data-rating="<%= @effect.ratings.average(:number) || 0 %>">
+        <% (1..5).each do |star| %>
+          <span class="star" data-value="<%= star %>">&#9733;</span>
+        <% end %>
+      </div>
+    </div>
+
+    <p><span id="average-rating"><%= @effect.ratings.average(:number).to_f.round(2) || 0 %></span> / 5</p>
+  </div>
+
+  <div class="comments">
+    <h2>Комментарии:</h2>
+    <% @effect.comments.each do |comment| %>
+      <%= render 'comments/comment', comment: comment %>
+    <% end %>
+    <%= render 'comments/form', parent: @effect, comment: Comment.new %>
+  </div>
+
+  <script>
+    document.addEventListener('turbo:load', function() {
+      const stars = document.querySelectorAll('#stars .star');
+
+      if (stars.length === 0) {
+        return;
+      }
+
+      const ratingContainer = document.querySelector('.rating');
+      const effectId = ratingContainer.getAttribute('data-effect-id');
+
+      function highlightStars(rating) {
+        stars.forEach(star => {
+          if (star.getAttribute('data-value') <= rating) {
+            star.classList.add('gold');
+          } else {
+            star.classList.remove('gold');
+          }
+        });
+      }
+
+      const initialRating = parseFloat(document.querySelector('#stars').getAttribute('data-rating')) || 0;
+      highlightStars(initialRating);
+
+      stars.forEach(star => {
+        star.addEventListener('mouseover', function() {
+          const ratingValue = this.getAttribute('data-value');
+          highlightStars(ratingValue);
+        });
+
+        star.addEventListener('mouseout', function() {
+          highlightStars(initialRating);
+        });
+
+        star.addEventListener('click', function() {
+          const ratingValue = parseFloat(this.getAttribute('data-value'));
+          console.log('Rating Value:', ratingValue);
+
+          fetch(`/effects/${effectId}/ratings`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+              'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({ rating: { number: ratingValue, ratingable_id: effectId, ratingable_type: 'Effect' } })
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+          })
+          .then(data => {
+            document.getElementById('average-rating').innerText = data.average_rating.toFixed(2);
+            highlightStars(data.average_rating);
+          })
+          .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+          });
+        });
+      });
+    });
+  </script>
+</div>

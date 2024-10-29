@@ -1,0 +1,12 @@
+<header>
+  <a href="/"><div class='A_logoHeader'><%= image_tag("efixLogoHeader.svg", alt: "Картинка логотипа") %></div></a>
+
+  <div class='W_allLinksHeader'>
+    <% if current_page?(root_path) %>
+      <%= link_to "О проекте", welcome_about_url %>
+    <% elsif current_page?(welcome_about_url) %>
+			<%= link_to "Узнать о запуске", "#emailsPromo" %>
+    <% end %>
+    <a href="https://t.me/efix_spirit_bot">Телеграм-бот</a>
+  </div>
+</header>

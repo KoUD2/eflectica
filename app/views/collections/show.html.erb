@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<!-- app/views/collections/show.html.erb -->
+<h1><%= @collection.name %></h1>
+
+<div class='userInfo'>
+  <p><%= @collection.description %></p>
+  <p><strong>Created by:</strong> <%= @collection.user.username %></p>
+</div>
+
+<div id="collections">
+  <% @effects.each do |effect| %>
+    <%= render effect %>
+  <% end %>
+</div>
+
+<div class='userInfo'>
+  <% if @collection.user_id == current_user.id || current_user.is_admin? %>
+    <%= link_to "Редактировать", edit_collection_path(@collection) %>
+    <%= button_to "Удалить", @collection, method: :delete %>
+  <% end %>
+</div>

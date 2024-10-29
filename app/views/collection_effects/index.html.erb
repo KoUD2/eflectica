@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Collection effects" %>
+
+<h1>Collection effects</h1>
+
+<div id="collection_effects">
+  <% @collection_effects.each do |collection_effect| %>
+    <%= render collection_effect %>
+    <p>
+      <%= link_to "Show this collection effect", collection_effect %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "создать effect", new_collection_effect_path %>

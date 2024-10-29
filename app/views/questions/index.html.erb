@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Questions" %>
+
+<h1 class="titleQuestion">Обсуждения</h1>
+
+<div id="questions">
+  <% @questions.each do |question| %>
+    <%= render question %>
+  <% end %>
+</div>
+
+<button class='buttonNewQuestion'><%= link_to "Создать обсуждение", new_question_path %></button>
