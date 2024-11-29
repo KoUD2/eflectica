@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
+
+  namespace :api, format: 'json' do
+    namespace :v1 do
+      resources :effects, only: [:index, :show]
+      resources :questions, only: [:index, :show]
+      resources :users, only: [:index, :show]
+      resources :collections, only: [:index, :show]
+    end
+  end
+
   resources :sub_collections
   resources :collection_effects
   resources :collections
