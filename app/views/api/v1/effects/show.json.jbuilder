@@ -1,4 +1,4 @@
-json.extract! @effect, :id, :name, :img, :description, :speed, :devices, :manual
+json.extract! @effect, :id, :name, :img, :description, :speed, :devices, :manual, :user_id
 
 json.set! :comments do
   json.array! @effect.comments, partial: "api/v1/comments/comment", as: :comment

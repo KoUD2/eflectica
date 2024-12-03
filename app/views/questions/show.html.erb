@@ -1,5 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
+<%
+  set_meta_tags(
+    title: @question.title,
+    description: @question.description,
+    keywords: "эффекты, пресеты"
+  )
+%>
+
 <div class='effectShowAll'><%= render @question %></div>
 
 <div>

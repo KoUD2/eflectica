@@ -1,5 +1,13 @@
 <% content_for :title, "Editing effect" %>
 
+<%
+  set_meta_tags(
+    title: "Редактировать эффект",
+    description: "Редактировать эффект на Eflectica",
+    keywords: "эффекты, пресеты"
+  )
+%>
+
 <h1>Редактировать</h1>
 
 <%= render "form", effect: @effect %>

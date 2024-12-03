@@ -1,5 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
+<%
+  set_meta_tags(
+    title: @collection.name,
+    description: @collection.description,
+    keywords: "коллекции эффектов, коллекции пресетов"
+  )
+%>
+
 <h1><%= @collection.name %></h1>
 
 <div>

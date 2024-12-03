@@ -1,5 +1,13 @@
 <% content_for :title, "New collection" %>
 
+<%
+  set_meta_tags(
+    title: "Создать коллекцию",
+    description: "Создай свою коллекцию эффектов на Eflectica",
+    keywords: "коллекции эффектов, коллекции пресетов"
+  )
+%>
+
 <h1>Создать Коллекцию</h1>
 
 <%= render "form", collection: @collection %>
