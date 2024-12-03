@@ -37,7 +37,7 @@ gem "bootsnap", require: false
 gem "carrierwave", "~> 3.0"
 
 gem "devise"
-
+gem "acts-as-taggable-on"
 gem "cancancan"
 
 group :development, :test do

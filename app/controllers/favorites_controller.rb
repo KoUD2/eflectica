@@ -8,6 +8,10 @@ class FavoritesController < ApplicationController
     puts "Favorites count: #{@favorites.count}"
   end
   
+  def by_tag
+    @favorites = Favorite.tagged_with(params[:tag])
+    render :index
+  end
 
   # GET /favorites/1 or /favorites/1.json
   def show
@@ -67,6 +71,6 @@ class FavoritesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def favorite_params
-      params.require(:favorite).permit(:effect_id)
+      params.require(:favorite).permit(:effect_id, :tag_list)
     end
 end

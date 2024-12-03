@@ -5,4 +5,6 @@ class Effect < ApplicationRecord
   has_many :collection_effects, dependent: :destroy
   has_many :collections, through: :collection_effects
   mount_uploader :img, EffectImageUploader
+
+  acts_as_taggable_on :tags
 end

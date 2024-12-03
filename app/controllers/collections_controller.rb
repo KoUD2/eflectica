@@ -8,6 +8,11 @@ class CollectionsController < ApplicationController
     @collections = Collection.all
   end
 
+  def by_tag
+    @collections = Collection.tagged_with(params[:tag])
+    render :index
+  end
+
   # GET /collections/1 or /collections/1.json
   def show
     @collection = Collection.find(params[:id])
@@ -70,6 +75,6 @@ class CollectionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def collection_params
-      params.require(:collection).permit(:name, :description, :user_id)
+      params.require(:collection).permit(:name, :description, :user_id, :tag_list)
     end
 end

@@ -8,6 +8,11 @@ class EffectsController < ApplicationController
     @effects = Effect.all
   end
 
+  def by_tag
+    @effects = Effect.tagged_with(params[:tag])
+    render :index
+  end
+
   # GET /effects/1 or /effects/1.json
   def show
     @effect = Effect.find(params[:id])
@@ -78,6 +83,6 @@ class EffectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def effect_params
-      params.require(:effect).permit(:name, :img, :description, :speed, :devices, :manual, :link_to, :is_secure, :user_id)
+      params.require(:effect).permit(:name, :img, :description, :speed, :devices, :manual, :link_to, :is_secure, :user_id, :tag_list)
     end
 end

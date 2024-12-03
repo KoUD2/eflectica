@@ -1,7 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<!-- app/views/collections/show.html.erb -->
 <h1><%= @collection.name %></h1>
+
+<div>
+  Tags: <%= @collection.tag_list %>
+</div>
 
 <div class='userInfo'>
   <p><%= @collection.description %></p>

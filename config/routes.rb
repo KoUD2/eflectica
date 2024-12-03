@@ -12,14 +12,24 @@ Rails.application.routes.draw do
 
   resources :sub_collections
   resources :collection_effects
-  resources :collections
+  resources :collections do
+    collection do
+      get 'tagged/:tag', to: 'collections#by_tag', as: :tagged
+    end
+  end
   resources :questions do
+    collection do
+      get 'tagged/:tag', to: 'questions#by_tag', as: :tagged
+    end
     resources :comments, only: [:create, :destroy]
     resources :ratings, only: [:create]
   end
   resources :subscriptions, only: [:create]
   resources :favorites
   resources :effects do
+    collection do
+      get 'tagged/:tag', to: 'effects#by_tag', as: :tagged
+    end
     resources :comments, only: [:create, :destroy] 
     resources :ratings, only: [:create]
   end
