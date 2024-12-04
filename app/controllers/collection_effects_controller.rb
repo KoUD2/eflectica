@@ -48,7 +48,7 @@ class CollectionEffectsController < ApplicationController
     @collection_effect.destroy!
 
     respond_to do |format|
-      format.html { redirect_to collection_effects_path, status: :see_other, notice: "Collection effect was successfully destroyed." }
+      format.html { redirect_to collection_effects_path, status: :see_other, notice: "Коллекция была удалена" }
       format.json { head :no_content }
     end
   end

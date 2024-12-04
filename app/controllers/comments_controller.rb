@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       respond_to do |format|
-        format.html { redirect_to @parent, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @parent, notice: 'Комментарий добавлен' }
         format.json { render json: { average_rating: @parent.ratings.average(:number).to_f.round(2) } }
       end
     else
@@ -43,7 +43,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: "Comment was successfully updated." }
+        format.html { redirect_to @comment, notice: "Комментарий был обновлен" }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -57,7 +57,7 @@ class CommentsController < ApplicationController
     @comment.destroy!
 
     respond_to do |format|
-      format.html { redirect_to comments_path, status: :see_other, notice: "Comment was successfully destroyed." }
+      format.html { redirect_to comments_path, status: :see_other, notice: "Комментарий был удален" }
       format.json { head :no_content }
     end
   end

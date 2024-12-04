@@ -48,7 +48,7 @@ class CollectionsController < ApplicationController
   def update
     respond_to do |format|
       if @collection.update(collection_params)
-        format.html { redirect_to @collection, notice: "Collection was successfully updated." }
+        format.html { redirect_to @collection, notice: "Коллекция была обновлена" }
         format.json { render :show, status: :ok, location: @collection }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -62,7 +62,7 @@ class CollectionsController < ApplicationController
     @collection.destroy!
 
     respond_to do |format|
-      format.html { redirect_to collections_path, status: :see_other, notice: "Collection was successfully destroyed." }
+      format.html { redirect_to collections_path, status: :see_other, notice: "Коллекция была удалена" }
       format.json { head :no_content }
     end
   end

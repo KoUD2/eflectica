@@ -34,7 +34,7 @@ class EffectsController < ApplicationController
 
     respond_to do |format|
       if @effect.save
-        format.html { redirect_to @effect, notice: "Effect was successfully created." }
+        format.html { redirect_to @effect, notice: "Эффект был успешно создан" }
         format.json { render :show, status: :created, location: @effect }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -47,7 +47,7 @@ class EffectsController < ApplicationController
   def update
     respond_to do |format|
       if @effect.update(effect_params)
-        format.html { redirect_to @effect, notice: "Effect was successfully updated." }
+        format.html { redirect_to @effect, notice: "Эффект был обновлен" }
         format.json { render :show, status: :ok, location: @effect }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -69,7 +69,7 @@ class EffectsController < ApplicationController
     @effect.destroy
   
     respond_to do |format|
-      format.html { redirect_to effects_path, status: :see_other, notice: "Effect was successfully destroyed." }
+      format.html { redirect_to effects_path, status: :see_other, notice: "Эффект был удален" }
       format.json { head :no_content }
     end
   end
