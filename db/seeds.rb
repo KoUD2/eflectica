@@ -35,6 +35,9 @@ def create_questions(quantity)
       user_id: user.id
     )
 
+    question.tag_list = Effect::ALLOWED_TAGS.sample(rand(1..3))
+    question.save!
+
     rating_value = rand(1..5)
     Rating.create!(
       number: rating_value,
@@ -117,6 +120,9 @@ def create_effects(quantity)
       user: users.sample
     )
 
+    effect.tag_list = Effect::ALLOWED_TAGS.sample(rand(1..3))
+    effect.save!
+
     rating_value = rand(1..5)
     Rating.create!(
       number: rating_value,
@@ -165,6 +171,9 @@ def create_collections(quantity)
       description: Faker::Lorem.sentence,
       user: users.sample
     )
+
+    collection.tag_list = Effect::ALLOWED_TAGS.sample(rand(1..3))
+    collection.save!
 
     effects.sample(10).each do |effect|
       CollectionEffect.create!(

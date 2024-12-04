@@ -20,6 +20,7 @@ class EffectsController < ApplicationController
 
   # GET /effects/new
   def new
+    render layout: 'application'
     @effect = Effect.new
   end
 
@@ -83,6 +84,6 @@ class EffectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def effect_params
-      params.require(:effect).permit(:name, :img, :description, :speed, :devices, :manual, :link_to, :is_secure, :user_id, :tag_list)
+      params.require(:effect).permit(:name, :img, :description, :speed, :devices, :manual, :link_to, :is_secure, :user_id, tag_list: [])
     end
 end

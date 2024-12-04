@@ -22,6 +22,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
+    render layout: 'application'
     @question = Question.new
   end
 
@@ -75,6 +76,6 @@ class QuestionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def question_params
-      params.require(:question).permit(:title, :media, :description, :user_id, :tag_list)
+      params.require(:question).permit(:title, :media, :description, :user_id, tag_list: [])
     end
 end

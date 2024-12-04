@@ -28,9 +28,9 @@
     </div>
 
     <div>
-      <%= form.label :tag_list, style: "display: block" %>
-      <%= form.text_field :tag_list, value: question.tag_list.join(", ") %>
-    </div>
+      <%= form.label :tag_list, "Выберите теги:", style: "display: block" %>
+      <%= form.select :tag_list, Question::ALLOWED_TAGS, {}, multiple: true, class: "form-control", selected: question.tag_list %>
+    </div> 
 
     <div>
       <%= form.submit %>

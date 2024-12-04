@@ -21,6 +21,7 @@ class CollectionsController < ApplicationController
 
   # GET /collections/new
   def new
+    render layout: 'application'
     @collection = Collection.new
   end
 
@@ -75,6 +76,6 @@ class CollectionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def collection_params
-      params.require(:collection).permit(:name, :description, :user_id, :tag_list)
+      params.require(:collection).permit(:name, :description, :user_id, tag_list: [])
     end
 end
