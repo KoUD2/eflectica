@@ -66,7 +66,14 @@ ru:
         name: 'Название'
         description: 'Описание'
         tag_list: 'Теги'
+  
+  answers:
+    one: 'ответ'
+    few: 'ответа'
+    other: 'ответов'
 
   errors:
     messages:
       not_saved: 'Не сохранено'
+
+  

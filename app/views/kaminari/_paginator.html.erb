@@ -1,0 +1,49 @@
+<%# The container tag
+  - available local variables
+    current_page:  a page object for the currently displayed page
+    total_pages:   total number of pages
+    per_page:      number of items to fetch per page
+    remote:        data-remote
+    paginator:     the paginator that renders the pagination tags inside
+-%>
+<nav class="pagination" aria-label="Pagination">
+  <ul>
+    <% if current_page == 1 %>
+      <li class="prev disabled"><span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none" class='Q_NavigationIconArrow Q_NavigationIconArrowDisabled Q_NavigationIconArrowLeft'>
+          <path d="M0.342849 9.77988C0.201909 9.6389 0.122733 9.44771 0.122733 9.24837C0.122733 9.04902 0.201909 8.85783 0.342849 8.71685L4.06423 4.99546L0.342849 1.27408C0.205903 1.13229 0.130126 0.94238 0.131839 0.745262C0.133552 0.548143 0.212617 0.359584 0.352006 0.220195C0.491395 0.0808067 0.679955 0.00174141 0.877073 2.86102e-05C1.07419 -0.00168419 1.2641 0.0740929 1.40589 0.211038L5.65879 4.46394C5.79973 4.60492 5.87891 4.79611 5.87891 4.99546C5.87891 5.19481 5.79973 5.386 5.65879 5.52698L1.40589 9.77988C1.2649 9.92082 1.07372 10 0.874368 10C0.675018 10 0.483831 9.92082 0.342849 9.77988Z" fill="#0E1111"/>
+        </svg>
+      </span></li>
+    <% else %>
+    <li class="prev">
+      <%= link_to url_for(page: current_page - 1) do %>
+        <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none" class='Q_NavigationIconArrow Q_NavigationIconArrowLeft'>
+          <path d="M0.342849 9.77988C0.201909 9.6389 0.122733 9.44771 0.122733 9.24837C0.122733 9.04902 0.201909 8.85783 0.342849 8.71685L4.06423 4.99546L0.342849 1.27408C0.205903 1.13229 0.130126 0.94238 0.131839 0.745262C0.133552 0.548143 0.212617 0.359584 0.352006 0.220195C0.491395 0.0808067 0.679955 0.00174141 0.877073 2.86102e-05C1.07419 -0.00168419 1.2641 0.0740929 1.40589 0.211038L5.65879 4.46394C5.79973 4.60492 5.87891 4.79611 5.87891 4.99546C5.87891 5.19481 5.79973 5.386 5.65879 5.52698L1.40589 9.77988C1.2649 9.92082 1.07372 10 0.874368 10C0.675018 10 0.483831 9.92082 0.342849 9.77988Z" fill="#0E1111"/>
+        </svg>
+      <% end %>
+    </li>
+    <% end %>
+
+    <% (1..total_pages).each do |page| %>
+      <% if page == current_page %>
+        <li class="active"><span class='A_TextMPagination'><%= page %></span></li>
+      <% else %>
+        <li class='A_TextMPagination'><%= link_to page, url_for(page: page) %></li>
+      <% end %>
+    <% end %>
+
+    <% if current_page == total_pages %>
+      <li class="next disabled"><span><svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none" class='Q_NavigationIconArrow Q_NavigationIconArrowDisabled'>
+        <path d="M0.342849 9.77988C0.201909 9.6389 0.122733 9.44771 0.122733 9.24837C0.122733 9.04902 0.201909 8.85783 0.342849 8.71685L4.06423 4.99546L0.342849 1.27408C0.205903 1.13229 0.130126 0.94238 0.131839 0.745262C0.133552 0.548143 0.212617 0.359584 0.352006 0.220195C0.491395 0.0808067 0.679955 0.00174141 0.877073 2.86102e-05C1.07419 -0.00168419 1.2641 0.0740929 1.40589 0.211038L5.65879 4.46394C5.79973 4.60492 5.87891 4.79611 5.87891 4.99546C5.87891 5.19481 5.79973 5.386 5.65879 5.52698L1.40589 9.77988C1.2649 9.92082 1.07372 10 0.874368 10C0.675018 10 0.483831 9.92082 0.342849 9.77988Z" fill="#0E1111"/>
+      </svg></span></li>
+    <% else %>
+      <li class="next">
+        <%= link_to url_for(page: current_page + 1) do %>
+        <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none" class='Q_NavigationIconArrow'>
+          <path d="M0.342849 9.77988C0.201909 9.6389 0.122733 9.44771 0.122733 9.24837C0.122733 9.04902 0.201909 8.85783 0.342849 8.71685L4.06423 4.99546L0.342849 1.27408C0.205903 1.13229 0.130126 0.94238 0.131839 0.745262C0.133552 0.548143 0.212617 0.359584 0.352006 0.220195C0.491395 0.0808067 0.679955 0.00174141 0.877073 2.86102e-05C1.07419 -0.00168419 1.2641 0.0740929 1.40589 0.211038L5.65879 4.46394C5.79973 4.60492 5.87891 4.79611 5.87891 4.99546C5.87891 5.19481 5.79973 5.386 5.65879 5.52698L1.40589 9.77988C1.2649 9.92082 1.07372 10 0.874368 10C0.675018 10 0.483831 9.92082 0.342849 9.77988Z" fill="#0E1111"/>
+        </svg>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</nav>

@@ -1,0 +1,8 @@
+<div class="M_SearchField">
+  <%= form_with url: request.path, method: :get, local: true do %>
+    <%= image_tag("Q_IconSearch.svg", alt: "Иконка поиска") %>
+    <div class="A_FormField2">
+      <%= text_field_tag :search, params[:search], placeholder: "Найти", class: "Q_searchInput" %>
+    </div>
+  <% end %>
+</div>

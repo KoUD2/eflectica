@@ -1,0 +1,38 @@
+.S_FavoriteSection {
+	margin: 1.094vw auto 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.104vw;
+
+	> h1 {
+		padding-left: 0.833vw;
+		margin-bottom: 0.26vw;
+	}
+}
+
+.S_mainLayout {
+	display: flex;
+	gap: 0.833vw;
+}
+
+.S_Profile {
+	display: flex;
+	width: 11.458vw;
+	flex-direction: column;
+	gap: 1.25vw;
+}
+
+.S_contentQuestion {
+	display: flex;
+	gap: 0.833vw;
+}
+
+.S_FavoriteSectionShow {
+	margin: 0;
+}
+
+.S_allInfoEffect {
+	display: flex;
+	gap: 0.833vw;
+}

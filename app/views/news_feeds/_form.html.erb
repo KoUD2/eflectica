@@ -1,0 +1,32 @@
+<%= form_with(model: news_feed) do |form| %>
+  <% if news_feed.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(news_feed.errors.count, "error") %> prohibited this news_feed from being saved:</h2>
+
+      <ul>
+        <% news_feed.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.label :effect_id, style: "display: block" %>
+    <%= form.text_field :effect_id %>
+  </div>
+
+  <div>
+    <%= form.label :collection_id, style: "display: block" %>
+    <%= form.text_field :collection_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

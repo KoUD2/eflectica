@@ -7,6 +7,7 @@ def seed
     create_effects(30)
     create_favorites(20)
     create_collections(15)
+    create_subscriptions(15)
 end
 
 def reset_db
@@ -35,22 +36,21 @@ def create_questions(quantity)
       user_id: user.id
     )
 
-    question.tag_list = Effect::ALLOWED_TAGS.sample(rand(1..3))
-    question.save!
-
-    rating_value = rand(1..5)
-    Rating.create!(
-      number: rating_value,
-      ratingable: question,
-      user_id: user.id
-    )
-
-    rand(1..5).times do |i|
-      Comment.create!(
-        body: comments_data.sample['body'],
-        user_id: users.sample.id, 
-        commentable: question
+    if question.save
+      rating_value = rand(1..5)
+      Rating.create!(
+        number: rating_value,
+        ratingable: question,
+        user_id: user.id
       )
+
+      rand(1..5).times do |i|
+        Comment.create!(
+          body: comments_data.sample['body'],
+          user_id: users.sample.id, 
+          commentable: question
+        )
+      end
     end
 
     puts "Question #{question.title} created with #{rating_value} rating and comments!"
@@ -105,6 +105,9 @@ def create_effects(quantity)
     return
   end
 
+  all_tags = Effect::ALLOWED_TAGS
+  tags_for_effects = all_tags.shuffle
+
   quantity.times do |i|
     effect_data = available_effects[i % available_effects.length]
 
@@ -114,31 +117,32 @@ def create_effects(quantity)
       description: effect_data['Description'],
       speed: effect_data['Speed'],
       devices: effect_data['Devices'],
+      programs: effect_data['Programs'],
       manual: effect_data['Manual'],
       link_to: effect_data['Link_to'],
       is_secure: effect_data['Is_secure'],
       user: users.sample
     )
 
-    effect.tag_list = Effect::ALLOWED_TAGS.sample(rand(1..3))
-    effect.save!
+    effect.tag_list = tags_for_effects.sample(rand(1..3))
 
-    rating_value = rand(1..5)
-    Rating.create!(
-      number: rating_value,
-      ratingable: effect,
-      user_id: users.sample.id
-    )
-
-    5.times do |j|
-      Comment.create!(
-        body: comments_data[j % comments_data.length]['body'],
-        user_id: users.sample.id,
-        commentable: effect
+    if effect.save
+      rating_value = rand(1..5)
+      Rating.create!(
+        number: rating_value,
+        ratingable: effect,
+        user_id: users.sample.id
       )
-    end
 
-    puts "Effect #{effect.name} created with #{rating_value} rating and 5 comments!"
+      5.times do |j|
+        Comment.create!(
+          body: comments_data[j % comments_data.length]['body'],
+          user_id: users.sample.id,
+          commentable: effect
+        )
+      end
+      puts "Effect #{effect.name} created with #{rating_value} rating and 5 comments!"
+    end
   end
 end
 
@@ -166,25 +170,47 @@ def create_collections(quantity)
   end
 
   quantity.times do |i|
-    collection = Collection.create!(
-      name: "Collection #{Faker::Lorem.word}_#{i + 1}",
-      description: Faker::Lorem.sentence,
-      user: users.sample
-    )
-
-    collection.tag_list = Effect::ALLOWED_TAGS.sample(rand(1..3))
-    collection.save!
-
-    effects.sample(10).each do |effect|
-      CollectionEffect.create!(
-        collection_id: collection.id,
-        effect_id: effect.id
+    begin
+      collection = Collection.create!(
+        name: "Collection #{Faker::Lorem.word}_#{i + 1}",
+        description: Faker::Lorem.sentence,
+        user: users.sample
       )
-    end
 
-    puts "Collection #{collection.name} created with 10 effects!"
+      collection.save!
+
+      effects.sample(10).each do |effect|
+        CollectionEffect.create!(
+          collection_id: collection.id,
+          effect_id: effect.id
+        )
+      end
+
+      puts "Collection #{collection.name} created with 10 effects!"
+    rescue ActiveRecord::RecordInvalid => e
+      puts "Error creating collection ##{i + 1}: #{e.message}"
+      e.record.errors.full_messages.each { |msg| puts "  - #{msg}" }
+    rescue StandardError => e
+      puts "Unexpected error creating collection ##{i + 1}: #{e.message}"
+    end
   end
 end
 
+def create_subscriptions(quantity)
+  users = User.all
+  effects = Effect.all
+  collection = Collection.all
+
+  first_user = users.first
+
+  quantity.times do |i|
+    NewsFeed.create!(
+      user: first_user,
+      effect: effects.sample,
+      collection: collection.sample
+    )
+    puts "Subscription ##{i + 1} created for user #{first_user.username}!"
+  end
+end
 
 seed

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :news_feeds
   devise_for :users
 
   namespace :api, format: 'json' do
@@ -51,5 +52,5 @@ Rails.application.routes.draw do
   # get 'answersGallery', to: 'tasks#answersGallery'
 
   # Defines the root path route ("/")
-  root "welcome#index"
+  root "effects#index"
 end

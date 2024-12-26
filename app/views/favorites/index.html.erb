@@ -1,5 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
 <%
   set_meta_tags(
     title: "Избранное",
@@ -8,14 +6,23 @@
   )
 %>
 
+<% content_for :sidebar do %>
+  <%= render "shared/sidebar_profile" %>
+<% end %>
+
 <% content_for :title, "Favorites" %>
 
-<h1 class="titleQuestion">Избранное</h1>
-
-<div id="favorites">
-  <% @favorites.each do |favorite| %>
-    <div class="favorite-item">
-      <%= render partial: "effects/effect", locals: { effect: favorite.effect } %>
+<div class='Q_Section Q_SectionFavorites'>
+  <% if @favorites.any? %>
+    <div class='C_allFavorites'>
+      <% @favorites.each do |favorite| %>
+        <%= render partial: "effects/effect_favorite", locals: { effect: favorite.effect } %>
+      <% end %>
     </div>
+    <div class="O_Pagination">
+      <%= paginate @favorites %>
+    </div>
+  <% else %>
+    <p>Такого у нас нет :(</p>
   <% end %>
 </div>

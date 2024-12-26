@@ -4,7 +4,7 @@ class FavoritesController < ApplicationController
 
   # GET /favorites or /favorites.json
   def index
-    @favorites = current_user.favorites.includes(:effect)
+    @favorites = current_user.favorites.joins(:effect).merge(Effect.search(params[:search])).page(params[:page]).per(10)
     puts "Favorites count: #{@favorites.count}"
   end
   

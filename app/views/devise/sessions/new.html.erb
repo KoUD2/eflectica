@@ -1,26 +1,63 @@
-<h2>Вход</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
+<% content_for :sidebar do %>
+  <%= render "shared/sidebar_login" %>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class='Q_Section Q_SectionRegister Q_SectionActive'>
+  <div class="A_LogoRegister"><%= image_tag("A_Logo.svg", alt: "Картинка логотипа") %></div>
+
+  <div>
+    <div class='O_Card'>
+      <div class="A_TextM A_TextMCard"><p>Обсуждения</p></div>
+      <div class="A_TextL"><p>Узнавай мнение сообщества и&nbsp;помогай советами</p></div>
+    </div>
+
+    <div class='O_lineCard'>
+      <%= image_tag("O_lineCard.svg", alt: "Картинка линии") %>
+    </div>
+
+    <div class='O_lineCard2'>
+      <%= image_tag("O_lineCard2.svg", alt: "Картинка линии") %>
+    </div>
+
+    <div class='O_lineCard3'>
+      <%= image_tag("O_lineCard3.svg", alt: "Картинка линии") %>
+    </div>
+
+    <div class='O_lineCard4'>
+      <%= image_tag("O_lineCard4.svg", alt: "Картинка линии") %>
+    </div>
+    
+    <div class='O_Card O_CardSimple'>
+      <p>Находи вдохновение и&nbsp;готовые решения для новых проектов</p>
+    </div>
+
+    <div class='O_Card O_CardMedium O_CardMediumRed'>
+      <div class="A_TextM A_TextMCard A_TextMRed"><p>Избранное</p></div>
+      <div class="A_TextL"><p>Узнавай мнение сообщества и&nbsp;помогай советами</p></div>
+    </div>
+
+    <div class='O_Card O_CardSimple O_Card2'>
+      <p>Делись собственными эффектами и&nbsp;пресетами</p>
+    </div>
+
+    <div class='O_Card O_CardSimple O_Card3'>
+      <p>Следи за&nbsp;модными трендами в&nbsp;индустрии и&nbsp;сохраняй&nbsp;их</p>
+    </div>
+
+    <div class='O_Card O_CardMedium O_CardMediumBlack'>
+      <div class="A_TextM A_TextMCard A_TextMBlack"><p>Подписки</p></div>
+      <div class="A_TextL"><p>Узнавай мнение сообщества и&nbsp;помогай советами</p></div>
+    </div>
+
+    <div class='O_Card O_CardSimple O_Card4'>
+      <p>Кастомизируй свою ленту</p>
+    </div>
+
+    <div class='O_Card O_CardBlue'>
+      <div class="A_TextM A_TextMCard"><p>Мои коллекции</p></div>
+      <div class="A_TextL"><p>Узнавай мнение сообщества и&nbsp;помогай советами</p></div>
+    </div>
+  </div>
+</div>
+
+

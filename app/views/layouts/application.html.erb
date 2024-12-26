@@ -24,7 +24,20 @@
       <%= render "menubar" %>
     <% end %>
   
-    <%= yield %>
-    <%= render "footer" %>
+    <div class='S_mainLayout'>
+      <div class='Q_Overlay'></div>
+      <div class="main-content">
+        <%= yield %>
+
+        <%= render "footer" %>
+      </div>
+      <div class='Q_sectionRegister2'>
+        <% if content_for?(:sidebar) %>
+          <%= yield :sidebar %>
+        <% else %>
+          <p>Сайдбар по умолчанию</p>
+        <% end %>
+      </div>
+    </div>
   </body>  
 </html>

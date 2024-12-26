@@ -1,28 +1,122 @@
-.C_infoCreators{
-	width: fit-content;
+.C_Info {
+	display: flex;
+	align-items: center;
+}
 
-	> h3 {
-		font-family: "Basis Grotesque Pro";
-		font-size: 0.972vw;
-		font-weight: 500;
-		line-height: 122.765%;
+.C_Authors {
+	display: flex;
+	align-items: center;
+	gap: 5.417vw;
+}
+
+.C_Menu {
+	display: flex;
+	width: 83.264vw;
+	justify-content: space-between;
+}
+
+.C_IconsMenu {
+	display: flex;
+	align-items: center;
+}
+
+.C_QuestionBody {
+	display: flex;
+	flex-direction: column;
+	gap: 0.417vw;
+
+	> h1 {
+		color: var(--charcoal-black);
+		height: auto;
+		display: -webkit-box;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+  	line-clamp: 1;
 	}
 
-	> div {
-		margin-top: 1.25vw;
-		> p {
-			width: 14.861vw;
-			font-family: "Basis Grotesque Pro";
-			font-size: 1.389vw;
-			font-weight: 500;
-			line-height: 122.765%;
+	> p {
+		color: var(--charcoal-black);
+		line-height: 0.938vw;
+		height: calc(0.938vw * 3);
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+  	line-clamp: 3;
+	}
+}
+
+.C_PhotoQuestion {
+	display: flex;
+	gap: 0.313vw;
+}
+
+.C_Questions {
+	display: flex;
+	gap: 0.833vw;
+}
+
+.C_allQuestions {
+	margin: 0.833vw 0 0 2.135vw;
+	width: 78.021vw;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	grid-column-gap: 0.625vw;
+	grid-row-gap: 0.885vw;
+
+	.O_Question {
+    width: 15.104vw;
+    padding: 0.833vw 1.042vw;
+    gap: 0.625vw;
+
+		.Q_Photo {
+			> img {
+				height: 3.802vw;
+			}
 		}
 	}
 }
 
-.C_infoCreators:nth-child(2) {
-	width: 12.292vw;
-	margin-right: 5.107vw;
+.С_EffectFooter {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.C_allFavorites {
+	margin: 2.604vw 0;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 0.833vw;
+}
+
+.C_CollectionInfo {
+	> div p {
+		color: var(--ordinary-grey);
+	}
+
+	> div {
+		height: auto;
+		padding: 0;
+	}
+}
+
+.C_allCollections {
+	margin: 1.667vw auto 7.292vw auto;
+	display: flex;
+	gap: 1.25vw;
+}
+
+.C_allSubscribtions {
+	margin-top: 1.25vw;
+	display: flex;
+	gap: 0.833vw;
+	flex-wrap: wrap;
 }
 
 .C_allImagesCollections{
@@ -46,6 +140,122 @@
 			border: 1px solid #8F8F8F;
 		}
 	}
+}
+
+.C_Subscriptions {
+	display: flex;
+	flex-direction: column;
+	gap: 0.625vw;
+}
+
+.C_allEffects {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 0.833vw;
+}
+
+.C_Category {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	align-self: stretch;
+	border-bottom: 0.104vw solid var(--soft-grey);
+}
+
+.C_ProfileName {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.208vw;
+}
+
+.C_ProfileBody {
+	display: flex;
+	flex-direction: column;
+	gap: 0.833vw;
+	align-self: stretch;
+}
+
+.C_ProfileEffects {
+	display: flex;
+	flex-direction: column;
+	gap: 0.417vw;
+	align-self: stretch;
+}
+
+.C_QuestionInfo {
+	margin-top: 1.25vw;
+	display: flex;
+	width: 40.781vw;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.C_allPicturesQuestion {
+	margin-top: 0.666vw;
+	display: flex;
+	gap: 0.846vw;
+
+	> img {
+		width: auto;
+		height: 13.021vw;
+	}
+}
+
+.C_QuestionAuthor {
+	margin-top: 1.678vw;
+	display: flex;
+	width: 40.625vw;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.C_QuestionsShow {
+	width: 32.24vw;
+	display: flex;
+	flex-direction: column;
+}
+
+.C_QuestionAuthorShow {
+	margin: 0;
+	width: 100%;
+}
+
+.C_MyAnswer {
+	position: relative;
+	> img {
+		width: 2.604vw;
+		height: auto;
+		position: absolute;
+		top: 0.625vw;
+		left: 0.833vw;
+	}
+}
+
+.C_AnswerLike {
+	display: flex;
+	padding: 0 1.25vw;
+	justify-content: space-between;
+	align-items: center;
+	align-self: stretch;
+}
+
+.C_allPicturesEffect {
+	margin-top: 1.094vw;
+	display: flex;
+	gap: 0.833vw;
+
+	> img {
+		width: 23.438vw;
+		height: auto;
+	}
+}
+
+.C_CommentAuthor {
+	display: flex;
+	width: 25.521vw;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .C_allImagesCollections1 {
@@ -142,26 +352,6 @@
 }
 
 @media screen and (max-width: 912px) {
-	.C_infoCreators {
-		margin-top: 5.814vw;
-
-		> h3 {
-			font-size: 3.256vw;
-		}
-
-		> div {
-			margin-top: 4.186vw;
-			> p {
-				font-size: 4.651vw;
-				width: 51.163vw;
-			}
-		}
-	}
-
-	.C_infoCreators:nth-child(2) {
-		width: 41.163vw;
-	}
-
 	.C_allImagesCollections1 {
     margin-right: 5.081vw;
 

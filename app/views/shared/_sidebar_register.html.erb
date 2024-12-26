@@ -1,0 +1,26 @@
+<div class='Q_Section3' id="section-3">
+  <h1 class='A_TextH1 A_TextH1Register'>Регистрация</h1>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="A_FormField">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Адрес почты", id: "email-field" %>
+    </div>
+
+    <div class="A_FormField">
+      <%= f.password_field :password, autocomplete: "new-password", placeholder: "Пароль", id: "password-field" %>
+    </div>
+
+    <div class="A_FormField">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Пароль еще раз", id: "passwordAgain-field" %>
+    </div>
+
+    <div class="A_buttonRegister">
+      <%= f.submit "Зарегистрироваться" %>
+    </div>
+  <% end %>
+
+  <div class='A_TextXS A_textLoginLink'>
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

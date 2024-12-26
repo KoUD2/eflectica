@@ -1,4 +1,6 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :sidebar do %>
+  <%= render "shared/sidebar_search" %>
+<% end %>
 
 <%
   set_meta_tags(
@@ -10,12 +12,49 @@
 
 <% content_for :title, "Questions" %>
 
-<h1 class="titleQuestion">Обсуждения</h1>
+<div class='Q_Section'>
+  <div class="S_FavoriteSection">
+    <h1 class="A_TextH1">Топовые вопросы</h1>
+    <div class="Q_FavoriteSection">
+      <div class="Q_SegmentSection"></div>
+      <div class="Q_SegmentSection"></div>
+      <div class="Q_SegmentSection"></div>
+      <div class="Q_SegmentSection"></div>
+      <div class="Q_SegmentSection"></div>
+      <div class="Q_SegmentSection"></div>
+      <div class="C_Questions">
+        <% @top_questions.each do |question| %>
+          <%= render question %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-<div id="questions">
-  <% @questions.each do |question| %>
-    <%= render question %>
-  <% end %>
+  <div class="W_allButtons">
+    <div class="M_Filtration">
+      <button class="A_Filter">
+        <p class="A_TextS">Программа</p>
+        <%= image_tag("Q_FilterArrowDown.svg", alt: "Картинка стрелочки") %>
+      </button>
+      <button class="A_Filter">
+        <p class="A_TextS">Категория</p>
+        <%= image_tag("Q_FilterArrowDown.svg", alt: "Картинка стрелочки") %>
+      </button>
+      <button class="A_Filter">
+        <p class="A_TextS">Дата</p>
+        <%= image_tag("Q_FilterArrowUpDown.svg", alt: "Картинка стрелочки", class: "Q_FilterArrowUpDown") %>
+      </button>
+    </div>
+    <%= link_to "Задать свой вопрос", new_question_path, class: "A_Button" %>
+  </div>
+
+  <div class="C_allQuestions">
+    <% @questions.each do |question| %>
+      <%= render question %>
+    <% end %>
+  </div>
+  
+  <div class="O_Pagination">
+    <%= paginate @questions %>
+  </div>
 </div>
-
-<button class='buttonNewQuestion'><%= link_to "Создать обсуждение", new_question_path %></button>

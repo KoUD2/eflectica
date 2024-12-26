@@ -2,5 +2,6 @@
 	*= require reset
 	*= require fonts
 	*= require styles
+	*= require vars
 	*= require_tree ./components
 */

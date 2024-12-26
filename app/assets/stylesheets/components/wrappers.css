@@ -1,23 +1,160 @@
-.W_infoCourse{
+.W_TopQuestions {
 	display: flex;
-	align-items: center;
-	gap: 3.301vw;
-	margin-left: 5.103vw;
-	margin-right: 8.56vw;
+	gap: 1.354vw;
+}
 
-	> h2 {
-		color: #050507;
-		font-family: "Basis Grotesque Pro";
-		font-weight: bold;
-		font-size: 1.944vw;
-		line-height: 101%;
-		text-transform: uppercase;
+.W_allButtons {
+	margin-top: 1.483vw;
+	display: flex;
+	gap: 10.986vw;
+	margin-left: 2.135vw;
+}
+
+.W_EffectBody {
+	display: flex;
+	padding: 0 0.833vw;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.417vw;
+	align-self: stretch;
+}
+
+.W_allCollectionsButton {
+	display: flex;
+	gap: 0.469vw;
+	margin: 1.563vw auto 0 auto;
+}
+
+.W_Collection {
+	display: flex;
+	width: 100%;
+	padding: 0.833vw 1.25vw;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.833vw;
+	border-radius: 0 0 0.313vw 0.313vw;
+	background: var(--porcelain-white);
+}
+
+.W_twoImages {
+	display: flex;
+	flex-direction: column;
+	gap: 0.417vw;
+
+	> img {
+		width: 4.844vw;
+		height: auto;
 	}
 }
 
-.W_allInfo{
+.W_columnCollections {
 	display: flex;
-	align-items: flex-end;
+	flex-direction: column;
+	gap: 1.25vw;
+}
+
+.W_allSubscriptions {
+	margin-top: 0.833vw;
+	display: flex;
+	gap: 0.625vw;
+}
+
+.W_SubscriptionBody {
+	display: flex;
+	flex-direction: column;
+	gap: 0.417vw;
+}
+
+.W_filtrationProgrammEffects {
+	display: flex;
+	flex-direction: column;
+	gap: 0.625vw;
+}
+
+.W_Profile {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25vw;
+	align-self: stretch;
+}
+
+.W_ProfileEffects {
+	display: flex;
+	flex-direction: column;
+	gap: 0.833vw;
+	align-self: stretch;
+}
+
+.W_EffectBody2 {
+	display: flex;
+	max-width: 6.771vw;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.208vw;
+	flex: 1 0 0;
+}
+
+.W_Answer {
+	display: flex;
+	padding: 0.833vw 1.25vw;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 1.25vw;
+	align-self: stretch;
+	border-radius: 0.313vw;
+	background: var(--porcelain-white);
+}
+
+.W_effectNaming {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 47.708vw;
+}
+
+.W_favoriteButtons {
+	margin-top: 0.625vw;
+	display: flex;
+	gap: 0.417vw;
+}
+
+.W_descEffect {
+	margin-top: 1.702vw;
+	display: flex;
+	gap: 2.604vw;
+}
+
+.W_buttonDownload {
+	display: flex;
+	gap: 0.417vw;
+
+	> img {
+		width: 1.771vw;
+		height: 1.695vw;
+	}
+}
+
+.W_programmEffect {
+	display: flex;
+	flex-direction: column;
+	gap: 0.625vw;
+}
+
+.W_allCategories {
+	display: flex;
+	gap: 0.417vw;
+}
+
+.W_exectProgrammCurrent {
+	display: flex;
+	align-items: center;
+	gap: 0.313vw;
+}
+
+.W_filtersGoalEffects {
+	display: flex;
+	gap: 1.25vw;
+	margin-bottom: 1.042vw;
 }
 
 .W_allLinksHeader{
@@ -186,22 +323,6 @@
 }
 
 @media screen and (max-width: 912px) {
-	.W_allInfo {
-		margin-top: 9.302vw;
-		flex-direction: column;
-		align-items: flex-start;
-	}
-
-	.W_infoCourse {
-		margin-left: 0;
-    margin-right: 0;
-		gap: 8.363vw;
-
-		> h2 {
-			font-size: 3.721vw;
-		}
-	}
-
 	.W_allLinksHeader {
 		gap: 8.372vw;
 

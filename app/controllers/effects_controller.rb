@@ -5,8 +5,23 @@ class EffectsController < ApplicationController
 
   # GET /effects or /effects.json
   def index
-    @effects = Effect.all
+    @top_effects = Effect.limit(5)
+    @effects = Effect.search(params[:search]).page(params[:page]).per(12)
+    @services = YAML.load_file(Rails.root.join("config/services/app.yml"))["services"]
+  
+    if params[:programs].present?
+      selected_programs = params[:programs]
+      @effects = @effects.select do |effect|
+        (selected_programs & effect.programs.split(',')).any?
+      end
+    end
+  
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
+  
 
   def by_tag
     @effects = Effect.tagged_with(params[:tag])

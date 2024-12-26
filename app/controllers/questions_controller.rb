@@ -5,7 +5,13 @@ class QuestionsController < ApplicationController
 
   # GET /questions or /questions.json
   def index
-    @questions = Question.all
+    @top_questions = Question.first(4)
+
+    if params[:search].present?
+      @questions = Question.search(params[:search]).page(params[:page]).per(10)
+    else
+      @questions = Question.all.page(params[:page]).per(10)
+    end
   end
 
   def by_tag

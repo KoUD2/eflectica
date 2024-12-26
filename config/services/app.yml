@@ -1,0 +1,31 @@
+services:
+  after_effects:
+    name: "After Effects"
+    image_url: "/assets/ae.svg"
+  lightroom:
+    name: "Lightroom"
+    image_url: "/assets/lr.svg"
+  premier_pro:
+    name: "Premier Pro"
+    image_url: "/assets/pr.svg"
+  cinema:
+    name: "Cinema 4D"
+    image_url: "/assets/cinema.svg"
+  telegram:
+    name: "Telegram"
+    image_url: "/assets/tg.svg"
+  maya:
+    name: "Maya"
+    image_url: "/assets/maya.svg"
+  blender:
+    name: "Blender"
+    image_url: "/assets/blender.svg"
+  photoshop:
+    name: "Photoshop"
+    image_url: "/assets/ps.svg"
+  illustrator:
+    name: "Illustrator"
+    image_url: "/assets/ai.svg"
+  houdini:
+    name: "Houdini"
+    image_url: "/assets/houdini.svg"

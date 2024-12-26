@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_03_155906) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_24_152037) do
   create_table "collection_effects", force: :cascade do |t|
     t.integer "collection_id", null: false
     t.integer "effect_id", null: false
@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_03_155906) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "programs"
     t.index ["user_id"], name: "index_effects_on_user_id"
   end
 
@@ -62,6 +63,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_03_155906) do
     t.datetime "updated_at", null: false
     t.index ["effect_id"], name: "index_favorites_on_effect_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "news_feeds", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "effect_id", null: false
+    t.integer "collection_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_news_feeds_on_collection_id"
+    t.index ["effect_id"], name: "index_news_feeds_on_effect_id"
+    t.index ["user_id"], name: "index_news_feeds_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -155,6 +167,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_03_155906) do
   add_foreign_key "effects", "users"
   add_foreign_key "favorites", "effects"
   add_foreign_key "favorites", "users"
+  add_foreign_key "news_feeds", "collections"
+  add_foreign_key "news_feeds", "effects"
+  add_foreign_key "news_feeds", "users"
   add_foreign_key "questions", "users"
   add_foreign_key "sub_collections", "collections"
   add_foreign_key "sub_collections", "users"

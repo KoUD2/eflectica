@@ -1,122 +1,152 @@
 [
 	{
 			"title": "What is Ruby on Rails?",
-			"description": "A web application framework for building web apps."
+			"description": "A web application framework for building web apps.",
+			"media": "After Effects"
 	},
 	{
 			"title": "What is MVC?",
-			"description": "Model-View-Controller architectural pattern."
+			"description": "Model-View-Controller architectural pattern.",
+			"media": "After Effects"
 	},
 	{
 			"title": "Explain RESTful routes.",
-			"description": "Routing in Rails follows REST architecture."
+			"description": "Routing in Rails follows REST architecture.",
+			"media": "After Effects"
 	},
 	{
 			"title": "What is ActiveRecord?",
-			"description": "An Object-Relational Mapping system for Rails."
+			"description": "An Object-Relational Mapping system for Rails.",
+			"media": "After Effects"
 	},
 	{
 			"title": "How to create a migration?",
-			"description": "Use rails generate migration command."
+			"description": "Use rails generate migration command.",
+			"media": "After Effects"
 	},
 	{
 			"title": "What is a Gemfile?",
-			"description": "A file that manages gem dependencies for a Rails app."
+			"description": "A file that manages gem dependencies for a Rails app.",
+			"media": "After Effects"
 	},
 	{
 			"title": "Explain the Asset Pipeline.",
-			"description": "A framework for managing assets in Rails."
+			"description": "A framework for managing assets in Rails.",
+			"media": "After Effects"
 	},
 	{
 			"title": "What is a controller?",
-			"description": "It handles the incoming requests and renders views."
+			"description": "It handles the incoming requests and renders views.",
+			"media": "After Effects"
 	},
 	{
 			"title": "What is a view?",
-			"description": "It displays the data to the user."
+			"description": "It displays the data to the user.",
+			"media": "After Effects"
 	},
 	{
 			"title": "What is a model?",
-			"description": "It represents the data and business logic."
+			"description": "It represents the data and business logic.",
+			"media": "After Effects"
 	},
 	{
 			"title": "What is a helper?",
-			"description": "It provides methods to simplify view code."
+			"description": "It provides methods to simplify view code.",
+			"media": "After Effects"
 	},
 	{
 			"title": "What is a partial?",
-			"description": "It allows you to render reusable view code."
+			"description": "It allows you to render reusable view code.",
+			"media": "After Effects"
 	},
 	{
 			"title": "How to seed the database?",
-			"description": "Use the db/seeds.rb file to populate the database."
+			"description": "Use the db/seeds.rb file to populate the database.",
+			"media": "After Effects"
 	},
 	{
 			"title": "What is a rake task?",
-			"description": "A command-line utility for running tasks in Rails."
+			"description": "A command-line utility for running tasks in Rails.",
+			"media": "After Effects"
 	},
 	{
 			"title": "What is a migration rollback?",
-			"description": "Reversing a migration to undo changes to the database."
+			"description": "Reversing a migration to undo changes to the database.",
+			"media": "After Effects"
 	},
 	{
 			"title": "How to run tests in Rails?",
-			"description": "Use the rails test command to run your tests."
+			"description": "Use the rails test command to run your tests.",
+			"media": "After Effects"
 	},
 	{
 			"title": "What is a session?",
-			"description": "A way to store user data during a session."
+			"description": "A way to store user data during a session.",
+			"media": "After Effects"
 	},
 	{
 			"title": "Explain strong parameters.",
-			"description": "A feature to prevent mass assignment vulnerabilities."
+			"description": "A feature to prevent mass assignment vulnerabilities.",
+			"media": "After Effects"
 	},
 	{
 			"title": "What is CSRF?",
-			"description": "Cross-Site Request Forgery, a security vulnerability."
+			"description": "Cross-Site Request Forgery, a security vulnerability.",
+			"media": "After Effects"
 	},
 	{
 			"title": "What is the role of the application controller?",
-			"description": "It serves as the base class for all controllers."
+			"description": "It serves as the base class for all controllers.",
+			"media": "After Effects"
 	},
 	{
 			"title": "What is the role of the application controller?",
-			"description": "It serves as the base class for all controllers."
+			"description": "It serves as the base class for all controllers.",
+			"media": "After Effects"
 	},
 	{
 			"title": "What are routes?",
-			"description": "They define the paths in your application."
+			"description": "They define the paths in your application.",
+			"media": "After Effects"
 	},
 	{
 			"title": "What is the purpose of the config directory?",
-			"description": "It contains configuration files for the Rails app."
+			"description": "It contains configuration files for the Rails app.",
+			"media": "After Effects"
 	},
 	{
 			"title": "How to use environment variables?",
-			"description": "Store sensitive data like API keys in environment variables."
+			"description": "Store sensitive data like API keys in environment variables.",
+			"media": "After Effects"
 	},
 	{
 			"title": "What is a namespace?",
-			"description": "It allows you to group controllers under a common module."
+			"description": "It allows you to group controllers under a common module.",
+			"media": "After Effects"
 	},
 	{
 			"title": "Explain the difference between GET and POST.",
-			"description": "GET requests data, POST sends data to be processed."
+			"description": "GET requests data, POST sends data to be processed.",
+			"media": "After Effects"
 	},
 	{
 			"title": "How to implement pagination?",
-			"description": "Use pagination gems like kaminari or will_paginate."
+			"description": "Use pagination gems like kaminari or will_paginate.",
+			"media": "After Effects"
 	},
 	{
 			"title": "What are callbacks in ActiveRecord?",
-			"description": "Methods that get called at certain points in the lifecycle of an object."
+			"description": "Methods that get called at certain points in the lifecycle of an object.",
+			"media": "After Effects"
 	},
 	{
 			"title": "What is a join table?",
-			"description": "A table that associates two other tables in a many-to-many relationship."
+			"description": "A table that associates two other tables in a many-to-many relationship.",
+			"media": "After Effects"
 	},
 	{
 			"title": "What is a polymorphic association?",
-			"description": "An association that can refer to multiple other models."
+			"description": "An association that can refer to multiple other models.",
+			"media": "After Effects"
 	}
 ]

@@ -1,0 +1,110 @@
+<%
+  set_meta_tags(
+    title: "Подписки",
+    description: "Ваши избранные коллекции на Eflectica",
+    keywords: "коллекции эффектов, коллекции пресетов"
+  )
+%>
+
+<% content_for :sidebar do %>
+  <%= render "shared/sidebar_search" %>
+<% end %>
+
+<% content_for :title, "News feeds" %>
+
+<div class='Q_Section Q_sectionSubscription'>
+  <h1 class="A_TextH1 A_TextH1News">Лента подписок</h1>
+  <div class="M_Filtration M_FiltrationNews">
+    <button class="A_Filter">
+      <p class="A_TextS">Программа</p>
+      <%= image_tag("Q_FilterArrowDown.svg", alt: "Картинка стрелочки") %>
+    </button>
+    <button class="A_Filter">
+      <p class="A_TextS">Категория</p>
+      <%= image_tag("Q_FilterArrowDown.svg", alt: "Картинка стрелочки") %>
+    </button>
+    <button class="A_Filter">
+      <p class="A_TextS">Дата</p>
+      <%= image_tag("Q_FilterArrowUpDown.svg", alt: "Картинка стрелочки",class: "Q_FilterArrowUpDown") %>
+    </button>
+  </div>
+  <div class="C_allSubscribtions">
+    <% if @news_feeds.any? %>
+      <% @news_feeds.each do |news_feed| %>
+        <div class='O_Subscription'>
+          <h2 class='A_TextH2'>Необычная обработка </h2>
+          <%= render partial: "effects/effect", locals: { effect: news_feed.effect } %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>Нет новостей для отображения.</p>
+    <% end %>
+  </div>
+
+  <div class="O_Pagination O_PaginationSubscribtion">
+    <%= paginate @news_feeds %>
+  </div>
+</div>
+
+<div class='Q_Subscription'>
+  <h1 class='A_TextH1 A_TextH1News A_TextH1News2'>Подписки</h1>
+  <div class='W_allSubscriptions'>
+    <div class="C_Subscriptions">
+      <div class="O_SubscriptionCard">
+        <%= image_tag("imageSeed12.png", alt: "Картинка стрелочки", class: "Q_ImageSeedSub") %>
+        <div class="W_SubscriptionBody">
+          <div class="A_TextM A_TextMBig"><p>Глитч-синхронизация</p></div>
+          <p class="A_TextS A_TextSub">Отписаться</p>
+        </div>
+      </div>
+      <div class="O_SubscriptionCard">
+        <%= image_tag("imageSeed1.png", alt: "Картинка стрелочки", class: "Q_ImageSeedSub") %>
+        <div class="W_SubscriptionBody">
+          <div class="A_TextM A_TextMBig"><p>Глитч-синхронизация  </p></div>
+          <p class="A_TextS A_TextSub">Отписаться</p>
+        </div>
+      </div>
+    </div>
+    <div class="C_Subscriptions">
+      <div class="O_SubscriptionCard">
+        <%= image_tag("imageSeed13.png", alt: "Картинка стрелочки", class: "Q_ImageSeedSub") %>
+        <div class="W_SubscriptionBody">
+          <div class="A_TextM A_TextMBig"><p>Глитч-синхронизация  </p></div>
+          <p class="A_TextS A_TextSub">Отписаться</p>
+        </div>
+      </div>
+      <div class="O_SubscriptionCard">
+        <%= image_tag("imageSeed14.png", alt: "Картинка стрелочки", class: "Q_ImageSeedSub") %>
+        <div class="W_SubscriptionBody">
+          <div class="A_TextM A_TextMBig"><p>Глитч-синхронизация  </p></div>
+          <p class="A_TextS A_TextSub">Отписаться</p>
+        </div>
+      </div>
+    </div>
+    <div class="C_Subscriptions">
+      <div class="O_SubscriptionCard">
+        <%= image_tag("imageSeed15.png", alt: "Картинка стрелочки", class: "Q_ImageSeedSub") %>
+        <div class="W_SubscriptionBody">
+          <div class="A_TextM A_TextMBig"><p>Глитч-синхронизация  </p></div>
+          <p class="A_TextS A_TextSub">Отписаться</p>
+        </div>
+      </div>
+      <div class="C_Subscriptions">
+        <div class="O_SubscriptionCard">
+          <%= image_tag("imageSeed16.png", alt: "Картинка стрелочки", class: "Q_ImageSeedSub") %>
+          <div class="W_SubscriptionBody">
+            <div class="A_TextM A_TextMBig"><p>Глитч-синхронизация  </p></div>
+            <p class="A_TextS A_TextSub">Отписаться</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="O_SubscriptionCard">
+      <%= image_tag("imageSeed1.png", alt: "Картинка стрелочки", class: "Q_ImageSeedSub") %>
+      <div class="W_SubscriptionBody">
+        <div class="A_TextM A_TextMBig"><p>Полезные плагины</p></div>
+        <p class="A_TextS A_TextSub">Отписаться</p>
+      </div>
+    </div>
+  </div>
+</div>

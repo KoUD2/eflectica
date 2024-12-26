@@ -1,3 +1,322 @@
+.O_footer{
+	box-sizing: border-box;
+	width: 83.229vw;
+	height: 7.604vw;
+	background-color: var(--computer-blue);
+	display: flex;
+	align-items: center;
+	padding: 0 5.833vw 0 3.75vw;
+	border-radius: 0.313vw;
+	justify-content: space-between;
+	margin-top: 0.833vw;
+}
+
+.O_Menu {
+	display: flex;
+	width: 97.5vw;
+	justify-content: space-between;
+}
+
+.O_Question {
+	display: flex;
+	width: 17.292vw;
+	padding: 0.833vw 1.042vw;
+	flex-direction: column;
+	gap: 0.625vw;
+	border-radius: 0.313vw;
+	border: 0.078vw solid var(--soft-grey);
+	background: var(--porcelain-white);
+}
+
+.O_AQuestion {
+	display: block;
+	height: fit-content;
+	width: fit-content;
+}
+
+.O_EffectFavorite {
+	position: relative;
+}
+
+.O_Pagination {
+	margin: 1.198vw auto 1.667vw auto;
+
+	.pagination {
+		> ul {
+			display: flex;
+			align-items: center;
+			gap: 0.625vw;
+
+			> li {
+				span {
+					display: flex;
+				}
+
+				a {
+					display: flex;
+				}
+			}
+		}
+	}
+}
+
+.O_Card {
+	display: flex;
+	width: 17.865vw;
+	flex-direction: column;
+	align-items: flex-start;
+	border-radius: 0.313vw;
+	border: 1.5px solid var(--soft-grey);
+	background: var(--porcelain-white);
+	position: absolute;
+	top: 4.115vw;
+	left: 5.104vw;
+}
+
+.O_CardSimple {
+	display: flex;
+	width: 10.148vw;
+	padding: 0.625vw 0.938vw;
+	top: 8.229vw;
+	left: 39.948vw;
+
+	> p {
+		color: #000;
+		font-family: "Basis Grotesque Pro";
+		font-size: 0.833vw;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+	}
+}
+
+.O_Card2 {
+	width: 11.763vw;
+	top: 14.471vw;
+	left: 16.429vw;
+}
+
+.O_Card3 {
+	width: 13.781vw;
+	top: 22.388vw;
+	left: 59.975vw;
+}
+
+.O_CardMediumBlack {
+	top: 22.752vw;
+	left: 12.531vw;
+}
+
+.O_Card4 {
+	width: fit-content;
+	top: 31.267vw;
+	left: 36.823vw;
+	z-index: 4;
+}
+
+.O_CardMedium {
+	width: 14.302vw;
+}
+
+.O_CardBlue {
+	top: 28.594vw;
+	left: 52.812vw;
+}
+
+.O_CardMediumRed{
+	top: 6.51vw;
+	left: 63.281vw;
+}
+
+.O_lineCard {
+	position: absolute;
+	width: 14.958vw;
+	height: auto;
+
+	> img {
+		width: 14.958vw;
+		height: auto;
+	}
+	
+	top: 8.048vw;
+	left: 22.664vw;
+}
+
+.O_lineCard2 {
+	position: absolute;
+	width: 13.094vw;
+	height: auto;
+	z-index: 3;
+
+	> img {
+		width: 13.094vw;
+		height: auto;
+	}
+	
+	top: 10.311vw;
+	left: 50.483vw;
+}
+
+.O_lineCard3 {
+	position: absolute;
+	width: 20.013vw;
+	height: auto;
+	z-index: 3;
+
+	> img {
+		width: 20.013vw;
+		height: auto;
+	}
+	
+	top: 22.756vw;
+	left: 26.531vw;
+}
+
+.O_lineCard4 {
+	position: absolute;
+	width: 21.483vw;
+	height: auto;
+	z-index: 3;
+
+	> img {
+		width: 21.483vw;
+		height: auto;
+	}
+	
+	top: 23.079vw;
+	left: 31.686vw;
+}
+
+.O_EffectFavoriteButton {
+	width: 14.688vw;
+	height: 13.333vw;
+	display: flex;
+	flex-direction: column;
+	gap: 0.521vw;
+	border-radius: 0.313vw;
+	border: 0.078vw solid var(--soft-grey);
+	background: var(--porcelain-white);
+	overflow: hidden;
+}
+
+.O_CollectionCard {
+	cursor: pointer;
+	width: 17.865vw;
+	display: inline-flex;
+	flex-direction: column;
+	align-items: flex-start;
+	border-radius: 0.313vw;
+	border: 0.078vw solid var(--soft-grey);
+}
+
+.O_Subscription {
+	display: flex;
+	flex-direction: column;
+	gap: 0.417vw;
+
+	> h2 {
+		margin-left: 0.833vw;
+		color: var(--ordinary-grey);
+	}
+}
+
+.O_PaginationSubscribtion {
+	position: absolute;
+	margin: 0;
+	bottom: 1.667vw;
+	left: 50%;
+	transform: translate(-50%);
+}
+
+.O_SubscriptionCard {
+	cursor: pointer;
+	overflow: hidden;
+	display: flex;
+	width: 14.479vw;
+	height: fit-content;
+	padding-right: 0.417vw;
+	align-items: center;
+	gap: 0.417vw;
+	border-radius: 0.313vw;
+	border: 0.078vw solid var(--soft-grey);
+	background: var(--porcelain-white);
+}
+
+.O_PaginationEffects {
+	width: fit-content;
+	left: 48.077vw;
+	transform: translate(0);
+}
+
+.O_CategoryChoice {
+	margin-top: 0.625vw;
+	margin-bottom: 1.667vw;
+	flex-direction: column;
+	gap: 0.104vw;
+}
+
+.O_Profile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.885vw;
+	align-self: stretch;
+}
+
+.O_EffectCard {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 0.417vw;
+	align-self: stretch;
+	border-radius: 0.313vw;
+	border: 0.078vw solid var(--soft-grey);
+	background: var(--porcelain-white);
+	overflow: hidden;
+
+	> img {
+		width: 3.802vw;
+		height: auto;
+	}
+}
+
+.O_MyAnswer {
+	margin-top: 2.083vw;
+	display: flex;
+	flex-direction: column;
+	gap: 0.417vw;
+}
+
+.O_allAnswer {
+	margin-top: 1.875vw;
+	width: 35.104vw;
+}
+
+.O_Answer {
+	margin-top: 1.25vw;
+	display: flex;
+	width: 32.552vw;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.625vw;
+}
+
+.O_Comment {
+	margin-top: 0.833vw;
+	display: flex;
+	width: 28.021vw;
+	padding: 0.833vw 1.25vw;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 1.25vw;
+	border-radius: 0.313vw;
+	background: var(--porcelain-white);
+}
+
+.O_CommentMy {
+	flex-direction: row;
+}
+
 .O_headerAbout {
 	margin-top: 4.7vw;
 	position: relative;

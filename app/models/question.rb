@@ -5,9 +5,13 @@ class Question < ApplicationRecord
 
   acts_as_taggable_on :tags
 
-  ALLOWED_TAGS = %w[3д фото видео].freeze
+  ALLOWED_TAGS = %w[Моушен-дизайн Анимация VFX Обработка_фото Обработка_видео 3D-графика].freeze
 
   validate :validate_tags
+
+  scope :search, -> (query) {
+    where("title LIKE ? OR description LIKE ?", "%#{query}%", "%#{query}%")
+  }
 
   private
 

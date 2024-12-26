@@ -1,4 +1,6 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :sidebar do %>
+  <%= render "shared/sidebar_search" %>
+<% end %>
 
 <%
   set_meta_tags(
@@ -10,12 +12,117 @@
 
 <% content_for :title, "Effects" %>
 
-<h1>Эффекты</h1>
+<div class='Q_Section Q_SectionActive'>
+  <div class="S_FavoriteSection">
+    <h1 class="A_TextH1">Топовые эффекты</h1>
+    <div class="Q_FavoriteSection">
+      <div class="C_Questions">
+        <% @top_effects.each do |effectTop| %>
+          <%= render effectTop %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-<div id="effects">
-  <% @effects.each do |effect| %>
-    <%= render effect %>
-  <% end %>
+  <div class="A_ButtonEffect">
+    <%= link_to "Написать пост", new_effect_path, class: "A_Button" %>
+  </div>
 </div>
 
-<button class="buttonNewQuestion"><%= link_to "Создать эффект", new_effect_path %></button>
+<div class='Q_Subscription Q_filteredEffects'>
+  <div class="O_filtrationEffects">
+    <div class="W_filtrationCategoriaEffects">
+      <h1 class="A_TextH1 A_TextHFiltrationEffects">Категории</h1>
+      <div class='O_CategoryChoice'>
+        <% Effect.tag_counts_on(:tags).each do |tag| %>
+          <div class="C_Category">
+            <div class="M_Category">
+              <%= link_to tag.name, tagged_effects_path(tag.name) %>
+              <%= radio_button_tag "selected_tag", tag.name, params[:selected_tag] == tag.name, class: "Q_Indicator" %>
+            </div>
+          </div>        
+        <% end %>
+      </div>
+    </div>
+    <div class="W_filtrationProgrammEffects">
+      <h1 class="A_TextH1 A_TextHFiltrationEffects">Программы</h1>
+      <%= form_with url: effects_path, method: :get, local: true, id: "program-filter-form" do %>
+        <div class="C_ProgramChoice">
+          <% @services.each do |key, service| %>
+            <div class="M_Program">
+              <%= label_tag "program-#{key}" do %>
+                <div class="A_TagProgram">
+                  <div class="Q_PhotoProgram">
+                    <%= image_tag(service["image_url"], alt: service["name"], class: "program-icon") %>
+                  </div>
+                  <p class="A_TextS A_TextFiltrationName"><%= service["name"] %></p>
+                </div>
+                <%= check_box_tag "programs[]", key, params[:programs]&.include?(key), id: "program-#{key}", class: "A_Check" %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>     
+  </div>
+  
+  <div id="effects-list">
+    <div class="W_filtersGoalEffects">
+      <button class="A_Filter A_FilterGoal">
+        <p class="A_TextS">Задача</p>
+        <%= image_tag("Q_FilterArrowDown.svg", alt: "Картинка стрелочки") %>
+      </button>
+      <button class="A_Filter A_FilterSort">
+        <p class="A_TextS">Сортировать</p>
+        <%= image_tag("Q_FilterArrowUpDown.svg", alt: "Картинка стрелочки", class: "Q_FilterArrowUpDown") %>
+      </button>
+    </div>
+    <div class='C_allEffects'>
+      <% @effects.each do |effect| %>
+        <%= render effect %>
+      <% end %>
+    </div>
+
+    <div class="O_Pagination O_PaginationSubscribtion O_PaginationEffects">
+      <%= paginate @effects %>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const checkboxes = document.querySelectorAll(".program-checkbox");
+    const form = document.getElementById("program-filter-form");
+
+    if (form) {
+      checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", () => {
+          const formData = new FormData(form);
+          const queryString = new URLSearchParams(formData).toString();
+
+          const url = `${form.action}?${queryString}`;
+
+          fetch(url, {
+            method: "GET",
+            headers: {
+              "X-Requested-With": "XMLHttpRequest",
+            },
+          })
+          .then((response) => {
+            if (response.ok) {
+              return response.text();
+            } else {
+              throw new Error("Network response was not ok.");
+            }
+          })
+          .then((html) => {
+            const effectsList = document.getElementById("effects-list");
+            effectsList.innerHTML = html;
+          })
+
+          .catch((error) => console.error("Fetch error:", error));
+        });
+      });
+    }
+  });
+</script>

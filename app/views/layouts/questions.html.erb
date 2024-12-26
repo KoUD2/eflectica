@@ -21,17 +21,22 @@
 </head>
 
 <body>
-  <div>
-		<%= render "menubar" %>
+	<%= render "menubar" %>
 
-    <% Question.tag_counts_on(:tags).each do |tag| %>
-    <%= link_to tag.name, tagged_questions_path(tag.name) %>
-    <% end %>
-  </div>
+	<div class='S_mainLayout'>
+		<div class="main-content">
+			<%= yield %>
 
-  <%= yield %>
-
-	<%= render "footer" %>
+			<%= render "footer" %>
+		</div>
+		<div class="Q_sectionRegister2 disabled123">
+			<% if content_for?(:sidebar) %>
+				<%= yield :sidebar %>
+			<% else %>
+				<p>Сайдбар по умолчанию</p>
+			<% end %>
+		</div>
+	</div>
 </body>
 
 </html>

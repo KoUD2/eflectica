@@ -4,10 +4,11 @@ class Collection < ApplicationRecord
   has_many :collection_effects, dependent: :destroy
   has_many :sub_collections, dependent: :destroy
   has_many :effects, through: :collection_effects
+  has_many :news_feeds, dependent: :destroy
 
   acts_as_taggable_on :tags
 
-  ALLOWED_TAGS = %w[3д фото видео].freeze
+  ALLOWED_TAGS = %w[Моушен-дизайн Анимация VFX Обработка_фото Обработка_видео 3D-графика].freeze
 
   validate :validate_tags
 
