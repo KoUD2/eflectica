@@ -59,6 +59,13 @@
 	background: var(--foggy-grey);
 }
 
+.Q_PhotoShow {
+	> img {
+		width: 10.104vw;
+		height: auto;
+	}
+}
+
 .Q_sectionQuestion2 {
 	display: flex;
 	flex-direction: column;
@@ -277,6 +284,10 @@
 	border-radius: 0 0.365vw 0.365vw 0.365vw;
 }
 
+.Q_Section3Reg {
+	margin: 0;
+}
+
 .Q_sectionEffect2 {
 	width: 30.521vw;
 	height: fit-content;
@@ -284,3 +295,20 @@
 	border-radius: 0.313vw;
 	background: var(--foggy-grey);
 }
+
+.Q_SectionCollection {
+	position: relative;
+	display: flex;
+	padding: 1.176vw 0 0 0;
+	flex-direction: column;
+	align-items: center;
+	background: var(--foggy-grey);
+	width: 83.229vw;
+	min-height: 50.655vw;
+	border-radius: 0.365vw;
+
+	* {
+		width: fit-content;
+	}
+}
+

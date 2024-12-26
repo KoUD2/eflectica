@@ -1,22 +1,18 @@
-<div id="<%= dom_id collection %>" class='M_classContainer'>
-  <div class='imgEffect'>
-    <%= image_tag(effect.img.url, alt: "Картинка") %>
-  </div>
-
-  <div>
-    <p>
-      <strong>Name:</strong>
-      <%= collection.name %>
-    </p>
-
-    <p>
-      <strong>Description:</strong>
-      <%= collection.description %>
-    </p>
-
-    <p>
-      <strong>User:</strong>
-      <%= collection.user_id %>
-    </p>
+<div class='O_CollectionCard'>
+  <div class='A_TextM A_TextHeaderCollection A_TextHeaderCollectionRed'><p>Блики для Фотошопа</p></div>
+  <div class="W_Collection">
+    <div class="M_PhotoCollection">
+      <%= image_tag("imageSeed4.svg", alt: "Картинка стрелочки", class: "Q_ImageSeed2") %>
+      <%= image_tag("imageSeed3.png", alt: "Картинка стрелочки", class: "Q_ImageSeed2") %>
+      <%= image_tag("imageSeed5.png", alt: "Картинка стрелочки", class: "Q_ImageSeed2") %>
+    </div>
+    <div class="C_CollectionInfo">
+      <div class="A_TextM">
+        <p>2 элемента</p>
+      </div>
+      <div class="A_TextM">
+        <p>создано 19 сентября 2024</p>
+      </div>
+    </div>
   </div>
 </div>

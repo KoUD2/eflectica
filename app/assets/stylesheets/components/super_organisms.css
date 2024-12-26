@@ -21,6 +21,7 @@
 	width: 11.458vw;
 	flex-direction: column;
 	gap: 1.25vw;
+	margin: 0 auto;
 }
 
 .S_contentQuestion {

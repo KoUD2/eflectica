@@ -111,6 +111,10 @@ ul{
 	}
 }
 
+#section-3 {
+  flex-direction: column;
+}
+
 .createComment{
 	margin-top: 30px;
 	box-sizing: border-box;
@@ -285,4 +289,12 @@ header{
 	#mobile_imgsOpportunity{
 		display: block;
 	}
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active2 {
+  display: block;
 }

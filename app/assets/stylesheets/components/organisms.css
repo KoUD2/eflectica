@@ -383,6 +383,41 @@
 	}
 }
 
+.O_CollectionItem {
+	display: flex;
+	overflow: hidden;
+	padding-bottom: 0.833vw;
+	width: 10.104vw;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 15vw;
+	align-items: center;
+	border-radius: 0.313vw;
+	border: 0.078vw solid var(--soft-grey);
+	background: var(--porcelain-white);
+}
+
+.O_CollectionItemTutor {
+	height: 7.083vw;
+	padding: 0.625vw;
+
+	.C_CollectionCardBody {
+		> h2 {
+			width: 8.854vw;
+		}
+
+		> p {
+			color: var(--ordinary-grey);
+			text-transform: lowercase;
+			margin-top: 0.313vw;
+		}
+	}
+
+	.A_TagCollection {
+		width: fit-content;
+	}
+}
+
 .O_inspireAbout{
 	margin-top: 18.436vw;
 	display: flex;

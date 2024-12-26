@@ -54,10 +54,30 @@
 	gap: 0.833vw;
 }
 
+.M_EffectFooterShow {
+	gap: 0.313vw;
+	height: 1.627vw;
+
+	> img {
+		width: 1.302vw;
+		height: auto;
+	}
+
+	> p {
+		color: var(--charcoal-black);
+	}
+}
+
 .M_RaitingEffect {
 	display: flex;
 	align-items: center;
 	gap: 0.104vw;
+}
+
+.M_TagCollection {
+	display: flex;
+	align-items: center;
+	gap: 0.313vw;
 }
 
 .M_PhotoCollection {
@@ -380,6 +400,13 @@
 			left: 22px;
 		}
 	}
+}
+
+.M_NvigationShowCollection {
+	margin: 0;
+	position: absolute;
+	top: 1.176vw;
+	left: 1.25vw;
 }
 
 @media screen and (max-width: 912px) {

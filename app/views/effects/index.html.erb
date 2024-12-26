@@ -37,13 +37,13 @@
         <% Effect.tag_counts_on(:tags).each do |tag| %>
           <div class="C_Category">
             <div class="M_Category">
-              <%= link_to tag.name, tagged_effects_path(tag.name) %>
+              <%= link_to tag.name.gsub('_', ' '), tagged_effects_path(tag.name) %>
               <%= radio_button_tag "selected_tag", tag.name, params[:selected_tag] == tag.name, class: "Q_Indicator" %>
             </div>
           </div>        
         <% end %>
       </div>
-    </div>
+    </div>    
     <div class="W_filtrationProgrammEffects">
       <h1 class="A_TextH1 A_TextHFiltrationEffects">Программы</h1>
       <%= form_with url: effects_path, method: :get, local: true, id: "program-filter-form" do %>

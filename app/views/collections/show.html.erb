@@ -1,5 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
 <%
   set_meta_tags(
     title: @collection.name,
@@ -8,26 +6,106 @@
   )
 %>
 
-<h1><%= @collection.name %></h1>
+<% content_for :sidebar do %>
+  <%= render "shared/sidebar_search" %>
+<% end %>
 
-<div>
-  Теги: <%= @collection.tag_list %>
-</div>
+<div class="Q_SectionCollection">
+  <div class="M_Nvigation M_NvigationShow M_NvigationShowCollection">
+    <%= link_to collections_path, class: "O_AQuestion" do %>
+      <button class="A_Navigation2 A_Navigation2Show">
+        <%= image_tag("Q_NavigationIcon.svg", alt: "Картинка стрелочки") %>
+      </button>
+    <% end %>
+    <div class="A_TextM A_TextMShow"><p>Назад</p></div>
+  </div>
+  <h1 class="A_TextH1 A_TextH1Profile">Блики для Фотошопа</h1>
+  <div class="C_TagsCategory">
+    <div class="M_TagCollection">
+      <%= image_tag("Q_EyeIcon.svg", alt: "Картинка стрелочки") %>
+      <p class="A_TextS A_TextSProfile2">Туториалы</p>
+    </div>
+    <div class="M_TagCollection">
+      <%= image_tag("Q_EyeIcon.svg", alt: "Картинка стрелочки") %>
+      <p class="A_TextS A_TextSProfile2">Референсы</p>
+    </div>
+    <div class="M_TagCollection">
+      <%= image_tag("Q_EyeIcon.svg", alt: "Картинка стрелочки") %>
+      <p class="A_TextS A_TextSProfile2">Эффекты</p>
+    </div>
+  </div>
+  <button class="A_Button A_ButtonProfile A_ButtonCollection">Редактировать</button>
+  <div class="W_allAssetsCollection">
+    <div class="O_CollectionItem">
+      <div class="Q_PhotoShow"><%= image_tag("imageSeed27.png", alt: "Картинка стрелочки") %></div>
+      <div class="W_EffectBody">
+        <h2 class="A_TextH2 A_TextH2Show2">Теплый свет</h2>
+        <div class="A_TagCollection"><p>референс</p></div>
+      </div>
+    </div>
 
-<div class='userInfo'>
-  <p><%= @collection.description %></p>
-  <p><strong>Создано:</strong> <%= @collection.user.username %></p>
-</div>
+    <div class="O_CollectionItem">
+      <div class="Q_PhotoShow"><%= image_tag("imageSeed28.png", alt: "Картинка стрелочки") %></div>
+      <div class="W_EffectBody">
+        <h2 class="A_TextH2 A_TextH2Show2">Световые блики</h2>
+        <div class="M_EffectFooter M_EffectFooterShow">
+          <%= image_tag("ps.svg", alt: "Картинка стрелочки") %>
+          <p class="A_TextXS">Photoshop</p>
+        </div>
+      </div>
+    </div>
 
-<div id="collections">
-  <% @effects.each do |effect| %>
-    <%= render effect %>
-  <% end %>
-</div>
+    <div class="W_tutorsCollection">
+      <div class="O_CollectionItem O_CollectionItemTutor">
+        <div class="C_CollectionCardBody">
+          <h2 class="A_TextH2 A_TextH2Show2">Как сделать космический блеск в...</h2>
+          <p class="A_TextS">https://www.youtube.com...</p>
+        </div>
+        <div class="A_TagCollection"><p>туториал</p></div>
+      </div>
 
-<div class='userInfo'>
-  <% if @collection.user_id == current_user.id || current_user.is_admin? %>
-    <%= link_to "Редактировать", edit_collection_path(@collection) %>
-    <%= button_to "Удалить", @collection, method: :delete %>
-  <% end %>
+      <div class="O_CollectionItem O_CollectionItemTutor">
+        <div class="C_CollectionCardBody">
+          <h2 class="A_TextH2 A_TextH2Show2">Неоновый блеск за 2 минуты</h2>
+          <p class="A_TextS">https://www.youtube.com...</p>
+        </div>
+        <div class="A_TagCollection"><p>туториал</p></div>
+      </div>
+    </div>
+
+    <div class="O_CollectionItem">
+      <div class="Q_PhotoShow"><%= image_tag("imageSeed29.png", alt: "Картинка стрелочки") %></div>
+      <div class="W_EffectBody">
+        <h2 class="A_TextH2 A_TextH2Show2">Градиент</h2>
+        <div class="A_TagCollection"><p>референс</p></div>
+      </div>
+    </div>
+
+    <div class="O_CollectionItem">
+      <div class="Q_PhotoShow"><%= image_tag("imageSeed30.png", alt: "Картинка стрелочки") %></div>
+      <div class="W_EffectBody">
+        <h2 class="A_TextH2 A_TextH2Show2">Размытие</h2>
+        <div class="A_TagCollection"><p>референс</p></div>
+      </div>
+    </div>
+
+    <div class="O_CollectionItem">
+      <div class="Q_PhotoShow"><%= image_tag("imageSeed31.png", alt: "Картинка стрелочки") %></div>
+      <div class="W_EffectBody">
+        <h2 class="A_TextH2 A_TextH2Show2">Яркий свет</h2>
+        <div class="M_EffectFooter M_EffectFooterShow">
+          <%= image_tag("ps.svg", alt: "Картинка стрелочки") %>
+          <p class="A_TextXS">Photoshop</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="O_CollectionItem O_CollectionItemTutor">
+      <div class="C_CollectionCardBody">
+        <h2 class="A_TextH2 A_TextH2Show2">Неоновое свечение в фотошопе. Туториал</h2>
+        <p class="A_TextS">https://www.youtube.com...</p>
+      </div>
+      <div class="A_TagCollection"><p>туториал</p></div>
+    </div>
+  </div>
 </div>

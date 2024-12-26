@@ -43,26 +43,29 @@
           </div>
         </div>
       </div>
-  
-      <div class='O_CollectionCard'>
-        <div class='A_TextM A_TextHeaderCollection A_TextHeaderCollectionRed'><p>Блики для Фотошопа</p></div>
-        <div class="W_Collection">
-          <div class="M_PhotoCollection">
-            <%= image_tag("imageSeed4.svg", alt: "Картинка стрелочки", class: "Q_ImageSeed2") %>
-            <%= image_tag("imageSeed3.png", alt: "Картинка стрелочки", class: "Q_ImageSeed2") %>
-            <%= image_tag("imageSeed5.png", alt: "Картинка стрелочки", class: "Q_ImageSeed2") %>
-          </div>
-          <div class="C_CollectionInfo">
-            <div class="A_TextM">
-              <p>2 элемента</p>
+      
+      <%= link_to collection_path(@collections.first), class: "O_AQuestion" do %>
+        <div class='O_CollectionCard'>
+          <div class='A_TextM A_TextHeaderCollection A_TextHeaderCollectionRed'><p>Блики для Фотошопа</p></div>
+          <div class="W_Collection">
+            <div class="M_PhotoCollection">
+              <%= image_tag("imageSeed4.svg", alt: "Картинка стрелочки", class: "Q_ImageSeed2") %>
+              <%= image_tag("imageSeed3.png", alt: "Картинка стрелочки", class: "Q_ImageSeed2") %>
+              <%= image_tag("imageSeed5.png", alt: "Картинка стрелочки", class: "Q_ImageSeed2") %>
             </div>
-            <div class="A_TextM">
-              <p>создано 19 сентября 2024</p>
+            <div class="C_CollectionInfo">
+              <div class="A_TextM">
+                <p>5 элементов</p>
+              </div>
+              <div class="A_TextM">
+                <p>создано 19 сентября 2024</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
+
 
     <div class='W_columnCollections'>
       <div class='O_CollectionCard'>

@@ -661,6 +661,29 @@
 	color: var(--ordinary-grey);
 }
 
+.A_TextH2Show2 {
+	color: var(--charcoal-black);
+}
+
+.A_TagCollection {
+	display: flex;
+	padding: 0.417vw 0.625vw;
+	align-items: center;
+	gap: 0.521vw;
+	align-self: stretch;
+	border-radius: 0.313vw;
+	background: var(--soft-grey);
+
+	> p {
+		color: var(--charcoal-black);
+		font-family: "Basis Grotesque Pro";
+		font-size: 0.729vw;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 0.938vw;
+	}
+}
+
 .A_Like {
 	display: flex;
 	align-items: end;
@@ -804,6 +827,13 @@
 
 .A_h2About2 {
 	width: 37.514vw;
+}
+
+.A_ButtonCollection {
+	position: absolute;
+	top: 3.364vw;
+	right: 3.42vw;
+	width: 10.104vw !important;
 }
 
 @media screen and (max-width: 912px) {

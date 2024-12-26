@@ -157,6 +157,25 @@
 	margin-bottom: 1.042vw;
 }
 
+.W_EffectBody {
+	display: flex;
+	padding: 0 0.833vw;
+	flex-direction: column;
+	gap: 0.417vw;
+	align-self: stretch;
+}
+
+.W_allAssetsCollection {
+	display: flex;
+	gap: 0.833vw;
+}
+
+.W_tutorsCollection {
+	display: flex;
+	flex-direction: column;
+	gap: 0.833vw;
+}
+
 .W_allLinksHeader{
 	display: flex;
 	gap: 4.931vw;
