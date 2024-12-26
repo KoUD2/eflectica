@@ -35,7 +35,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem 'carrierwave', '~> 2.1'
-gem 'carrierwave-imageoptimizer', '~> 1.5.0'
+gem 'carrierwave-imageoptimizer', '~> 1.6.0'
 gem "devise"
 gem "acts-as-taggable-on"
 gem "cancancan"

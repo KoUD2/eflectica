@@ -106,8 +106,8 @@ GEM
       mimemagic (>= 0.3.0)
       mini_mime (>= 0.1.3)
       ssrf_filter (~> 1.0)
-    carrierwave-imageoptimizer (1.5.0)
-      carrierwave (>= 0.8, < 2.2)
+    carrierwave-imageoptimizer (1.6.0)
+      carrierwave (>= 0.8, < 3.0)
       image_optimizer (~> 1.6)
     childprocess (5.1.0)
       logger (~> 1.5)
@@ -389,7 +389,7 @@ DEPENDENCIES
   cancancan
   capybara
   carrierwave (~> 2.1)
-  carrierwave-imageoptimizer (~> 1.5.0)
+  carrierwave-imageoptimizer (~> 1.6.0)
   debug
   devise
   faker
