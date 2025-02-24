@@ -71,7 +71,7 @@ def create_users(quantity)
     new_username = "#{user_data['username']}_#{i + 1}"
     new_email = "#{user_data['email']}#{i + 1}"
 
-    User.create!(
+    user = User.create!(
       username: new_username,
       bio: user_data['bio'],
       contact: user_data['contact'],
@@ -82,7 +82,7 @@ def create_users(quantity)
       password: user_data['password']
     )
 
-    puts "User #{new_username} just created!"
+    puts "User created with username #{new_username} with jti #{user.jti }"
   end
 end
 

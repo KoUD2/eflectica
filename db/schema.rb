@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_24_152037) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_22_114311) do
   create_table "collection_effects", force: :cascade do |t|
     t.integer "collection_id", null: false
     t.integer "effect_id", null: false
@@ -156,7 +156,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_24_152037) do
     t.string "portfolio"
     t.boolean "is_admin", default: false
     t.string "avatar"
+    t.string "jti"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["jti"], name: "index_users_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

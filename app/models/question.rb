@@ -5,7 +5,7 @@ class Question < ApplicationRecord
 
   acts_as_taggable_on :tags
 
-  ALLOWED_TAGS = %w[Моушен-дизайн Анимация VFX Обработка_фото Обработка_видео 3D-графика].freeze
+  ALLOWED_TAGS = %w[моушен-дизайн анимация vfx обработка_фото обработка_видео 3d-графика].freeze
 
   validate :validate_tags
 

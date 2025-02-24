@@ -1,39 +1,26 @@
-<div class='form'>
+<div class='O_formQuestion'>
   <%= form_with(model: question) do |form| %>
-    <% if question.errors.any? %>
-      <div style="color: red">
-        <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
-
-        <ul>
-          <% question.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
+    <div class='W_titleDescFormQuestion'>
+      <div>
+        <%= form.text_field :title %>
       </div>
-    <% end %>
-
-    <div>
-      <%= form.label :title, style: "display: block" %>
-      <%= form.text_field :title %>
+      <div>
+        <%= form.text_area :description %>
+      </div>
     </div>
-
-    <div>
-      <%= form.label :media, style: "display: block" %>
-      <%= form.text_area :media %>
-    </div>
-
-    <div>
-      <%= form.label :description, style: "display: block" %>
-      <%= form.text_area :description %>
-    </div>
-
-    <div>
-      <%= form.label :tag_list, "Выберите теги:", style: "display: block" %>
-      <%= form.select :tag_list, Question::ALLOWED_TAGS, {}, multiple: true, class: "form-control", selected: question.tag_list %>
-    </div> 
-
-    <div>
-      <%= form.submit %>
+    
+    <div class="allInfoQuestionForm">
+      <div class="W_textDescTags">
+        <h2 class="A_TextH2">Настройки тегов</h2>
+        <p class="A_TextM">Важно, чтобы выбранные теги точно отражали область применения эффекта и особенности его установки</p>
+      </div>
+      <div>
+        <%= form.text_area :media %>
+      </div>
+  
+      <div>
+        <%= form.submit %>
+      </div>
     </div>
   <% end %>
 </div>

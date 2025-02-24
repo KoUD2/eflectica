@@ -16,7 +16,7 @@ class Effect < ApplicationRecord
     where('LOWER(name) LIKE ? OR LOWER(description) LIKE ?', query_downcased, query_downcased)
   }
 
-  ALLOWED_TAGS = %w[Моушен-дизайн Анимация VFX Обработка_фото Обработка_видео 3D-графика].freeze
+  ALLOWED_TAGS = %w[моушен-дизайн анимация vfx обработка_фото обработка_видео 3d-графика].freeze
 
   validate :validate_tags
 
