@@ -3,13 +3,13 @@ class Api::V1::CommentsController < ApplicationController
   before_action :set_commentable
 
   def index
-    comments = @commentable.comments
-    render json: comments.as_json(only: [:body])
+    comments = @commentable.comme..nts.includes(:user)
+    render json: comments.as_json(only: [:body, :created_at], include: { user: { only: [:username, :avatar] } })
   end
-  
+
   def show
-    comment = @commentable.comments.find(params[:id])
-    render json: comment.as_json(only: [:body])
+    comment = @commentable.comments.includes(:user).find(params[:id])
+    render json: comment.as_json(only: [:body, :created_at], include: { user: { only: [:username, :avatar] } })
   end
   
 
