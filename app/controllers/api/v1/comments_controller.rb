@@ -4,13 +4,19 @@ class Api::V1::CommentsController < ApplicationController
 
   def index
     comments = @commentable.comments.includes(:user)
-    render json: comments.as_json(only: [:body, :created_at], include: { user: { only: [:username, :avatar] } })
+    render json: comments.as_json(only: [:id, :body, :created_at], include: { user: { only: [:username, :avatar] } })
   end
 
   def show
-    comment = @commentable.comments.includes(:user).find(params[:id])
-    render json: comment.as_json(only: [:body, :created_at], include: { user: { only: [:username, :avatar] } })
+    comment = @commentable.comments.includes(:user).find_by(id: params[:id])
+  
+    if comment
+      render json: comment.as_json(only: [:id, :body, :created_at], include: { user: { only: [:username, :avatar] } })
+    else
+      render json: { error: "Комментарий не найден" }, status: :not_found
+    end
   end
+  
   
 
   def create
@@ -36,14 +42,16 @@ class Api::V1::CommentsController < ApplicationController
   private
 
   def set_commentable
-    if params[:question_id]
-      @commentable = Question.find(params[:question_id])
-    elsif params[:effect_id]
-      @commentable = Effect.find(params[:effect_id])
-    else
-      render json: { error: "Invalid commentable type" }, status: :unprocessable_entity
-    end
+    @commentable =
+      if params[:question_id]
+        Question.find_by(id: params[:question_id])
+      elsif params[:effect_id]
+        Effect.find_by(id: params[:effect_id])
+      end
+  
+    render json: { error: "Объект не найден" }, status: :not_found unless @commentable
   end
+  
 
 	def comment_params
 		params.require(:comment).permit(:body)

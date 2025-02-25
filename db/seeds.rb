@@ -134,14 +134,19 @@ def create_effects(quantity)
         user_id: users.sample.id
       )
 
+      comments = []
+
       5.times do |j|
-        Comment.create!(
+        comment = Comment.create!(
           body: comments_data[j % comments_data.length]['body'],
           user_id: users.sample.id,
           commentable: effect
         )
+        comments << comment.body
       end
-      puts "Effect #{effect.name} created with #{rating_value} rating and 5 comments!"
+
+      puts "Effect #{effect.name} created with #{rating_value} rating and comments: #{comments.join('; ')}"
+
     end
   end
 end
