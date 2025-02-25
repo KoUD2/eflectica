@@ -2,6 +2,17 @@ class Api::V1::CommentsController < ApplicationController
 	# skip_before_action :verify_authenticity_token, only: [:create]
   before_action :set_commentable
 
+  def index
+    comments = @commentable.comments
+    render json: comments.as_json(only: [:body])
+  end
+  
+  def show
+    comment = @commentable.comments.find(params[:id])
+    render json: comment.as_json(only: [:body])
+  end
+  
+
   def create
     comment = @commentable.comments.new(comment_params.merge(user: current_user))
 

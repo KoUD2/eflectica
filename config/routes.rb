@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   namespace :api, format: 'json' do
     namespace :v1 do
       resources :effects, only: [:index, :show] do
-        resources :comments, only: [:create, :destroy]
+        resources :comments, only: [:index, :show, :create, :destroy]
       end
       resources :questions, only: [:index, :show, :create] do
-        resources :comments, only: [:create, :destroy]
+        resources :comments, only: [:index, :show, :create, :destroy]
       end
       resources :users, only: [:index, :show]
       resources :collections, only: [:index, :show, :create]
