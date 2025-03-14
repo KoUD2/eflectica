@@ -1,5 +1,5 @@
 class Api::V1::FavoritesController < ApplicationController
-	skip_before_action :verify_authenticity_token
+	# skip_before_action :verify_authenticity_token
   before_action :authenticate_user!
 
   def create
@@ -35,23 +35,23 @@ class Api::V1::FavoritesController < ApplicationController
     nil
   end
 
-  # def decrypt_payload
-  #   jwt = request.headers["Authorization"]
-  #   JWT.decode(jwt, Rails.application.credentials.devise_jwt_secret_key!, true, { algorithm: 'HS256' })
-  # end
+  def decrypt_payload
+    jwt = request.headers["Authorization"]
+    JWT.decode(jwt, Rails.application.credentials.devise_jwt_secret_key!, true, { algorithm: 'HS256' })
+  end
 
-	  def decrypt_payload
-    auth_header = request.headers["Authorization"]
-    return nil if auth_header.blank?
+	# def decrypt_payload
+  #   auth_header = request.headers["Authorization"]
+  #   return nil if auth_header.blank?
 
-    puts "Authorization Header: #{request.headers['Authorization'].inspect}"
+  #   puts "Authorization Header: #{request.headers['Authorization'].inspect}"
 
   
-    jwt = auth_header.split(' ').last
-    puts "Decoded JWT: #{jwt}"
-    JWT.decode(jwt, Rails.application.credentials.devise_jwt_secret_key!, true, { algorithm: 'HS256' })
-  rescue JWT::DecodeError => e
-    puts "JWT Decode Error: #{e.message}"
-    nil
-  end
+  #   jwt = auth_header.split(' ').last
+  #   puts "Decoded JWT: #{jwt}"
+  #   JWT.decode(jwt, Rails.application.credentials.devise_jwt_secret_key!, true, { algorithm: 'HS256' })
+  # rescue JWT::DecodeError => e
+  #   puts "JWT Decode Error: #{e.message}"
+  #   nil
+  # end
 end
