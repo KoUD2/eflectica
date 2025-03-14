@@ -57,14 +57,14 @@
 
             </div>
             <div class='A_TagProgram'>
-              <% if effect.devices.present? %>
-                <% Array(effect.devices.split(',')).each do |device| %>
-                  <% if DEVICES.key?(device.strip) %>
+              <% if effect.platform.present? %>
+                <% Array(effect.platform.split(',')).each do |device| %>
+                  <% if PLATFORM.key?(device.strip) %>
                     <div class='Q_PhotoProgram'>
-                      <%= image_tag(DEVICES[device.strip]["image_url"], alt:DEVICES[device.strip]["name"]) %>
+                      <%= image_tag(PLATFORM[device.strip]["image_url"], alt:PLATFORM[device.strip]["name"]) %>
                     </div>
                   <% else %>
-                    <p>Устройство <%= device.strip %> не найдено в DEVICES</p>
+                    <p>Устройство <%= device.strip %> не найдено в PLATFORM</p>
                   <% end %>
                 <% end %>
               <% else %>

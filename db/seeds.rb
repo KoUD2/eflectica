@@ -3,8 +3,8 @@ require 'json'
 def seed
     reset_db
     create_users(10)
-    create_questions(30)
     create_effects(30)
+    create_questions(30)
     create_favorites(20)
     create_collections(15)
     create_subscriptions(15)
@@ -16,49 +16,10 @@ def reset_db
     Rake::Task['db:migrate'].invoke
 end
 
-def create_questions(quantity)
-  file = File.read('db/questions.json')
-  questions_data = JSON.parse(file)
-
-  comments_data = JSON.parse(File.read('db/comments.json'))
-  
-  users = User.all
-
-  quantity.times do |i|
-    user = users.sample
-    
-    question_data = questions_data.sample
-
-    question = Question.create!(
-      title: "#{question_data['title']}_#{i + 1}",
-      media: question_data['media'],
-      description: question_data['description'],
-      user_id: user.id
-    )
-
-    if question.save
-      rating_value = rand(1..5)
-      Rating.create!(
-        number: rating_value,
-        ratingable: question,
-        user_id: user.id
-      )
-
-      rand(1..5).times do |i|
-        Comment.create!(
-          body: comments_data.sample['body'],
-          user_id: users.sample.id, 
-          commentable: question
-        )
-      end
-    end
-
-    puts "Question #{question.title} created with #{rating_value} rating and comments!"
-  end
-end
-
-def get_random_bool
-  [true, false].sample
+def upload_random_image
+  uploader = EffectImageUploader.new(Effect.new, :img)
+  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/effect', '*')).sample))
+  uploader
 end
 
 def create_users(quantity)
@@ -86,10 +47,8 @@ def create_users(quantity)
   end
 end
 
-def upload_random_image
-  uploader = EffectImageUploader.new(Effect.new, :img)
-  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/effect', '*')).sample))
-  uploader
+def get_random_bool
+  [true, false].sample
 end
 
 def create_effects(quantity)
@@ -105,8 +64,8 @@ def create_effects(quantity)
     return
   end
 
-  all_tags = Effect::ALLOWED_TAGS
-  tags_for_effects = all_tags.shuffle
+  all_categories = ["Анимация", "VFX", "3D-графика", "Обработка видео"]
+  all_tasks = ["Ретушь", "Рендеринг", "Монтаж", "Коррекция цвета"]
 
   quantity.times do |i|
     effect_data = available_effects[i % available_effects.length]
@@ -116,17 +75,20 @@ def create_effects(quantity)
       img: upload_random_image,
       description: effect_data['Description'],
       speed: effect_data['Speed'],
-      devices: effect_data['Devices'],
+      platform: effect_data['Platform'],
       programs: effect_data['Programs'],
       manual: effect_data['Manual'],
       link_to: effect_data['Link_to'],
       is_secure: effect_data['Is_secure'],
+      program_version: effect_data['Program version'],
       user: users.sample
     )
 
-    effect.tag_list = tags_for_effects.sample(rand(1..3))
+    effect.category_list = all_categories.sample(rand(1..2))
+    effect.task_list = all_tasks.sample(rand(1..2))
+    effect.save
 
-    if effect.save
+    if effect.persisted?
       rating_value = rand(1..5)
       Rating.create!(
         number: rating_value,
@@ -134,8 +96,22 @@ def create_effects(quantity)
         user_id: users.sample.id
       )
 
-      comments = []
+      before_img = upload_random_image
+      after_img = upload_random_image
 
+      Image.create!(
+        file: before_img,
+        image_type: "before",
+        imageable: effect
+      )
+
+      Image.create!(
+        file: after_img,
+        image_type: "after",
+        imageable: effect
+      )
+
+      comments = []
       5.times do |j|
         comment = Comment.create!(
           body: comments_data[j % comments_data.length]['body'],
@@ -145,9 +121,105 @@ def create_effects(quantity)
         comments << comment.body
       end
 
-      puts "Effect #{effect.name} created with #{rating_value} rating and comments: #{comments.join('; ')}"
-
+      puts "Effect #{effect.name} created with rating #{rating_value}, categories: #{effect.category_list.join(', ')}, tasks: #{effect.task_list.join(', ')}"
     end
+  end
+end
+
+def create_questions(quantity)
+  file = File.read('db/questions.json')
+  questions_data = JSON.parse(file)
+
+  comments_data = JSON.parse(File.read('db/comments.json'))
+  users = User.all
+
+  all_categories = ["Анимация", "VFX", "3D-графика", "Обработка видео"]
+  all_tasks = ["Ретушь", "Рендеринг", "Монтаж", "Коррекция цвета"]
+
+  puts "Всего пользователей: #{User.count}"
+  puts "Существующие теги: #{ActsAsTaggableOn::Tag.pluck(:name).inspect}"
+
+  quantity.times do |i|
+    user = users.sample
+    puts "Выбран пользователь: #{user&.id}, существует ли он? #{User.exists?(user&.id)}"
+
+    question_data = questions_data.sample
+
+    categories = all_categories.sample(rand(1..2))
+    tasks = all_tasks.sample(rand(1..2))
+
+    categories.each { |cat| ActsAsTaggableOn::Tag.find_or_create_by!(name: cat) }
+    tasks.each { |task| ActsAsTaggableOn::Tag.find_or_create_by!(name: task) }
+
+    puts "Категории для вопроса: #{categories.inspect}"
+    puts "Задачи для вопроса: #{tasks.inspect}"
+
+    question = Question.new(
+      title: "#{question_data['title']}_#{i + 1}",
+      description: question_data['description'],
+      platform: question_data['platform'],
+      programs: question_data['programs'],
+      link_to: question_data['link_to'],
+      user_id: user&.id
+    )
+
+    puts "Создаём вопрос: #{question.inspect}"
+
+    categories.each do |cat|
+      ActsAsTaggableOn::Tag.find_or_create_by!(name: cat)
+    end
+
+    tasks.each do |task|
+      ActsAsTaggableOn::Tag.find_or_create_by!(name: task)
+    end
+
+    question.category_list = categories
+    question.task_list = tasks
+
+    unless question.valid?
+      puts "Ошибка валидации: #{question.errors.full_messages.join(', ')}"
+      next
+    end
+
+    if question.save
+      puts "Вопрос сохранён!"
+    else
+      puts "Ошибка при сохранении: #{question.errors.full_messages.join(', ')}"
+    end
+
+    before_img = upload_random_image
+    after_img = upload_random_image
+    description_img = upload_random_image
+
+    puts "before_img: #{before_img}, after_img: #{after_img}, description_img: #{description_img}"
+
+    Image.create!(
+      file: before_img,
+      image_type: "before",
+      imageable: question
+    )
+
+    Image.create!(
+      file: after_img,
+      image_type: "after",
+      imageable: question
+    )
+
+    Image.create!(
+      file: description_img,
+      image_type: "description",
+      imageable: question
+    )
+
+    rand(1..5).times do
+      Comment.create!(
+        body: comments_data.sample['body'],
+        user_id: users.sample.id,
+        commentable: question
+      )
+    end
+
+    puts "Created images and comments"
   end
 end
 
@@ -168,6 +240,7 @@ end
 def create_collections(quantity)
   users = User.all
   effects = Effect.all
+  statuses = ['public', 'private']
 
   if users.empty? || effects.empty?
     puts "No users or effects available to create collections. Aborting creation."
@@ -179,7 +252,8 @@ def create_collections(quantity)
       collection = Collection.create!(
         name: "Collection #{Faker::Lorem.word}_#{i + 1}",
         description: Faker::Lorem.sentence,
-        user: users.sample
+        user: users.sample,
+        status: statuses.sample
       )
 
       collection.save!
@@ -204,7 +278,9 @@ end
 def create_subscriptions(quantity)
   users = User.all
   effects = Effect.all
-  collection = Collection.all
+  public_collections = Collection.where(status: 'public')
+
+  return if public_collections.empty?
 
   first_user = users.first
 
@@ -212,7 +288,7 @@ def create_subscriptions(quantity)
     NewsFeed.create!(
       user: first_user,
       effect: effects.sample,
-      collection: collection.sample
+      collection: public_collections.sample
     )
     puts "Subscription ##{i + 1} created for user #{first_user.username}!"
   end

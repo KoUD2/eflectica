@@ -71,6 +71,6 @@ class FavoritesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def favorite_params
-      params.require(:favorite).permit(:effect_id, :tag_list)
+      params.require(:favorite).permit(:effect_id)
     end
 end

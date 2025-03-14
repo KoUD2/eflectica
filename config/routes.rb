@@ -4,14 +4,30 @@ Rails.application.routes.draw do
 
   namespace :api, format: 'json' do
     namespace :v1 do
-      resources :effects, only: [:index, :show] do
-        resources :comments, only: [:index, :show, :create, :destroy]
+      resources :sub_collections, only: [:index, :show, :create, :destroy]
+
+      resources :likes, only: [:create, :index, :show] do
+        collection do
+          delete '', to: 'likes#destroy'
+        end
       end
-      resources :questions, only: [:index, :show, :create] do
-        resources :comments, only: [:index, :show, :create, :destroy]
+
+      resources :effects, only: [:index, :show] do
+        resources :comments, only: [:index, :show, :create, :update, :destroy]
+      end
+      resources :questions, only: [:index, :show, :create, :update] do
+        resources :comments, only: [:index, :show, :create, :update, :destroy]
       end
       resources :users, only: [:index, :show]
-      resources :collections, only: [:index, :show, :create]
+      resources :favorites, only: [:create] do
+        delete ":effect_id", to: "favorites#destroy", on: :collection
+      end      
+      resources :collections, only: [:index, :show, :create] do
+        member do
+          patch 'update_status'
+        end
+        resources :collection_effects, only: [:create], path: 'effects'
+      end
 
       devise_scope :user do
         post "sign_up", to: "registrations#create"

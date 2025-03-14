@@ -17,7 +17,7 @@ class EffectsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create effect" do
     assert_difference("Effect.count") do
-      post effects_url, params: { effect: { description: @effect.description, devices: @effect.devices, img: @effect.img, is_secure: @effect.is_secure, link_to: @effect.link_to, manual: @effect.manual, name: @effect.name, speed: @effect.speed, user_id: @effect.user_id } }
+      post effects_url, params: { effect: { description: @effect.description, platform: @effect.platform, img: @effect.img, is_secure: @effect.is_secure, link_to: @effect.link_to, manual: @effect.manual, name: @effect.name, speed: @effect.speed, user_id: @effect.user_id } }
     end
 
     assert_redirected_to effect_url(Effect.last)
@@ -34,7 +34,7 @@ class EffectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update effect" do
-    patch effect_url(@effect), params: { effect: { description: @effect.description, devices: @effect.devices, img: @effect.img, is_secure: @effect.is_secure, link_to: @effect.link_to, manual: @effect.manual, name: @effect.name, speed: @effect.speed, user_id: @effect.user_id } }
+    patch effect_url(@effect), params: { effect: { description: @effect.description, platform: @effect.platform, img: @effect.img, is_secure: @effect.is_secure, link_to: @effect.link_to, manual: @effect.manual, name: @effect.name, speed: @effect.speed, user_id: @effect.user_id } }
     assert_redirected_to effect_url(@effect)
   end
 

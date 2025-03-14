@@ -5,7 +5,7 @@ one:
   img: MyString
   description: MyText
   speed: 1
-  devices: MyText
+  platform: MyText
   manual: MyText
   link_to: MyString
   is_secure: false
@@ -16,7 +16,7 @@ two:
   img: MyString
   description: MyText
   speed: 1
-  devices: MyText
+  platform: MyText
   manual: MyText
   link_to: MyString
   is_secure: false

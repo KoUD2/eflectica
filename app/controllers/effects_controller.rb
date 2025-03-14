@@ -99,6 +99,6 @@ class EffectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def effect_params
-      params.require(:effect).permit(:name, :img, :description, :speed, :devices, :manual, :link_to, :is_secure, :user_id, tag_list: [])
+      params.require(:effect).permit(:name, :img, :description, :speed, :platform, :manual, :link_to, :is_secure, :user_id, :program_version)
     end
 end

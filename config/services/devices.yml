@@ -1,4 +1,4 @@
-devices:
+platform:
   windows:
     name: "Windows"
     image_url: "/assets/windows.svg"

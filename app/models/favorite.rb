@@ -10,7 +10,7 @@ class Favorite < ApplicationRecord
 }
 
 
-  acts_as_taggable_on :tags
+  # acts_as_taggable_on :tags
 
   validates :user_id, presence: true
   validates :effect_id, presence: true

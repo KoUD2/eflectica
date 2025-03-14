@@ -15,7 +15,7 @@ class EffectsTest < ApplicationSystemTestCase
     click_on "New effect"
 
     fill_in "Description", with: @effect.description
-    fill_in "Devices", with: @effect.devices
+    fill_in "Platform", with: @effect.platform
     fill_in "Img", with: @effect.img
     check "Is secure" if @effect.is_secure
     fill_in "Link to", with: @effect.link_to
@@ -34,7 +34,7 @@ class EffectsTest < ApplicationSystemTestCase
     click_on "Edit this effect", match: :first
 
     fill_in "Description", with: @effect.description
-    fill_in "Devices", with: @effect.devices
+    fill_in "Platform", with: @effect.platform
     fill_in "Img", with: @effect.img
     check "Is secure" if @effect.is_secure
     fill_in "Link to", with: @effect.link_to
