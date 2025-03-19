@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_06_062555) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_18_131805) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -48,6 +48,24 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_06_062555) do
     t.index ["effect_id"], name: "index_collection_effects_on_effect_id"
   end
 
+  create_table "collection_images", force: :cascade do |t|
+    t.integer "collection_id", null: false
+    t.integer "image_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_collection_images_on_collection_id"
+    t.index ["image_id"], name: "index_collection_images_on_image_id"
+  end
+
+  create_table "collection_links", force: :cascade do |t|
+    t.integer "collection_id", null: false
+    t.integer "link_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_collection_links_on_collection_id"
+    t.index ["link_id"], name: "index_collection_links_on_link_id"
+  end
+
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -60,13 +78,12 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_06_062555) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
-    t.string "commentable_type", null: false
-    t.integer "commentable_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "parent_id"
-    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+    t.integer "effect_id", null: false
+    t.index ["effect_id"], name: "index_comments_on_effect_id"
     t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -104,6 +121,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_06_062555) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_type"
+    t.string "title"
     t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable"
   end
 
@@ -117,6 +135,12 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_06_062555) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "links", force: :cascade do |t|
+    t.string "path"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "news_feeds", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "effect_id", null: false
@@ -126,19 +150,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_06_062555) do
     t.index ["collection_id"], name: "index_news_feeds_on_collection_id"
     t.index ["effect_id"], name: "index_news_feeds_on_effect_id"
     t.index ["user_id"], name: "index_news_feeds_on_user_id"
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "platform"
-    t.string "programs"
-    t.string "link_to"
-    t.string "is_secure"
-    t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -221,8 +232,13 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_06_062555) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "collection_effects", "collections"
   add_foreign_key "collection_effects", "effects"
+  add_foreign_key "collection_images", "collections"
+  add_foreign_key "collection_images", "images"
+  add_foreign_key "collection_links", "collections"
+  add_foreign_key "collection_links", "links"
   add_foreign_key "collections", "users"
   add_foreign_key "comments", "comments", column: "parent_id", on_delete: :cascade
+  add_foreign_key "comments", "effects"
   add_foreign_key "comments", "users"
   add_foreign_key "effects", "users"
   add_foreign_key "favorites", "effects"
@@ -231,7 +247,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_06_062555) do
   add_foreign_key "news_feeds", "collections"
   add_foreign_key "news_feeds", "effects"
   add_foreign_key "news_feeds", "users"
-  add_foreign_key "questions", "users"
   add_foreign_key "sub_collections", "collections"
   add_foreign_key "sub_collections", "users"
   add_foreign_key "taggings", "tags"

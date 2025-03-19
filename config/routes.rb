@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :links
   resources :news_feeds
   devise_for :users
 
@@ -14,9 +15,7 @@ Rails.application.routes.draw do
 
       resources :effects, only: [:index, :show] do
         resources :comments, only: [:index, :show, :create, :update, :destroy]
-      end
-      resources :questions, only: [:index, :show, :create, :update] do
-        resources :comments, only: [:index, :show, :create, :update, :destroy]
+    
       end
       resources :users, only: [:index, :show]
       resources :favorites, only: [:create] do
@@ -40,16 +39,11 @@ Rails.application.routes.draw do
   resources :sub_collections
   resources :collection_effects
   resources :collections do
+    resources :links, only: [:index]
+    resources :images, only: [:index]
     collection do
       get 'tagged/:tag', to: 'collections#by_tag', as: :tagged
     end
-  end
-  resources :questions do
-    collection do
-      get 'tagged/:tag', to: 'questions#by_tag', as: :tagged
-    end
-    resources :comments, only: [:create, :destroy]
-    resources :ratings, only: [:create]
   end
   resources :subscriptions, only: [:create]
   resources :favorites

@@ -1,16 +1,15 @@
 class Api::V1::CommentsController < ApplicationController
 	# skip_before_action :verify_authenticity_token
-  before_action :set_commentable
-
+  before_action :set_effect
   before_action :authenticate_user!
 
   def index
-    comments = @commentable.comments.includes(:user).where(parent_id: nil)
+    comments = @effect.comments.includes(:user).where(parent_id: nil)
     render json: format_comments(comments)
   end
 
   def show
-    comment = @commentable.comments.includes(:user).find_by(id: params[:id])
+    comment = @effect.comments.includes(:user).find_by(id: params[:id])
     
     if comment
       render json: format_comment(comment)
@@ -20,28 +19,25 @@ class Api::V1::CommentsController < ApplicationController
   end
   
   def create
-    commentable = find_commentable
-    return render json: { error: "Объект не найден" }, status: :not_found unless commentable
-
-    parent_comment = nil
-    if params[:parent_id].present?
-      parent_comment = Comment.find_by(id: params[:parent_id])
-      return render json: { error: "Родительский комментарий не найден" }, status: :not_found unless parent_comment
-    end
-
-    comment = commentable.comments.new(comment_params)
+    parent_comment = Comment.find_by(id: params[:parent_id]) if params[:parent_id].present?
+    
+    comment = @effect.comments.new(comment_params)
     comment.user = current_user
     comment.parent = parent_comment
 
     if comment.save
-      render json: { message: "Комментарий создан", comment: comment }, status: :created
+      render json: { 
+        message: "Комментарий создан", 
+        comment: format_comment(comment),
+        average_rating: @effect.ratings.average(:number).to_f.round(2)
+      }, status: :created
     else
       render json: { error: comment.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
   def update
-    comment = @commentable.comments.find_by(id: params[:id])
+    comment = @effect.comments.find_by(id: params[:id])
     return render json: { error: "Комментарий не найден" }, status: :not_found unless comment
 
     unless comment.user == current_user
@@ -49,14 +45,14 @@ class Api::V1::CommentsController < ApplicationController
     end
 
     if comment.update(comment_params)
-      render json: { message: "Комментарий обновлён", comment: comment }, status: :ok
+      render json: { message: "Комментарий обновлён", comment: format_comment(comment) }, status: :ok
     else
       render json: { error: comment.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
   def destroy
-    comment = @commentable.comments.find(params[:id])
+    comment = @effect.comments.find(params[:id])
 
     if comment.destroy
       render json: { message: "Комментарий удалён" }, status: :ok
@@ -67,31 +63,9 @@ class Api::V1::CommentsController < ApplicationController
 
   private
 
-  def authenticate_user!
-    render json: { error: "Не авторизован" }, status: :unauthorized unless current_user
-  end
-  
-
-  def set_commentable
-    @commentable =
-      if params[:question_id]
-        Question.find_by(id: params[:question_id])
-      elsif params[:effect_id]
-        Effect.find_by(id: params[:effect_id])
-      end
-  
-    render json: { error: "Объект не найден" }, status: :not_found unless @commentable
-  end
-  
-
-	def find_commentable
-    if params[:effect_id]
-      Effect.find_by(id: params[:effect_id])
-    elsif params[:question_id]
-      Question.find_by(id: params[:question_id])
-    else
-      nil
-    end
+  def set_effect
+    @effect = Effect.find_by(id: params[:effect_id])
+    render json: { error: "Эффект не найден" }, status: :not_found unless @effect
   end
 
   def comment_params
@@ -103,7 +77,9 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def format_comment(comment)
-    comment.as_json(only: [:id, :body, :created_at], include: { user: { only: [:username, :avatar] } }).merge({
+    comment.as_json(only: [:id, :body, :created_at], include: { 
+      user: { only: [:username, :avatar] } 
+    }).merge({
       replies: format_comments(comment.replies)
     })
   end

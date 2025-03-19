@@ -35,11 +35,6 @@ ru:
         many: 'эффекта'
         other: 'эффектов'
 
-      question:
-        one: 'обсуждение'
-        many: 'обсуждения'
-        other: 'обсуждений'
-
       collection:
         one: 'коллекцию'
         many: 'коллекции'
@@ -55,12 +50,6 @@ ru:
         link_to: 'Ссылка на эффект'
         manual: 'Описание загрузки'
         platform: 'Поддерживаемые системы'
-
-      question:
-        title: 'Вопрос'
-        media: 'Картинки'
-        description: 'Описание'
-        tag_list: 'Теги'
 
       collection:
         name: 'Название'

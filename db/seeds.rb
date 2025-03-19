@@ -4,7 +4,6 @@ def seed
     reset_db
     create_users(10)
     create_effects(30)
-    create_questions(30)
     create_favorites(20)
     create_collections(15)
     create_subscriptions(15)
@@ -111,115 +110,16 @@ def create_effects(quantity)
         imageable: effect
       )
 
-      comments = []
-      5.times do |j|
-        comment = Comment.create!(
-          body: comments_data[j % comments_data.length]['body'],
+      comments_data.sample(5).each do |comment_data|
+        Comment.create!(
+          body: comment_data['body'],
           user_id: users.sample.id,
-          commentable: effect
+          effect_id: effect.id
         )
-        comments << comment.body
       end
 
       puts "Effect #{effect.name} created with rating #{rating_value}, categories: #{effect.category_list.join(', ')}, tasks: #{effect.task_list.join(', ')}"
     end
-  end
-end
-
-def create_questions(quantity)
-  file = File.read('db/questions.json')
-  questions_data = JSON.parse(file)
-
-  comments_data = JSON.parse(File.read('db/comments.json'))
-  users = User.all
-
-  all_categories = ["Анимация", "VFX", "3D-графика", "Обработка видео"]
-  all_tasks = ["Ретушь", "Рендеринг", "Монтаж", "Коррекция цвета"]
-
-  puts "Всего пользователей: #{User.count}"
-  puts "Существующие теги: #{ActsAsTaggableOn::Tag.pluck(:name).inspect}"
-
-  quantity.times do |i|
-    user = users.sample
-    puts "Выбран пользователь: #{user&.id}, существует ли он? #{User.exists?(user&.id)}"
-
-    question_data = questions_data.sample
-
-    categories = all_categories.sample(rand(1..2))
-    tasks = all_tasks.sample(rand(1..2))
-
-    categories.each { |cat| ActsAsTaggableOn::Tag.find_or_create_by!(name: cat) }
-    tasks.each { |task| ActsAsTaggableOn::Tag.find_or_create_by!(name: task) }
-
-    puts "Категории для вопроса: #{categories.inspect}"
-    puts "Задачи для вопроса: #{tasks.inspect}"
-
-    question = Question.new(
-      title: "#{question_data['title']}_#{i + 1}",
-      description: question_data['description'],
-      platform: question_data['platform'],
-      programs: question_data['programs'],
-      link_to: question_data['link_to'],
-      user_id: user&.id
-    )
-
-    puts "Создаём вопрос: #{question.inspect}"
-
-    categories.each do |cat|
-      ActsAsTaggableOn::Tag.find_or_create_by!(name: cat)
-    end
-
-    tasks.each do |task|
-      ActsAsTaggableOn::Tag.find_or_create_by!(name: task)
-    end
-
-    question.category_list = categories
-    question.task_list = tasks
-
-    unless question.valid?
-      puts "Ошибка валидации: #{question.errors.full_messages.join(', ')}"
-      next
-    end
-
-    if question.save
-      puts "Вопрос сохранён!"
-    else
-      puts "Ошибка при сохранении: #{question.errors.full_messages.join(', ')}"
-    end
-
-    before_img = upload_random_image
-    after_img = upload_random_image
-    description_img = upload_random_image
-
-    puts "before_img: #{before_img}, after_img: #{after_img}, description_img: #{description_img}"
-
-    Image.create!(
-      file: before_img,
-      image_type: "before",
-      imageable: question
-    )
-
-    Image.create!(
-      file: after_img,
-      image_type: "after",
-      imageable: question
-    )
-
-    Image.create!(
-      file: description_img,
-      image_type: "description",
-      imageable: question
-    )
-
-    rand(1..5).times do
-      Comment.create!(
-        body: comments_data.sample['body'],
-        user_id: users.sample.id,
-        commentable: question
-      )
-    end
-
-    puts "Created images and comments"
   end
 end
 

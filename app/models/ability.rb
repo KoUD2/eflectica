@@ -6,13 +6,11 @@ class Ability
   def initialize(user)
     can :read, Effect
     can :read, Collection
-    can :read, Question
     can :create, Subscription
 
     return unless user.present?
     can :manage, Effect, user_id: user.id
     can :manage, Collection, user_id: user.id
-    can :manage, Question, user_id: user.id
     can :manage, Comment, user_id: user.id
 
     return unless user.is_admin?

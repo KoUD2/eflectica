@@ -12,8 +12,8 @@ class RatingsController < ApplicationController
 
   # GET /ratings/new
   def new
-    @question = Question.find(params[:question_id])
-    @rating = @question.ratings.build
+    @effect = Effect.find(params[:effect_id])
+    @rating = @effect.ratings.build
   end
   
 
@@ -23,18 +23,26 @@ class RatingsController < ApplicationController
 
   # POST /ratings or /ratings.json
   def create
-    @parent = find_parent
-    @rating = @parent.ratings.new(rating_params)
-  
-    @rating.user = User.first
-  
-    if @rating.save
-      respond_to do |format|
-        format.json { render json: { average_rating: @parent.ratings.average(:number).to_f.round(2) }, status: :created }
-      end
-    else
-      respond_to do |format|
-        format.json { render json: { errors: @rating.errors.full_messages }, status: :unprocessable_entity }
+    @effect = Effect.find(params[:effect_id])
+    @rating = @effect.ratings.new(rating_params)
+    @rating.user = current_user
+
+    respond_to do |format|
+      if @rating.save
+        format.json { 
+          render json: { 
+            average_rating: @effect.ratings.average(:number).to_f.round(2),
+            rating: @rating
+          }, 
+          status: :created 
+        }
+      else
+        format.json { 
+          render json: { 
+            errors: @rating.errors.full_messages 
+          }, 
+          status: :unprocessable_entity 
+        }
       end
     end
   end
@@ -57,7 +65,7 @@ class RatingsController < ApplicationController
     @rating.destroy!
 
     respond_to do |format|
-      format.html { redirect_to ratings_path, status: :see_other, notice: "Rating was successfully destroyed." }
+      format.html { redirect_to ratings_url, notice: "Rating was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -66,16 +74,6 @@ class RatingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_rating
       @rating = Rating.find(params[:id])
-    end
-
-    def find_parent
-      if params[:effect_id]
-        Effect.find(params[:effect_id])
-      elsif params[:question_id]
-        Question.find(params[:question_id])
-      else
-        raise ActiveRecord::RecordNotFound, "No parent found"
-      end
     end
 
     # Only allow a list of trusted parameters through.
