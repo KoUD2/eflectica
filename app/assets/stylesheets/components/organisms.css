@@ -1,19 +1,16 @@
 .O_footer{
-	box-sizing: border-box;
-	width: 83.229vw;
-	height: 7.604vw;
-	background-color: var(--computer-blue);
 	display: flex;
-	align-items: center;
-	padding: 0 5.833vw 0 3.75vw;
-	border-radius: 0.313vw;
+	width: 96.875vw;
+	padding: 1.25vw 5.833vw 1.667vw 3.75vw;
 	justify-content: space-between;
+	align-items: center;
+	border-radius: var(--button, 0.417vw);
+	background: var(--foggy-grey, #F5F5F5);
 	margin-top: 0.833vw;
 }
 
 .O_Menu {
 	display: flex;
-	width: 97.5vw;
 	justify-content: space-between;
 }
 
@@ -69,8 +66,8 @@
 	border: 1.5px solid var(--soft-grey);
 	background: var(--porcelain-white);
 	position: absolute;
-	top: 4.115vw;
-	left: 5.104vw;
+	top: 4.844vw;
+	left: 9.65vw;
 }
 
 .O_CardSimple {
@@ -91,15 +88,17 @@
 }
 
 .O_Card2 {
-	width: 11.763vw;
-	top: 14.471vw;
-	left: 16.429vw;
+	width: 12.063vw;
+	top: auto;
+	bottom: 5.221vw;
+	left: 29.829vw;
 }
 
 .O_Card3 {
-	width: 13.781vw;
-	top: 22.388vw;
-	left: 59.975vw;
+	width: 13.281vw;
+	top: 17.765vw;
+	left: auto;
+	right: 12.7vw;
 }
 
 .O_CardMediumBlack {
@@ -108,9 +107,9 @@
 }
 
 .O_Card4 {
-	width: fit-content;
-	top: 31.267vw;
-	left: 36.823vw;
+	width: 15.6vw;
+	top: 7.396vw;
+	left: 36.623vw;
 	z-index: 4;
 }
 
@@ -124,8 +123,61 @@
 }
 
 .O_CardMediumRed{
-	top: 6.51vw;
-	left: 63.281vw;
+	top: auto;
+	left: 8.582vw;
+	bottom: 2.083vw;
+}
+
+.O_feedMain {
+	width: 72.396vw;
+	padding: 1.667vw 2.833vw 2.188vw 3.229vw;
+	display: flex;
+	flex-direction: column;
+	gap: 1.719vw;
+	border-radius: var(--button, 0.417vw);
+	background: var(--foggy-grey, #F5F5F5);
+}
+
+.O_effectPage {
+	position: relative;
+	padding: 2.813vw 0 3.333vw 0;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	background-color:var(--foggy-grey, #F5F5F5);
+	border-radius: 0 var(--button, 0.417vw) var(--button, 0.417vw) var(--button, 0.417vw);
+}
+
+.O_allContentEffect {
+	width: 100%;
+	display: flex;
+	gap: 7.292vw;
+}
+
+.O_CardMediumRed2{
+	top: 2.76vw;
+	left: auto;
+	right: 10.242vw;
+	width: 16.02vw;
+}
+
+.O_Comment {
+	display: flex;
+	width: 25.521vw;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.625vw;
+}
+
+.O_CommentMy {
+	display: flex;
+	width: 25.521vw;
+	padding: 0.833vw 1.25vw;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.625vw;
+	border-radius: var(--button, 0.417vw);
+	background: var(--porcelain-white, #FFF);
 }
 
 .O_lineCard {
@@ -201,12 +253,46 @@
 
 .O_CollectionCard {
 	cursor: pointer;
-	width: 17.865vw;
-	display: inline-flex;
+	display: flex;
+	width: 21.667vw;
+	height: 17.396vw;
+	overflow: hidden;
+	flex-direction: column;
+	align-items: flex-end;
+	border-radius: var(--main, 0.625vw);
+	border: var(--border, 2px) solid var(--grey-tag, #E1E1E1);	
+}
+
+.O_FormRegistration {
+	display: flex;
+	width: 15.625vw;
 	flex-direction: column;
 	align-items: flex-start;
-	border-radius: 0.313vw;
-	border: 0.078vw solid var(--soft-grey);
+	gap: 1.25vw;
+}
+
+.O_registrationForm{
+	width: 37.188vw;
+	display: flex;
+	flex-direction: column;
+	gap: 2.083vw;
+	align-items: center;
+}
+
+.O_Prewiew {
+	position: relative;
+	height: 32.5vw;
+	display: flex;
+	justify-content: center;
+	margin-left: 0.521vw;
+}
+
+.O_CardProfile {
+	top: auto;
+	left: auto;
+	bottom: 0;
+	right: 14.625vw;
+	width: 18.165vw;
 }
 
 .O_Subscription {
@@ -264,20 +350,25 @@
 }
 
 .O_EffectCard {
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	gap: 0.417vw;
-	align-self: stretch;
-	border-radius: 0.313vw;
-	border: 0.078vw solid var(--soft-grey);
-	background: var(--porcelain-white);
 	overflow: hidden;
+	width: 29.375vw;
+	height: 17.083vw;
+	display: flex;
+	flex-direction: column;
+	gap: 3.659%;
+}
 
-	> img {
-		width: 3.802vw;
-		height: auto;
-	}
+.O_EffectCollectionCard {
+	width: 21.667vw;
+	height: 13.854vw;
+	overflow: hidden;
+	display: flex;
+	border: var(--border, 2px) solid var(--grey-tag, #E1E1E1);
+	background: var(--porcelain-white, #FFF);
+	border-radius: var(--main, 0.625vw);
+	flex-direction: column;
+	gap: 3.659%;
+	padding-bottom: 0.625vw;
 }
 
 .O_MyAnswer {
@@ -285,6 +376,121 @@
 	display: flex;
 	flex-direction: column;
 	gap: 0.417vw;
+}
+
+.O_allCategories {
+	width: 72.396vw;
+	border-radius: 0.417vw;
+	background: var(--foggy-grey, #F5F5F5);
+	padding: 0 3.333vw 2.813vw 3.229vw;
+}
+
+.O_Effects {
+	margin-top: 2.083vw;
+	display: inline-flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 1.25vw;
+}
+
+.O_EffectsBarrow {
+	margin: 0;
+}
+
+.O_ChoiceCollection {
+	position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+	display: flex;
+	padding: 1.25vw;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 0.833vw;
+	border-radius: var(--main, 0.625vw);
+	border: var(--border, 0.104vw) solid var(--grey-tag, #E1E1E1);
+	background: var(--porcelain-white, #FFF);
+	box-shadow: 0px 0px 1.563vw 0px rgba(0, 0, 0, 0.15);
+}
+
+.O_Category {
+	position: relative;
+	width: 96.875vw;
+	padding: 5.26vw 3.229vw 3.229vw 3.281vw;
+	border-radius: var(--button, 0.417vw);
+	background: var(--foggy-grey, #F5F5F5);
+}
+
+.O_CreateEffectInfo {
+	margin-top: 2.813vw;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	align-self: stretch;
+}
+
+.O_EffectInfo {
+	display: flex;
+	width: 25.469vw;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 2.813vw;
+}
+
+.O_EffectCardPreview {
+	display: flex;
+	width: 21.667vw;
+	padding-bottom: 0.625vw;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.625vw;
+	align-self: stretch;
+	border-radius: var(--main, 0.625vw);
+	border: var(--border, 0.104vw) solid var(--grey-tag, #E1E1E1);
+	background: var(--porcelain-white, #FFF);
+}
+
+.O_EffectCardPreviewOver {
+	overflow: hidden;
+}
+
+.O_CreateEffectTagsArea {
+	display: flex;
+	width: 25.469vw;
+	padding: 2.188vw 0vw;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 1.979vw;
+}
+
+.O_TagsCreateEffect {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.625vw;
+}
+
+.O_bannerCreate {
+	padding: 1.667vw 0 2.188vw 0;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 23.646vw;
+	height: 36.875vw;
+	border-radius: var(--button, 0.417vw);
+	background: var(--foggy-grey, #F5F5F5);
+}
+
+.O_TagsLinkInfo {
+	width: 100%;
+}
+
+.O_ChoiceCollectionElement {
+	width: 28.073vw;
+	top: auto;
+	gap: 1.667vw;
 }
 
 .O_allAnswer {
@@ -299,22 +505,6 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 0.625vw;
-}
-
-.O_Comment {
-	margin-top: 0.833vw;
-	display: flex;
-	width: 28.021vw;
-	padding: 0.833vw 1.25vw;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 1.25vw;
-	border-radius: 0.313vw;
-	background: var(--porcelain-white);
-}
-
-.O_CommentMy {
-	flex-direction: row;
 }
 
 .O_headerAbout {
@@ -470,6 +660,24 @@
 	gap: 1.667vw;
 }
 
+.O_Collections {
+	margin-top: 0.833vw;
+	display: flex;
+	gap: 0.833vw;
+}
+
+.O_EffectsNewsFeed{
+	margin-top: 0;
+}
+
+.O_FeedSettings {
+	display: flex;
+	width: 23.073vw;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.833vw;
+}
+
 .O_subscribtionsAbout {
 	margin-top: 10.054vw;
 	display: flex;
@@ -490,6 +698,39 @@
 
 .O_headerAboutMobile {
 	display: none;
+}
+
+.O_ReferenceCard {
+	cursor: pointer;
+	overflow: hidden;
+	display: flex;
+	width: 10.729vw;
+	height: 13.854vw;
+	padding-bottom: 0.625vw;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.625vw;
+	border-radius: var(--main, 0.625vw);
+	border: var(--border, 0.104vw) solid var(--grey-tag, #E1E1E1);
+	background: var(--porcelain-white, #FFF);
+}
+
+.O_LinkCard {
+	cursor: pointer;
+	display: flex;
+	overflow: hidden;
+	width: 15.573vw;
+	padding-bottom: 0.625vw;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.625vw;
+	border-radius: var(--main, 0.625vw);
+	border: var(--border, 0.104vw) solid var(--grey-tag, #E1E1E1);
+	background: var(--porcelain-white, #FFF);
+}
+
+.hidden {
+  display: none;
 }
 
 @media screen and (max-width: 912px) {

@@ -3,10 +3,11 @@ require 'json'
 def seed
     reset_db
     create_users(10)
-    create_effects(30)
-    create_favorites(20)
+    create_effects(18)
+    create_favorites
     create_collections(15)
     create_subscriptions(15)
+    create_sub_collections
 end
 
 def reset_db
@@ -15,9 +16,49 @@ def reset_db
     Rake::Task['db:migrate'].invoke
 end
 
+def create_sub_collections
+  User.all.each do |user|
+    available_collections = Collection.where.not(user_id: user.id)
+    
+    collections_to_subscribe = available_collections.sample([5, available_collections.count].min)
+    
+    collections_to_subscribe.each do |collection|
+      begin
+        SubCollection.create!(
+          user: user,
+          collection: collection
+        )
+        puts "✅ User #{user.username} subscribed to #{collection.name}"
+      rescue ActiveRecord::RecordInvalid => e
+        puts "❌ Error creating subscription: #{e.message}"
+      end
+    end
+  end
+end
+
+def upload_effect_image(filename)
+  uploader = EffectImageUploader.new(Effect.new, :img)
+  image_path = Rails.root.join('public/autoupload/effect', filename)
+  
+  if File.exist?(image_path)
+    uploader.cache!(File.open(image_path))
+  else
+    raise "Missing image for effect: #{filename}"
+  end
+
+  uploader
+end
+
+
 def upload_random_image
   uploader = EffectImageUploader.new(Effect.new, :img)
   uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/effect', '*')).sample))
+  uploader
+end
+
+def upload_random_user_avatar
+  uploader = UserImageUploader.new(User.new, :avatar)
+  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/user', '*')).sample))
   uploader
 end
 
@@ -37,7 +78,7 @@ def create_users(quantity)
       contact: user_data['contact'],
       portfolio: user_data['portfolio'],
       is_admin: get_random_bool,
-      avatar: user_data['avatar'],
+      avatar: upload_random_user_avatar,
       email: new_email,
       password: user_data['password']
     )
@@ -51,89 +92,104 @@ def get_random_bool
 end
 
 def create_effects(quantity)
-  file = File.read('db/effects.json')
-  effects_data = JSON.parse(file)
+  effects_data = JSON.parse(File.read('db/effects.json'))
   comments_data = JSON.parse(File.read('db/comments.json'))
-
-  available_effects = effects_data.sample(quantity)
   users = User.all
+  return if users.empty?
 
-  if users.empty?
-    puts "No users available to associate with effects. Aborting creation."
-    return
-  end
+  all_categories = ["photoProcessing", "3dGrafics", "motion", "illustration", "animation", "uiux", "videoProcessing", "vfx", "gamedev", "arvr"]
+  all_tasks = ["portraitRetouching", "colorCorrection", "improvePhotoQuality", "preparationForPrinting", "socialMediaContent", "advertisingProcessing", "stylization", "backgroundEditing", "graphicContent", "setLight", "simulation3d", "atmosphereWeather"]
 
-  all_categories = ["Анимация", "VFX", "3D-графика", "Обработка видео"]
-  all_tasks = ["Ретушь", "Рендеринг", "Монтаж", "Коррекция цвета"]
-
-  quantity.times do |i|
-    effect_data = available_effects[i % available_effects.length]
-
-    effect = Effect.create!(
-      name: "#{effect_data['Name']}_#{i + 1}",
-      img: upload_random_image,
-      description: effect_data['Description'],
-      speed: effect_data['Speed'],
-      platform: effect_data['Platform'],
-      programs: effect_data['Programs'],
-      manual: effect_data['Manual'],
-      link_to: effect_data['Link_to'],
-      is_secure: effect_data['Is_secure'],
-      program_version: effect_data['Program version'],
-      user: users.sample
-    )
-
-    effect.category_list = all_categories.sample(rand(1..2))
-    effect.task_list = all_tasks.sample(rand(1..2))
-    effect.save
-
-    if effect.persisted?
-      rating_value = rand(1..5)
-      Rating.create!(
-        number: rating_value,
-        ratingable: effect,
-        user_id: users.sample.id
+  effects_data.sample(quantity).each do |effect_data|
+    begin
+      effect = Effect.new(
+        name: effect_data["Name"].to_s,
+        user: users.sample,
+        img: upload_effect_image(effect_data["image"]),
+        description: effect_data["Description"].to_s,
+        speed: effect_data["Speed"].to_i,
+        platform: effect_data["Platform"].to_s,
+        programs: effect_data["Programs"].to_s,
+        manual: effect_data["Manual"].to_s,
+        link_to: effect_data["Link_to"].presence || "#",
+        is_secure: effect_data["Is_secure"],
+        program_version: effect_data["Program version"].presence || "1.0"
       )
 
-      before_img = upload_random_image
-      after_img = upload_random_image
+      effect.category_list = all_categories.sample(1).join(', ')
+      effect.task_list = all_tasks.sample(rand(2..3)).join(', ')
 
-      Image.create!(
-        file: before_img,
-        image_type: "before",
-        imageable: effect
-      )
-
-      Image.create!(
-        file: after_img,
-        image_type: "after",
-        imageable: effect
-      )
-
-      comments_data.sample(5).each do |comment_data|
-        Comment.create!(
-          body: comment_data['body'],
-          user_id: users.sample.id,
-          effect_id: effect.id
-        )
+      if effect.save!
+        puts "✅ Effect ##{effect.id} создан."
+        create_dependencies(effect, effect_data, comments_data)
+      else
+        puts "❌ Ошибки валидации: #{effect.errors.full_messages}"
       end
 
-      puts "Effect #{effect.name} created with rating #{rating_value}, categories: #{effect.category_list.join(', ')}, tasks: #{effect.task_list.join(', ')}"
+    rescue => e
+      puts "🔥 Критическая ошибка: #{e.message}"
+      puts e.backtrace.join("\n")
     end
   end
 end
 
 
-def create_favorites(quantity)
-  users = User.all
-  effects = Effect.all
+def create_dependencies(effect, effect_data, comments_data)
+  users = User.all.to_a
+  return puts "⚠️ Недостаточно пользователей для рейтингов" if users.size < 1
 
-  quantity.times do |i|
-    Favorite.create!(
-      user: users.sample,
-      effect: effects.sample
+  users.sample([users.size, 5].min).each do |user|
+    ActiveRecord::Base.transaction do
+      begin
+        rating = Rating.create!(
+          user: user,
+          ratingable: effect,
+          number: rand(1..5)
+        )
+
+        Comment.create!(
+          body: comments_data.sample["body"].presence || "Базовый комментарий",
+          user: user,
+          effect: effect
+        )
+
+        puts "✅ Рейтинг #{rating.id} создан для эффекта #{effect.id}"
+      
+      rescue ActiveRecord::RecordInvalid => e
+        puts "❌ Ошибка создания: #{e.record.class} - #{e.record.errors.full_messages}"
+      end
+    end
+  end
+
+  %w[before after].each do |type|
+    next unless effect_data["#{type}_image"]
+    
+    Image.create!(
+      imageable: effect,
+      image_type: type,
+      file: upload_effect_image(effect_data["#{type}_image"])
     )
-    puts "Favorite ##{i + 1} created!"
+  rescue => e
+    puts "⚠️ Ошибка изображения #{type}: #{e.message}"
+  end
+end
+
+
+
+def create_favorites
+  User.find_each do |user|
+    effects = Effect.limit(rand(3..7)).order("RANDOM()")
+    
+    effects.each do |effect|
+      begin
+        Favorite.create!(
+          user: user,
+          effect: effect
+        )
+      rescue ActiveRecord::RecordInvalid => e
+        puts "Failed to favorite #{effect.name} for #{user.username}: #{e.message}"
+      end
+    end
   end
 end
 
@@ -156,16 +212,40 @@ def create_collections(quantity)
         status: statuses.sample
       )
 
-      collection.save!
-
-      effects.sample(10).each do |effect|
+      effects.sample(5).each do |effect|
         CollectionEffect.create!(
           collection_id: collection.id,
           effect_id: effect.id
         )
       end
 
-      puts "Collection #{collection.name} created with 10 effects!"
+      3.times do |j|
+        CollectionImage.create!(
+          collection: collection,
+          image: Image.create!(
+            imageable: collection,
+            image_type: 'description',
+            file: upload_random_collection_image,
+            title: Faker::Lorem.word
+          )
+        )
+      end
+
+      1.times do
+        CollectionLink.create!(
+          collection: collection,
+          link: Link.create!(
+            path: 'https://youtu.be/MFdYAsTNuq8?si=ay2jwXgzV8DUvZym',
+            title: 'Эффект дрожания'
+          )
+        )
+      end
+
+      puts "Collection #{collection.name} created with:"
+      puts "  - 10 effects"
+      puts "  - 3 images"
+      puts "  - 1 links"
+
     rescue ActiveRecord::RecordInvalid => e
       puts "Error creating collection ##{i + 1}: #{e.message}"
       e.record.errors.full_messages.each { |msg| puts "  - #{msg}" }
@@ -174,6 +254,13 @@ def create_collections(quantity)
     end
   end
 end
+
+def upload_random_collection_image
+  uploader = CollectionImageUploader.new(Collection.new)
+  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/collections', '*')).sample))
+  uploader
+end
+
 
 def create_subscriptions(quantity)
   users = User.all

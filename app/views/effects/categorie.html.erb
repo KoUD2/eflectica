@@ -1,0 +1,44 @@
+<% 
+  category_name = human_readable_category(@category)
+  set_meta_tags(
+    title: "Коллекция: #{category_name}",
+    description: "Эффекты в категории #{category_name} на Eflectica",
+    keywords: "#{category_name}, эффекты, коллекция"
+  )
+%>
+
+<% content_for :title, category_name %>
+
+<div class='O_Category'>
+	<%= render 'shared/back_button' %>
+
+	<div class='W_coverCategory'>
+		<h1 class="A_Header1"><%= category_name %></h1>
+	</div>
+
+	<div class='W_allButtonsCategory'>
+		<div class='W_tasksCategories'>
+			<button class='A_Filter A_FilterCategory A_TextTagBig'>
+				Задача
+				<%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+			</button>
+			<button class='A_Filter A_FilterCategory A_TextTagBig'>
+				Программа
+				<%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+			</button>
+		</div>
+		<div class='M_Sort'>
+			<button class='A_Filter A_FilterCategory A_TextTagBig'>
+				Сортировка
+				<%= image_tag("sortCategory.svg", alt: "Картинка", class: "Q_changeSettingsCategory") %>
+			</button>
+			<p class='A_TextTag A_TextTagBig A_TextTagLight'>Сначала новые</p>
+		</div>
+	</div>
+
+	<div class='C_Effects C_EffectsCategory'>
+    <% @effects.each do |effect| %>
+      <%= render partial: 'effects/collection_effect', locals: { effect: effect } %>
+    <% end %>
+  </div>
+</div>

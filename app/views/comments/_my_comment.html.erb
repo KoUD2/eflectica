@@ -1,0 +1,37 @@
+<div data-controller="star-rating" 
+     class='O_CommentMy' 
+     data-effect-id="<%= @effect.id %>">
+  <div class="M_AuthorComment">
+		<% if current_user&.avatar&.present? %>
+			<%= image_tag(current_user.avatar.url, alt: "User Avatar", class: "A_AvatarFeedback") %>
+		<% else %>
+			<%= image_tag("avatar_default.png", alt: "Default Avatar", class: "A_AvatarFeedback") %>
+		<% end %>
+    <input type="text" 
+       name="comment[body]" 
+       placeholder="Напиши комментарий или поставь оценку" 
+       class="A_inputFeedback"
+       data-action="keypress->star-rating#handleKeyPress"
+       data-star-rating-target="commentInput">
+
+  </div>
+	<%= hidden_field_tag :user_id, current_user.id %>
+  <input type="hidden" name="comment[rating]" data-star-rating-target="input">
+
+  <div class="M_Stars M_StarsMy" data-star-rating-target="container">
+    <% 5.times do |i| %>
+      <button type="button" 
+              data-action="click->star-rating#rate" 
+              data-rating="<%= i + 1 %>"
+              class="star-button">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             width="30" 
+             height="30" 
+             viewBox="0 0 30 30"
+             class="Q_StarIconFeedback">
+          <path d="M13.0848 6.3648C13.656 4.46651 16.344 4.4665 16.9152 6.3648L17.7534 9.15052C18.0124 10.0112 18.8137 10.5934 19.7123 10.5738L22.6207 10.5101C24.6026 10.4668 25.4333 13.0232 23.8044 14.153L21.414 15.8111C20.6755 16.3233 20.3694 17.2654 20.6658 18.1139L21.6251 20.8603C22.2787 22.7318 20.1041 24.3117 18.5262 23.1117L16.2107 21.3507C15.4953 20.8066 14.5047 20.8066 13.7893 21.3507L11.4738 23.1117C9.89587 24.3117 7.72126 22.7318 8.37494 20.8603L9.33421 18.1139C9.63059 17.2654 9.32451 16.3233 8.58597 15.8111L6.19561 14.153C4.56674 13.0232 5.39736 10.4668 7.37926 10.5101L10.2877 10.5738C11.1863 10.5934 11.9876 10.0112 12.2466 9.15053L13.0848 6.3648Z"/>
+        </svg>
+      </button>
+    <% end %>
+  </div>
+</div>

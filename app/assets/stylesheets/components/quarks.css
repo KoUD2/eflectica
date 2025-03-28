@@ -28,8 +28,9 @@
 }
 
 .Q_Section {
-	width: 83.229vw;
+	width: 96.875vw;
 	height: fit-content;
+	padding: 0 3.906vw 0 3.385vw;
 	background: var(--foggy-grey);
 	border-radius: 0.365vw;
 	display: flex;
@@ -91,10 +92,22 @@
 	border-radius: 0.365vw;
 }
 
+.Q_iPhoneProMyCollections {
+	display: block;
+	margin: 0 auto;
+	width: 18.385vw;
+	height: auto;
+}
+
 .Q_sectionSubscription {
 	position: relative;
-	min-height: 40.938vw;
-	padding-left: 3.229vw;
+	padding: 1.695vw 0 2.835vw 3.229vw;
+	gap: 1.25vw;
+}
+
+.Q_IconHeart {
+	width: 1.042vw;
+	height: 0.885vw;
 }
 
 .disabled123 {
@@ -114,10 +127,71 @@
 }
 
 .Q_FavoriteSection {
-	padding: 0.885vw;
+	padding: 1.302vw 1.667vw 1.615vw 1.406vw;
+	width: 92.448vw;
+	height: 38.333vw;
+	margin-left: -1.406vw;
 	border: 1px solid var(--computer-blue);
 	background: transparent;
 	position: relative;
+	margin-top: 1.719vw;
+	margin-bottom: 2.5vw;
+}
+
+.Q_Particle {
+	position: absolute;
+	width: 0.625vw;
+	height: 0.625vw;
+	flex-shrink: 0;
+	border: 1px solid var(--computer-blue, #0638BD);
+	background: var(--foggy-grey, #F5F5F5);
+
+	&:nth-child(2) {
+		top: -0.313vw;
+		left: -0.208vw;
+	}
+	&:nth-child(3) {
+		top: -0.313vw;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	&:nth-child(4) {
+		top: -0.313vw;
+		right: -0.313vw;
+	}
+	&:nth-child(5) {
+		bottom: -0.313vw;
+		left: -0.208vw;
+	}
+	&:nth-child(6) {
+		bottom: -0.313vw;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	&:nth-child(7) {
+		bottom: -0.313vw;
+		right: -0.313vw;
+	}
+}
+
+.Q_pictureCreateEffect {
+	position: absolute;
+	width: auto;
+	right: 2.849vw;
+	bottom: -2.271vw;
+	height: 14.167vw;
+	transform: rotate(8.51deg);
+	border-radius: 0.617vw;
+}
+
+.Q_StarIconCreateEffect {
+	width: 2.168vw;
+	height: 2.168vw;
+}
+
+.Q_arrowFollow {
+	height: 0.732vw;
+	width: auto;
 }
 
 .Q_SegmentSection {
@@ -220,8 +294,356 @@
 }
 
 .Q_StarIcon {
-	width: 1.042vw;
+	width: 50%;
 	height: auto;
+}
+
+.Q_StarIconFeedback {
+	width: 1.563vw;
+	height: 1.563vw;
+	fill: #E1E1E1;
+  transition: fill 0.2s ease;
+  cursor: pointer;
+}
+
+.Q_StarIconFeedback.active {
+  fill: #E33081;
+}
+
+.Q_ModerationTooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  transform: translateY(-50%);
+  margin-left: 0.404vw;
+	width: 15.052vw;
+  padding: 0.625vw 0.833vw;
+  border-radius: var(--button, 0.417vw);
+	background: var(--grey-tag, #E1E1E1);
+  color: var(--charcoal-black, #0E1111);
+  font-family: "Basis Grotesque Pro";
+	font-size: 0.833vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.042vw;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.Q_IconClose {
+	cursor: pointer;
+	height: 0.938vw;
+	padding: 0;
+	width: fit-content;
+	background-color: transparent;
+	border: none;
+	outline: none;
+}
+
+.Q_ProgramIcon {
+	width: auto;
+	height: 100%;
+	stroke-width: 0.104vw;
+	stroke: var(--grey-tag, #E1E1E1);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	img {
+		height: 100%;
+		width: auto;
+	}
+}
+
+.Q_ProgramIconFeed {
+	width: 1.875vw;
+	height: 1.875vw;
+}
+
+.Q_emptyImage {
+	width: 4.375vw;
+	height: 4.375vw;
+}
+
+.Q_ProgramIconEffect{
+	width: 2.813vw;
+	height: 2.813vw;
+	border-radius: 100%;
+	border: 2px solid var(--grey-tag, #E1E1E1);
+	background: var(--porcelain-white, #FFF);
+
+	img {
+		height: 44.444%;
+		width: auto;
+	}
+}
+
+.Q_ProgramIconEffectMain{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 1.875vw;
+	height: 1.875vw;
+	border-radius: 100%;
+	border: 2px solid var(--grey-tag, #E1E1E1);
+	background: var(--porcelain-white, #FFF);
+
+	img {
+		height: 44.444%;
+		width: auto;
+	}
+}
+
+.Q_PlatformIcon {
+	height: auto !important;
+	width: 46.204% !important;
+}
+
+.Q_StarIconBig {
+	width: 2.865vw;
+	height: 2.865vw;
+}
+
+.Q_StarIconBigFeedback {
+	width: 1.563vw;
+	height: 1.563vw;
+}
+
+.Q_ButtonSecondary {
+	color: var(--computer-blue, #0638BD);
+	font-family: "Basis Grotesque Pro";
+	font-size: 0.833vw;
+	font-style: normal;
+	font-weight: 400;
+}
+
+.Q_ButtonSecondaryDark {
+	color: var(--charcoal-black, #0E1111);
+}
+
+.Q_IconClose {
+	width: 1.25vw;
+	height: 1.25vw;
+}
+
+.Q_registrationFormImage1 {
+	position: absolute;
+	left: 0;
+	width: 17.604vw;
+	height: auto;
+	bottom: 0;
+}
+
+.Q_userAvatar {
+	width: 100%;
+}
+
+.Q_Feedbacks {
+	margin-top: 0.26vw;
+	width: 22.292vw;
+	height: 13.438vw;
+}
+
+.Q_linkIcon {
+	position: absolute;
+	top: 0.833vw;
+	left: 0.833vw;
+	width: 1.667vw;
+	height: 1.667vw;
+}
+
+.Q_feedImage1 {
+	position: absolute;
+	right: 0;
+	width: 17.604vw;
+	height: auto;
+	bottom: 0;
+}
+
+.Q_registrationFormImage4 {
+	position: absolute;
+	right: 0;
+	width: 15.833vw;
+	height: auto;
+	bottom: 0;
+}
+
+.Q_registrationFormImage2 {
+	position: absolute;
+	left: 4.357vw;
+	width: 10.85vw;
+	transform: rotate(3.332deg);
+	height: auto;	
+	bottom: 6.811vw;
+	border-radius: var(--main, 0.625vw);
+}
+
+.Q_feedImage2 {
+	position: absolute;
+	width: 10.85vw;
+	height: 10.434vw;
+	border-radius: var(--main, 0.625vw);
+	box-shadow: 0vw 0vw 1.042vw 0vw rgba(0, 0, 0, 0.15);
+	transform: rotate(11.205deg);
+	bottom: -3.577vw;
+	left: 52.785vw;
+}
+
+.Q_registrationFormImage3 {
+	position: absolute;
+	left: 11.622vw;
+	width: 10.85vw;
+	transform: rotate(-13.612deg);
+	height: auto;	
+	bottom: -0.396vw;
+	border-radius: var(--main, 0.625vw);
+}
+
+.Q_feedImage3 {
+	position: absolute;
+	width: 12.348vw;
+	height: 12.427vw;
+	border-radius: var(--main, 0.625vw);
+	box-shadow: 0vw 0vw 1.042vw 0vw rgba(0, 0, 0, 0.15);
+	transform: rotate(-13.612deg);
+	bottom: -3.237vw;
+	left: 40.508vw;
+}
+
+.Q_feedImage4 {
+	position: absolute;
+	width: 17.112vw;
+	height: auto;
+	top: -4vw;
+	left: 34.74vw;
+}
+
+.Q_feedImage5 {
+	position: absolute;
+	width: 12.344vw;
+	height: 11.791vw;
+	border-radius: var(--main, 0.625vw);
+	box-shadow: 0vw 0vw 1.042vw 0vw rgba(0, 0, 0, 0.15);
+	transform: rotate(-24.321deg);
+	bottom: -0.528vw;
+	right: 21.141vw;
+}
+
+.Q_feedImage6 {
+	position: absolute;
+	width: 10.833vw;
+	height: 12.302vw;
+	border-radius: var(--main, 0.625vw);
+	box-shadow: 0vw 0vw 1.042vw 0vw rgba(0, 0, 0, 0.15);
+	transform: rotate(22.517deg);
+	top: -1.52vw;
+	right: 14.516vw;
+}
+
+.Q_IconSearch {
+	position: absolute;
+	left: 0.833vw;
+	top: 0.625vw;
+	width: 1.25vw;
+	height: 1.25vw;
+}
+
+.Q_IconArrowBlack {
+	width: 0.732vw;
+	height: 0.526vw;
+	transition: all .3s ease;
+}
+
+.Q_shareProfile {
+	width: 1.667vw;
+	height: 1.667vw;
+}
+
+.Q_NotificationsIcon {
+	cursor: pointer;
+	width: 1.85vw;
+	height: 1.688vw;
+}
+
+.Q_changeSettings {
+	width: 1.25vw;
+	height: 1.25vw;
+}
+
+.Q_imageAvatar {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.Q_plusIconBlack {
+	width: 0.885vw;
+	height: 0.885vw;
+}
+
+.Q_QRIcon {
+	width: 7.5vw;
+	height: 7.5vw;
+}
+
+.Q_IconiPhonePro {
+	margin-top: -1.4vw;
+	width: 13.802vw;
+	height: 18.385vw;
+}
+
+.Q_registrationFormImage5 {
+	position: absolute;
+	right: 10.287vw;
+	width: 12.344vw;
+	transform: rotate(11.974deg);
+	height: auto;	
+	bottom: 4.438vw;
+	border-radius: var(--main, 0.625vw);
+}
+
+.Q_registrationFormImage6 {
+	position: absolute;
+	right: 3.171vw;
+	width: 10.833vw;
+	transform: rotate(22.517deg);
+	height: auto;	
+	bottom: -1.059vw;
+	border-radius: var(--main, 0.625vw);
+}
+
+.Q_Line1 {
+	position: absolute;
+	top: 8.125vw;
+	left: 27.3vw;
+	width: 17.865vw;
+	height: 6.302vw;
+}
+
+.Q_Line2 {
+	position: absolute;
+	top: 5.833vw;
+	right: 25.9vw;
+	width: 10.052vw;
+	height: 6.979vw;
+}
+
+.Q_Line3 {
+	position: absolute;
+	bottom: 6.875vw;
+	left: 22.6vw;
+	width: 26.667vw;
+	height: 7.396vw;
+}
+
+.Q_Line4 {
+	position: absolute;
+	bottom: 3.385vw;
+	left: 35.6vw;
+	width: 20.99vw;
+	height: 10.833vw;
 }
 
 .Q_FavoriteRec {
@@ -312,3 +734,6 @@
 	}
 }
 
+.hidden {
+  display: none;
+}

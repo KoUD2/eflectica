@@ -28,13 +28,12 @@ class FavoritesController < ApplicationController
 
   # POST /favorites or /favorites.json
   def create
-    @favorite = current_user.favorites.build(favorite_params)
-  
-    if @favorite.save
-      redirect_to favorites_path, notice: "Favorite was successfully created."
+    favorite = Favorite.new(user_id: current_user.id, effect_id: params[:effect_id])
+
+    if favorite.save
+      render json: { message: "Effect added to favorites successfully" }, status: :created
     else
-      Rails.logger.error("Failed to save favorite: #{@favorite.errors.full_messages}")
-      redirect_to favorites_path, alert: "Failed to create favorite."
+      render json: { error: favorite.errors.full_messages }, status: :unprocessable_entity
     end
   end
   

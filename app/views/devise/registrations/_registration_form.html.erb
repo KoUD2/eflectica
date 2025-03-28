@@ -1,0 +1,36 @@
+<div class="container"> 
+  <div class="login-form hidden">
+		<h2 class='A_Header2'>Войди, чтобы сохранять эффекты и создавать свой контент</h2>
+
+    <%= form_for(User.new, as: :user, url: session_path(:user)) do |f| %>
+      <div class='O_FormRegistration'>
+        <div class='C_FormRegistration'>
+          <%= f.email_field :email, class: 'A_Input', placeholder: 'Адрес почты' %>
+          <%= f.password_field :password, autocomplete: "current-password", class: 'A_Input', placeholder: 'Пароль' %>
+        </div>
+        <div class='C_ButtonRedistration'>
+          <%= f.submit "Войти", class: 'A_ButtonPrimary A_ButtonPrimaryRegister' %>
+					<a href="#" id="show-registration-form">Нет аккаунта?</a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="registration-form form-container">
+		<h2 class='A_Header2'>Зарегистрируйся, чтобы сохранять эффекты и создавать свой контент</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class='O_FormRegistration'>
+        <div class='C_FormRegistration'>
+          <%= f.email_field :email, class: 'A_Input', placeholder: 'Адрес почты' %>
+          <%= f.password_field :password, autocomplete: "new-password", class: 'A_Input', placeholder: 'Пароль' %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'A_Input', placeholder: 'Пароль еще раз' %>
+        </div>
+        <div class='C_ButtonRedistration'>
+          <%= f.submit "Зарегистрироваться", class: 'A_ButtonPrimary A_ButtonPrimaryRegister' %>
+					<a href="#" id="show-login-form">Уже есть аккаунт?</a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

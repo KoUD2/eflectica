@@ -1,6 +1,42 @@
 .A_Logo{
-	height: 7.604vw;
+	height: 3.001vw;
 	width: auto;
+}
+
+.A_Header1 {
+	color: var(--computer-blue, #0638BD);
+	font-family: "Basis Grotesque Pro";
+	font-size: 2.5vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+.A_Header1Collection {
+	text-align: center;
+	color: var(--charcoal-black, #0E1111);
+}
+
+.A_TextComment {
+	color: var(--charcoal-black, #0E1111);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.042vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.354vw;
+}
+
+.A_TextCaption {
+	color: var(--dirty-grey, #7D7D7D);
+	font-family: "Basis Grotesque Pro";
+	font-size: 0.833vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 0.938vw;
+}
+
+.A_Header1Purple {
+	color: var(--glamour-pink, #E33081);
 }
 
 .A_Logo2{
@@ -19,6 +55,7 @@
 .A_Logo2Active {
 	background-color: var(--foggy-grey);
 	position: relative;
+	z-index: 10;
 
 	> svg path {
 		fill: var(--foggy-grey);
@@ -26,12 +63,12 @@
 }
 
 .A_TextS {
-	color: var(--porcelain-white);
+	color: var(--charcoal-black, #0E1111);
 	font-family: "Basis Grotesque Pro";
-	font-weight: 400;
+	font-size: 0.938vw;
 	font-style: normal;
-	font-size: 0.729vw;
-	line-height: 0.938vw;
+	font-weight: 500;
+	line-height: 1.042vw;
 	text-transform: uppercase;
 }
 
@@ -64,12 +101,17 @@
 }
 
 .A_TextXS {
-	color: var(--porcelain-white);
+	color: var(--dirty-grey, #7D7D7D);
 	font-family: "Basis Grotesque Pro";
-	font-size: 0.729vw;
+	font-size: 1.042vw;
 	font-style: normal;
-	font-weight: 400;
-	line-height: 0.938vw;
+	font-weight: 500;
+	line-height: 1.146vw;
+}
+
+.A_Rating {
+	display: flex;
+	align-items: center;
 }
 
 .A_TextXSEffect {
@@ -100,12 +142,633 @@
 }
 
 .A_TextH2 {
-	color: var(--porcelain-white);
+	color: var(--charcoal-black, #0E1111);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.042vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.354vw;
+}
+
+.A_TextEffectDescription {
+	color: var(--charcoal-black, #0E1111);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.25vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.563vw;
+	width: 27.604vw;
+}
+
+.A_TextEffectDescriptionBanner {
+	width: 19.792vw;
+}
+
+.A_backBtn {
+	cursor: pointer;
+	position: absolute;
+	top: 1.667vw;
+	left: 1.302vw;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	color: var(--computer-blue, #0638BD);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.042vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1.146vw;
+
+	> img {
+		width: 0.938vw;
+		transform: rotate(180deg);
+	}
+}
+
+.A_TextEffectDescriptionElement {
+	margin-top: 1.25vw;
+	width: 20.604vw;
+}
+
+.A_TextEffectDescriptionFeed {
+	width: 30.604vw;
+}
+
+.A_TextEffectDescriptionSettingsFeed {
+	width: 24.604vw;
+}
+
+.A_TextEffectDescriptionSettingsFeedFinal {
+	width: 22.604vw;
+}
+
+.A_PhotoEffect {
+	display: flex;
+	width: 49.645%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	object-fit: cover;
+}
+
+.A_PhotoEffectCover {
+  width: 44.063vw;
+  height: 25vw;
+  object-fit: cover;
+  object-position: center;
+}
+
+.A_TextRefCard {
+	margin-left: 0.833vw;
+}
+
+.A_PhotoRef {
+	width: 100%;
+	height: 10.729vw;
+	object-fit: cover;
+}
+
+.A_PhotoLink {
+	width: 100%;
+	height: 9.271vw;
+	object-fit: cover;
+}
+
+.A_TextEffectCard {
+	color: var(--charcoal-black, #0E1111);
+	font-family: "Basis Grotesque Pro";
+	font-size: 100%;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1.146vw;
+}
+
+.A_TextEffectCardPreview {
+	margin-left: 0.833vw;
+	font-size: 0.833vw;
+}
+
+.A_TextEffectCardRaiting {
+	color: var(--glamour-pink, #E33081);
+}
+
+.A_TextEffectDescriptionCollection {
+	width: 30.604vw;
+}
+
+.A_HeaderCollection{
+	display: flex;
+	height: 14.371%;
+	padding: 3.406% 0;
+	justify-content: center;
+	align-items: center;
+	align-self: stretch;
+	background: var(--grey-tag, #E1E1E1);
+}
+
+.A_HeaderCollectionText{
+	color: var(--charcoal-black, #0E1111);
+	font-family: "Basis Grotesque Pro";
+	font-size: 100%;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 100%;
+}
+
+.A_TextTag{
+	color: var(--charcoal-black, #0E1111);
 	font-family: "Basis Grotesque Pro";
 	font-size: 0.833vw;
 	font-style: normal;
+	font-weight: 400;
+	line-height: auto;
+}
+
+.A_TextTagBig{
+	font-size: 1.042vw;
+}
+
+.A_TextCaptionCollection {
+	width: 17.448vw;
+}
+
+.A_ButtonPrimaryCollectionCreate {
+	margin: 1.667vw auto 0 auto;
+}
+
+.A_TextTagFeed {
+	color: var(--dirty-grey, #7D7D7D);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.042vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1.146vw;
+}
+
+.A_TextTagFeedActive {
+	color: var(--computer-blue, #0638BD);
+}
+
+.A_TextTagLight {
+	color: var(--dirty-grey, #7D7D7D);
+}
+
+.A_TextTagLink {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.A_ButtonSecondary {
+	width: 8.021vw;
+	cursor: pointer;
+	display: flex;
+  height: 2.083vw;
+  padding: 0.573vw 0.625vw 0.573vw 0.859vw;
+  align-items: center;
+  gap: 0.417vw;
+  border-radius: var(--button, 	0.417vw);
+  border: var(--border, 2px) solid var(--computer-blue, #0638BD);
+  background: var(--porcelain-white, #FFF);
+}
+
+.A_UnsubscribeButton{
+	border: var(--border, 2px) solid var(--grey-tag, #E1E1E1);
+}
+
+.A_ProgramName {
+	color: var(--charcoal-black, #0E1111);
+	font-family: "Basis Grotesque Pro";
+	font-size: 0.833vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.042vw;
+}
+
+.A_ProgramNameEffect {
+	font-size: 1.042vw;
+}
+
+.A_TaskList {
+	width: 19.844vw;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.417vw;
+}
+
+.A_CategoryItem {
+	color: var(--computer-blue, #0638BD);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.25vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1.563vw;
+}
+
+.A_TaskItem {
+	width: fit-content;
+	display: flex;
+	height: 2.5vw;
+	padding: 0vw 1.25vw;
+	justify-content: center;
+	align-items: center;
+	gap: 0.598vw;
+	border-radius: var(--button, 0.417vw);
+	background: var(--grey-tag, #E1E1E1);
+	color: var(--charcoal-black, #0E1111);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.042vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.354vw;
+}
+
+.A_ButtonSecondaryGray {
+	width: 14.7vw;
+	height: 2.5vw;
+	font-size: 1.042vw;
+	border: var(--border, 2px) solid var(--grey-tag, #E1E1E1);
+}
+
+.A_ButtonSecondaryFit {
+	width: fit-content;
+}
+
+.A_ButtonSecondaryProfile {
+	width: 16.9vw;
+	gap: 0.625vw;
+	font-weight: 500;
+}
+
+.A_ButtonDamage {
+	cursor: pointer;
+	display: flex;
+	width: 11.979vw;
+	height: 2.5vw;
+	padding: 0.417vw 2.188vw;
+	justify-content: center;
+	align-items: center;
+	gap: 0.417vw;
+	flex-shrink: 0;
+	border-radius: var(--button, 0.417vw);
+	border: var(--border, 0.104vw) solid var(--damage, #EA0004);
+	background: var(--porcelain-white, #FFF);
+	color: var(--damage, #EA0004);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.042vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1.146vw;
+}
+
+.A_ButtonDamageEdit{
+	width: fit-content;
+}
+
+.A_ButtonPrimaryProfile {
+	cursor: pointer;
+	display: flex;
+	width: 11.979vw;
+	height: 2.5vw;
+	padding: 0.417vw 2.188vw;
+	justify-content: center;
+	align-items: center;
+	gap: 0.417vw;
+	flex-shrink: 0;
+	border-radius: var(--button, 0.417vw);
+	border: var(--border, 0.104vw) solid var(--grey-tag, #E1E1E1);
+	background: var(--porcelain-white, #FFF);
+	color: var(--charcoal-black, #0E1111);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.042vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1.146vw;
+}
+
+.A_ButtonPrimaryProfileEdit {
+	width: fit-content;
+	padding: 0.417vw 1.25vw;
+}
+
+.A_HeaderChoice {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	align-self: stretch;
+}
+
+.A_ButtonSecondaryGrayFeed {
+	width: auto;
+	height: auto;
+	padding: 0.677vw 1.25vw;
+	font-size: 1.042vw;
+	border: var(--border, 2px) solid var(--grey-tag, #E1E1E1);
+}
+
+.A_Header3{
+	color: var(--charcoal-black, #0E1111);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.25vw;
+	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
+}
+
+.A_Program {
+	display: flex;
+	align-items: center;
+	gap: 0.625vw;
+}
+
+.A_ButtonPrimarySettings {
+	padding: 0.417vw 1.25vw;
+	width: fit-content !important;
+}
+
+.A_TextButton {
+	cursor: pointer;
+	border: none;
+	outline: none;
+	background-color: transparent;
+	color: var(--dirty-grey, #7D7D7D);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.042vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1.146vw;
+}
+
+.A_TextButtonSeсondary {
+	cursor: pointer;
+	border: none;
+	outline: none;
+	background-color: transparent;
+	color: var(--dirty-grey, #7D7D7D);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.042vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.354vw;
+}
+
+.A_TextButtonSeсondaryBlack {
+	color: var(--charcoal-black, #0E1111);
+}
+
+.A_ModerationText {
+	display: flex;
+	padding: 0vw 6.771vw;
+	align-items: center;
+	gap: 0.521vw;
+	align-self: stretch;
+	color: var(--charcoal-black, #0E1111);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.25vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.563vw;
+}
+
+.A_TextButtonSeсondaryPink {
+	color: var(--glamour-pink, #E33081);
+}
+
+.A_FavoriteCollectionIcon {
+	width: 1.042vw;
+	height: 0.885vw;
+}
+
+.A_CloseCollectionIcon {
+	width: 0.938vw;
+	height: 0.938vw;
+}
+
+.A_buttonShareProfile {
+	cursor: pointer;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	display: flex;
+	gap: 0.417vw;
+	align-items: center;
+}
+
+.A_emptyUserPhoto {
+	overflow: hidden;
+	width: 11.979vw;
+	height: 11.979vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 100%;
+	background: var(--soft-grey, #EBEBEB);
+}
+
+.A_TextButtonPrimary {
+	color: var(--computer-blue, #0638BD);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.042vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1.146vw;
+}
+
+.A_addToCollectionPrimaryButtonIconIcon {
+	width: 1.25vw;
+	height: 1.25vw;
+}
+
+.A_SocialIcon {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.813vw;
+	height: 2.813vw;
+	border: 2px solid #E1E1E1;
+	background-color: #FFFFFF;
+	border-radius: 100%;
+}
+
+.A_SocialIconProfile {
+	width: 1.875vw;
+	height: 1.875vw;
+}
+
+.A_vkIcon {
+	width: 1.406vw;
+	height: auto;
+}
+
+.A_tgIcon {
+	width: 1.094vw;
+	height: auto;
+}
+
+.A_linkIcon {
+	width: 1.719vw;
+	height: auto;
+}
+
+.A_AddToCollectionIcon {
+	width: 1.25vw;
+	height: 1.25vw;
+}
+
+.A_PhotoCollection {
+	width: 49.862%;
+	height: 100%;
+}
+.A_PhotoCollectionEmpty {
+	background: var(--soft-grey, #EBEBEB);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.A_DownloadButton {
+	width: 1.25vw;
+	height: 1.25vw;
+}
+
+.A_PhotoCollectionMini {
+	width: 48.947%;
+	height: 48.947%;
+}
+
+.A_folowCollectionImage {
+	width: 0.885vw;
+	height: auto;
+}
+
+.A_Input {
+	display: flex;
+	height: 2.5vw;
+	width: 15.625vw;
+	padding: 0.417vw 0.833vw;
+	align-self: stretch;
+	border-radius: var(--button, 0.417vw);
+	border: var(--border, 0.104vw) solid var(--grey-tag, #E1E1E1);
+	background: var(--porcelain-white, #FFF);
+	outline: none;
+	font-family: "Basis Grotesque Pro";
+	font-size: 0.833vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.042vw;
+}
+
+.A_InputVersion {
+	width: 11.979vw;
+	font-size: 1.042vw;
+}
+
+.A_InputEditProfile {
+	font-size: 1.042vw;
+}
+
+.A_InputRef {
+	display: flex;
+	width: 100%;
+	height: 3.333vw;
+	padding: 0vw 0.833vw;
+	align-items: center;
+	gap: 0.625vw;
+	align-self: stretch;
+	border-radius: var(--button, 0.417vw);
+	border: var(--border, 0.104vw) solid var(--grey-tag, #E1E1E1);
+	background: var(--porcelain-white, #FFF);
+	color: var(--input-grey, #C7C7CA);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.042vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.354vw;
+}
+
+.A_formElement {
+	width: 100%;
+}
+
+.A_ButtonPrimaryElement {
+	margin: 0.833vw auto 0 auto;
+}
+
+.A_searchInput {
+	position: relative;
+	display: flex;
+	width: 15.625vw;
+	height: 2.5vw;
+	padding: 0.417vw 0.833vw 0.417vw 2.5vw;
+	align-items: center;
+	gap: 0.417vw;
+	border-radius: var(--button, 0.417vw);
+	border: var(--border, 0.104vw) solid var(--input-grey, #C7C7CA);
+	background: var(--porcelain-white, #FFF);
+	outline: none;
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.042vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1.146vw;
+}
+
+.A_MainLogo {
+	margin-top: 11.927vw;
+	width: 39.792vw;
+	height: 8.791vw;
+}
+
+.A_HeaderDark {
+	color: var(--charcoal-black, #0E1111);
+}
+
+.A_Program {
+	display: flex;
+	align-items: center;
+	gap: 0.417vw;
+}
+
+.A_hintModeration {
+	cursor: pointer;
+	width: 1.796vw;
+	height: 1.719vw;
+}
+
+.A_More {
+	cursor: pointer;
+	color: var(--computer-blue, #0638BD);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.042vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1.146vw;
+	border: none;
+	outline: none;
+	background-color: transparent;
+	display: flex;
+	align-items: center;
+	gap: 0.313vw;
+}
+
+.A_MoreElement {
+	padding: 0;
+	margin-top: 0.833vw;
+}
+
+.A_buttonWatchAll {
+	cursor: pointer;
+	color: var(--computer-blue, #0638BD);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.042vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1.146vw;
+	background: transparent;
+	border: none;
+	outline: none;
 }
 
 .A_TextM {
@@ -114,7 +777,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 0 1.25vw;
+	padding: 0 0.625vw;
 	background-color: transparent;
 	border-top-left-radius: 0.313vw;
 	border-top-right-radius: 0.313vw;
@@ -123,7 +786,7 @@
 	> a, > p {
 		color: var(--charcoal-black);
 		font-family: "Basis Grotesque Pro";
-		font-size: 0.833vw;
+		font-size: 1.042vw;
 		font-style: normal;
 		font-weight: 400;
 		line-height: normal;
@@ -293,6 +956,43 @@
 	> img {
 		width: 0.521vw;
 		height: auto;
+	}
+}
+
+.A_FilterCategory {
+	width: fit-content;
+  gap: 0.833vw;
+	font-weight: 500;
+
+	> img {
+		width: 0.729vw;
+		height: auto;
+	}
+}
+
+.Q_changeSettingsCategory {
+	width: 0.833vw;
+	height: 0.833vw
+}
+
+.A_FilterSearch {
+	cursor: pointer;
+	display: flex;
+	height: 2.5vw;
+	padding: 0.417vw 0.625vw;
+	align-items: center;
+	gap: 0.833vw;
+	border-radius: var(--button, 0.417vw);
+	border: var(--border, 0.104vw) solid var(--grey-tag, #E1E1E1);
+	background: var(--porcelain-white, #FFF);
+
+	> p {
+		color: var(--charcoal-black, #0E1111);
+		font-family: "Basis Grotesque Pro";
+		font-size: 1.042vw;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 1.146vw;
 	}
 }
 
@@ -565,6 +1265,19 @@
 	text-transform: math-auto;
 }
 
+.A_HeaderChoice{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	align-self: stretch;
+}
+
+.A_TextCheck {
+	display: flex;
+	align-items: center;
+	gap: 0.417vw;
+}
+
 .A_TextHFiltrationEffects {
 	color: var(--charcoal-black);
 	margin-left: 1.042vw;
@@ -584,6 +1297,25 @@
 .A_Avatar {
 	width: 6.25vw;
 	height: auto;
+}
+
+.A_inputFeedback {
+	border: none;
+	outline: none;
+	background-color: transparent;
+	width: 19.792vw;
+	color: var(--charcoal-black, #0E1111);
+	font-family: "Basis Grotesque Pro";
+	font-size: 0.833vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.042vw;
+}
+
+.A_AvatarFeedback {
+	width: 2.604vw;
+	height: 2.604vw;
+	border-radius: 100%;
 }
 
 .A_TextH1Profile {
@@ -640,6 +1372,26 @@
 	&::placeholder {
 		color: var(--ordinary-grey);
 	}
+}
+
+.A_TextareaEdit {
+	display: flex;
+	width: 32.813vw;
+	height: 8.854vw;
+	padding: 0.625vw 0.833vw;
+	align-items: flex-start;
+	gap: 0.625vw;
+	flex-shrink: 0;
+	border-radius: var(--button, 0.417vw);
+	border: var(--border, 0.104vw) solid var(--grey-tag, #e1e1e1);
+	background: var(--porcelain-white, #fff);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.042vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.354vw;
+	outline: none;
+	resize: none;
 }
 
 .A_TextSShow {
@@ -776,6 +1528,173 @@
 	}
 }
 
+.A_Header2 {
+	color: var(--charcoal-black, #0E1111);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.667vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	text-align: center;
+
+	span {
+		color: var(--computer-blue, #0638BD);
+	}
+}
+
+.A_Header2Start{
+	text-align: start;
+}
+
+.A_Header2Iphone {
+	margin: 0 auto;
+	width: 16.198vw;
+}
+
+.A_Header2App {
+	margin: 0 auto;
+	width: 17.198vw;
+}
+
+.A_Header2Settings {
+	width: 28.385vw;
+}
+
+.A_ButtonPrimary {
+	cursor: pointer;
+	display: flex;
+	width: 11.771vw;
+	height: 2.5vw;
+	gap: 0.417vw;
+	justify-content: center;
+	align-items: center;
+	border-radius: var(--button, 0.417vw);
+	background: var(--computer-blue, #0638BD);
+	color: var(--porcelain-white, #FFF);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.042vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1.146vw;
+	border: none;
+	outline: none;
+	z-index: 2;
+	
+	> img {
+		width: 1.25vw;
+		height: 1.25vw;
+	}
+}
+
+.A_ButtonPrimaryPreview {
+	margin-top: 2.813vw;
+}
+
+.A_ButtonPrimaryCreate {
+	position: relative;
+	z-index: 10;
+}
+
+.A_InputForm {
+	display: flex;
+	height: 3.333vw;
+	padding: 0vw 0.833vw;
+	align-items: center;
+	gap: 0.625vw;
+	align-self: stretch;
+	border-radius: var(--button, 0.417vw);
+	border: var(--border, 0.104vw) solid var(--grey-tag, #E1E1E1);
+	background: var(--porcelain-white, #FFF);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.042vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.354vw;
+	outline: none;
+}
+
+.A_InputFormLink {
+	padding-left: 3.125vw;
+	width: 100%;
+}
+
+.A_InputFormTextArea {
+	height: 9.375vw;
+	resize: none;
+	padding: 0.625vw 0.833vw;
+}
+
+.A_InputFormTextAreaBig {
+	height: 30.365vw;
+}
+
+.A_ButtonPrimaryClose {
+	width: 13.771vw;
+}
+
+.A_ButtonPrimaryCollection {
+	margin-top: 1.25vw;
+}
+
+.A_Blue {
+	background: var(--computer-blue, #0638BD);
+}
+
+.A_White {
+	color: var(--porcelain-white, #FFF);
+}
+
+.A_Pink{
+	gap: 0.417vw;
+	background: var(--glamour-pink, #E33081);
+}
+
+.A_LinkPrimary {
+	color: var(--computer-blue, #0638BD);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.25vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1.563vw;
+}
+
+.A_ButtonPrimaryRegister {
+	width: 15.625vw;
+}
+
+.A_ButtonPrimaryFeed {
+	width: 16.271vw;
+	padding: 0.677vw 1.25vw;
+	height: auto;
+}
+
+.A_raitingCreateEffectTitle {
+	color: var(--charcoal-black, #0E1111);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.29vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+.A_raitingCountCreateEffect {
+	color: var(--glamour-pink, #E33081);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.807vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+.A_feedbackCounttCreateEffect {
+	color: var(--ordinary-grey, #A3A3A7);
+	font-family: "Basis Grotesque Pro";
+	font-size: 0.726vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
 .A_header2Promo {
 	text-align: center;
 	width: 83.331vw;
@@ -818,6 +1737,43 @@
 	line-height: 122.765%;
 }
 
+.A_InputFormName {
+	display: flex;
+	height: 3.333vw;
+	padding: 0.417vw 0.833vw;
+	align-items: center;
+	gap: 0.598vw;
+	align-self: stretch;
+	border-radius: var(--button, 0.417vw);
+	border: var(--border, 0.104vw) solid var(--grey-tag, #E1E1E1);
+	background: var(--porcelain-white, #FFF);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.042vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.354vw;
+	outline: none;
+}
+
+.A_InputFormDescription {
+	display: flex;
+	height: 9.375vw;
+	padding: 0.417vw 0.833vw;
+	align-items: center;
+	gap: 0.598vw;
+	align-self: stretch;
+	border-radius: var(--button, 0.417vw);
+	border: var(--border, 0.104vw) solid var(--grey-tag, #E1E1E1);
+	background: var(--porcelain-white, #FFF);
+	font-family: "Basis Grotesque Pro";
+	font-size: 1.042vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.354vw;
+	resize: none;
+	outline: none;
+}
+
 .A_pAbout2 {
 	width: 47.153vw;
 }
@@ -834,6 +1790,14 @@
 	top: 3.364vw;
 	right: 3.42vw;
 	width: 10.104vw !important;
+}
+
+.A_ButtonPrimaryDisabled {
+	background: var(--input-grey, #C7C7CA);
+}
+
+.hidden {
+  display: none;
 }
 
 @media screen and (max-width: 912px) {
@@ -898,3 +1862,4 @@
 		width: 72.312vw;
 	}
 }
+

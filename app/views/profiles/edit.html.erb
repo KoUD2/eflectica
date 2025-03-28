@@ -1,0 +1,82 @@
+<div class='S_Profile' data-controller="profile">
+  <%= render 'shared/back_button' %>
+
+  <div class='W_interfaceItemsProfile'>
+    <div class='W_shareProfile W_shareProfileEdit'>
+      <h1 class="A_Header1">Профиль</h1>
+      <button class='A_buttonShareProfile'>
+        <%= image_tag("shareProfile.svg", alt: "Картинка рейтинга", class:"Q_shareProfile") %>
+        <p class="A_TextButtonPrimary">Поделиться портфолио</p>
+      </button>
+    </div>
+    <%= image_tag("notifications.svg", alt: "Картинка рейтинга", class:"Q_NotificationsIcon") %>
+  </div>
+
+  <%= form_with model: @user, url: profile_path, html: { class: 'M_userInfoSettings M_userInfoSettingsEdit' } do |f| %>
+    <div class='M_userInfo M_userInfoEdit'>
+      <div class='W_imageUploadAvatar'>
+        <div class='A_emptyUserPhoto' data-profile-target="preview">
+          <% if @user.avatar.present? %>
+            <%= image_tag @user.avatar.url, alt: "Аватар", class: "Q_userAvatar" %>
+          <% else %>
+            <%= image_tag("emptyImage.svg", alt: "Картинка", class: "Q_emptyImage") %>
+          <% end %>
+        </div>        
+        <%= f.file_field :avatar, 
+				class: 'hidden', 
+				data: { 
+					action: 'change->profile#preview',
+					profile_target: 'input'
+				} %>
+        <button 
+          type="button" 
+          class="A_ButtonPrimaryProfile A_ButtonPrimaryProfileEdit"
+          data-action="click->profile#upload">
+          Загрузить фото
+        </button>
+      </div>
+      
+      <div class='W_allInfoEditProfileDesc'>
+        <div class='W_allInfoEditProfile'>
+          <div class='W_infoEditProfile'>
+            <h3 class="A_Header3">Как к тебе обращаться?</h3>
+            <%= f.text_field :name, class: 'A_Input A_InputEditProfile', placeholder: 'Имя', 
+    				data: { profile_target: 'nameInput', action: 'input->profile#validateForm' } %>
+          </div>
+
+          <div class='W_infoEditProfile'>
+            <h3 class="A_Header3">Уникальный ник</h3>
+            <%= f.text_field :username, class: 'A_Input A_InputEditProfile', placeholder: 'Уникальный ник', 
+    				data: { profile_target: 'usernameInput', action: 'input->profile#validateForm' } %>
+          </div>
+
+          <div class='W_infoEditProfile'>
+            <h3 class="A_Header3">Ссылка на Telegram</h3>
+            <p class="A_TextTag A_TextTagLight A_TextTagBig">Укажи ник, по которому другие люди могут связаться с тобой. Это поле необязательно</p>
+            <%= f.text_field :contact, 
+						class: 'A_Input A_InputEditProfile', 
+						placeholder: '@example',
+						data: { profile_target: 'telegramInput', action: 'input->profile#validateForm' } %>
+          </div>
+        </div>
+
+        <div class='W_infoEditProfile'>
+          <h3 class="A_Header3">Расскажи немного о себе</h3>
+          <%= f.text_area :bio, class: 'A_TextareaEdit', placeholder: 'Описание', 
+    			data: { profile_target: 'bioInput', action: 'input->profile#validateForm' } %>
+        </div>
+      </div>
+    </div>
+
+    <div class='W_buttonsSafeDelete'>
+      <%= button_to 'Удалить профиль', profile_path, 
+            method: :delete, 
+            class: 'A_ButtonDamage A_ButtonDamageEdit',
+            data: { confirm: 'Вы уверены что хотите удалить профиль?', turbo_confirm: 'Вы уверены что хотите удалить профиль?' } %>
+			<%= f.submit 'Сохранить', 
+						class: 'A_ButtonPrimary A_ButtonPrimaryDisabled', 
+						disabled: true, 
+						data: { profile_target: "submitButton" } %>
+    </div>
+  <% end %>
+</div>

@@ -1,18 +1,70 @@
-<div class='O_CollectionCard'>
-  <div class='A_TextM A_TextHeaderCollection A_TextHeaderCollectionRed'><p>Блики для Фотошопа</p></div>
-  <div class="W_Collection">
-    <div class="M_PhotoCollection">
-      <%= image_tag("imageSeed4.svg", alt: "Картинка стрелочки", class: "Q_ImageSeed2") %>
-      <%= image_tag("imageSeed3.png", alt: "Картинка стрелочки", class: "Q_ImageSeed2") %>
-      <%= image_tag("imageSeed5.png", alt: "Картинка стрелочки", class: "Q_ImageSeed2") %>
+<%= link_to collection_path(collection), class: 'O_CollectionCardLink' do %>
+  <div class='O_CollectionCard'>
+    <div class="A_HeaderCollection <%= css_classes[:header] %>">
+      <p class="A_HeaderCollectionText <%= css_classes[:text] %>"><%= collection.name %></p>
     </div>
-    <div class="C_CollectionInfo">
-      <div class="A_TextM">
-        <p>2 элемента</p>
+
+    <div class="W_Collection">
+      <div class="W_PhotoCollection">
+        <% first_effect = collection.effects.first %>
+        
+        <% if first_effect && first_effect.images.any? %>
+          <%= image_tag(first_effect.images.first.file.url, alt: "Первое фото коллекции", class: "A_PhotoCollection") %>
+        <% else %>
+          <div class='A_PhotoCollection A_PhotoCollectionEmpty'>
+            <%= image_tag("emptyImage.svg", alt: "Картинка", class: "Q_emptyImage") %>
+          </div>
+        <% end %>
+      
+        <div class="C_PhotoCollection">
+          <% collection.effects.each_with_index do |effect, index| %>
+            <% break if index >= 4 %> 
+            <% image = effect.images.offset(1).first %>
+            <% if image %>
+              <%= image_tag(image.file.url, alt: "Фото коллекции", class: "A_PhotoCollectionMini") %>
+            <% end %>
+          <% end %>
+        </div>      
       </div>
-      <div class="A_TextM">
-        <p>создано 19 сентября 2024</p>
+
+      <div class="C_CollectionFooter">
+        <div class="M_TagsCollection">
+          <p class="A_TextTag A_TextTagLight">
+            <% total_elements_count = collection.links.size + collection.effects.size + collection.images.size %>
+            <%= total_elements_count %> элементов
+          </p>
+
+          <p class="A_TextTag A_TextTagLight">
+            <%= collection.effects.size %> эффектов
+          </p>
+        </div>
+        
+
+        <% unless css_classes[:header] == "A_Pink" %>
+          <% if current_user && current_user.subscribed_to?(collection) %>
+            <%= button_to unsubscribe_collection_path(collection), 
+                method: :delete, 
+                remote: true, 
+                class: "A_ButtonSecondary A_UnsubscribeButton", 
+                form: { data: { controller: "subscribe" } } do %>
+              <%= image_tag("Minus.svg", alt: "Удалить подписку", class: "A_folowCollectionImage") %>
+              <p class='Q_ButtonSecondary Q_ButtonSecondaryDark'>Отписаться</p>
+            <% end %>
+          <% else %>
+            <%= button_to subscribe_collection_path(collection), 
+                method: :post, 
+                remote: true, 
+                class: "A_ButtonSecondary A_SubscribeButton", 
+                form: { data: { controller: "subscribe" } },
+                disabled: collection.status == 'private' do %>
+              <%= image_tag("Plus.svg", alt: "Подписаться", class: "A_folowCollectionImage") %>
+              <p class='Q_ButtonSecondary'>
+                Подписаться
+              </p>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
-</div>
+<% end %>

@@ -1,0 +1,81 @@
+<div class='S_Profile'>
+	<div class='W_interfaceItemsProfile'>
+		<div class='W_shareProfile'>
+			<h1 class="A_Header1">Профиль</h1>
+			<button class='A_buttonShareProfile'>
+				<%= image_tag("shareProfile.svg", alt: "Картинка рейтинга", class:"Q_shareProfile") %>
+				<p class="A_TextButtonPrimary">Поделиться портфолио</p>
+			</button>
+		</div>
+		<%= image_tag("notifications.svg", alt: "Картинка рейтинга", class:"Q_NotificationsIcon") %>
+	</div>
+	<div class='M_userInfoSettings'>
+		<div class='M_userInfo'>
+			<div class='A_emptyUserPhoto' data-profile-target="preview">
+				<% if @user.avatar.present? %>
+					<%= image_tag(@user.avatar.url, alt: "Аватар пользователя", class: "Q_imageAvatar") %>
+				<% else %>
+					<%= image_tag("emptyImage.svg", alt: "Картинка", class: "Q_emptyImage") %>
+				<% end %>
+			</div>
+			<div class='W_allInfoProfole'>
+				<div class='W_userInfo'>
+					<div class='W_nameUser'>
+						<h3 class="A_Header3">
+							<% if @user.name.present? %>
+								<%= @user.name %>
+							<% else %>
+								Пользователь
+							<% end %>
+						</h3>
+						<% if @user.username.present? %>
+							<p class="A_TextTag A_TextTagBig A_TextTagLight">@<%= @user.username %></p>
+						<% end %>
+					</div>
+					<% if @user.contact.present? %>
+						<div class='W_socialTg'>
+							<h3 class="A_Header3">Написать мне</h3>
+							<div class='W_tgSection'>
+								<%= image_tag("A_SocialIcon.svg", alt: "Иконка социальной сети", class:"A_SocialIconProfile") %>
+								<p class="A_TextTag A_TextTagBig A_TextTagLight"><%= @user.contact %></p>
+							</div>
+						</div>
+					<% else %>
+						<p class="A_TextTag A_TextTagBig">Здесь пока ничего нет. Ты можешь редактировать профиль, чтобы добавить информацию о себе</p>
+					<% end %>
+				</div>
+				<% if @user.bio.present? %>
+					<div class='W_socialTg W_socialTgDesc'>
+						<h3 class="A_Header3">Описание</h3>
+						<p class="A_TextTag A_TextTagBig"><%= @user.bio %></p>
+					</div>
+				<% end %>
+			</div>
+		</div>
+
+		<button class='A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryProfile'>
+			<%= image_tag("changeSettings.svg", alt: "Картинка", class: "Q_changeSettings") %>
+			Изменить настройки ленты
+		</button>
+	</div>
+
+	<div class='W_buttonsProfile'>
+		<%= link_to edit_profile_path(@user), class: "A_ButtonPrimaryProfile" do %>
+			<button class="A_ButtonPrimaryProfile">Редактировать</button>
+		<% end %>
+		<button class="A_ButtonDamage">Выйти</button>
+	</div>
+
+	<div class='W_postsProfile'>
+		<h3 class="A_Header3">Мои посты</h3>
+		<% if @user.effects.any? %>
+			<div class="W_EffectsCollection">
+				<% @user.effects.each do |effect| %>
+					<%= render partial: 'effects/collection_effect', locals: { effect: effect } %>
+				<% end %>
+			</div>
+		<% else %>
+			<p class="A_TextTag A_TextTagBig">Здесь появятся твои опубликованные эффекты</p>
+		<% end %>
+	</div>
+</div>

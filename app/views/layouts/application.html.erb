@@ -20,9 +20,7 @@
   </head>
 
   <body>
-    <% unless [root_path, welcome_about_path].include?(request.path) %>
-      <%= render "menubar" %>
-    <% end %>
+    <%= render "menubar" %>
   
     <div class='S_mainLayout'>
       <div class='Q_Overlay'></div>
@@ -30,13 +28,6 @@
         <%= yield %>
 
         <%= render "footer" %>
-      </div>
-      <div class='Q_sectionRegister2'>
-        <% if content_for?(:sidebar) %>
-          <%= yield :sidebar %>
-        <% else %>
-          <p>Сайдбар по умолчанию</p>
-        <% end %>
       </div>
     </div>
   </body>  

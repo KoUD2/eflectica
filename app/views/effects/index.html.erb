@@ -1,7 +1,3 @@
-<% content_for :sidebar do %>
-  <%= render "shared/sidebar_search" %>
-<% end %>
-
 <%
   set_meta_tags(
     title: "Эффекты",
@@ -13,116 +9,291 @@
 <% content_for :title, "Effects" %>
 
 <div class='Q_Section Q_SectionActive'>
-  <div class="S_FavoriteSection">
-    <h1 class="A_TextH1">Топовые эффекты</h1>
-    <div class="Q_FavoriteSection">
-      <div class="C_Questions">
-        <% @top_effects.each do |effectTop| %>
-          <%= render effectTop %>
-        <% end %>
-      </div>
+  <div class='M_aboutEffects'>
+    <h1 class='A_Header1'>Топовые эффекты</h1>
+    <div class='W_allEffects'>
+      <p class='A_TextEffectDescription'>Если хочется создать контент, который залетит в тренды, посмотри новинки в этом разделе</p>
+      <button class='A_More'>Смотреть все</button>
     </div>
   </div>
 
-  <div class="A_ButtonEffect">
-    <%= link_to "Написать пост", new_effect_path, class: "A_Button" %>
+  <div class='Q_FavoriteSection'>
+    <div class="W_Effects">
+      <div class="C_Effects">
+        <% @effects.first(3).each do |effect| %>
+          <%= render partial: "effect", locals: { effect: effect } %>
+        <% end %>
+      </div>
+      <div class="C_Effects">
+        <% @effects.offset(3).first(3).each do |effect| %>
+          <%= render partial: "effect", locals: { effect: effect } %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class='Q_Particle'></div>
+    <div class='Q_Particle'></div>
+    <div class='Q_Particle'></div>
+    <div class='Q_Particle'></div>
+    <div class='Q_Particle'></div>
+    <div class='Q_Particle'></div>
   </div>
 </div>
 
-<div class='Q_Subscription Q_filteredEffects'>
-  <div class="O_filtrationEffects">
-    <div class="W_filtrationCategoriaEffects">
-      <h1 class="A_TextH1 A_TextHFiltrationEffects">Категории</h1>
-      <div class='O_CategoryChoice'>
-        <% Effect.tag_counts_on(:tags).each do |tag| %>
-          <div class="C_Category">
-            <div class="M_Category">
-              <%= link_to tag.name.gsub('_', ' '), tagged_effects_path(tag.name) %>
-              <%= radio_button_tag "selected_tag", tag.name, params[:selected_tag] == tag.name, class: "Q_Indicator" %>
-            </div>
-          </div>        
-        <% end %>
+<div class='M_feedSettings'>
+  <div class='W_feedSettings'>
+    <h2 class="A_Header1">Лента</h2>
+    <p class="A_TextEffectDescription A_TextEffectDescriptionFeed">Чтобы упростить поиск новых эффектов, расскажи о своих предпочтениях. Это займет пару минут</p>
+    <div class="W_feedSettings" data-controller="modal">
+      <div class="W_feedSettingsButtons">
+        <button
+          class="A_ButtonPrimary A_ButtonPrimaryFeed"
+          data-action="modal#open"
+        >
+          Перейти к настройке ленты
+        </button>
+        <button class="A_ButtonSecondary A_ButtonSecondaryGrayFeed">
+          Уже настривал(а)
+        </button>
       </div>
-    </div>    
-    <div class="W_filtrationProgrammEffects">
-      <h1 class="A_TextH1 A_TextHFiltrationEffects">Программы</h1>
-      <%= form_with url: effects_path, method: :get, local: true, id: "program-filter-form" do %>
-        <div class="C_ProgramChoice">
-          <% @services.each do |key, service| %>
-            <div class="M_Program">
-              <%= label_tag "program-#{key}" do %>
-                <div class="A_TagProgram">
-                  <div class="Q_PhotoProgram">
-                    <%= image_tag(service["image_url"], alt: service["name"], class: "program-icon") %>
-                  </div>
-                  <p class="A_TextS A_TextFiltrationName"><%= service["name"] %></p>
-                </div>
-                <%= check_box_tag "programs[]", key, params[:programs]&.include?(key), id: "program-#{key}", class: "A_Check" %>
-              <% end %>
-            </div>
+      <div class="modal-overlay hidden" data-modal-target="modal">
+        <div class="S_FeedSettings">
+          <div class="A_HeaderChoice">
+            <h3 class="A_Header3">Настройка ленты</h3>
+            <button class="modal-close" data-action="modal#close">
+              <%= image_tag("Q_IconClose.svg", alt: "Картинка", class: "Q_IconClose")
+              %>
+            </button>
+          </div>
+          <div class="M_SettingsNavigation">
+            <p class="A_TextTagFeed A_TextTagFeedActive" data-modal-target="step1">
+              Шаг 1
+            </p>
+            <p class="A_TextTagFeed" data-modal-target="step2">Шаг 2</p>
+            <p class="A_TextTagFeed" data-modal-target="step3">Шаг 3</p>
+          </div>
+          <div class="O_FeedSettings" data-modal-target="content">
+            <h2 class="A_Header2">Категории</h2>
+            <p class="A_TextEffectDescription A_TextEffectDescriptionSettingsFeed">
+              Выбери одно или несколько направлений, в которых ты работаешь
+            </p>
+            <ul class="C_Choice C_ChoiceFeed">
+              <li class="M_Choice">
+                <label class="custom-checkbox">
+                  <p class="A_TextButtonSeсondary A_TextButtonSeсondaryBlack">
+                    Обработка фото
+                  </p>
+                  <input
+                    type="checkbox"
+                    name="collection"
+                    value="favorite"
+                    data-action="change->popup#toggleFavorite"
+                    data-popup-target="favoriteCheckbox"
+                  />
+                  <span class="checkmark"></span>
+                </label>
+              </li>
+              <li class="M_Choice">
+                <label class="custom-checkbox">
+                  <p class="A_TextButtonSeсondary A_TextButtonSeсondaryBlack">
+                    3D-графика
+                  </p>
+                  <input type="checkbox" name="collection" value="favorite" />
+                  <span class="checkmark"></span>
+                </label>
+              </li>
+              <li class="M_Choice">
+                <label class="custom-checkbox">
+                  <p class="A_TextButtonSeсondary A_TextButtonSeсondaryBlack">
+                    Моушен
+                  </p>
+                  <input type="checkbox" name="collection" value="favorite" />
+                  <span class="checkmark"></span>
+                </label>
+              </li>
+              <li class="M_Choice">
+                <label class="custom-checkbox">
+                  <p class="A_TextButtonSeсondary A_TextButtonSeсondaryBlack">
+                    Иллюстрация
+                  </p>
+                  <input type="checkbox" name="collection" value="favorite" />
+                  <span class="checkmark"></span>
+                </label>
+              </li>
+              <li class="M_Choice">
+                <label class="custom-checkbox">
+                  <p class="A_TextButtonSeсondary A_TextButtonSeсondaryBlack">
+                    Анимация
+                  </p>
+                  <input type="checkbox" name="collection" value="favorite" />
+                  <span class="checkmark"></span>
+                </label>
+              </li>
+              <li class="M_Choice">
+                <label class="custom-checkbox">
+                  <p class="A_TextButtonSeсondary A_TextButtonSeсondaryBlack">
+                    UI/UX-анимация
+                  </p>
+                  <input type="checkbox" name="collection" value="favorite" />
+                  <span class="checkmark"></span>
+                </label>
+              </li>
+              <li class="M_Choice">
+                <label class="custom-checkbox">
+                  <p class="A_TextButtonSeсondary A_TextButtonSeсondaryBlack">
+                    Обработка видео
+                  </p>
+                  <input type="checkbox" name="collection" value="favorite" />
+                  <span class="checkmark"></span>
+                </label>
+              </li>
+              <li class="M_Choice">
+                <label class="custom-checkbox">
+                  <p class="A_TextButtonSeсondary A_TextButtonSeсondaryBlack">VFX</p>
+                  <input type="checkbox" name="collection" value="favorite" />
+                  <span class="checkmark"></span>
+                </label>
+              </li>
+              <li class="M_Choice">
+                <label class="custom-checkbox">
+                  <p class="A_TextButtonSeсondary A_TextButtonSeсondaryBlack">
+                    Геймдев
+                  </p>
+                  <input type="checkbox" name="collection" value="favorite" />
+                  <span class="checkmark"></span>
+                </label>
+              </li>
+              <li class="M_Choice">
+                <label class="custom-checkbox">
+                  <p class="A_TextButtonSeсondary A_TextButtonSeсondaryBlack">
+                    AR & VR
+                  </p>
+                  <input type="checkbox" name="collection" value="favorite" />
+                  <span class="checkmark"></span>
+                </label>
+              </li>
+            </ul>
+          </div>
+          <div
+            id="programs-data"
+            data-programs="<%= programs.map { |name, icon| { name: name.capitalize, icon: icon } }.to_json.html_safe %>"
+          ></div>
+          <button
+            class="A_ButtonPrimary A_ButtonPrimaryClose"
+            data-action="modal#next"
+          >
+            Дальше
+          </button>
+        </div>
+      </div>      
+    </div> 
+  </div>
+
+  <div>
+    <%= image_tag("RegistrationFormImage1.png", alt: "Картинка", class: "Q_feedImage1") %>
+    <%= image_tag("RegistrationFormImage4.png", alt: "Картинка", class:"Q_feedImage4") %>
+    <%= image_tag("RegistrationFormImage5.png", alt: "Картинка", class:"Q_feedImage5") %>
+    <%= image_tag("RegistrationFormImage3.png", alt: "Картинка", class:"Q_feedImage3") %>
+    <%= image_tag("RegistrationFormImage2.png", alt: "Картинка", class:"Q_feedImage2") %>
+    <%= image_tag("RegistrationFormImage6.png", alt: "Картинка", class: "Q_feedImage6") %>
+  </div>
+</div>
+
+<div class='W_allCategoriesBanner'>
+  <div class='W_allCategoriesFeed'>
+    <div class='W_feedsMain hidden'>
+      <div class='O_feedMain'>
+        <div class='W_headerMainFeed'>
+          <div class='W_nameMainFeed'>
+            <h1 class="A_Header1">Лента</h1>
+            <button class='A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryFit'>
+              <%= image_tag("changeSettings.svg", alt: "Картинка", class: "Q_changeSettings Q_changeSettingsMain") %>
+              Настроить
+            </button>
+          </div>
+          <button class='A_More'>Смотреть все</button>
+        </div>
+        <div class='C_Effects C_EffectsCategories'>
+          <% @filtered_effects.each do |effect| %>
+            <%= render 'effects/collection_effect', effect: effect %>
           <% end %>
         </div>
-      <% end %>
-    </div>     
-  </div>
-  
-  <div id="effects-list">
-    <div class="W_filtersGoalEffects">
-      <button class="A_Filter A_FilterGoal">
-        <p class="A_TextS">Задача</p>
-        <%= image_tag("Q_FilterArrowDown.svg", alt: "Картинка стрелочки") %>
-      </button>
-      <button class="A_Filter A_FilterSort">
-        <p class="A_TextS">Сортировать</p>
-        <%= image_tag("Q_FilterArrowUpDown.svg", alt: "Картинка стрелочки", class: "Q_FilterArrowUpDown") %>
-      </button>
-    </div>
-    <div class='C_allEffects'>
-      <% @effects.each do |effect| %>
-        <%= render effect %>
-      <% end %>
+      </div>
+      <div class='O_feedMain'>
+        <div class='W_headerMainFeed'>
+          <h2 class="A_Header2">Дополни ленту — <span>подпишись на новые коллекции</span></h2>
+          <button class='A_More'>Смотреть все</button>
+        </div>
+        <div class='C_Collections'>
+          <% @collectionsFeed.each do |collectionFeed| %>
+            <%= render 'collections/collection', 
+                 collection: collectionFeed,
+                 css_classes: { 
+                   header: "A", 
+                   text: "A" 
+                 } %>
+          <% end %>
+        </div>        
+      </div>
     </div>
 
-    <div class="O_Pagination O_PaginationSubscribtion O_PaginationEffects">
-      <%= paginate @effects %>
+    <div class='O_allCategories'>
+      <div class='M_aboutEffects M_aboutEffectsFeed'>
+        <div class='W_allCategories'>
+          <h1 class='A_Header1'>Категории</h1>
+          <%= link_to categories_effects_path do %>
+            <button class='A_More'>
+              Ещё 7 категорий
+              <%= image_tag("ArrowIcon.svg", alt: "Картинка рейтинга", class:"Q_arrowFollow") %>
+            </button>
+          <% end %>
+        </div>
+        <p class='A_TextEffectDescription'>Выбери направление, в которомработаешь. Это поможет найти нужный эффект</p>
+      </div>
+      <div class='O_Effects'>
+        <div class="M_HeaderEffects">
+          <h2 class="A_Header2">Обработка фото</h2>
+          <button class='A_buttonWatchAll'>Смотреть все</button>
+        </div>
+        <div class="C_Effects">
+          <% @effects.first(3).each do |effect| %>
+            <%= render partial: "effects/collection_effect", locals: { effect:effect } %>
+          <% end %>
+        </div>
+      </div>
+      <div class='O_Effects'>
+        <div class="M_HeaderEffects">
+          <h2 class="A_Header2">3D-графика</h2>
+          <button class='A_buttonWatchAll'>Смотреть все</button>
+        </div>
+        <div class="C_Effects">
+          <% @effects.first(3).each do |effect| %>
+            <%= render partial: "effects/collection_effect", locals: { effect:effect } %>
+          <% end %>
+        </div>
+      </div>
+      <div class='O_Effects'>
+        <div class="M_HeaderEffects">
+          <h2 class="A_Header2">Моушен</h2>
+          <button class='A_buttonWatchAll'>Смотреть все</button>
+        </div>
+        <div class="C_Effects">
+          <% @effects.first(3).each do |effect| %>
+            <%= render partial: "effects/collection_effect", locals: { effect:effect } %>
+          <% end %>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <div class='O_bannerCreate'>
+    <h2 class="A_Header2">Твой эффект поможет другим людям</h2>
+    <%= image_tag("feedbacks.png", alt: "Картинка рейтинга", class:"Q_Feedbacks") %>
+    <div class='W_Agitation'>
+      <p class="A_TextEffectDescription A_TextEffectDescriptionBanner">Сохрани фото до и после применения эффекта</p>
+      <p class="A_TextEffectDescription A_TextEffectDescriptionBanner">Напиши инструкцию по его установке и настройке</p>
+      <p class="A_TextEffectDescription A_TextEffectDescriptionBanner">Прикрепи безопасную ссылку на скачивание эффекта</p>
+    </div>
+    <button class='A_ButtonPrimary'>Написать пост</button>
   </div>
 </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const checkboxes = document.querySelectorAll(".program-checkbox");
-    const form = document.getElementById("program-filter-form");
-
-    if (form) {
-      checkboxes.forEach((checkbox) => {
-        checkbox.addEventListener("change", () => {
-          const formData = new FormData(form);
-          const queryString = new URLSearchParams(formData).toString();
-
-          const url = `${form.action}?${queryString}`;
-
-          fetch(url, {
-            method: "GET",
-            headers: {
-              "X-Requested-With": "XMLHttpRequest",
-            },
-          })
-          .then((response) => {
-            if (response.ok) {
-              return response.text();
-            } else {
-              throw new Error("Network response was not ok.");
-            }
-          })
-          .then((html) => {
-            const effectsList = document.getElementById("effects-list");
-            effectsList.innerHTML = html;
-          })
-
-          .catch((error) => console.error("Fetch error:", error));
-        });
-      });
-    }
-  });
-</script>

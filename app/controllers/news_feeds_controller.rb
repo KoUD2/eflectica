@@ -5,6 +5,14 @@ class NewsFeedsController < ApplicationController
   # GET /news_feeds or /news_feeds.json
   def index
     @news_feeds = current_user.news_feeds.includes(:effect).page(params[:page]).per(10)
+    @my_collections = current_user.collections
+    @collections = Collection.all
+    @favorite_effects = current_user.favorites.includes(effect: :images).map(&:effect)
+    @my_collections = current_user.collections.includes(effects: :images)
+    @subscribed_collections = current_user.sub_collections
+                                            .joins(:collection)
+                                            .where.not(collections: { user_id: current_user.id })
+                                            .map(&:collection)
   end
 
   # GET /news_feeds/1 or /news_feeds/1.json

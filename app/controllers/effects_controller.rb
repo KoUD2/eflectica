@@ -1,13 +1,24 @@
 class EffectsController < ApplicationController
-  load_and_authorize_resource
-  before_action :authenticate_user!
-  before_action :set_effect, only: %i[ show edit update destroy ]
+  # load_and_authorize_resource
+  # before_action :authenticate_user!
+  before_action :set_effect, only: [:show, :edit, :update, :destroy, :approve, :reject]
 
   # GET /effects or /effects.json
   def index
     @top_effects = Effect.limit(5)
     @effects = Effect.search(params[:search]).page(params[:page]).per(12)
     @services = YAML.load_file(Rails.root.join("config/services/app.yml"))["services"]
+
+    @collections = Collection.includes(effects: :images).limit(3)
+
+    @categories = ["photoProcessing", "3dGrafics", "motion", "illustration", "animation", "uiux", "videoProcessing", "vfx", "gamedev", "arvr"]
+
+    @collectionsFeed = Collection.joins(effects: :collection_effects)
+    .where("effects.programs LIKE ? OR effects.programs LIKE ?", "%photoshop%", "%lightroom%")
+    .distinct
+    .limit(3)
+
+    @filtered_effects = Effect.where("programs LIKE ? OR programs LIKE ?", "%photoshop%", "%lightroom%")
   
     if params[:programs].present?
       selected_programs = params[:programs]
@@ -21,6 +32,21 @@ class EffectsController < ApplicationController
       format.js
     end
   end
+
+  def categorie
+    @category = params[:category]
+    @effects = Effect.tagged_with(@category, on: :categories)
+  end
+
+  def categories
+    @effects = Effect.includes(:images, :taggings)
+    @categories = ActsAsTaggableOn::Tag
+      .for_context(:categories)
+      .distinct
+      .pluck(:name)
+    
+    @programs = YAML.load_file(Rails.root.join("config/services/app.yml"))["programs"]
+  end
   
 
   def by_tag
@@ -30,7 +56,10 @@ class EffectsController < ApplicationController
 
   # GET /effects/1 or /effects/1.json
   def show
-    @effect = Effect.find(params[:id])
+    @effect = Effect.includes(comments: { user: :ratings }).find(params[:id])
+    @effects = Effect.where.not(id: @effect.id).limit(4)
+    @user_collections = current_user.collections
+    @comment = Comment.new
   end
 
   # GET /effects/new
@@ -47,6 +76,8 @@ class EffectsController < ApplicationController
   def create
     @effect = Effect.new(effect_params)
     @effect.user = current_user
+
+    attach_images
 
     respond_to do |format|
       if @effect.save
@@ -89,6 +120,22 @@ class EffectsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def approve
+    if @effect.update(is_secure: "Одобрено")
+      redirect_to @effect, notice: 'Эффект одобрен'
+    else
+      redirect_to @effect, alert: 'Ошибка одобрения'
+    end
+  end
+  
+  def reject
+    if @effect.update(is_secure: "Не одобрено")
+      redirect_to @effect, notice: 'Эффект отклонен'
+    else
+      redirect_to @effect, alert: 'Ошибка отклонения'
+    end
+  end
   
 
   private
@@ -97,8 +144,24 @@ class EffectsController < ApplicationController
       @effect = Effect.find(params[:id])
     end
 
+    def set_devise_resource
+      self.resource = User.new
+      self.resource_name = :user
+      self.devise_mapping = Devise.mappings[:user]
+    end
+
     # Only allow a list of trusted parameters through.
     def effect_params
-      params.require(:effect).permit(:name, :img, :description, :speed, :platform, :manual, :link_to, :is_secure, :user_id, :program_version)
+      params.permit(:name, :description, :image_before, :image_after, :manual, :programs, :platform, :category_list, :program_version, :link_to)
+    end
+
+    def set_authorization_flag
+      @author_or_admin = current_user && current_user.is_admin?
+    end
+    
+
+    def attach_images
+      @effect.image_before.attach(params[:image_before]) if params[:image_before]
+      @effect.image_after.attach(params[:image_after]) if params[:image_after]
     end
 end

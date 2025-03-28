@@ -5,7 +5,7 @@
 		"contact": "guru@example.com",
 		"portfolio": "https://designguru.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar1.png",
+		"avatar": "avatar1.png",
 		"email": "design_guru@example.com",
 		"password": "password123"
 	},
@@ -15,7 +15,7 @@
 		"contact": "spark@example.com",
 		"portfolio": "https://creativespark.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar2.png",
+		"avatar": "avatar2.png",
 		"email": "creative_spark@example.com",
 		"password": "password123"
 	},
@@ -25,7 +25,7 @@
 		"contact": "master@example.com",
 		"portfolio": "https://colormaster.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar3.png",
+		"avatar": "avatar3.png",
 		"email": "color_master@example.com",
 		"password": "password123"
 	},
@@ -35,7 +35,7 @@
 		"contact": "wizard@example.com",
 		"portfolio": "https://uxwizard.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar4.png",
+		"avatar": "avatar4.png",
 		"email": "ux_wizard@example.com",
 		"password": "password123"
 	},
@@ -45,7 +45,7 @@
 		"contact": "expert@example.com",
 		"portfolio": "https://brandingexpert.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar5.png",
+		"avatar": "avatar1.png",
 		"email": "branding_expert@example.com",
 		"password": "password123"
 	},
@@ -55,7 +55,7 @@
 		"contact": "king@example.com",
 		"portfolio": "https://vectorking.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar6.png",
+		"avatar": "avatar2.png",
 		"email": "vector_king@example.com",
 		"password": "password123"
 	},
@@ -65,7 +65,7 @@
 		"contact": "pro@example.com",
 		"portfolio": "https://layoutpro.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar7.png",
+		"avatar": "avatar3.png",
 		"email": "layout_pro@example.com",
 		"password": "password123"
 	},
@@ -75,7 +75,7 @@
 		"contact": "artisan@example.com",
 		"portfolio": "https://webartisan.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar8.png",
+		"avatar": "avatar4.png",
 		"email": "web_artisan@example.com",
 		"password": "password123"
 	},
@@ -85,7 +85,7 @@
 		"contact": "illustration@example.com",
 		"portfolio": "https://illustrationpro.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar9.png",
+		"avatar": "avatar1",
 		"email": "illustration_pro@example.com",
 		"password": "password123"
 	},
@@ -95,7 +95,7 @@
 		"contact": "motion@example.com",
 		"portfolio": "https://motionmaster.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar10.png",
+		"avatar": "avatar1",
 		"email": "motion_master@example.com",
 		"password": "password123"
 	},
@@ -105,7 +105,7 @@
 		"contact": "typography@example.com",
 		"portfolio": "https://typographyenthusiast.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar11.png",
+		"avatar": "avatar1",
 		"email": "typography_enthusiast@example.com",
 		"password": "password123"
 	},
@@ -115,7 +115,7 @@
 		"contact": "graphic_guru@example.com",
 		"portfolio": "https://graphicguru.com",
 		"is_admin": false,	
-		"avatar": "https://example.com/avatar12.png",
+		"avatar": "avatar1",
 		"email": "graphic_guru@example.com",
 		"password": "password123"
 	},
@@ -125,7 +125,7 @@
 		"contact": "chameleon@example.com",
 		"portfolio": "https://creativechameleon.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar13.png",
+		"avatar": "avatar1",
 		"email": "creative_chameleon@example.com",
 		"password": "password123"
 	},
@@ -135,7 +135,7 @@
 		"contact": "ninja@example.com",
 		"portfolio": "https://digitalninja.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar14.png",
+		"avatar": "avatar1",
 		"email": "digital_ninja@example.com",
 		"password": "password123"
 	},
@@ -145,7 +145,7 @@
 		"contact": "savant@example.com",
 		"portfolio": "https://designsavant.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar15.png",
+		"avatar": "avatar1",
 		"email": "design_savant@example.com",
 		"password": "password123"
 	},
@@ -155,7 +155,7 @@
 		"contact": "perfectionist@example.com",
 		"portfolio": "https://pixelperfectionist.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar16.png",
+		"avatar": "avatar1",
 		"email": "pixel_perfectionist@example.com",
 		"password": "password123"
 	},
@@ -165,7 +165,7 @@
 		"contact": "buff@example.com",
 		"portfolio": "https://brandingbuff.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar17.png",
+		"avatar": "avatar1",
 		"email": "branding_buff@example.com",
 		"password": "password123"
 	},
@@ -175,7 +175,7 @@
 		"contact": "uxguru@example.com",
 		"portfolio": "https://userexperienceguru.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar18.png",
+		"avatar": "avatar1",
 		"email": "user_experience_guru@example.com",
 		"password": "password123"
 	},
@@ -185,7 +185,7 @@
 		"contact": "productpro@example.com",
 		"portfolio": "https://productdesignpro.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar19.png",
+		"avatar": "avatar1",
 		"email": "product_design_pro@example.com",
 		"password": "password123"
 	},
@@ -195,7 +195,7 @@
 		"contact": "responsive@example.com",
 		"portfolio": "https://responsivedesignspecialist.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar20.png",
+		"avatar": "avatar1",
 		"email": "responsive_design_specialist@example.com",
 		"password": "password123"
 	},
@@ -205,7 +205,7 @@
 		"contact": "illustrative@example.com",
 		"portfolio": "https://illustrativeartist.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar21.png",
+		"avatar": "avatar1",
 		"email": "illustrative_artist@example.com",
 		"password": "password123"
 	},
@@ -215,7 +215,7 @@
 		"contact": "conceptual@example.com",
 		"portfolio": "https://conceptualcreator.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar22.png",
+		"avatar": "avatar1",
 		"email": "conceptual_creator@example.com",
 		"password": "password123"
 	},
@@ -225,7 +225,7 @@
 		"contact": "vanguard@example.com",
 		"portfolio": "https://visualvanguard.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar23.png",
+		"avatar": "avatar1",
 		
 		"email": "visual_vanguard@example.com",
 		"password": "password123"
@@ -236,7 +236,7 @@
 		"contact": "dynamo@example.com",
 		"portfolio": "https://designdynamo.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar24.png",
+		"avatar": "avatar1",
 		"email": "design_dynamo@example.com",
 		"password": "password123"
 	},
@@ -246,7 +246,7 @@
 		"contact": "beacon@example.com",
 		"portfolio": "https://brandingbeacon.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar25.png",
+		"avatar": "avatar1",
 		"email": "branding_beacon@example.com",
 		"password": "password123"
 	},
@@ -256,7 +256,7 @@
 		"contact": "goddess@example.com",
 		"portfolio": "https://graphicgoddess.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar26.png",
+		"avatar": "avatar1",
 		"email": "graphic_goddess@example.com",
 		"password": "password123"
 	},
@@ -266,7 +266,7 @@
 		"contact": "visionary@example.com",
 		"portfolio": "https://artisticvisionary.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar27.png",
+		"avatar": "avatar1",
 		"email": "artistic_visionary@example.com",
 		"password": "password123"
 	},
@@ -276,7 +276,7 @@
 		"contact": "pioneer@example.com",
 		"portfolio": "https://designpioneer.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar28.png",
+		"avatar": "avatar1",
 		"email": "design_pioneer@example.com",
 		"password": "password123"
 	},
@@ -286,7 +286,7 @@
 		"contact": "savantstyle@example.com",
 		"portfolio": "https://stylesavant.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar29.png",
+		"avatar": "avatar1",
 		"email": "style_savant@example.com",
 		"password": "password123"
 	},
@@ -296,7 +296,7 @@
 		"contact": "futurist@example.com",
 		"portfolio": "https://designfuturist.com",
 		"is_admin": false,
-		"avatar": "https://example.com/avatar30.png",
+		"avatar": "avatar1",
 		"email": "design_futurist@example.com",
 		"password": "password123"
 	}

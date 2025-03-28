@@ -1,7 +1,7 @@
 class Effect < ApplicationRecord
   belongs_to :user
-  has_many :comments, dependent: :destroy
-  has_many :ratings, as: :ratingable, dependent: :destroy
+  has_many :comments
+  has_many :ratings, as: :ratingable
   has_many :collection_effects, dependent: :destroy
   has_many :collections, through: :collection_effects
   has_many :news_feeds, dependent: :destroy
@@ -14,6 +14,17 @@ class Effect < ApplicationRecord
 
   acts_as_taggable_on :categories, :tasks
 
+  scope :approved, -> { where(is_secure: "Одобрено") }
+
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :img, presence: true
+  validates :speed, numericality: {
+    only_integer: true,
+    greater_than_or_equal_to: 1,
+    less_than_or_equal_to: 10
+  }
+
   scope :search, ->(query) {
     return all if query.blank?
 
@@ -21,7 +32,15 @@ class Effect < ApplicationRecord
     where('LOWER(name) LIKE ? OR LOWER(description) LIKE ?', query_downcased, query_downcased)
   }
 
-  # ALLOWED_TAGS = %w[моушен-дизайн анимация vfx обработка_фото обработка_видео 3d-графика].freeze
+  ALLOWED_TAGS = [ "photoProcessing", "3dGrafics", "motion", "illustration", "animation", "uiux", "videoProcessing", "vfx", "gamedev", "arvr"].freeze
+
+  def first_image
+    images.find_by(image_type: 'description')
+  end
+
+  def other_images(limit = 4)
+    images.where(image_type: 'description').limit(limit)
+  end
 
   def average_rating
     avg = ratings.average(:number)

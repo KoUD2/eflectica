@@ -6,105 +6,116 @@
   )
 %>
 
-<% content_for :sidebar do %>
-  <%= render "shared/sidebar_search" %>
-<% end %>
-
 <% content_for :title, "News feeds" %>
 
 <div class='Q_Section Q_sectionSubscription'>
-  <h1 class="A_TextH1 A_TextH1News">Лента подписок</h1>
-  <div class="M_Filtration M_FiltrationNews">
-    <button class="A_Filter">
-      <p class="A_TextS">Программа</p>
-      <%= image_tag("Q_FilterArrowDown.svg", alt: "Картинка стрелочки") %>
-    </button>
-    <button class="A_Filter">
-      <p class="A_TextS">Категория</p>
-      <%= image_tag("Q_FilterArrowDown.svg", alt: "Картинка стрелочки") %>
-    </button>
-    <button class="A_Filter">
-      <p class="A_TextS">Дата</p>
-      <%= image_tag("Q_FilterArrowUpDown.svg", alt: "Картинка стрелочки",class: "Q_FilterArrowUpDown") %>
-    </button>
-  </div>
-  <div class="C_allSubscribtions">
-    <% if @news_feeds.any? %>
-      <% @news_feeds.each do |news_feed| %>
-        <div class='O_Subscription'>
-          <h2 class='A_TextH2'>Необычная обработка </h2>
-          <%= render partial: "effects/effect", locals: { effect: news_feed.effect } %>
-        </div>
-      <% end %>
-    <% else %>
-      <p>Нет новостей для отображения.</p>
-    <% end %>
-  </div>
-
-  <div class="O_Pagination O_PaginationSubscribtion">
-    <%= paginate @news_feeds %>
+  <h1 class="A_Header1">Поиск</h1>
+  <div class='W_inputIcon'>
+    <input type="text" class='A_searchInput' placeholder='Поиск коллекций'>
+    <%= image_tag("Q_IconSearch.svg", alt: "Картинка рейтинга", class: "Q_IconSearch") %>
   </div>
 </div>
 
-<div class='Q_Subscription'>
-  <h1 class='A_TextH1 A_TextH1News A_TextH1News2'>Подписки</h1>
-  <div class='W_allSubscriptions'>
-    <div class="C_Subscriptions">
-      <div class="O_SubscriptionCard">
-        <%= image_tag("imageSeed12.png", alt: "Картинка стрелочки", class: "Q_ImageSeedSub") %>
-        <div class="W_SubscriptionBody">
-          <div class="A_TextM A_TextMBig"><p>Глитч-синхронизация</p></div>
-          <p class="A_TextS A_TextSub">Отписаться</p>
-        </div>
-      </div>
-      <div class="O_SubscriptionCard">
-        <%= image_tag("imageSeed1.png", alt: "Картинка стрелочки", class: "Q_ImageSeedSub") %>
-        <div class="W_SubscriptionBody">
-          <div class="A_TextM A_TextMBig"><p>Глитч-синхронизация  </p></div>
-          <p class="A_TextS A_TextSub">Отписаться</p>
-        </div>
-      </div>
-    </div>
-    <div class="C_Subscriptions">
-      <div class="O_SubscriptionCard">
-        <%= image_tag("imageSeed13.png", alt: "Картинка стрелочки", class: "Q_ImageSeedSub") %>
-        <div class="W_SubscriptionBody">
-          <div class="A_TextM A_TextMBig"><p>Глитч-синхронизация  </p></div>
-          <p class="A_TextS A_TextSub">Отписаться</p>
-        </div>
-      </div>
-      <div class="O_SubscriptionCard">
-        <%= image_tag("imageSeed14.png", alt: "Картинка стрелочки", class: "Q_ImageSeedSub") %>
-        <div class="W_SubscriptionBody">
-          <div class="A_TextM A_TextMBig"><p>Глитч-синхронизация  </p></div>
-          <p class="A_TextS A_TextSub">Отписаться</p>
-        </div>
-      </div>
-    </div>
-    <div class="C_Subscriptions">
-      <div class="O_SubscriptionCard">
-        <%= image_tag("imageSeed15.png", alt: "Картинка стрелочки", class: "Q_ImageSeedSub") %>
-        <div class="W_SubscriptionBody">
-          <div class="A_TextM A_TextMBig"><p>Глитч-синхронизация  </p></div>
-          <p class="A_TextS A_TextSub">Отписаться</p>
-        </div>
-      </div>
-      <div class="C_Subscriptions">
-        <div class="O_SubscriptionCard">
-          <%= image_tag("imageSeed16.png", alt: "Картинка стрелочки", class: "Q_ImageSeedSub") %>
-          <div class="W_SubscriptionBody">
-            <div class="A_TextM A_TextMBig"><p>Глитч-синхронизация  </p></div>
-            <p class="A_TextS A_TextSub">Отписаться</p>
+<div class='O_Collections'>
+  <div class='W_allCollectionSections'>
+    <div class='M_collectionSection' data-controller="collection-modal">
+      <h2 class="A_Header1">Мои коллекции</h2>
+      <button class="A_ButtonPrimary A_ButtonPrimaryCollection" data-action="collection-modal#open">
+        <%= image_tag("Q_IconPlusWhite.svg", alt: "Картинка рейтинга", class: "Q_IconPlusWhite") %>
+        Создать новую
+      </button>
+      
+      <div class="modal-overlay hidden" data-collection-modal-target="modal">
+        <div class="S_FeedSettings">
+          <div class="A_HeaderChoice">
+            <h3 class="A_Header3">Создание коллекции</h3>
+            <button class="modal-close" data-action="collection-modal#close">
+              <%= image_tag("Q_IconClose.svg", alt: "Картинка", class: "Q_IconClose") %>
+            </button>
           </div>
+          <%= form_with model: Collection.new, url: collections_path, method: :post, local: true do |f| %>
+            <div class='M_CollectionForm'>
+              <%= f.text_field :name, placeholder: 'Название коллекции', class: 'A_InputFormName' %>
+              <%= f.text_area :description, placeholder: 'Описание коллекции', class: 'A_InputFormDescription' %>
+            </div>
+            <div class="C_PrivateSettings">
+              <h3 class="A_Header3">Настройки доступа</h3>
+              <div class='C_RadioSettings'>
+                <div class="M_RadioSettings">
+                  <%= f.radio_button :status, 'public', id: 'public' %>
+                  <%= f.label :status, 'Сделать коллекцию публичной', for: 'public', class: 'A_TextTag A_TextTagBig' %>
+                </div>
+                <div class="M_RadioSettings">
+                  <%= f.radio_button :status, 'private', id: 'private' %>
+                  <%= f.label :status, 'Сделать коллекцию приватной', for: 'private', class: 'A_TextTag A_TextTagBig' %>
+                </div>
+              </div>
+              <p class="A_TextCaption A_TextCaptionCollection">
+                Если сделать коллекцию публичной, на нее могут подписаться другие пользователи.
+              </p>
+            </div>
+            <%= f.submit 'Создать', class: 'A_ButtonPrimary A_ButtonPrimaryCollectionCreate' %>
+          <% end %>
+        </div>      
+      </div>      
+
+      <div class="C_Collections C_CollectionsAll">
+        <%= render partial: "favorites/favorite", 
+            locals: { favorite_effects: @favorite_effects } %>
+      
+        <% if @my_collections.present? %>  
+          <% @my_collections.each do |collection| %>
+            <%= render partial: "collections/collection", locals: { collection:collection, css_classes: { 
+              header: "A_Pink", 
+              text: "A_White" 
+            }} %>
+          <% end %>
+        <% else %>
+          <p>У вас пока нет созданных коллекций.</p>
+        <% end %>
+      </div>
+    </div>    
+
+    <div class='M_collectionSection'>
+      <h2 class="A_Header1">Подписки</h2>
+      <% if @subscribed_collections.present? %>
+        <div class="C_Collections C_CollectionsAll">
+          <% @subscribed_collections.each do |collection| %>
+            <%= render partial: "collections/collection", locals: { collection: collection, css_classes: { 
+              header: "A_Blue", 
+              text: "A_White" 
+            }} %>
+          <% end %>
+        </div>
+      <% else %>
+        <p>У вас пока нет подписок на коллекции других пользователей.</p>
+      <% end %>
+    </div>    
+
+    <div class='M_collectionSection'>
+      <div class='O_Effects O_EffectsNewsFeed'>
+        <div class="M_HeaderEffects">
+          <h2 class="A_Header2">Похожие коллекции</h2>
+          <button class='A_buttonWatchAll'>Смотреть все</button>
+        </div>
+        <div class="C_Effects">
+          <% @collections.first(3).each do |collection| %>
+            <%= render partial: "collections/collection", locals: { collection: collection, css_classes: { 
+              header: "A", 
+              text: "A" 
+            }} %>
+          <% end %>
         </div>
       </div>
     </div>
-    <div class="O_SubscriptionCard">
-      <%= image_tag("imageSeed1.png", alt: "Картинка стрелочки", class: "Q_ImageSeedSub") %>
-      <div class="W_SubscriptionBody">
-        <div class="A_TextM A_TextMBig"><p>Полезные плагины</p></div>
-        <p class="A_TextS A_TextSub">Отписаться</p>
-      </div>
+  </div>
+
+  <div class='M_appStore'>
+    <h2 class="A_Header2 A_Header2App">Все референсы под рукой, <span>если скачать приложение</span></h2>
+    <div class='W_qrInfo W_qrInfoCollections'>
+      <%= image_tag("QR.svg", alt: "Картинка рейтинга", class: "Q_QRIcon") %>
+      <p class="A_TextTag">App Store</p>
     </div>
+    <%= image_tag("iPhoneProMyCollections.png", alt: "Картинка рейтинга", class: "Q_iPhoneProMyCollections") %>
   </div>
 </div>

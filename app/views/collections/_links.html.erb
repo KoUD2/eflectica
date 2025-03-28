@@ -1,0 +1,26 @@
+<%
+  youtube_id = link.path.match(/(?:youtube\.com\/watch\?v=|youtu.be\/)([^\&\?\/]+)/).try(:[], 1)
+  preview_url = youtube_id ? "https://img.youtube.com/vi/#{youtube_id}/0.jpg" : nil
+%>
+
+<div class="O_LinkCard">
+  <% if preview_url %>
+    <%= image_tag preview_url, alt: "YouTube preview", class: "A_PhotoLink" %>
+  <% else %>
+    <div>
+      Неа
+    </div>
+  <% end %>
+
+  <div class="C_LinkInfo">
+    <%= link_to link.path, target: "_blank", class: "link-url" do %>
+      <p class="A_TextTag A_TextTagBig A_TextTagLight A_TextTagLink">
+        <%= truncate(link.path, length: 40) %>
+      </p>
+    <% end %>
+
+    <% if link.title.present? %>
+      <p class="A_TextEffectCard"><%= link.title %></p>
+    <% end %>
+  </div>
+</div>

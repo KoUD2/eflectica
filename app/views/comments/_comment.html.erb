@@ -1,5 +1,37 @@
-<div id="<%= dom_id comment %>" class='comment'>
-  <p>
-    <%= comment.body %>
-  </p>
+<div id="<%= dom_id comment %>" class='O_Comment'>
+  <div class='W_CommentArea'>
+    <p class='A_TextComment'>
+      <%= comment.body %>
+    </p>
+    
+    <div class='W_FooterComment'>
+      <div class='M_AuthorComment'>
+        <% if comment.user.avatar.present? %>
+          <%= image_tag(comment.user.avatar.url, alt: "User Avatar", class: "A_AvatarFeedback") %>
+        <% else %>
+          <p>нет аватара</p>
+        <% end %>
+        <p class="A_TextCaption">@<%= comment.user.username %></p>
+      </div>
+      <div class="M_Stars">
+        <% user_rating = comment.user.ratings.find_by(ratingable: @effect)&.number || 0 %>
+        <% 5.times do |i| %>
+          <%= image_tag(
+            (i < user_rating) ? "Q_StarIcon.svg" : "Q_StarIconEmpty.svg",
+            alt: (i < user_rating) ? "Заполненная звезда" : "Пустая звезда",
+            class: "Q_StarIconBigFeedback #{i < user_rating ? 'filled-star' : 'empty-star'}"
+          ) %>
+        <% end %>
+      </div>      
+    </div>
+  </div>
+
+  <div class='С_CommentOptions'>
+    <button class='A_TextButton'>Ответить</button>
+    <p class='A_TextCaption'>
+      <%= comment.created_at.day %> 
+      <%= I18n.t('date.month_names')[comment.created_at.month] %> 
+      <%= comment.created_at.year %>
+    </p>
+  </div>
 </div>

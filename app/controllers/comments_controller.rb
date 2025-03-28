@@ -2,6 +2,8 @@ class CommentsController < ApplicationController
   before_action :set_effect
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
+  before_action :authenticate_user!
+
   def index
     @comments = @effect.comments
   end
@@ -17,20 +19,17 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @effect.comments.new(comment_params)
-    @comment.user = current_user
+    comment_params = params.require(:comment).permit(:body, rating_attributes: [:number])
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @effect, notice: 'Комментарий добавлен' }
-        format.json { render json: { comment: @comment, average_rating: @effect.ratings.average(:number).to_f.round(2) } }
-      else
-        format.html { render :new }
-        format.json { render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity }
-      end
+    @comment = @effect.comments.new(comment_params.merge(user_id: current_user.id))
+
+    if @comment.save
+      render json: { message: "Comment created successfully" }, status: :created
+    else
+      render json: { error: @comment.errors.full_messages }, status: :unprocessable_entity
     end
   end
-
+  
   def update
     respond_to do |format|
       if @comment.update(comment_params)
@@ -61,8 +60,8 @@ class CommentsController < ApplicationController
   def set_comment
     @comment = @effect.comments.find(params[:id])
   end
-
+  
   def comment_params
-    params.require(:comment).permit(:body, :parent_id)
+    params.require(:comment).permit(:body, rating_attributes: [:number])
   end
 end

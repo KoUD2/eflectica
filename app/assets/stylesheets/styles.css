@@ -1,6 +1,158 @@
+* {
+	box-sizing: border-box;
+}
+
 html {
 	scroll-behavior: smooth;
 }
+
+.hidden {
+  display: none;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 500px;
+  width: calc(100% - 40px);
+}
+
+.modal-content2 {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.A_InputText,
+.A_InputTextarea {
+  width: calc(100% - 20px);
+  margin-bottom: 10px;
+}
+
+.default-color {
+	color: var(--input-grey, #C7C7CA);
+}
+
+.active-color {
+	color: var(--charcoal-black, #0E1111);
+}
+
+input[type="radio"] {
+	margin: 0;
+	width: 0.781vw;
+	height: 0.781vw;
+	cursor: pointer;
+  accent-color: #0638BD;
+}
+
+.rotated {
+	transform: rotate(180deg);
+}
+
+fieldset {
+  border: none;
+}
+
+.A_ButtonPrimary {
+  background-color: #007bff;
+  color: white;
+}
+
+
+::placeholder {
+  color: var(--input-grey, #C7C7CA);
+}
+
+.custom-file-input {
+	display: flex;
+	height: 3.333vw;
+	padding: 0vw 0.833vw;
+	align-items: center;
+	gap: 0.625vw;
+	align-self: stretch;
+	border-radius: var(--button, 0.417vw);
+	border: var(--border, 0.104vw) solid var(--grey-tag, #E1E1E1);
+	background: var(--porcelain-white, #FFF);
+
+	> label {
+		display: flex;
+		align-items: center;
+		gap: 0.625vw;
+		color: var(--input-grey, #C7C7CA);
+		font-family: "Basis Grotesque Pro";
+		font-size: 1.042vw;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 1.354vw;
+	}
+}
+
+.file-icon {
+	width: 1.667vw;
+	height: 1.667vw;
+}
+
+.hidden-input {
+  display: none;
+}
+
+
+::-webkit-input-placeholder {
+  color: var(--input-grey, #C7C7CA);
+}
+
+::-moz-placeholder {
+  color: var(--input-grey, #C7C7CA);
+}
+
+:-ms-input-placeholder {
+  color: var(--input-grey, #C7C7CA);
+}
+
+dialog::backdrop {
+	position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(93, 93, 93, 0.10);
+	backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+	display: inline-flex;
+	padding: 1.667vw 2.083vw 2.083vw 2.083vw;
+	height: fit-content;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-end;
+	gap: 2.813vw;
+	border-radius: var(--main, 0.625vw);
+	border: var(--border, 0.104vw) solid var(--input-grey, #C7C7CA);
+	background: var(--porcelain-white, #FFF);
+	width: 56.198vw;
+}
+
+
+:-moz-placeholder {
+  color: var(--input-grey, #C7C7CA);
+}
+
 
 body {
 	display: flex;
@@ -37,6 +189,13 @@ a{
 	text-decoration: none;
 }
 
+.modal-close {
+	padding: 0;
+	background-color: transparent;
+	border: none;
+	outline: none;
+}
+
 .userInfo {
 	display: flex;
 	flex-direction: column;
@@ -50,12 +209,30 @@ a{
 	margin-bottom: 10px;
 }
 
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(93, 93, 93, 0.10);
+	backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
 #questions, #users, #effects, #favorites, #collections{
 	width: 1122px;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 10px;
 	margin: 0 auto;
+}
+
+#programs-data {
+	display: none;
 }
 
 #effects {
@@ -81,10 +258,48 @@ a{
 	margin: 30px auto 0 auto;
 }
 
-ul{
+.custom-checkbox {
 	display: flex;
-	gap: 50px;
+	width: 100%;
+	align-items: center;
+	position: relative;
+	cursor: pointer;
+	justify-content: space-between;
 }
+
+.custom-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.custom-checkbox .checkmark {
+  position: relative;
+  width: 1.563vw;
+  height: 1.563vw;
+  border: 0.104vw solid #E1E1E1;
+  border-radius: 0.313vw;
+  background-color: transparent;
+  display: inline-block;
+}
+
+.custom-checkbox .checkmark::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 6px;
+  border: solid #0638BD;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -50%) rotate(-45deg) scaleX(-1);
+  display: none;
+}
+
+.custom-checkbox input[type="checkbox"]:checked ~ .checkmark::after {
+  display: block;
+}
+
 
 .comment{
 	box-sizing: border-box;
@@ -169,16 +384,6 @@ ul{
 	}
 }
 
-input[type="submit"]{
-	margin-top: 5px;
-	border-radius: 100vw;
-	border: none;
-	background-color: white;
-	color: black;
-	padding: 5px 15px;
-	width: fit-content;
-}
-
 .star {
 	font-size: 2rem;
 	color: grey;
@@ -210,30 +415,36 @@ input[type="submit"]{
 	gap: 10px;
 }
 
-.new_user {
-	width: fit-content;
-	margin: 1.25vw auto 0 auto;
-	display: flex;
-	flex-direction: column;
-	gap: 0.417vw;
-}
-
-input[type="email"], input[type="password"]{
-	padding-left: 15px;
-	border-radius: 20px;
-	font-size: 15px;
-	border: none;
-	outline: none;
-	height: 30px;
-	width: 250px;
-}
-
 .logo-large {
   display: block;
 }
 .logo-small {
   display: none;
 }
+
+.registration-form, .login-form {
+	width: 37.188vw;
+	flex-direction: column;
+	display: flex;
+	gap: 2.083vw;
+	align-items: center;
+}
+
+#show-login-form, #show-registration-form {
+	color: var(--dirty-grey, #7D7D7D);
+	font-family: "Basis Grotesque Pro";
+	font-size: 0.833vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.042vw;
+	text-decoration-line: underline;
+	text-decoration-style: solid;
+	text-decoration-skip-ink: none;
+	text-decoration-thickness: auto;
+	text-underline-offset: auto;
+	text-underline-position: from-font;
+}
+
 
 #desctop_imgsOpportunity{
 	display: block;
@@ -243,7 +454,28 @@ input[type="email"], input[type="password"]{
 	display: none;
 }
 
+.star-button {
+  background: none;
+  border: none;
+  padding: 0;
+	width: 1.563vw;
+	height: 1.563vw;
+}
 
+.popup-container {
+  position: relative;
+}
+
+.popup-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+	background: rgba(93, 93, 93, 0.10);
+	backdrop-filter: blur(5px);
+  z-index: 998;
+}
 
 header{
 	margin-top: 1.667vw;
@@ -297,4 +529,8 @@ header{
 
 .tab-pane.active2 {
   display: block;
+}
+
+.hidden {
+  display: none;
 }

@@ -6,106 +6,132 @@
   )
 %>
 
-<% content_for :sidebar do %>
-  <%= render "shared/sidebar_search" %>
-<% end %>
+<div class='S_Collection' data-controller="collection">
+  <%= render 'shared/back_button' %>
 
-<div class="Q_SectionCollection">
-  <div class="M_Nvigation M_NvigationShow M_NvigationShowCollection">
-    <%= link_to collections_path, class: "O_AQuestion" do %>
-      <button class="A_Navigation2 A_Navigation2Show">
-        <%= image_tag("Q_NavigationIcon.svg", alt: "Картинка стрелочки") %>
+  <h1 class="A_Header1 A_Header1Collection"><%= @collection.name %></h1>
+  <% if @collection.user == current_user %>
+    <div class='W_editCollection'>
+      <button class="A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryFit" data-action="click->collection#open">
+        <%= image_tag("plusIconBlack.svg", alt: "Картинка рейтинга", class: "Q_plusIconBlack") %>
+        Добавить элемент
       </button>
+      <button class="A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryFit">Редактировать коллекцию</button>
+    </div>
+  <% elsif @collection.status == 'public' %>
+    <% if current_user %>
+      <% if current_user.subscribed_to?(@collection) %>
+        <%= button_to unsubscribe_collection_path(@collection), 
+            method: :delete, 
+            class: "A_ButtonSecondary", 
+            data: { confirm: "Вы уверены, что хотите отписаться?" } do %>
+          Отписаться
+        <% end %>
+      <% else %>
+        <%= button_to subscribe_collection_path(@collection), 
+            method: :post, 
+            class: "A_ButtonPrimary" do %>
+          Подписаться
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= link_to "Войти, чтобы подписаться", new_user_session_path, class: "A_ButtonPrimary" %>
     <% end %>
-    <div class="A_TextM A_TextMShow"><p>Назад</p></div>
+  <% end %>
+  <div class="modal-overlay hidden" data-collection-target="backdrop">
+    <div class="O_ChoiceCollection O_ChoiceCollectionElement">
+      <div class="A_HeaderChoice">
+        <h3 class='A_Header3'>Выбери коллекцию</h3>
+        <button id="closePopup" class="Q_IconClose" data-action="click->collection#close">
+          <%= image_tag("CloseCollection.svg", alt: "Закрыть", class: 'A_CloseCollectionIcon') %>
+        </button>
+      </div>
+      <div class='A_formElement'>
+        <div class="C_RadioSettings">
+          <label class='M_RadioSettings'>
+            <input type="radio" name="collectionType" value="effect" checked data-action="change->collection#updateForm">
+            <p class='A_TextTag A_TextTagBig'>Эффект</p>
+          </label>
+          <label class='M_RadioSettings'>
+            <input type="radio" name="collectionType" value="link" data-action="change->collection#updateForm">
+            <p class='A_TextTag A_TextTagBig'>Ссылка</p>
+          </label>
+          <label class='M_RadioSettings'>
+            <input type="radio" name="collectionType" value="reference" data-action="change->collection#updateForm">
+            <p class='A_TextTag A_TextTagBig'>Референс</p>
+          </label>
+        </div>
+
+        <div class="effect-link-section" data-collection-target="effectLinkSection">
+          <p class="A_TextEffectDescription A_TextEffectDescriptionElement">
+            Ты можешь перейти на страницу категорий, чтобы найти эффект. На странице эффекта можно добавить его в коллекцию.
+          </p>
+          <a href="/effects/categories">
+            <button type="button" class='A_More A_MoreElement'>
+              В раздел категорий
+              <%= image_tag("ArrowIcon.svg", alt: "Перейти", class:"Q_arrowFollow") %>
+            </button>
+          </a>
+        </div>
+
+        <div class="M_CollectionForm M_CollectionFormRef hidden" data-collection-target="referenceSection">
+          <%= form_with model: [@collection, @collection.images.build], method: :post, multipart: true do |f| %>
+            <div class="M_CollectionForm M_CollectionFormRef">
+              <%= f.text_field :title, placeholder: "Название референса", class: "A_Input A_InputRef" %>
+
+              <div class="custom-file-input">
+                <label for="file_upload" class="file-label">
+                  <%= image_tag("icon-attachment.svg", alt: "Иконка файла", class: "file-icon") %>
+                  <span class="default-color">Картинка</span>
+                </label>
+                <%= f.file_field :file, id: "file_upload", class: "hidden-input" %>
+              </div>
+
+              <%= f.submit "Добавить", class: "A_ButtonPrimary A_ButtonPrimaryElement" %>
+            </div>
+          <% end %>
+        </div>                         
+      </div>
+    </div>
   </div>
-  <h1 class="A_TextH1 A_TextH1Profile">Блики для Фотошопа</h1>
-  <div class="C_TagsCategory">
-    <div class="M_TagCollection">
-      <%= image_tag("Q_EyeIcon.svg", alt: "Картинка стрелочки") %>
-      <p class="A_TextS A_TextSProfile2">Туториалы</p>
-    </div>
-    <div class="M_TagCollection">
-      <%= image_tag("Q_EyeIcon.svg", alt: "Картинка стрелочки") %>
-      <p class="A_TextS A_TextSProfile2">Референсы</p>
-    </div>
-    <div class="M_TagCollection">
-      <%= image_tag("Q_EyeIcon.svg", alt: "Картинка стрелочки") %>
-      <p class="A_TextS A_TextSProfile2">Эффекты</p>
-    </div>
-  </div>
-  <button class="A_Button A_ButtonProfile A_ButtonCollection">Редактировать</button>
-  <div class="W_allAssetsCollection">
-    <div class="O_CollectionItem">
-      <div class="Q_PhotoShow"><%= image_tag("imageSeed27.png", alt: "Картинка стрелочки") %></div>
-      <div class="W_EffectBody">
-        <h2 class="A_TextH2 A_TextH2Show2">Теплый свет</h2>
-        <div class="A_TagCollection"><p>референс</p></div>
-      </div>
-    </div>
+  
 
-    <div class="O_CollectionItem">
-      <div class="Q_PhotoShow"><%= image_tag("imageSeed28.png", alt: "Картинка стрелочки") %></div>
-      <div class="W_EffectBody">
-        <h2 class="A_TextH2 A_TextH2Show2">Световые блики</h2>
-        <div class="M_EffectFooter M_EffectFooterShow">
-          <%= image_tag("ps.svg", alt: "Картинка стрелочки") %>
-          <p class="A_TextXS">Photoshop</p>
+  <div class='M_allStaff'>
+    <div class='W_collectionElements'>
+      <h2 class="A_Header2">Эффекты</h2>
+      <% if @collection.effects.any? %>
+        <div class='C_collectionElements'>
+          <% @collection.effects.each do |effect| %>
+            <%= render partial: 'effects/collection_effect', locals: { effect: effect, programs: @programs } %>
+          <% end %>
         </div>
-      </div>
-    </div>
-
-    <div class="W_tutorsCollection">
-      <div class="O_CollectionItem O_CollectionItemTutor">
-        <div class="C_CollectionCardBody">
-          <h2 class="A_TextH2 A_TextH2Show2">Как сделать космический блеск в...</h2>
-          <p class="A_TextS">https://www.youtube.com...</p>
+      <% else %>
+        <p class="A_TextTag A_TextTagBig">Здесь пока ничего нет</p>
+      <% end %>
+    </div>       
+    <div class='W_collectionElements'>
+      <h2 class="A_Header2">Референсы</h2>
+      <% if @collection.images.any? %>
+        <div class='C_collectionElements'>
+          <% @collection.images.each do |image| %>
+            <%= render partial: 'refs', locals: { image: image } %>
+          <% end %>
         </div>
-        <div class="A_TagCollection"><p>туториал</p></div>
-      </div>
-
-      <div class="O_CollectionItem O_CollectionItemTutor">
-        <div class="C_CollectionCardBody">
-          <h2 class="A_TextH2 A_TextH2Show2">Неоновый блеск за 2 минуты</h2>
-          <p class="A_TextS">https://www.youtube.com...</p>
+      <% else %>
+        <p class="A_TextTag A_TextTagBig">Здесь пока ничего нет</p>
+      <% end %>
+    </div>
+    <div class='W_collectionElements'>
+      <h2 class="A_Header2">Ссылки</h2>
+      <% if @collection.links.any? %>
+        <div class='C_collectionElements'>
+          <% @collection.links.each do |link| %>
+            <%= render partial: 'links', locals: { link: link } %>
+          <% end %>
         </div>
-        <div class="A_TagCollection"><p>туториал</p></div>
-      </div>
-    </div>
-
-    <div class="O_CollectionItem">
-      <div class="Q_PhotoShow"><%= image_tag("imageSeed29.png", alt: "Картинка стрелочки") %></div>
-      <div class="W_EffectBody">
-        <h2 class="A_TextH2 A_TextH2Show2">Градиент</h2>
-        <div class="A_TagCollection"><p>референс</p></div>
-      </div>
-    </div>
-
-    <div class="O_CollectionItem">
-      <div class="Q_PhotoShow"><%= image_tag("imageSeed30.png", alt: "Картинка стрелочки") %></div>
-      <div class="W_EffectBody">
-        <h2 class="A_TextH2 A_TextH2Show2">Размытие</h2>
-        <div class="A_TagCollection"><p>референс</p></div>
-      </div>
-    </div>
-
-    <div class="O_CollectionItem">
-      <div class="Q_PhotoShow"><%= image_tag("imageSeed31.png", alt: "Картинка стрелочки") %></div>
-      <div class="W_EffectBody">
-        <h2 class="A_TextH2 A_TextH2Show2">Яркий свет</h2>
-        <div class="M_EffectFooter M_EffectFooterShow">
-          <%= image_tag("ps.svg", alt: "Картинка стрелочки") %>
-          <p class="A_TextXS">Photoshop</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="O_CollectionItem O_CollectionItemTutor">
-      <div class="C_CollectionCardBody">
-        <h2 class="A_TextH2 A_TextH2Show2">Неоновое свечение в фотошопе. Туториал</h2>
-        <p class="A_TextS">https://www.youtube.com...</p>
-      </div>
-      <div class="A_TagCollection"><p>туториал</p></div>
+      <% else %>
+        <p class="A_TextTag A_TextTagBig">Здесь пока ничего нет</p>
+      <% end %>
     </div>
   </div>
 </div>

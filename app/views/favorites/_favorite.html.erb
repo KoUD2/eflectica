@@ -1,12 +1,41 @@
-<div id="<%= dom_id favorite %>">
-  <p>
-    <strong>User:</strong>
-    <%= favorite.user_id %>
-  </p>
+<div class='O_CollectionCard'>
+  <div class="A_HeaderCollection A_Pink">
+    <%= image_tag("Q_IconHeart.svg", alt: "Картинка рейтинга", class: "Q_IconHeart") %>
+    <p class="A_HeaderCollectionText A_White">Избранное</p>
+  </div>
 
-  <p>
-    <strong>Effect:</strong>
-    <%= favorite.effect_id %>
-  </p>
+  <div class="W_Collection">
+    <div class="W_PhotoCollection">
+      <% first_effect = favorite_effects.first %>
+      
+      <% if first_effect && first_effect.images.any? %>
+        <%= image_tag(first_effect.images.first.file.url, alt: "Первое фото избранного", class: "A_PhotoCollection") %>
+      <% else %>
+        <div class='A_PhotoCollection A_PhotoCollectionEmpty'>
+          <%= image_tag("emptyImage.svg", alt: "Картинка", class: "Q_emptyImage") %>
+        </div>
+      <% end %>
+    
+      <div class="C_PhotoCollection">
+        <% favorite_effects.drop(1).first(4).each do |effect| %>
+          <% image = effect.images.first %>
+          <% if image %>
+            <%= image_tag(image.file.url, alt: "Фото избранного", class: "A_PhotoCollectionMini") %>
+          <% end %>
+        <% end %>
+      </div>      
+    </div>
 
+    <div class="C_CollectionFooter">
+      <div class="M_TagsCollection">
+        <p class="A_TextTag A_TextTagLight">
+          <%= favorite_effects.size %> элементов
+        </p>
+
+        <p class="A_TextTag A_TextTagLight">
+          <%= favorite_effects.size %> эффектов
+        </p>
+      </div>
+    </div>
+  </div>
 </div>

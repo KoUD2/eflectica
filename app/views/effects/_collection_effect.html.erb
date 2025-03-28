@@ -1,0 +1,37 @@
+<%= link_to effect_path(effect), class: 'O_EffectCollectionCard' do %>
+  <div class='С_PhotoGalleryEffect С_PhotoGalleryCollectionEffect'>
+    <% before_image = effect.images.find_by(image_type: 'before') %>
+    <% after_image = effect.images.find_by(image_type: 'after') %>
+
+    <%= image_tag(before_image.file.url, alt: "Before Image", class: "A_PhotoEffect") if before_image %>
+    <%= image_tag(after_image.file.url, alt: "After Image", class: "A_PhotoEffect") if after_image %>
+  </div>
+
+  <div class='M_TextEffectСard'>
+    <div class='W_TextEffectTopCard'>
+      <p class='A_TextEffectCard'><%= effect.name %></p>
+    </div>
+
+    <div class='A_Program'>
+      <% programs_list = effect.programs.split(",").map(&:strip) %>
+      <% programs_list.each do |program_name| %>
+        <div class="A_Program">
+          <% if programs.key?(program_name) %>
+            <%= image_tag programs[program_name], alt: program_name, class: "Q_ProgramIconImage" %>
+          <% else %>
+            <div class="Q_ProgramIconEffectMain">
+              <p>Такой проги нет</p>
+            </div>
+          <% end %>
+    
+          <% if programs_list.size == 1 %>
+            <p class="A_ProgramName">
+              <%= program_name.gsub('_', ' ').titleize %> 
+            </p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>  
+  </div>
+<% end %>
+

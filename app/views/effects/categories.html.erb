@@ -1,0 +1,71 @@
+<%
+  set_meta_tags(
+    title: "Коллекции",
+    description: "Все самые лучшие коллекции на Eflectica",
+    keywords: "коллекции, эффекты"
+  )
+%>
+
+<% content_for :title, "Effects" %>
+
+<div class='W_Categories'>
+	<%= render 'shared/back_button' %>
+
+	<div class='M_allCategories'>
+		<h1 class="A_Header1">Категории</h1>
+		<div class='W_searchInfo'>
+			<div class='W_inputIcon'>
+				<input type="text" class='A_searchInput' placeholder='Поиск'>
+				<%= image_tag("Q_IconSearch.svg", alt: "Картинка рейтинга", class: "Q_IconSearch") %>
+			</div>
+			<button class='A_FilterSearch'>
+				<p>Где искать</p>
+				<%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+			</button>
+		</div>
+		<div class='C_allCategories' data-controller="category">
+			<% @categories.each do |category| %>
+				<div class='W_allCategoriesShow'>
+					<button class='M_HeaderEffectsCategories' 
+									data-action="click->category#toggle" 
+									data-category="<%= category %>">
+						<h2 class='A_Header2'><%= human_readable_category(category) %></h2>
+						<%= image_tag("Q_IconArrowGray.svg", alt: "Иконка стрелки", class: "Q_IconArrowBlack") %>
+					</button>
+					
+					<%= link_to effects_categorie_path(category), 
+							class: 'M_HeaderEffectsCategories hidden', 
+							data: { 
+								category: category,
+								category_target: "viewAllButton" 
+							} do %>
+						<button class='A_More'>Смотреть все</button>
+					<% end %>
+				</div>
+		
+				<div class="C_Effects C_EffectsCategories hidden" 
+						 data-category-target="effectsItem" 
+						 data-category-name="<%= category %>">
+					<% @effects.tagged_with(category, on: :categories).approved.each do |effect| %>
+						<%= render partial: 'effects/collection_effect', locals: { effect: effect } %>
+					<% end %>
+				</div>
+			<% end %>
+		</div>			
+	</div>
+
+	<div class='M_iphoneBanner'>
+		<h2 class="A_Header2 A_Header2Iphone">
+			Все новинки под рукой, <span>если скачать приложение</span>
+		</h2>
+
+		<div class='W_appInfo'>
+			<div class='W_qrInfo'>
+				<%= image_tag("QR.svg", alt: "Картинка рейтинга", class: "Q_QRIcon") %>
+				<p class="A_TextTag">App Store</p>
+			</div>
+
+			<%= image_tag("iPhonePro.png", alt: "Картинка рейтинга", class: "Q_IconiPhonePro") %>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,28 @@
+=> 
+[[32m#<Image:0x00007ffdbd0f2950[0m
+  id: [34m[1m17[0m,
+  imageable_type: [31m[1m"[0m[31mCollection[0m[31m[1m"[0m,
+  imageable_id: [34m[1m1[0m,
+  file: [31m[1m"[0m[31m4602086277.png[0m[31m[1m"[0m,
+  created_at: [31m[1m"[0m[31m2025-03-27 08:17:46.023157000 +0000[0m[31m[1m"[0m,
+  updated_at: [31m[1m"[0m[31m2025-03-27 08:17:46.023157000 +0000[0m[31m[1m"[0m,
+  image_type: [31m[1m"[0m[31mdescription[0m[31m[1m"[0m,
+  title: [31m[1m"[0m[31msed[0m[31m[1m"[0m[32m>[0m,
+ [32m#<Image:0x00007ffdbd0f26d0[0m
+  id: [34m[1m18[0m,
+  imageable_type: [31m[1m"[0m[31mCollection[0m[31m[1m"[0m,
+  imageable_id: [34m[1m1[0m,
+  file: [31m[1m"[0m[31mbc29f53aa7.png[0m[31m[1m"[0m,
+  created_at: [31m[1m"[0m[31m2025-03-27 08:17:48.504556000 +0000[0m[31m[1m"[0m,
+  updated_at: [31m[1m"[0m[31m2025-03-27 08:17:48.504556000 +0000[0m[31m[1m"[0m,
+  image_type: [31m[1m"[0m[31mdescription[0m[31m[1m"[0m,
+  title: [31m[1m"[0m[31met[0m[31m[1m"[0m[32m>[0m,
+ [32m#<Image:0x00007ffdbd0f2590[0m
+  id: [34m[1m19[0m,
+  imageable_type: [31m[1m"[0m[31mCollection[0m[31m[1m"[0m,
+  imageable_id: [34m[1m1[0m,
+  file: [31m[1m"[0m[31m14e281d42b.png[0m[31m[1m"[0m,
+  created_at: [31m[1m"[0m[31m2025-03-27 08:18:38.485244000 +0000[0m[31m[1m"[0m,
+  updated_at: [31m[1m"[0m[31m2025-03-27 08:18:38.485244000 +0000[0m[31m[1m"[0m,
+  image_type: [31m[1m"[0m[31mdescription[0m[31m[1m"[0m,
+  title: [31m[1m"[0m[31mlabore[0m[31m[1m"[0m[32m>[0m]

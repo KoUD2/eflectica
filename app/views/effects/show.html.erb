@@ -1,4 +1,4 @@
-<%
+<label%
   set_meta_tags(
     title: @effect.name,
     description: @effect.description,
@@ -6,162 +6,227 @@
   )
 %>
 
-<% content_for :sidebar do %>
-  <%= render "shared/sidebar_search" %>
-<% end %>
-
-<div class="S_allInfoEffect">
-  <div class="Q_sectionEffect1">
-    <div class="M_Nvigation M_NvigationShow">
-      <%= link_to effects_path, class: "O_AQuestion" do %>
-        <button class="A_Navigation2 A_Navigation2Show">
-          <%= image_tag("Q_NavigationIcon.svg", alt: "Картинка стрелочки") %>
-        </button>
-      <% end %>
-      <div class="A_TextM A_TextMShow"><p>Назад</p></div>
-    </div>
-    <div class="W_effectNaming">
-      <h1 class="A_TextH1 A_TextH1Show A_TextH1Effect"><%= @effect.name %></h1>
-      <div class="W_favoriteButtons ">
-        <button class='A_Button A_ButtonProfile A_ButtonShow'>Добавить в коллекцию</button>
-        <div class="A_FavoriteIcon A_FavoriteIconEffect">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none" class="favorite-icon" onclick="this.closest('form').submit();">
-            <path d="M9 15.6496C8.79 15.6496 8.5764 15.6135 8.3592 15.5414C8.142 15.4693 7.9506 15.3539 7.785 15.1952L6.2325 13.8318C4.6425 12.4324 3.2061 11.0439 1.9233 9.66638C0.6405 8.28887 -0.000599579 6.77027 4.20757e-07 5.11057C4.20757e-07 3.75442 0.472501 2.62189 1.4175 1.71298C2.3625 0.804065 3.54 0.349609 4.95 0.349609C5.745 0.349609 6.495 0.51177 7.2 0.836093C7.905 1.16042 8.505 1.60419 9 2.16743C9.495 1.60477 10.095 1.16128 10.8 0.836959C11.505 0.512636 12.255 0.350186 13.05 0.349609C14.46 0.349609 15.6375 0.804065 16.5825 1.71298C17.5275 2.62189 18 3.75442 18 5.11057C18 6.76969 17.3625 8.29176 16.0875 9.67676C14.8125 11.0618 13.365 12.454 11.745 13.8534L10.215 15.1952C10.05 15.3539 9.8589 15.4693 9.6417 15.5414C9.4245 15.6135 9.2106 15.6496 9 15.6496ZM8.145 3.89869C7.71 3.30718 7.245 2.85618 6.75 2.54571C6.255 2.23524 5.655 2.08029 4.95 2.08087C4.05 2.08087 3.3 2.36941 2.7 2.9465C2.1 3.52358 1.8 4.24494 1.8 5.11057C1.8 5.86078 2.0775 6.65803 2.6325 7.50231C3.1875 8.34658 3.8514 9.16518 4.6242 9.9581C5.397 10.751 6.192 11.494 7.0092 12.1871C7.8264 12.8802 8.49 13.45 9 13.8967C9.51 13.4495 10.1739 12.8796 10.9917 12.1871C11.8095 11.4946 12.6045 10.7516 13.3767 9.9581C14.1489 9.1646 14.8125 8.346 15.3675 7.50231C15.9225 6.6586 16.2 5.86136 16.2 5.11057C16.2 4.24494 15.9 3.52358 15.3 2.9465C14.7 2.36941 13.95 2.08087 13.05 2.08087C12.345 2.08087 11.745 2.2361 11.25 2.54658C10.755 2.85705 10.29 3.30775 9.855 3.89869C9.75 4.04296 9.6225 4.15116 9.4725 4.2233C9.3225 4.29544 9.165 4.3315 9 4.3315C8.835 4.3315 8.6775 4.29544 8.5275 4.2233C8.3775 4.15116 8.25 4.04296 8.145 3.89869Z" fill="#0E1111"/>
-          </svg>
+<div class='O_effectPage'>
+  <%= render 'shared/back_button' %>
+  <div class='W_allContent'>
+    <div class='M_HeaderEffect'>
+      <h1 class='A_Header1 A_HeaderDark'><%= @effect.name %></h1>
+      <div class="W_HintModeration">
+        <%= image_tag("HintModeration.svg", alt: "Картинка рейтинга", class: 'A_hintModeration') %>
+        <div class="Q_ModerationTooltip">
+          Ссылка на скачивание проверена модератором и безопасна
         </div>
       </div>
     </div>
-    <div class="C_allPicturesEffect">
-      <%= image_tag("imageSeed24.png", alt: "Картинка стрелочки") %>
-      <%= image_tag("imageSeed25.png", alt: "Картинка стрелочки") %>
-    </div>
-    <div class="W_descEffect">
-      <div class="A_TextL A_TextLShow A_TextLEffect">
-        <p>Этот эффект придаёт сцене реалистичный металлический блеск, добавляя глубину и отражения, характерные для полированного металла. Подходит для создания футуристичных и индустриальных композиций</p>
+    <div class='С_PhotoGalleryEffect2'>
+      <div class='M_PhotoEffect'>
+        <% if @effect.images.find_by(image_type: 'before') %>
+          <%= image_tag(@effect.images.find_by(image_type: 'before').file.url, alt: "До применения", class: 'A_PhotoEffect A_PhotoEffectCover') %>
+        <% else %>
+          <p>Нет картинки</p>
+        <% end %>
+        <p class='A_TextTag A_TextTagLight'>До применения</p>
       </div>
-      <div class="W_buttonDownload">
-        <button class='A_Button A_ButtonEffect2'>Установить</button>
-        <%= image_tag("Approve.svg", alt: "Картинка стрелочки") %>
+      <div class='M_PhotoEffect'>
+        <% if @effect.images.find_by(image_type: 'after') %>
+          <%= image_tag(@effect.images.find_by(image_type: 'after').file.url, alt: "После применения", class: 'A_PhotoEffect A_PhotoEffectCover') %>
+        <% else %>
+          <p>Нет картинки</p>
+        <% end %>
+        <p class='A_TextTag A_TextTagLight'>После применения</p>
       </div>
-    </div>
-    <div class="M_aboutConfig">
-      <div class="W_programmEffect">
-        <h2 class="A_TextH2 A_TextH1Profile">Подойдет для</h2>
-        <div class="W_exectProgramm W_exectProgrammCurrent">
-          <% if @effect.programs.present? %>
-            <% programs = Array(@effect.programs.split(',')).map(&:strip) %>
-            <% if programs.length == 1 %>
-              <div class='Q_PhotoProgram'>
-                <%= image_tag(SERVICES[programs.first]["image_url"], alt: SERVICES[programs.first]["name"]) %>
+    </div>    
+    <div class='O_allContentEffect'>
+      <div class='W_infoEffect'>
+        <p class='A_TextEffectDescription'><%= @effect.description %></p>
+        <div class='M_Buttons'>
+          <button class='A_ButtonPrimary'>
+            <%= image_tag("DownloadButton.svg", alt: "Картинка рейтинга", class: 'A_DownloadButton') %>
+            Установить
+          </button>
+         
+          <div class="popup-container" data-controller="popup" data-popup-effect-id="<%= @effect.id %>">
+            <button class="A_ButtonSecondary A_ButtonSecondaryGray" data-action="click->popup#open">
+              <%= image_tag("AddToCollectionIcon.svg", alt: "Картинка рейтинга", class: "A_AddToCollectionIcon") %>
+              Добавить в коллекцию
+            </button>
+            <div class="popup-backdrop hidden" data-popup-target="backdrop"></div>
+            <div id="popup" class="O_ChoiceCollection hidden" data-popup-target="popup">
+              <div class="A_HeaderChoice">
+                <h3 class='A_Header3'>Выбери коллекцию</h3>
+                <button id="closePopup" class="Q_IconClose" data-action="click->popup#close">
+                  <%= image_tag("CloseCollection.svg", alt: "Картинка рейтинга", class: 'A_CloseCollectionIcon') %>
+                </button>
               </div>
-              <p class='A_TextXS A_TextXShow'><%= SERVICES[programs.first]["name"] %></p>
-            <% else %>
-
-              <% programs.each do |program| %>
-                <% if SERVICES.key?(program) %>
-                  <div class='Q_PhotoProgram'>
-                    <%= image_tag(SERVICES[program]["image_url"], alt: SERVICES[program]["name"]) %>
-                  </div>
+              <ul class="C_Choice">
+                <li class='M_Choice'>
+                  <label class="custom-checkbox">
+                    <div class='A_TextCheck'>
+                      <%= image_tag("FavoriteIcon.svg", alt: "Картинка рейтинга", class: 'A_FavoriteCollectionIcon') %>
+                      <p class='A_TextButtonSeсondary A_TextButtonSeсondaryPink'>Избранное</p>
+                    </div>
+                    <input type="checkbox" name="collection" value="favorite" data-action="change->popup#toggleFavorite" data-popup-target="favoriteCheckbox">
+                    <span class="checkmark"></span> 
+                  </label>
+                </li>
+                <% @user_collections.each do |collection| %>
+                  <li class='M_Choice'>
+                    <label class="custom-checkbox">
+                      <p class='A_TextButtonSeсondary A_TextButtonSeсondaryBlack'><%= collection.name %></p>
+                      <input type="checkbox" name="collection" value="<%= collection.id %>" 
+                            data-action="change->popup#toggleCollection" data-popup-target="collectionCheckbox">
+                      <span class="checkmark"></span>
+                    </label>
+                  </li>
                 <% end %>
-              <% end %>
+              </ul>
+              <button class="M_Choice M_ChoiceBlue">
+                <%= image_tag("addToCollectionPrimaryButtonIcon.svg", alt: "Картинка рейтинга", class: 'A_addToCollectionPrimaryButtonIconIcon') %>
+                <p class='A_TextButtonPrimary'>Создать новую коллекцию</p>
+              </button>
+            </div>
+          </div>          
+        </div>
+        <div class='W_PlatformArea'>
+          <p class='A_Header3'>Подойдёт для</p>
+          <div class="C_PlatformArea">
+            <% @effect.programs.split(",").each do |program_name| %>
+              <% program_name = program_name.strip %>
+              <div class="A_Program">
+                <% if programs.key?(program_name) %>
+                  <%= image_tag programs[program_name], alt: program_name, class: "Q_ProgramIconEffect" %>
+                <% end %>
+                <p class="A_ProgramName A_ProgramNameEffect"><%= program_name.gsub('_', ' ').titleize %> <%= @effect.program_version %>
+                </p>
+              </div>
             <% end %>
-          <% else %>
-            <p>Программы отсутствуют</p>
-          <% end %>
 
-          <div class='A_TagProgram A_TagProgramCurrent'>
-            <% if @effect.platform.present? %>
-              <% Array(@effect.platform.split(',')).each do |device| %>
-                <% if PLATFORM.key?(device.strip) %>
-                  <div class='Q_PhotoProgram'>
-                    <%= image_tag(PLATFORM[device.strip]["image_url"], alt:PLATFORM[device.strip]["name"]) %>
-                  </div>
-                <% else %>
-                  <p>Устройство <%= device.strip %> не найдено в PLATFORM</p>
-                <% end %>
+            <div class="M_Platforms">
+              <% @effect.platform.split(",").each do |platform_name| %>
+                <% platform_name = platform_name.strip.downcase %>
+                <div class="Q_ProgramIcon Q_ProgramIconEffect">
+                  <% if platforms.key?(platform_name) %>
+                    <%= image_tag platforms[platform_name], class: "Q_PlatformIcon", alt: platform_name.capitalize %>
+                  <% else %>
+                    <%= image_tag "default_platform_icon.svg", class: "Q_PlatformIcon", alt: platform_name.capitalize %>
+                  <% end %>
+                </div>
               <% end %>
-            <% else %>
-              <p>Устройства отсутствуют</p>
-            <% end %>         
+            </div>            
+          </div>          
+        </div>
+        <div class='W_CategoryArea'>
+          <p class='A_Header3'>Категория</p>
+          <ul class='A_CategoryList'>
+            <% @effect.category_list.each do |category| %>
+              <a href="/effects/categories">
+                <li class='A_CategoryItem'>
+                  <%= human_readable_category(category) %> 
+                  <%= image_tag("ArrowIcon.svg", alt: "Картинка рейтинга", class:"Q_arrowFollow") %>
+                </li>
+              </a>
+            <% end %>
+          </ul>          
+        </div>
+        
+        <div class='W_CategoryArea'>
+          <p class='A_Header3'>Задачи</p>
+          <div class='A_TaskList'>
+            <% @effect.task_list.each do |task| %>
+              <div class='A_TaskItem'><%= human_readable_task(task) %></div>
+            <% end %>
+          </div>          
+        </div>
+        
+        <div class='W_InstructionEffect'>
+          <p class='A_Header2'>Инструкция по использованию</p>
+          <%= sanitize(@effect.manual.gsub('\\n', "\n").gsub(/\n/, '<br>')) %>
+        </div>
+
+        <div class='W_More'>
+          <h2 class='A_Header2 A_Header2Settings'>Хочешь больше похожих эффектов? <span>Настрой ленту!</span></h2>
+          <div class='M_Buttons M_ButtonsSettings'>
+            <button class='A_ButtonPrimary A_ButtonPrimarySettings'>Перейти к настройке ленты</button>
+            <button class='A_TextButtonSeсondary'>Больше не показывать</button>
           </div>
         </div>
       </div>
-      <div class="W_programmEffect">
-        <h2 class="A_TextH2 A_TextH1Profile">Категория и задачи</h2>
-        <div class="W_allCategories">
-          <div class="M_Tag">
-            <p class='A_TextS A_TextSProfile2'>3D-графика</p>
+      <div>
+        <% if current_user && current_user.is_admin? %>
+          <div class='W_adminControls'>
+            <h2 class='A_Header2 A_Header2Start'>Администрирование эффекта</h2>
+            <div class='M_Buttons'>
+              <%= form_for @effect, url: approve_effect_path(@effect), method: :patch do |f| %>
+                <%= f.hidden_field :is_secure, value: "Одобрено" %>
+                <button class='A_ButtonPrimary'>   
+                  Одобрить эффект
+                </button>
+              <% end %>
+
+              <%= form_for @effect, url: reject_effect_path(@effect), method: :patch do |f| %>
+                <%= f.hidden_field :is_secure, value: "Не одобрено" %>
+                <button class='A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryFit'>
+                  Не одобрить
+                </button>
+              <% end %>
+            </div>
           </div>
-          <div class="M_Tag">
-            <p class='A_TextS A_TextSProfile2'>Настройки сцен</p>
+        <% else %>
+          <div class='W_shareRaiting'>
+            <div class='W_ShareArea'>
+              <h2 class="A_Header3">Поделиться</h2>
+              <div data-controller="share" class="M_Socials">
+                <button class='A_SocialIcon' data-action="click->share#shareToVK" data-share-target="vk">
+                  <%= image_tag("vk.svg", alt: "Поделиться ВКонтакте", class: 'A_vkIcon') %>
+                </button>
+              
+                <button class='A_SocialIcon' data-action="click->share#shareToTelegram" data-share-target="telegram">
+                  <%= image_tag("tg.svg", alt: "Поделиться в Telegram", class: 'A_tgIcon') %>
+                </button>
+              
+                <button class='A_SocialIcon' data-action="click->share#copyLink" data-share-target="link">
+                  <%= image_tag("tabler_link.svg", alt: "Скопировать ссылку", class: 'A_linkIcon') %>
+                </button>
+              </div>            
+            </div>
+            <div class='W_RatingArea'>
+              <h2 class="A_Header3">Рейтинг</h2>
+              <div class='W_RatingArea'>
+                <div class='A_Rating'>
+                  <%= image_tag("Q_StarIcon.svg", alt: "Картинка рейтинга", class: 'Q_StarIconBig') %>
+                  <p class='A_Header1 A_Header1Purple'><%= @effect.average_rating || "Нет рейтинга" %></p>
+                </div>
+                <p class='A_TextTag A_TextTagLight'>На основе <%= @effect.ratings.size %> оценок</p>
+              </div>
+            </div>
           </div>
-          <div class="M_Tag">
-            <p class='A_TextS A_TextSProfile2'>Металлик</p>
+          <div class='W_allComments'>
+            <h2 class="A_Header2">Комментарии (<%= @effect.comments.size %>)</h2>
+            <%= render partial: 'comments/my_comment', locals: { effect: @effect, current_user: current_user } %>
+            <div class='C_Comments'>
+              <%= render partial: 'comments/comment', collection: @effect.comments %>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="M_instructionsEffect">
-      <h1 class="A_TextH1 A_TextH1Profile">Инструкция по использованию</h1>
-      <div class="A_TextM A_TextMEffect">
-        <p>1.	Импорт материала:<br>
-          &bull;	Откройте свою сцену в&nbsp;Blender<br>
-          &bull;	Перейдите в&nbsp;File &gt; Append, выберите .blend файл с&nbsp;настройками сцены и&nbsp;добавьте материал &laquo;Metallic Shine&raquo;<br><br>
-          2.	Применение материала:<br>
-          &bull;	Выберите объект и&nbsp;в&nbsp;Properties &gt; Material примените импортированный материал<br>
-          &bull;	Установите Metallic на&nbsp;1.0 и&nbsp;Roughness на&nbsp;0.2-0.3 для блестящего эффекта<br><br>
-          3.	Настройка освещения:<br>
-          &bull;	Добавьте Area Light или Spot Light, чтобы создать яркие отражения<br>
-          &bull;	Для ещё более реалистичного эффекта добавьте HDRI-карту в&nbsp;World Properties<br><br>
-          4.	Финальная визуализация:<br>
-          &bull;	Включите Cycles рендеринг и&nbsp;установите высокое значение Render Sampling (например, 1000)<br>
-          &bull;	Нажмите F12 для финальной визуализации</p>
+        <% end %>
       </div>
     </div>
   </div>
-  <div class="Q_sectionEffect2">
-    <h1 class="A_TextH1 A_TextH1Profile">Комментарии и оценки</h1>
-    <div class="O_Comment">
-      <div class="A_TextM A_TextMShow"><p>Вау, очень круто</p></div>
-      <div class="C_CommentAuthor">
-        <div class="M_Author">
-          <%= image_tag("imageSeed21.png", alt: "Картинка стрелочки", class: "A_Avatar") %>
-          <p class="A_TextS">@masha_photo</p>
-        </div>
-        <div class="M_StarRate">
-          <%= image_tag("Q_StarIconComment.svg", alt: "Картинка стрелочки") %>
-          <%= image_tag("Q_StarIconComment.svg", alt: "Картинка стрелочки") %>
-          <%= image_tag("Q_StarIconComment.svg", alt: "Картинка стрелочки") %>
-          <%= image_tag("Q_StarIconComment.svg", alt: "Картинка стрелочки") %>
-          <%= image_tag("Q_StarIconComment.svg", alt: "Картинка стрелочки") %>
-        </div>
-      </div>
-    </div>
+</div>
 
-    <div class="O_Comment">
-      <div class="A_TextM A_TextMShow"><p>Пока не тестил, но мне уже нравится</p></div>
-      <div class="C_CommentAuthor">
-        <div class="M_Author">
-          <%= image_tag("imageSeed26.png", alt: "Картинка стрелочки", class: "A_Avatar") %>
-          <p class="A_TextS">@mark_motion</p>
-        </div>
-      </div>
+<div class='W_similarEffects'>
+  <div class='O_Effects O_EffectsBarrow'>
+    <div class="M_HeaderEffects">
+      <h2 class="A_Header2">Похожие эффекты</h2>
+      <button class='A_buttonWatchAll'>Смотреть все</button>
     </div>
-
-    <div class="O_Comment O_CommentMy">
-      <div class="M_Author">
-         <%= image_tag("A_Avatar.png", alt: "Картинка стрелочки", class: "A_Avatar") %>
+    <% if @effects.present? %>
+      <div class="C_Effects">
+        <% @effects.each do |effect| %>
+          <%= render partial: "collection_effect", locals: { effect: effect } %>
+        <% end %>
       </div>
-      <div class="M_MyComment">
-        <div class="A_TextM A_TextMShow A_TextMShowMy"><p>Напиши комментарий или поставь оценку</p></div>
-        <div class="M_StarRate">
-          <%= image_tag("Q_StarIconCommentInactive.svg", alt: "Картинка стрелочки") %>
-          <%= image_tag("Q_StarIconCommentInactive.svg", alt: "Картинка стрелочки") %>
-          <%= image_tag("Q_StarIconCommentInactive.svg", alt: "Картинка стрелочки") %>
-          <%= image_tag("Q_StarIconCommentInactive.svg", alt: "Картинка стрелочки") %>
-          <%= image_tag("Q_StarIconCommentInactive.svg", alt: "Картинка стрелочки") %>
-        </div>
-      </div>
-    </div>
+    <% else %>
+      <p class="A_TextEmpty">Нет доступных эффектов</p>
+    <% end %>
   </div>
 </div>

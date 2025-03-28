@@ -6,6 +6,9 @@ class Image < ApplicationRecord
 
 	validates :image_type, presence: true, inclusion: { in: %w[before after description] }
 
+  # validates :title, presence: { message: "Введите название" }
+  # validates :file, presence: { message: "Выберите файл" }
+
   def image_url
     file.url
   end

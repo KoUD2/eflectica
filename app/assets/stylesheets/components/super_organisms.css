@@ -16,14 +16,6 @@
 	gap: 0.833vw;
 }
 
-.S_Profile {
-	display: flex;
-	width: 11.458vw;
-	flex-direction: column;
-	gap: 1.25vw;
-	margin: 0 auto;
-}
-
 .S_contentQuestion {
 	display: flex;
 	gap: 0.833vw;
@@ -36,4 +28,43 @@
 .S_allInfoEffect {
 	display: flex;
 	gap: 0.833vw;
+}
+
+.S_FeedSettings {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: inline-flex;
+	padding: 2.083vw 2.5vw;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1.667vw;
+	border-radius: var(--main, 0.625vw);
+	border: var(--border, 0.104vw) solid var(--input-grey, #C7C7CA);
+	background: var(--porcelain-white, #FFF);
+	z-index: 1000;
+}
+
+.S_Profile {
+	position: relative;
+	padding: 1.708vw 3.151vw 0 3.229vw;
+	width: 96.875vw;
+	border-radius: var(--button, 0.417vw) 0 var(--button, 0.417vw) var(--button, 0.417vw);
+	background: var(--foggy-grey, #F5F5F5);
+	min-height: 47.917vw;
+}
+
+.S_Collection {
+	position: relative;
+	width: 96.875vw;
+	padding: 1.717vw 4.688vw 2.813vw 4.479vw;
+	min-height: 66.094vw;
+	border-radius: var(--button, 0.417vw);
+	background: var(--foggy-grey, #f5f5f5);
+}
+
+.hidden {
+  display: none;
 }

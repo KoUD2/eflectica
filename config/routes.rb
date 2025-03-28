@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "profiles/show"
   resources :links
   resources :news_feeds
   devise_for :users
@@ -36,23 +37,40 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :profiles, only: [:show, :edit, :update]
+
+  # get 'profiles/:id', to: 'profiles#show', as: 'profile'
+
   resources :sub_collections
   resources :collection_effects
   resources :collections do
     resources :links, only: [:index]
-    resources :images, only: [:index]
+    resources :images
     collection do
       get 'tagged/:tag', to: 'collections#by_tag', as: :tagged
     end
+    member do
+      post 'subscribe'
+      delete 'unsubscribe'
+    end
   end
+
+  get 'effects/categorie/:category', to: 'effects#categorie', as: :effects_categorie
+
   resources :subscriptions, only: [:create]
   resources :favorites
   resources :effects do
+    member do
+      patch :approve
+      patch :reject
+    end
     collection do
+      get 'categories', to: 'effects#categories'
       get 'tagged/:tag', to: 'effects#by_tag', as: :tagged
     end
-    resources :comments, only: [:create, :destroy] 
-    resources :ratings, only: [:create]
+    resources :comments do
+      resources :ratings, only: [:create]
+    end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -72,5 +90,5 @@ Rails.application.routes.draw do
   # get 'answersGallery', to: 'tasks#answersGallery'
 
   # Defines the root path route ("/")
-  root "effects#index"
+  root "welcome#index"
 end
