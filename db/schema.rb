@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -40,8 +43,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
   end
 
   create_table "collection_effects", force: :cascade do |t|
-    t.integer "collection_id", null: false
-    t.integer "effect_id", null: false
+    t.bigint "collection_id", null: false
+    t.bigint "effect_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["collection_id"], name: "index_collection_effects_on_collection_id"
@@ -49,8 +52,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
   end
 
   create_table "collection_images", force: :cascade do |t|
-    t.integer "collection_id", null: false
-    t.integer "image_id", null: false
+    t.bigint "collection_id", null: false
+    t.bigint "image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["collection_id"], name: "index_collection_images_on_collection_id"
@@ -58,8 +61,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
   end
 
   create_table "collection_links", force: :cascade do |t|
-    t.integer "collection_id", null: false
-    t.integer "link_id", null: false
+    t.bigint "collection_id", null: false
+    t.bigint "link_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["collection_id"], name: "index_collection_links_on_collection_id"
@@ -69,7 +72,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status", default: "private"
@@ -78,11 +81,11 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "parent_id"
-    t.integer "effect_id", null: false
+    t.bigint "effect_id", null: false
     t.index ["effect_id"], name: "index_comments_on_effect_id"
     t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
@@ -97,7 +100,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
     t.text "manual"
     t.string "link_to"
     t.string "is_secure"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "programs"
@@ -106,8 +109,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "effect_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "effect_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["effect_id"], name: "index_favorites_on_effect_id"
@@ -116,7 +119,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
 
   create_table "images", force: :cascade do |t|
     t.string "imageable_type", null: false
-    t.integer "imageable_id", null: false
+    t.bigint "imageable_id", null: false
     t.string "file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -126,9 +129,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "likeable_type", null: false
-    t.integer "likeable_id", null: false
+    t.bigint "likeable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable"
@@ -143,9 +146,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
   end
 
   create_table "news_feeds", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "effect_id", null: false
-    t.integer "collection_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "effect_id", null: false
+    t.bigint "collection_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["collection_id"], name: "index_news_feeds_on_collection_id"
@@ -156,7 +159,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
   create_table "ratings", force: :cascade do |t|
     t.float "number"
     t.string "ratingable_type", null: false
-    t.integer "ratingable_id", null: false
+    t.bigint "ratingable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
@@ -164,8 +167,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
   end
 
   create_table "sub_collections", force: :cascade do |t|
-    t.integer "collection_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "collection_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["collection_id"], name: "index_sub_collections_on_collection_id"
@@ -179,11 +182,11 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
   end
 
   create_table "taggings", force: :cascade do |t|
-    t.integer "tag_id"
+    t.bigint "tag_id"
     t.string "taggable_type"
-    t.integer "taggable_id"
+    t.bigint "taggable_id"
     t.string "tagger_type"
-    t.integer "tagger_id"
+    t.bigint "tagger_id"
     t.string "context", limit: 128
     t.datetime "created_at", precision: nil
     t.string "tenant", limit: 128
