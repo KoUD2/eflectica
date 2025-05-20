@@ -5,7 +5,10 @@ class CollectionsController < ApplicationController
 
   # GET /collections or /collections.json
   def index
-    @collections = Collection.all
+    @subscribed_collections = current_user.subscribed_collections if user_signed_in?
+    @collections = Collection.where.not(user_id: current_user.id)
+                             .where(status: 'public')
+                             .order(created_at: :desc)
   end
 
   def by_tag
@@ -32,12 +35,66 @@ class CollectionsController < ApplicationController
       subscription = SubCollection.new(user: current_user, collection: @collection)
       
       if subscription.save
-        render json: { status: 'success', message: 'Вы успешно подписались на коллекцию' }
+        respond_to do |format|
+          format.html { 
+            flash[:notice] = 'Вы успешно подписались на коллекцию'
+            if turbo_frame_request?
+              render partial: 'collections/subscription_button', locals: { collection: @collection }
+            else
+              redirect_to @collection
+            end
+          }
+          format.turbo_stream { 
+            render turbo_stream: turbo_stream.replace('subscription_button', 
+            partial: 'collections/subscription_button', 
+            locals: { collection: @collection })
+          }
+          format.json { 
+            html = render_to_string(partial: 'collections/subscription_button', locals: { collection: @collection }, formats: [:html])
+            render json: { status: 'success', message: 'Вы успешно подписались на коллекцию', html: html } 
+          }
+        end
       else
-        render json: { status: 'error', message: 'Не удалось подписаться на коллекцию' }, status: :unprocessable_entity
+        respond_to do |format|
+          format.html { 
+            flash[:alert] = 'Не удалось подписаться на коллекцию'
+            if turbo_frame_request?
+              render partial: 'collections/subscription_button', locals: { collection: @collection }
+            else
+              redirect_to @collection
+            end
+          }
+          format.turbo_stream { 
+            render turbo_stream: turbo_stream.replace('subscription_button', 
+            partial: 'collections/subscription_button', 
+            locals: { collection: @collection })
+          }
+          format.json { 
+            html = render_to_string(partial: 'collections/subscription_button', locals: { collection: @collection }, formats: [:html])
+            render json: { status: 'error', message: 'Не удалось подписаться на коллекцию', html: html }, status: :unprocessable_entity
+          }
+        end
       end
     else
-      render json: { status: 'error', message: 'Вы не можете подписаться на эту коллекцию' }, status: :unprocessable_entity
+      respond_to do |format|
+        format.html { 
+          flash[:alert] = 'Вы не можете подписаться на эту коллекцию'
+          if turbo_frame_request?
+            render partial: 'collections/subscription_button', locals: { collection: @collection }
+          else
+            redirect_to @collection
+          end
+        }
+        format.turbo_stream { 
+          render turbo_stream: turbo_stream.replace('subscription_button', 
+          partial: 'collections/subscription_button', 
+          locals: { collection: @collection })
+        }
+        format.json { 
+          html = render_to_string(partial: 'collections/subscription_button', locals: { collection: @collection }, formats: [:html])
+          render json: { status: 'error', message: 'Вы не можете подписаться на эту коллекцию', html: html }, status: :unprocessable_entity
+        }
+      end
     end
   end  
 
@@ -46,9 +103,45 @@ class CollectionsController < ApplicationController
     subscription = current_user.sub_collections.find_by(collection: @collection)
     
     if subscription&.destroy
-      render json: { status: 'unsubscribed' }
+      respond_to do |format|
+        format.html { 
+          flash[:notice] = 'Вы успешно отписались от коллекции'
+          if turbo_frame_request?
+            render partial: 'collections/subscription_button', locals: { collection: @collection }
+          else
+            redirect_to @collection
+          end
+        }
+        format.turbo_stream { 
+          render turbo_stream: turbo_stream.replace('subscription_button', 
+          partial: 'collections/subscription_button', 
+          locals: { collection: @collection })
+        }
+        format.json { 
+          html = render_to_string(partial: 'collections/subscription_button', locals: { collection: @collection }, formats: [:html])
+          render json: { status: 'unsubscribed', html: html } 
+        }
+      end
     else
-      render json: { error: 'Не удалось отписаться' }, status: :unprocessable_entity
+      respond_to do |format|
+        format.html { 
+          flash[:alert] = 'Не удалось отписаться от коллекции'
+          if turbo_frame_request?
+            render partial: 'collections/subscription_button', locals: { collection: @collection }
+          else
+            redirect_to @collection
+          end
+        }
+        format.turbo_stream { 
+          render turbo_stream: turbo_stream.replace('subscription_button', 
+          partial: 'collections/subscription_button', 
+          locals: { collection: @collection })
+        }
+        format.json { 
+          html = render_to_string(partial: 'collections/subscription_button', locals: { collection: @collection }, formats: [:html])
+          render json: { error: 'Не удалось отписаться', html: html }, status: :unprocessable_entity
+        }
+      end
     end
   end
 

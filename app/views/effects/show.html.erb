@@ -7,7 +7,6 @@
 %>
 
 <div class='O_effectPage'>
-  <%= render 'shared/back_button' %>
   <div class='W_allContent'>
     <div class='M_HeaderEffect'>
       <h1 class='A_Header1 A_HeaderDark'><%= @effect.name %></h1>
@@ -40,13 +39,13 @@
       <div class='W_infoEffect'>
         <p class='A_TextEffectDescription'><%= @effect.description %></p>
         <div class='M_Buttons'>
-          <button class='A_ButtonPrimary'>
+          <button class='A_ButtonPrimary A_MorePC'>
             <%= image_tag("DownloadButton.svg", alt: "Картинка рейтинга", class: 'A_DownloadButton') %>
             Установить
           </button>
          
           <div class="popup-container" data-controller="popup" data-popup-effect-id="<%= @effect.id %>">
-            <button class="A_ButtonSecondary A_ButtonSecondaryGray" data-action="click->popup#open">
+            <button class="A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryPMobile" data-action="click->popup#open">
               <%= image_tag("AddToCollectionIcon.svg", alt: "Картинка рейтинга", class: "A_AddToCollectionIcon") %>
               Добавить в коллекцию
             </button>
@@ -143,7 +142,7 @@
           <%= sanitize(@effect.manual.gsub('\\n', "\n").gsub(/\n/, '<br>')) %>
         </div>
 
-        <div class='W_More'>
+        <div class='W_More M_createPostCardPC'>
           <h2 class='A_Header2 A_Header2Settings'>Хочешь больше похожих эффектов? <span>Настрой ленту!</span></h2>
           <div class='M_Buttons M_ButtonsSettings'>
             <button class='A_ButtonPrimary A_ButtonPrimarySettings'>Перейти к настройке ленты</button>
@@ -173,6 +172,21 @@
           </div>
         <% else %>
           <div class='W_shareRaiting'>
+            <div class='W_ShareArea W_ShareAreaUser'>
+              <h2 class="A_Header3">Автор эффекта</h2>
+              <div class="M_Socials">
+                <% if @effect.user.present? %>
+                  <%= link_to profile_path(@effect.user), class: "A_UserCard" do %>
+                    <% if @effect.user.avatar.present? %>
+                      <%= image_tag(@effect.user.avatar.url, alt: "User avatar", class: "A_UserAvatar A_UserAvatarSize") %>
+                    <% else %>
+                      <%= image_tag("default_avatar.png", alt: "Default avatar", class: "A_UserAvatar") %>
+                    <% end %>
+                    <span class="A_Username">@<%= @effect.user.email.split('@').first %></span>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
             <div class='W_ShareArea'>
               <h2 class="A_Header3">Поделиться</h2>
               <div data-controller="share" class="M_Socials">
@@ -191,7 +205,7 @@
             </div>
             <div class='W_RatingArea'>
               <h2 class="A_Header3">Рейтинг</h2>
-              <div class='W_RatingArea'>
+              <div class='W_RatingArea W_RatingAreaMobile'>
                 <div class='A_Rating'>
                   <%= image_tag("Q_StarIcon.svg", alt: "Картинка рейтинга", class: 'Q_StarIconBig') %>
                   <p class='A_Header1 A_Header1Purple'><%= @effect.average_rating || "Нет рейтинга" %></p>

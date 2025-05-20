@@ -1,722 +1,733 @@
 .M_Info {
-	display: flex;
-	gap: 1.667vw;
+  display: flex;
+  gap: 1.667vw;
 }
 
-.M_Creators, .M_Curators {
-	display: flex;
-	flex-direction: column;
-	gap: 0.625vw;
+.M_Creators,
+.M_Curators {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625vw;
 }
 
 .M_aboutEffects {
-	margin-top: 1.992vw;
-	display: flex;
-	flex-direction: column;
-	gap: 0.833vw;
+  margin-top: 1.992vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.833vw;
 }
 
 .M_allCategories {
-	padding: 4.479vw 3.333vw 4.688vw 3.229vw ;
-	width: 72.396vw;
-	flex-shrink: 0;
-	border-radius: 0.417vw;
-	background: var(--foggy-grey, #F5F5F5);
+  padding: 4.479vw 3.333vw 4.688vw 3.229vw;
+  width: 72.396vw;
+  flex-shrink: 0;
+  border-radius: 0.417vw;
+  background: var(--foggy-grey, #f5f5f5);
 }
 
 .M_aboutEffectsFeed {
-	padding-top: 1.667vw;
-	margin-top: 0.833vw;
+  padding-top: 1.667vw;
+  margin-top: 0.833vw;
 }
 
 .M_TextEffectСard {
-	display: flex;
-	padding: 0 2.837%;
-	justify-content: space-between;
-	align-items: center;
-	align-self: stretch;
+  display: flex;
+  padding: 0 2.837%;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
 }
 
 .M_createPostCard {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding: 1.667vw 1.146vw 1.667vw 1.094vw;
-	justify-content: space-between;
-	width: 23.594vw;
-	height: 26.042vw;
-	border-radius: 0.417vw;
-	overflow: hidden;
-	background: var(--foggy-grey, #F5F5F5);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.667vw 1.146vw 1.667vw 1.094vw;
+  justify-content: space-between;
+  width: 23.594vw;
+  height: 26.042vw;
+  border-radius: 0.417vw;
+  overflow: hidden;
+  background: var(--foggy-grey, #f5f5f5);
+}
+
+.M_createPostCardMobile {
+  display: none;
 }
 
 .M_CollectionForm {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 0.833vw;
-	align-self: stretch;
-	width: 24.74vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.833vw;
+  align-self: stretch;
+  width: 24.74vw;
 }
 
 .M_CategoriesContainer {
-	width: 100%;
+  width: 100%;
 }
 
 .M_CollectionFormThird {
-	flex-direction: row;
-	gap: 4.896vw;
-	width: 100%;
+  flex-direction: row;
+  gap: 4.896vw;
+  width: 100%;
 }
 
 .M_CollectionFormRef {
-	margin-top: 1.25vw;
+  margin-top: 1.25vw;
 }
 
 .M_Sort {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.625vw;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625vw;
 }
 
 .M_RadioSettings {
-	display: flex;
-	align-items: center;
-	gap: 0.625vw;
-	align-self: stretch;
+  display: flex;
+  align-items: center;
+  gap: 0.625vw;
+  align-self: stretch;
 }
 
 .M_TagsCollection {
-	display: flex;
-	width: 34.116%;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 0.313vw;
+  display: flex;
+  width: 34.116%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.313vw;
 }
 
-.M_HeaderEffects{
-	display: flex;
-	padding-right: 0.104vw;
-	justify-content: space-between;
-	align-items: flex-end;
-	width: 100%;
+.M_HeaderEffects {
+  display: flex;
+  padding-right: 0.104vw;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
 }
 
 .M_HeaderEffectsCategories {
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	gap: 0.833vw;
-	width: fit-content;
-	background-color: transparent;
-	border: none;
-	outline: none;
-	padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.833vw;
+  width: fit-content;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
 
-	> img {
-		width: 1.266vw;
-		height: 0.729vw;
-	}
+  > img {
+    width: 1.266vw;
+    height: 0.729vw;
+  }
 }
 
 .M_collectionSection {
-	padding: 1.667vw 0 2.188vw 3.229vw;
-	width: 72.396vw;
-	border-radius: 0.417vw;
-	background: var(--foggy-grey, #f5f5f5);
+  padding: 1.667vw 0 2.188vw 3.229vw;
+  width: 72.396vw;
+  border-radius: 0.417vw;
+  background: var(--foggy-grey, #f5f5f5);
 }
 
 .M_appStore {
-	overflow: hidden;
-	padding-top: 1.667vw;
-	width: 23.594vw;
-	height: 33.698vw;
-	border-radius: 0.417vw;
-	background: var(--foggy-grey, #F5F5F5);
+  overflow: hidden;
+  padding-top: 1.667vw;
+  width: 23.594vw;
+  height: 33.698vw;
+  border-radius: 0.417vw;
+  background: var(--foggy-grey, #f5f5f5);
 }
 
 .M_SettingsNavigation {
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .M_PhotoDescription {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 0.625vw;
-	align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625vw;
+  align-self: stretch;
 }
 
 .M_PhotoElement {
-	width: 10.729vw;
-	height: 10.729vw;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background: var(--soft-grey, #EBEBEB);
+  width: 10.729vw;
+  height: 10.729vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--soft-grey, #ebebeb);
 }
 
 .M_PhotoElementPreviewImage {
-	background: var(--soft-grey, #EBEBEB);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 10.729vw;
-	height: 10.729vw;
+  background: var(--soft-grey, #ebebeb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10.729vw;
+  height: 10.729vw;
 
-	> img {
-		width: 4.113vw;
-		height: 4.113vw;
-	}
+  > img {
+    width: 4.113vw;
+    height: 4.113vw;
+  }
 }
 
 .M_CategoriesWrapper {
-	display: flex;
-	width: 16.042vw;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 0.625vw;
+  display: flex;
+  width: 16.042vw;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625vw;
 }
 
 .M_PhotoElementPreview {
-	display: flex;
-	width: 10.729vw;
-	flex-direction: column;
-	align-items: center;
-	gap: 0.833vw;
+  display: flex;
+  width: 10.729vw;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.833vw;
 }
 
 .M_SettingsNavigationEffect {
-	margin-top: 1.667vw;
+  margin-top: 1.667vw;
 }
 
 .M_iphoneBanner {
-	overflow: hidden;
-	padding-top: 1.667vw;
-	width: 23.594vw;
-	height: 26.042vw;
-	border-radius: 0.417vw;
-	background: var(--foggy-grey, #f5f5f5);
+  overflow: hidden;
+  padding-top: 1.667vw;
+  width: 23.594vw;
+  height: 26.042vw;
+  border-radius: 0.417vw;
+  background: var(--foggy-grey, #f5f5f5);
 }
 
 .M_HeaderEffect {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.417vw;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.417vw;
 }
 
 .M_PhotoEffect {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 0.417vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.417vw;
 }
 
 .M_Buttons {
-	margin-top: 1.667vw;
-	display: inline-flex;
-	align-items: center;
-	gap: 0.833vw;
+  margin-top: 1.667vw;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.833vw;
 }
 
 .M_ButtonsSettings {
-	margin-top: 0;
+  margin-top: 0;
 }
 
 .M_AuthorComment {
-	display: flex;
-	align-items: center;
-	gap: 0.417vw;
+  display: flex;
+  align-items: center;
+  gap: 0.417vw;
 }
 
 .M_Stars {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .M_StarsMy {
-	margin-left: 2.917vw;
+  margin-left: 2.917vw;
 }
 
 .M_Choice {
-	display: flex;
-	height: 2.813vw;
-	padding: 0.521vw 0px;
-	width: 100%;
-	justify-content: space-between;
-	align-items: center;
-	align-self: stretch;
-	border-bottom: var(--border, 0.104vw) solid var(--grey-tag, #E1E1E1);
-	background: var(--porcelain-white, #FFF);
+  display: flex;
+  height: 2.813vw;
+  padding: 0.521vw 0px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-bottom: var(--border, 0.104vw) solid var(--grey-tag, #e1e1e1);
+  background: var(--porcelain-white, #fff);
 }
 
 .M_ChoiceBlue {
-	cursor: pointer;
-	display: flex;
-	width: 17.188vw;
-	height: 2.813vw;
-	padding: 0.521vw 0.625vw;
-	justify-content: center;
-	align-items: center;
-	gap: 0.521vw;
-	border-radius: var(--button, 0.417vw);
-	border: var(--border, 0.104vw) solid var(--computer-blue, #0638BD);
-	background: var(--porcelain-white, #FFF);
+  cursor: pointer;
+  display: flex;
+  width: 17.188vw;
+  height: 2.813vw;
+  padding: 0.521vw 0.625vw;
+  justify-content: center;
+  align-items: center;
+  gap: 0.521vw;
+  border-radius: var(--button, 0.417vw);
+  border: var(--border, 0.104vw) solid var(--computer-blue, #0638bd);
+  background: var(--porcelain-white, #fff);
 }
 
 .M_feedSettings {
-	overflow: hidden;
-	position: relative;
-	margin-top: 0.833vw;
-	padding: 1.667vw 0 3.385vw 3.229vw;
-	width: 96.875vw;
-	height: 16.406vw;
-	border-radius: var(--button, 0.417vw);
-	background: var(--foggy-grey, #F5F5F5);
+  overflow: hidden;
+  position: relative;
+  margin-top: 0.833vw;
+  padding: 1.667vw 0 3.385vw 3.229vw;
+  width: 96.875vw;
+  height: 16.406vw;
+  border-radius: var(--button, 0.417vw);
+  background: var(--foggy-grey, #f5f5f5);
 }
 
 .M_Platforms {
-	display: flex;
-	align-items: center;
-	gap: 0.417vw;
+  display: flex;
+  align-items: center;
+  gap: 0.417vw;
 }
 
 .M_Socials {
-	display: flex;
-	align-items: center;
-	gap: 0.417vw;
-	align-self: stretch;
+  display: flex;
+  align-items: center;
+  gap: 0.417vw;
+  align-self: stretch;
 }
 
 .M_Menu {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .M_QuestionFooter {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
 
-	> p {
-		color: var(--ordinary-grey);
-	}
+  > p {
+    color: var(--ordinary-grey);
+  }
 }
 
 .M_Filtration {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.417vw;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.417vw;
 }
 
 .M_SearchField {
-	> form {
-		display: flex;
-		width: 13.438vw;
-		padding: 0.417vw 1.042vw;
-		align-items: center;
-		gap: 0.313vw;
-		border-radius: 0.313vw;
-		background: var(--grey-veil);
+  > form {
+    display: flex;
+    width: 13.438vw;
+    padding: 0.417vw 1.042vw;
+    align-items: center;
+    gap: 0.313vw;
+    border-radius: 0.313vw;
+    background: var(--grey-veil);
 
-		> img {
-			width: 1vw;
-			height: auto;
-		}
-	}
+    > img {
+      width: 1vw;
+      height: auto;
+    }
+  }
 }
 
 .M_EffectFooter {
-	display: flex;
-	align-items: center;
-	gap: 0.833vw;
+  display: flex;
+  align-items: center;
+  gap: 0.833vw;
 }
 
 .M_EffectFooterShow {
-	gap: 0.313vw;
-	height: 1.627vw;
+  gap: 0.313vw;
+  height: 1.627vw;
 
-	> img {
-		width: 1.302vw;
-		height: auto;
-	}
+  > img {
+    width: 1.302vw;
+    height: auto;
+  }
 
-	> p {
-		color: var(--charcoal-black);
-	}
+  > p {
+    color: var(--charcoal-black);
+  }
 }
 
 .M_RaitingEffect {
-	display: flex;
-	align-items: center;
-	gap: 0.104vw;
+  display: flex;
+  align-items: center;
+  gap: 0.104vw;
 }
 
 .M_TagCollection {
-	display: flex;
-	align-items: center;
-	gap: 0.313vw;
+  display: flex;
+  align-items: center;
+  gap: 0.313vw;
 }
 
 .M_PhotoCollection {
-	display: flex;
-	align-items: center;
-	gap: 0.417vw;
-	align-self: stretch;
+  display: flex;
+  align-items: center;
+  gap: 0.417vw;
+  align-self: stretch;
 }
 
 .M_FiltrationNews {
-	margin-top: 0.625vw;
+  margin-top: 0.625vw;
 }
 
 .M_Program {
-	label {
-		width: 9.271vw;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		align-self: stretch;
-		border-bottom: 0.104vw solid var(--soft-grey);
-	}	
+  label {
+    width: 9.271vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-bottom: 0.104vw solid var(--soft-grey);
+  }
 }
 
 .M_Category {
-	display: flex;
-	height: 2.083vw;
-	padding: 0.417vw 0.625vw;
-	align-items: center;
-	width: 9.971vw;
-	justify-content: space-between;
+  display: flex;
+  height: 2.083vw;
+  padding: 0.417vw 0.625vw;
+  align-items: center;
+  width: 9.971vw;
+  justify-content: space-between;
 
-	> a {
-		color: var(--charcoal-black);
-		font-family: "Basis Grotesque Pro";
-		font-size: 0.729vw;
-		font-style: normal;
-		font-weight: 400;
-		line-height: 0.938vw;
-	}
+  > a {
+    color: var(--charcoal-black);
+    font-family: "Basis Grotesque Pro";
+    font-size: 0.729vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 0.938vw;
+  }
 }
 
 .M_ProfileContacts {
-	display: flex;
-	flex-direction: column;
-	gap: 0.208vw;
-	align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.208vw;
+  align-self: stretch;
 }
 
 .M_Telegram {
-	display: flex;
-	align-items: center;
-	gap: 0.208vw;
+  display: flex;
+  align-items: center;
+  gap: 0.208vw;
 
-	> img {
-		width: 1.302vw;
-		height: auto;
-	}
+  > img {
+    width: 1.302vw;
+    height: auto;
+  }
 }
 
 .M_ProfilePosts {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
 }
 
 .M_Nvigation {
-	display: flex;
-	align-items: center;
-	gap: 0.208vw;
+  display: flex;
+  align-items: center;
+  gap: 0.208vw;
 }
 
 .M_NvigationShow {
-	margin-left: -0.833vw;
+  margin-left: -0.833vw;
 }
 
 .M_QuestionProgram {
-	display: flex;
-	align-items: center;
-	gap: 0.313vw;
+  display: flex;
+  align-items: center;
+  gap: 0.313vw;
 }
 
 .M_Author {
-	display: flex;
-	align-items: center;
-	gap: 0.625vw;
+  display: flex;
+  align-items: center;
+  gap: 0.625vw;
 
-	> img {
-		width: 2.604vw;
-		height: auto;
-	}
+  > img {
+    width: 2.604vw;
+    height: auto;
+  }
 
-	> p {
-		color: var(--charcoal-black);
-		text-transform: lowercase;
-	}
+  > p {
+    color: var(--charcoal-black);
+    text-transform: lowercase;
+  }
 }
 
 .M_aboutConfig {
-	margin-top: 1.667vw;
-	width: 47.708vw;
-	display: flex;
-	justify-content: space-between;
+  margin-top: 1.667vw;
+  width: 47.708vw;
+  display: flex;
+  justify-content: space-between;
 }
 
 .M_Tag {
-	display: flex;
-	height: 1.771vw;
-	padding: 0 1.25vw;
-	justify-content: space-between;
-	align-items: center;
-	border-radius: 0.313vw;
-	border: 0.078vw solid var(--soft-grey);
-	background: var(--porcelain-white);
+  display: flex;
+  height: 1.771vw;
+  padding: 0 1.25vw;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.313vw;
+  border: 0.078vw solid var(--soft-grey);
+  background: var(--porcelain-white);
 }
 
 .M_instructionsEffect {
-	margin-top: 2.188vw;
-	display: flex;
-	flex-direction: column;
-	gap: 0.833vw;
+  margin-top: 2.188vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.833vw;
 }
 
 .M_StarRate {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 
-	> img {
-		width: 1.042vw;
-		height: auto;
-	}
+  > img {
+    width: 1.042vw;
+    height: auto;
+  }
 }
 
 .M_MyComment {
-	display: flex;
-	flex-direction: column;
-	gap: 0.417vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.417vw;
 }
 
-.M_imgsEffects{
-	display: flex;
-	gap: 3.033vw;
+.M_imgsEffects {
+  display: flex;
+  gap: 3.033vw;
 }
 
-.M_allPicturesDescribe{
-	margin-top: 3.436vw;
-	display: flex;
-	gap: 9.514vw;
+.M_allPicturesDescribe {
+  margin-top: 3.436vw;
+  display: flex;
+  gap: 9.514vw;
 }
 
-.M_opportunityService, .M_presetsToCollections, .M_groopsPromo, .M_emailsPromo {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+.M_opportunityService,
+.M_presetsToCollections,
+.M_groopsPromo,
+.M_emailsPromo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.M_opportunityService{
-	margin-top: 10.969vw;
+.M_opportunityService {
+  margin-top: 10.969vw;
 }
 
-.M_presetsToCollections{
-	margin-top: 9.375vw;
+.M_presetsToCollections {
+  margin-top: 9.375vw;
 }
 
-.M_groopsPromo{
-	margin-top: 10.042vw;
+.M_groopsPromo {
+  margin-top: 10.042vw;
 }
 
 .M_emailsPromo {
-	margin-top: 10.106vw;
+  margin-top: 10.106vw;
 
-	> p {
-		width: 28.352vw;
-		margin-top: 1.726vw;
-		text-align: center;
-		font-family: "Basis Grotesque Pro";
-		font-size: 1.944vw;
-		font-weight: 500;
-		line-height: 122.765%;
-	}
+  > p {
+    width: 28.352vw;
+    margin-top: 1.726vw;
+    text-align: center;
+    font-family: "Basis Grotesque Pro";
+    font-size: 1.944vw;
+    font-weight: 500;
+    line-height: 122.765%;
+  }
 }
 
 .M_userComment {
-	position: relative;
+  position: relative;
 
-	> div:nth-child(1), > div:nth-child(2) {
-		position: absolute;
-		width: 29.768vw;
-		height: 11.177vw;
-		border-radius: 0.347vw;
-		border: 1px solid #8F8F8F;
-	}
+  > div:nth-child(1),
+  > div:nth-child(2) {
+    position: absolute;
+    width: 29.768vw;
+    height: 11.177vw;
+    border-radius: 0.347vw;
+    border: 1px solid #8f8f8f;
+  }
 
-	> div:nth-child(1) {
-		top: -7.45px;
-		left: 7.67px;
-	}
+  > div:nth-child(1) {
+    top: -7.45px;
+    left: 7.67px;
+  }
 
-	> div:nth-child(2) {
-		top: -15.45px;
-		left: 15.67px;
-	}
+  > div:nth-child(2) {
+    top: -15.45px;
+    left: 15.67px;
+  }
 }
 
 .M_userCommentLast {
-	> div {
-		.W_allUserInfo {
-			> p {
-				width: 24.442vw;
-			}
-		}
-	}
+  > div {
+    .W_allUserInfo {
+      > p {
+        width: 24.442vw;
+      }
+    }
+  }
 }
 
 .M_formSubscription {
-	display: flex;
-	margin-top: 3.343vw;
-	gap: 0.908vw;
+  display: flex;
+  margin-top: 3.343vw;
+  gap: 0.908vw;
 
-	> input[type="email"] {
-		width: 36.716vw;
-		height: 4.281vw;
-		padding: 0.519vw 0.778vw 0.778vw 1.946vw;
-		border-radius: 2.595vw;
-		background: #E8E2F0;
-		font-family: "Basis Grotesque Pro";
-		font-size: 1.944vw;
-		font-weight: 400;
-		line-height: 105.092%;
+  > input[type="email"] {
+    width: 36.716vw;
+    height: 4.281vw;
+    padding: 0.519vw 0.778vw 0.778vw 1.946vw;
+    border-radius: 2.595vw;
+    background: #e8e2f0;
+    font-family: "Basis Grotesque Pro";
+    font-size: 1.944vw;
+    font-weight: 400;
+    line-height: 105.092%;
 
-		&::placeholder {
-			color: rgba(0, 0, 0, 0.70);
-		}
-	}
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.7);
+    }
+  }
 
-	> input[type="submit"] {
-		cursor: pointer;
-		display: flex;
-		width: 15.347vw;
-		height: 4.281vw;
-		align-items: center;
-		border-radius: 2.595vw;
-		border: 0.195vw solid #000;
-		background: #000;
-		color: #fff;
-		font-family: "Basis Grotesque Pro";
-		font-size: 1.944vw;
-		font-weight: 400;
-		line-height: 105.092%;
-	}
+  > input[type="submit"] {
+    cursor: pointer;
+    display: flex;
+    width: 15.347vw;
+    height: 4.281vw;
+    align-items: center;
+    border-radius: 2.595vw;
+    border: 0.195vw solid #000;
+    background: #000;
+    color: #fff;
+    font-family: "Basis Grotesque Pro";
+    font-size: 1.944vw;
+    font-weight: 400;
+    line-height: 105.092%;
+  }
 }
 
 .M_imgWithBackground {
-	position: relative;
+  position: relative;
 
-	> img, > div {
-		width: 21.778vw;
-		height: 21.778vw;
-		border-radius: 0.347vw;
-	}
+  > img,
+  > div {
+    width: 21.778vw;
+    height: 21.778vw;
+    border-radius: 0.347vw;
+  }
 
-	> img {
-		position: relative;
-		z-index: 3;
-	}
+  > img {
+    position: relative;
+    z-index: 3;
+  }
 
-	> div {
-		position: absolute;
-		border: 1px solid #8F8F8F;
-	}
+  > div {
+    position: absolute;
+    border: 1px solid #8f8f8f;
+  }
 
-	> div:nth-child(1) {
-		top: -0.683vw;
-		left: 0.764vw;
-	}
-	> div:nth-child(2) {
-		top: -1.377vw;
-		left: 1.528vw;
-	}
+  > div:nth-child(1) {
+    top: -0.683vw;
+    left: 0.764vw;
+  }
+  > div:nth-child(2) {
+    top: -1.377vw;
+    left: 1.528vw;
+  }
 }
 
 .M_scrollBarSettingsImgs {
-	display: flex;
-	flex-direction: column;
-	gap: 0.885vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.885vw;
 
-	> p {
-		font-family: "Basis Grotesque Pro";
-		font-size: 1.667vw;
-		font-weight: 500;
-		line-height: 122.765%;
-	}
+  > p {
+    font-family: "Basis Grotesque Pro";
+    font-size: 1.667vw;
+    font-weight: 500;
+    line-height: 122.765%;
+  }
 
-	> div {
-		position: relative;
+  > div {
+    position: relative;
 
-		> img, > div {
-			width: 20.139vw;
-			height: 20.139vw;
-			border-radius: 0.347vw;
-		}
+    > img,
+    > div {
+      width: 20.139vw;
+      height: 20.139vw;
+      border-radius: 0.347vw;
+    }
 
-		> img {
-			position: relative;
-			z-index: 3;
-		}
+    > img {
+      position: relative;
+      z-index: 3;
+    }
 
-		> div {
-			position: absolute;
-			border: 1px solid #8F8F8F;
-		}
+    > div {
+      position: absolute;
+      border: 1px solid #8f8f8f;
+    }
 
-		> div:nth-child(1) {
-			top: -9px;
-			left: 11px;
-		}
-		> div:nth-child(2) {
-			top: -18px;
-			left: 22px;
-		}
-	}
+    > div:nth-child(1) {
+      top: -9px;
+      left: 11px;
+    }
+    > div:nth-child(2) {
+      top: -18px;
+      left: 22px;
+    }
+  }
 }
 
 .M_NvigationShowCollection {
-	margin: 0;
-	position: absolute;
-	top: 1.176vw;
-	left: 1.25vw;
+  margin: 0;
+  position: absolute;
+  top: 1.176vw;
+  left: 1.25vw;
 }
 
 .M_userInfoSettings {
-	margin-top: 1.667vw;
-	display: flex;
-	justify-content: space-between;
+  margin-top: 1.667vw;
+  display: flex;
+  justify-content: space-between;
 }
 
 .M_userInfoSettingsEdit {
-	flex-direction: column;
-	height: 100%;
+  flex-direction: column;
+  height: 100%;
 }
 
 .M_allStaff {
-	margin-top: 1.667vw;
-	display: flex;
-	flex-direction: column;
-	gap: 1.667vw;
+  margin-top: 1.667vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.667vw;
 }
 
 .M_userInfo {
-	display: flex;
-	gap: 2.083vw;
+  display: flex;
+  gap: 2.083vw;
 }
 
 .M_userInfoEdit {
-	gap: 3.438vw;
+  gap: 3.438vw;
 }
 
 .hidden {
@@ -724,108 +735,87 @@
 }
 
 @media screen and (max-width: 912px) {
-	.M_allPicturesDescribe {
-		flex-direction: column;
-		margin-top: 12.219vw;
-		gap: 7.94vw;
-	}
+  .M_aboutEffects {
+    margin-top: 5.581vw;
+    gap: 2.326vw;
+  }
 
-	.M_imgsEffects {
-		gap: 5.826vw;
-	}
+  .M_TextEffectСard {
+    display: flex;
+    padding: 0;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2.326vw;
+    margin-top: 3.256vw;
+  }
 
-	.M_opportunityService{
-		margin-top: 16.712vw;
-	}
+  .M_TagsCollection {
+    gap: 1.86vw;
+  }
 
-	.M_presetsToCollections {
-    margin-top: 16.888vw;
-	}
+  .M_Menu {
+    display: none;
+  }
 
-	.M_groopsPromo {
-		align-items: flex-start;
-    margin-top: 16.844vw;
-	}
+  .M_Info {
+    gap: 7.442vw;
+  }
 
-	.M_userComment {
-		> div:nth-child(1), > div:nth-child(2) {
-			width: 68.656vw;
-			height: 25.78vw;
-			border-radius: 0.801vw;
-		}
+  .M_Creators,
+  .M_Curators {
+    gap: 2.791vw;
+  }
 
-		> div:nth-child(1) {
-			top: -1.193vw;
-			left: 1.228vw;
-		}
-		> div:nth-child(2) {
-			top: -2.474vw;
-			left: 2.509vw;
-		}
-	}
+  .M_createPostCard {
+    padding: 6.977vw 4.651vw;
+    justify-content: space-between;
+    width: 100vw;
+    height: 103.311vw;
+    border-radius: 0.417vw;
+    overflow: hidden;
+    background: var(--foggy-grey, #f5f5f5);
+  }
 
-	.M_emailsPromo {
-		margin-top: 16.772vw;
+  .M_createPostCardMobile {
+    display: flex;
+  }
 
-		> p {
-			width: 52.558vw;
-			margin-top: 2.791vw;
-			font-size: 3.721vw;
-		}
-	}
+  .M_createPostCardPC {
+    display: none !important;
+  }
 
-	.M_formSubscription {
-		flex-direction: column;
-		margin-top: 9.256vw;
-		gap: 2.988vw;
-	
-		> input[type="email"] {
-			width: 86.977vw;
-			height: 10.142vw;
-			padding: 1.229vw 1.844vw 1.844vw 4.61vw;
-			border-radius: 6.147vw;
-			font-size: 3.721vw;
-		}
-	
-		> input[type="submit"] {
-			width: 86.977vw;
-			height: 10.142vw;
-			border-radius: 6.147vw;
-			border: 0.195vw solid #000;
-			font-size: 3.721vw;
-		}
-	}
+  .M_PhotoEffect {
+    > p {
+      display: none;
+    }
 
-	.M_scrollBarSettingsImgs {
-    gap: 1.628vw;
+    > img {
+      width: 88.837vw;
+      height: 50.465vw;
+    }
+  }
+  .M_Socials {
+    gap: 1.86vw;
+  }
 
-		> div {
-			> img, > div {
-				width: 39.07vw;
-				height: 38.605vw;
-				border-radius: 0.797vw;
-			}
-		}
+  .M_AuthorComment {
+    gap: 3.721vw;
+  }
+  .M_StarsMy {
+    margin-left: 15.116vw;
+  }
 
-		> p {
-			font-size: 3.721vw;
-		}
-	}
+  .W_similarEffects .M_HeaderEffects {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 3.721vw;
+  }
 
-	.M_imgWithBackground {
-		> img, > div {
-			width: 38.14vw;
-			height: 38.14vw;
-			border-radius: 0.797vw;
-		}
-
-		> div:nth-child(1) {
-			top: -1.163vw;
-			left: 1.163vw;
-		}
-		> div:nth-child(2) {
-			top: -2.326vw;
-			left: 2.326vw;
-		}
-	}
+  .M_allStaff {
+    margin-top: 6.977vw;
+    gap: 4.651vw;
+  }
 }

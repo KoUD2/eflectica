@@ -7,8 +7,6 @@
 %>
 
 <div class='S_Collection' data-controller="collection">
-  <%= render 'shared/back_button' %>
-
   <h1 class="A_Header1 A_Header1Collection"><%= @collection.name %></h1>
   <% if @collection.user == current_user %>
     <div class='W_editCollection'>
@@ -19,27 +17,10 @@
       <button class="A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryFit">Редактировать коллекцию</button>
     </div>
   <% elsif @collection.status == 'public' %>
-    <% if current_user %>
-      <% if current_user.subscribed_to?(@collection) %>
-        <%= button_to unsubscribe_collection_path(@collection), 
-            method: :delete, 
-            class: "A_ButtonSecondary", 
-            data: { confirm: "Вы уверены, что хотите отписаться?" } do %>
-          Отписаться
-        <% end %>
-      <% else %>
-        <%= button_to subscribe_collection_path(@collection), 
-            method: :post, 
-            class: "A_ButtonPrimary" do %>
-          Подписаться
-        <% end %>
-      <% end %>
-    <% else %>
-      <%= link_to "Войти, чтобы подписаться", new_user_session_path, class: "A_ButtonPrimary" %>
-    <% end %>
+    <%= render 'collections/subscription_button', collection: @collection %>
   <% end %>
   <div class="modal-overlay hidden" data-collection-target="backdrop">
-    <div class="O_ChoiceCollection O_ChoiceCollectionElement">
+    <div class="O_ChoiceCollection O_ChoiceCollectionElement O_ChoiceCollectionElementTop">
       <div class="A_HeaderChoice">
         <h3 class='A_Header3'>Выбери коллекцию</h3>
         <button id="closePopup" class="Q_IconClose" data-action="click->collection#close">
@@ -77,14 +58,17 @@
         <div class="M_CollectionForm M_CollectionFormRef hidden" data-collection-target="referenceSection">
           <%= form_with model: [@collection, @collection.images.build], method: :post, multipart: true do |f| %>
             <div class="M_CollectionForm M_CollectionFormRef">
-              <%= f.text_field :title, placeholder: "Название референса", class: "A_Input A_InputRef" %>
+              <%= f.text_field :title, placeholder: "Название референса", class: "A_Input A_InputRef", style: "color: black" %>
 
               <div class="custom-file-input">
                 <label for="file_upload" class="file-label">
-                  <%= image_tag("icon-attachment.svg", alt: "Иконка файла", class: "file-icon") %>
-                  <span class="default-color">Картинка</span>
+                  <div class="preview-container" style="display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    <img id="preview-image" src="<%= image_path('icon-attachment.svg') %>" alt="Иконка файла" class="file-icon" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                  </div>
+                  <span id="file-name" class="default-color" data-collection-target="fileName">Картинка</span>
                 </label>
-                <%= f.file_field :file, id: "file_upload", class: "hidden-input" %>
+                <%= f.file_field :file, id: "file_upload", class: "hidden-input", 
+                                data: { action: "change->collection#updateFileName change->collection#previewImage" } %>
               </div>
 
               <%= f.submit "Добавить", class: "A_ButtonPrimary A_ButtonPrimaryElement" %>
@@ -111,7 +95,7 @@
     </div>       
     <div class='W_collectionElements'>
       <h2 class="A_Header2">Референсы</h2>
-      <% if @collection.images.any? %>
+      <% if @collection.images.any? && @collection.images.any? { |image| image.file.present? } %>
         <div class='C_collectionElements'>
           <% @collection.images.each do |image| %>
             <%= render partial: 'refs', locals: { image: image } %>

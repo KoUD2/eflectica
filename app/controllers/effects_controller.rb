@@ -137,6 +137,9 @@ class EffectsController < ApplicationController
     end
   end
   
+  def my
+    @effects = current_user.effects.order(created_at: :desc)
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

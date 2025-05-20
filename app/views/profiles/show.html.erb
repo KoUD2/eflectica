@@ -53,21 +53,25 @@
 			</div>
 		</div>
 
-		<button class='A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryProfile'>
-			<%= image_tag("changeSettings.svg", alt: "Картинка", class: "Q_changeSettings") %>
-			Изменить настройки ленты
-		</button>
+		<% if current_user && current_user == @user %>
+			<button class='A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryProfile'>
+				<%= image_tag("changeSettings.svg", alt: "Картинка", class: "Q_changeSettings") %>
+				Изменить настройки ленты
+			</button>
+		<% end %>
 	</div>
 
 	<div class='W_buttonsProfile'>
-		<%= link_to edit_profile_path(@user), class: "A_ButtonPrimaryProfile" do %>
-			<button class="A_ButtonPrimaryProfile">Редактировать</button>
+		<% if current_user && current_user == @user %>
+			<%= link_to edit_profile_path(@user), class: "A_ButtonPrimaryProfile" do %>
+				<button class="A_ButtonPrimaryProfile">Редактировать</button>
+			<% end %>
+			<button class="A_ButtonDamage">Выйти</button>
 		<% end %>
-		<button class="A_ButtonDamage">Выйти</button>
 	</div>
 
 	<div class='W_postsProfile'>
-		<h3 class="A_Header3">Мои посты</h3>
+		<h3 class="A_Header3">Посты</h3>
 		<% if @user.effects.any? %>
 			<div class="W_EffectsCollection">
 				<% @user.effects.each do |effect| %>

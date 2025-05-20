@@ -1,13 +1,9 @@
+<% if image.file.present? %>
 <div class="O_ReferenceCard">
-  <% if image.file.present? %>
-    <%= image_tag image.file.url, alt: image.title, class: "A_PhotoRef" %>
-  <% else %>
-    <div class="image-placeholder">
-      No image available
-    </div>
-  <% end %>
-
+  <%= image_tag image.file.url, alt: image.title, class: "A_PhotoRef" %>
+  
   <% if image.title.present? %>
     <p class="A_TextEffectCard A_TextRefCard"><%= image.title %></p>
   <% end %>
 </div>
+<% end %>

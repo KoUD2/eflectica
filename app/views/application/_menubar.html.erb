@@ -1,17 +1,55 @@
 <nav class="O_Menu">
   <div class='C_Menu'>
-    <a href="/"><div class='A_Logo2 <%= "A_Logo2Active" if current_page?(root_path) %>'><%= image_tag("A_Logo.svg", alt: "Картинка логотипа") %><svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement'>
-      <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
-    </svg></div></a>
+    <div class="A_burgerMenu">
+      <div class="Q_burgerMenu"></div>
+      <div class="Q_burgerMenu"></div>
+      <div class="Q_burgerMenu"></div>
+    </div>
+
+    <div class="W_allLinksHeaderMain">
+      <a href="/"><div class='A_Logo2 <%= "A_Logo2Active" if current_page?(root_path) %>'><%= image_tag("A_Logo.svg", alt: "Картинка логотипа") %><svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement'>
+        <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
+      </svg></div></a>
+      <div class="W_commonLinksHeader">
+        <div class="A_searchWrapper" data-controller="search">
+          <div data-search-target="icon" data-action="click->search#toggleSearch">
+            <%= image_tag("Q_IconSearchHeader.svg", alt: "Поиск", class: "Q_SearchIcon") %>
+          </div>
+          <form action="/effects" method="get" class="A_searchForm hidden" data-search-target="input">
+            <button type="submit" class="A_searchSubmit">
+              <%= image_tag("Q_IconSearch.svg", alt: "Искать") %>
+            </button>
+            <input type="text" name="search" placeholder="Поиск на сайте" class="A_searchInputHeader">
+          </form>
+        </div>
+        <div class='A_TextM <%= "A_TextMActive" if current_page?(effects_path) %>'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement Q_roundElementLeft'>
+            <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
+          </svg>
+          <%= link_to 'Эффекты', effects_path %>
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement'>
+            <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
+          </svg>
+        </div>
+        <div class='A_TextM <%= "A_TextMActive" if current_page?(collections_path) %>'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement Q_roundElementLeft'>
+            <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
+          </svg>
+          <%= link_to 'Коллекции', collections_path %>
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement'>
+            <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
+          </svg>
+        </div>
+      </div>
+    </div>
     
 
     <div class="M_Menu">
-
-      <div class='A_TextM <%= "A_TextMActive" if current_page?(effects_path) %>'>
+      <div class='A_TextM <%= "A_TextMActive" if current_page?(my_effects_path) %>'>
         <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement Q_roundElementLeft'>
           <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
         </svg>
-        <%= link_to 'Эффекты', effects_path %>
+        <%= link_to 'Мои эффекты', my_effects_path %>
         <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement'>
           <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
         </svg>
@@ -20,7 +58,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement Q_roundElementLeft'>
           <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
         </svg>
-        <%= link_to 'Коллекции', news_feeds_path %>
+        <%= link_to 'Мои коллекции', news_feeds_path %>
         <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement'>
           <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
         </svg>

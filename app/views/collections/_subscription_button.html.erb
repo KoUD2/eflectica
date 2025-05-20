@@ -1,0 +1,18 @@
+<%= turbo_frame_tag "subscription_button" do %>
+  <% if current_user&.subscribed_to?(collection) %>
+    <%= button_to unsubscribe_collection_path(collection), 
+        method: :delete, 
+        class: "A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryGrayFit A_UnsubscribeButton" do %>
+      Отписаться
+    <% end %>
+  <% elsif current_user %>
+    <%= button_to subscribe_collection_path(collection), 
+        method: :post, 
+        class: "A_ButtonPrimary A_SubscribeButton",
+        disabled: collection.status == 'private' do %>
+      Подписаться
+    <% end %>
+  <% else %>
+    <%= link_to "Войти, чтобы подписаться", new_user_session_path, class: "A_ButtonPrimary" %>
+  <% end %>
+<% end %> 

@@ -1,214 +1,218 @@
-.A_Logo{
-	height: 3.001vw;
-	width: auto;
+.A_Logo {
+  height: 3.001vw;
+  width: auto;
 }
 
 .A_Header1 {
-	color: var(--computer-blue, #0638BD);
-	font-family: "Basis Grotesque Pro";
-	font-size: 2.5vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: normal;
+  color: var(--computer-blue, #0638bd);
+  font-family: "Basis Grotesque Pro";
+  font-size: 2.5vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.A_burgerMenu {
+  display: none;
 }
 
 .A_Header1Collection {
-	text-align: center;
-	color: var(--charcoal-black, #0E1111);
+  text-align: center;
+  color: var(--charcoal-black, #0e1111);
 }
 
 .A_TextComment {
-	color: var(--charcoal-black, #0E1111);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.042vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 1.354vw;
+  color: var(--charcoal-black, #0e1111);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.354vw;
 }
 
 .A_TextCaption {
-	color: var(--dirty-grey, #7D7D7D);
-	font-family: "Basis Grotesque Pro";
-	font-size: 0.833vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 0.938vw;
+  color: var(--dirty-grey, #7d7d7d);
+  font-family: "Basis Grotesque Pro";
+  font-size: 0.833vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 0.938vw;
 }
 
 .A_Header1Purple {
-	color: var(--glamour-pink, #E33081);
+  color: var(--glamour-pink, #e33081);
 }
 
-.A_Logo2{
-	width: fit-content;
-	padding: 0 1.25vw;
-	background-color: transparent;
-	border-top-left-radius: 0.313vw;
-	border-top-right-radius: 0.313vw;
+.A_Logo2 {
+  width: fit-content;
+  padding: 0 1.25vw;
+  background-color: transparent;
+  border-top-left-radius: 0.313vw;
+  border-top-right-radius: 0.313vw;
 
-	> img {
-		height: 2.137vw;
-		width: auto;
-	}
+  > img {
+    height: 2.137vw;
+    width: auto;
+  }
 }
 
 .A_Logo2Active {
-	background-color: var(--foggy-grey);
-	position: relative;
-	z-index: 10;
+  background-color: var(--foggy-grey);
+  position: relative;
+  z-index: 10;
 
-	> svg path {
-		fill: var(--foggy-grey);
-	}
+  > svg path {
+    fill: var(--foggy-grey);
+  }
 }
 
 .A_TextS {
-	color: var(--charcoal-black, #0E1111);
-	font-family: "Basis Grotesque Pro";
-	font-size: 0.938vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 1.042vw;
-	text-transform: uppercase;
+  color: var(--charcoal-black, #0e1111);
+  font-family: "Basis Grotesque Pro";
+  font-size: 0.938vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.042vw;
+  text-transform: uppercase;
 }
 
 .A_TextShow {
-	color: var(--ordinary-grey);
-	text-transform: lowercase;
+  color: var(--ordinary-grey);
+  text-transform: lowercase;
 }
 
 .A_TextSProfile3 {
-	text-align: center;
-	width: 7.865vw;
+  text-align: center;
+  width: 7.865vw;
 }
 
 .A_Navigation2 {
-	cursor: pointer;
-	display: flex;
-	width: 2.083vw;
-	height: 1.354vw;
-	padding: 0.417vw 0.625vw;
-	justify-content: center;
-	align-items: center;
-	border-radius: 0.313vw;
-	border: 0.078vw solid var(--soft-grey);
-	background: var(--porcelain-white);
+  cursor: pointer;
+  display: flex;
+  width: 2.083vw;
+  height: 1.354vw;
+  padding: 0.417vw 0.625vw;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.313vw;
+  border: 0.078vw solid var(--soft-grey);
+  background: var(--porcelain-white);
 
-	> img {
-		width: 0.938vw;
-		height: auto;
-	}
+  > img {
+    width: 0.938vw;
+    height: auto;
+  }
 }
 
 .A_TextXS {
-	color: var(--dirty-grey, #7D7D7D);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.042vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 1.146vw;
+  color: var(--dirty-grey, #7d7d7d);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.146vw;
 }
 
 .A_Rating {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .A_TextXSEffect {
-	color: var(--charcoal-black);
-	line-height: 0.938vw;
-	height: calc(0.938vw * 3);
-	display: -webkit-box;
-	-webkit-line-clamp: 3;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-	text-overflow: ellipsis;
+  color: var(--charcoal-black);
+  line-height: 0.938vw;
+  height: calc(0.938vw * 3);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   line-clamp: 3;
 }
 
 .A_TextXSRaitingCount {
-	color: var(--ordinary-grey);
+  color: var(--ordinary-grey);
 }
 
 .A_ButtonEffect {
-	> a {
-		margin: 1.042vw auto 1.25vw auto;
-		width: 9.375vw;
-	}
+  > a {
+    margin: 1.042vw auto 1.25vw auto;
+    width: 9.375vw;
+  }
 }
 
 .A_ButtonEffect2 {
-	height: 1.695vw;
+  height: 1.695vw;
 }
 
 .A_TextH2 {
-	color: var(--charcoal-black, #0E1111);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.042vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 1.354vw;
+  color: var(--charcoal-black, #0e1111);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.354vw;
 }
 
 .A_TextEffectDescription {
-	color: var(--charcoal-black, #0E1111);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.25vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 1.563vw;
-	width: 27.604vw;
+  color: var(--charcoal-black, #0e1111);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.25vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.563vw;
+  width: 27.604vw;
 }
 
 .A_TextEffectDescriptionBanner {
-	width: 19.792vw;
+  width: 19.792vw;
 }
 
 .A_backBtn {
-	cursor: pointer;
-	position: absolute;
-	top: 1.667vw;
-	left: 1.302vw;
-	background-color: transparent;
-	border: none;
-	outline: none;
-	color: var(--computer-blue, #0638BD);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.042vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 1.146vw;
+  cursor: pointer;
+  position: absolute;
+  top: 1.667vw;
+  left: 1.302vw;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: var(--computer-blue, #0638bd);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.146vw;
 
-	> img {
-		width: 0.938vw;
-		transform: rotate(180deg);
-	}
+  > img {
+    width: 0.938vw;
+    transform: rotate(180deg);
+  }
 }
 
 .A_TextEffectDescriptionElement {
-	margin-top: 1.25vw;
-	width: 20.604vw;
+  margin-top: 1.25vw;
+  width: 20.604vw;
 }
 
 .A_TextEffectDescriptionFeed {
-	width: 30.604vw;
+  width: 30.604vw;
 }
 
 .A_TextEffectDescriptionSettingsFeed {
-	width: 24.604vw;
+  width: 24.604vw;
 }
 
 .A_TextEffectDescriptionSettingsFeedFinal {
-	width: 22.604vw;
+  width: 22.604vw;
 }
 
 .A_PhotoEffect {
-	display: flex;
-	width: 49.645%;
-	height: 100%;
-	justify-content: center;
-	align-items: center;
-	object-fit: cover;
+  display: flex;
+  width: 49.645%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
 }
 
 .A_PhotoEffectCover {
@@ -219,98 +223,101 @@
 }
 
 .A_TextRefCard {
-	margin-left: 0.833vw;
+  margin-left: 0.833vw;
 }
 
 .A_PhotoRef {
-	width: 100%;
-	height: 10.729vw;
-	object-fit: cover;
+  width: 100%;
+  height: 10.729vw;
+  object-fit: cover;
 }
 
 .A_PhotoLink {
-	width: 100%;
-	height: 9.271vw;
-	object-fit: cover;
+  width: 100%;
+  height: 9.271vw;
+  object-fit: cover;
 }
 
 .A_TextEffectCard {
-	color: var(--charcoal-black, #0E1111);
-	font-family: "Basis Grotesque Pro";
-	font-size: 100%;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 1.146vw;
+  color: var(--charcoal-black, #0e1111);
+  font-family: "Basis Grotesque Pro";
+  font-size: 100%;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.146vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .A_TextEffectCardPreview {
-	margin-left: 0.833vw;
-	font-size: 0.833vw;
+  margin-left: 0.833vw;
+  font-size: 0.833vw;
 }
 
 .A_TextEffectCardRaiting {
-	color: var(--glamour-pink, #E33081);
+  color: var(--glamour-pink, #e33081);
 }
 
 .A_TextEffectDescriptionCollection {
-	width: 30.604vw;
+  width: 30.604vw;
 }
 
-.A_HeaderCollection{
-	display: flex;
-	height: 14.371%;
-	padding: 3.406% 0;
-	justify-content: center;
-	align-items: center;
-	align-self: stretch;
-	background: var(--grey-tag, #E1E1E1);
+.A_HeaderCollection {
+  display: flex;
+  height: 14.371%;
+  padding: 3.406% 0;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  background: var(--grey-tag, #e1e1e1);
 }
 
-.A_HeaderCollectionText{
-	color: var(--charcoal-black, #0E1111);
-	font-family: "Basis Grotesque Pro";
-	font-size: 100%;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 100%;
+.A_HeaderCollectionText {
+  color: var(--charcoal-black, #0e1111);
+  font-family: "Basis Grotesque Pro";
+  font-size: 100%;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
 }
 
-.A_TextTag{
-	color: var(--charcoal-black, #0E1111);
-	font-family: "Basis Grotesque Pro";
-	font-size: 0.833vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: auto;
+.A_TextTag {
+  color: var(--charcoal-black, #0e1111);
+  font-family: "Basis Grotesque Pro";
+  font-size: 0.833vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: auto;
 }
 
-.A_TextTagBig{
-	font-size: 1.042vw;
+.A_TextTagBig {
+  font-size: 1.042vw;
 }
 
 .A_TextCaptionCollection {
-	width: 17.448vw;
+  width: 17.448vw;
 }
 
 .A_ButtonPrimaryCollectionCreate {
-	margin: 1.667vw auto 0 auto;
+  margin: 1.667vw auto 0 auto;
 }
 
 .A_TextTagFeed {
-	color: var(--dirty-grey, #7D7D7D);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.042vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 1.146vw;
+  color: var(--dirty-grey, #7d7d7d);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.146vw;
 }
 
 .A_TextTagFeedActive {
-	color: var(--computer-blue, #0638BD);
+  color: var(--computer-blue, #0638bd);
 }
 
 .A_TextTagLight {
-	color: var(--dirty-grey, #7D7D7D);
+  color: var(--dirty-grey, #7d7d7d);
 }
 
 .A_TextTagLink {
@@ -321,1479 +328,1558 @@
 }
 
 .A_ButtonSecondary {
-	width: 8.021vw;
-	cursor: pointer;
-	display: flex;
+  width: 8.021vw;
+  cursor: pointer;
+  display: flex;
   height: 2.083vw;
   padding: 0.573vw 0.625vw 0.573vw 0.859vw;
   align-items: center;
   gap: 0.417vw;
-  border-radius: var(--button, 	0.417vw);
-  border: var(--border, 2px) solid var(--computer-blue, #0638BD);
-  background: var(--porcelain-white, #FFF);
+  border-radius: var(--button, 0.417vw);
+  border: var(--border, 2px) solid var(--computer-blue, #0638bd);
+  background: var(--porcelain-white, #fff);
 }
 
-.A_UnsubscribeButton{
-	border: var(--border, 2px) solid var(--grey-tag, #E1E1E1);
+.A_UnsubscribeButton {
+  border: var(--border, 2px) solid var(--grey-tag, #e1e1e1);
 }
 
 .A_ProgramName {
-	color: var(--charcoal-black, #0E1111);
-	font-family: "Basis Grotesque Pro";
-	font-size: 0.833vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 1.042vw;
+  color: var(--charcoal-black, #0e1111);
+  font-family: "Basis Grotesque Pro";
+  font-size: 0.833vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.042vw;
 }
 
 .A_ProgramNameEffect {
-	font-size: 1.042vw;
+  font-size: 1.042vw;
 }
 
 .A_TaskList {
-	width: 19.844vw;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.417vw;
+  width: 19.844vw;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.417vw;
 }
 
 .A_CategoryItem {
-	color: var(--computer-blue, #0638BD);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.25vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 1.563vw;
+  color: var(--computer-blue, #0638bd);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.25vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.563vw;
 }
 
 .A_TaskItem {
-	width: fit-content;
-	display: flex;
-	height: 2.5vw;
-	padding: 0vw 1.25vw;
-	justify-content: center;
-	align-items: center;
-	gap: 0.598vw;
-	border-radius: var(--button, 0.417vw);
-	background: var(--grey-tag, #E1E1E1);
-	color: var(--charcoal-black, #0E1111);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.042vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 1.354vw;
+  width: fit-content;
+  display: flex;
+  height: 2.5vw;
+  padding: 0vw 1.25vw;
+  justify-content: center;
+  align-items: center;
+  gap: 0.598vw;
+  border-radius: var(--button, 0.417vw);
+  background: var(--grey-tag, #e1e1e1);
+  color: var(--charcoal-black, #0e1111);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.354vw;
 }
 
 .A_ButtonSecondaryGray {
-	width: 14.7vw;
-	height: 2.5vw;
-	font-size: 1.042vw;
-	border: var(--border, 2px) solid var(--grey-tag, #E1E1E1);
+  width: 14.7vw;
+  height: 2.5vw;
+  font-size: 1.042vw;
+  border: var(--border, 2px) solid var(--grey-tag, #e1e1e1);
 }
 
 .A_ButtonSecondaryFit {
-	width: fit-content;
+  width: fit-content;
 }
 
 .A_ButtonSecondaryProfile {
-	width: 16.9vw;
-	gap: 0.625vw;
-	font-weight: 500;
+  width: 16.9vw;
+  gap: 0.625vw;
+  font-weight: 500;
 }
 
 .A_ButtonDamage {
-	cursor: pointer;
-	display: flex;
-	width: 11.979vw;
-	height: 2.5vw;
-	padding: 0.417vw 2.188vw;
-	justify-content: center;
-	align-items: center;
-	gap: 0.417vw;
-	flex-shrink: 0;
-	border-radius: var(--button, 0.417vw);
-	border: var(--border, 0.104vw) solid var(--damage, #EA0004);
-	background: var(--porcelain-white, #FFF);
-	color: var(--damage, #EA0004);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.042vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 1.146vw;
+  cursor: pointer;
+  display: flex;
+  width: 11.979vw;
+  height: 2.5vw;
+  padding: 0.417vw 2.188vw;
+  justify-content: center;
+  align-items: center;
+  gap: 0.417vw;
+  flex-shrink: 0;
+  border-radius: var(--button, 0.417vw);
+  border: var(--border, 0.104vw) solid var(--damage, #ea0004);
+  background: var(--porcelain-white, #fff);
+  color: var(--damage, #ea0004);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.146vw;
 }
 
-.A_ButtonDamageEdit{
-	width: fit-content;
+.A_ButtonDamageEdit {
+  width: fit-content;
 }
 
 .A_ButtonPrimaryProfile {
-	cursor: pointer;
-	display: flex;
-	width: 11.979vw;
-	height: 2.5vw;
-	padding: 0.417vw 2.188vw;
-	justify-content: center;
-	align-items: center;
-	gap: 0.417vw;
-	flex-shrink: 0;
-	border-radius: var(--button, 0.417vw);
-	border: var(--border, 0.104vw) solid var(--grey-tag, #E1E1E1);
-	background: var(--porcelain-white, #FFF);
-	color: var(--charcoal-black, #0E1111);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.042vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 1.146vw;
+  cursor: pointer;
+  display: flex;
+  width: 11.979vw;
+  height: 2.5vw;
+  padding: 0.417vw 2.188vw;
+  justify-content: center;
+  align-items: center;
+  gap: 0.417vw;
+  flex-shrink: 0;
+  border-radius: var(--button, 0.417vw);
+  border: var(--border, 0.104vw) solid var(--grey-tag, #e1e1e1);
+  background: var(--porcelain-white, #fff);
+  color: var(--charcoal-black, #0e1111);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.146vw;
 }
 
 .A_ButtonPrimaryProfileEdit {
-	width: fit-content;
-	padding: 0.417vw 1.25vw;
+  width: fit-content;
+  padding: 0.417vw 1.25vw;
 }
 
 .A_HeaderChoice {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
 }
 
 .A_ButtonSecondaryGrayFeed {
-	width: auto;
-	height: auto;
-	padding: 0.677vw 1.25vw;
-	font-size: 1.042vw;
-	border: var(--border, 2px) solid var(--grey-tag, #E1E1E1);
+  width: auto;
+  height: auto;
+  padding: 0.677vw 1.25vw;
+  font-size: 1.042vw;
+  border: var(--border, 2px) solid var(--grey-tag, #e1e1e1);
 }
 
-.A_Header3{
-	color: var(--charcoal-black, #0E1111);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.25vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: normal;
+.A_Header3 {
+  color: var(--charcoal-black, #0e1111);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.25vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .A_Program {
-	display: flex;
-	align-items: center;
-	gap: 0.625vw;
+  display: flex;
+  align-items: center;
+  gap: 0.625vw;
 }
 
 .A_ButtonPrimarySettings {
-	padding: 0.417vw 1.25vw;
-	width: fit-content !important;
+  padding: 0.417vw 1.25vw;
+  width: fit-content !important;
 }
 
 .A_TextButton {
-	cursor: pointer;
-	border: none;
-	outline: none;
-	background-color: transparent;
-	color: var(--dirty-grey, #7D7D7D);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.042vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 1.146vw;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--dirty-grey, #7d7d7d);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.146vw;
 }
 
 .A_TextButtonSeсondary {
-	cursor: pointer;
-	border: none;
-	outline: none;
-	background-color: transparent;
-	color: var(--dirty-grey, #7D7D7D);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.042vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 1.354vw;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--dirty-grey, #7d7d7d);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.354vw;
 }
 
 .A_TextButtonSeсondaryBlack {
-	color: var(--charcoal-black, #0E1111);
+  color: var(--charcoal-black, #0e1111);
 }
 
 .A_ModerationText {
-	display: flex;
-	padding: 0vw 6.771vw;
-	align-items: center;
-	gap: 0.521vw;
-	align-self: stretch;
-	color: var(--charcoal-black, #0E1111);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.25vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 1.563vw;
+  display: flex;
+  padding: 0vw 6.771vw;
+  align-items: center;
+  gap: 0.521vw;
+  align-self: stretch;
+  color: var(--charcoal-black, #0e1111);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.25vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.563vw;
 }
 
 .A_TextButtonSeсondaryPink {
-	color: var(--glamour-pink, #E33081);
+  color: var(--glamour-pink, #e33081);
 }
 
 .A_FavoriteCollectionIcon {
-	width: 1.042vw;
-	height: 0.885vw;
+  width: 1.042vw;
+  height: 0.885vw;
 }
 
 .A_CloseCollectionIcon {
-	width: 0.938vw;
-	height: 0.938vw;
+  width: 0.938vw;
+  height: 0.938vw;
 }
 
 .A_buttonShareProfile {
-	cursor: pointer;
-	background-color: transparent;
-	border: none;
-	outline: none;
-	display: flex;
-	gap: 0.417vw;
-	align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  display: flex;
+  gap: 0.417vw;
+  align-items: center;
 }
 
 .A_emptyUserPhoto {
-	overflow: hidden;
-	width: 11.979vw;
-	height: 11.979vw;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 100%;
-	background: var(--soft-grey, #EBEBEB);
+  overflow: hidden;
+  width: 11.979vw;
+  height: 11.979vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  background: var(--soft-grey, #ebebeb);
 }
 
 .A_TextButtonPrimary {
-	color: var(--computer-blue, #0638BD);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.042vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 1.146vw;
+  color: var(--computer-blue, #0638bd);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.146vw;
 }
 
 .A_addToCollectionPrimaryButtonIconIcon {
-	width: 1.25vw;
-	height: 1.25vw;
+  width: 1.25vw;
+  height: 1.25vw;
 }
 
 .A_SocialIcon {
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 2.813vw;
-	height: 2.813vw;
-	border: 2px solid #E1E1E1;
-	background-color: #FFFFFF;
-	border-radius: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.813vw;
+  height: 2.813vw;
+  border: 2px solid #e1e1e1;
+  background-color: #ffffff;
+  border-radius: 100%;
 }
 
 .A_SocialIconProfile {
-	width: 1.875vw;
-	height: 1.875vw;
+  width: 1.875vw;
+  height: 1.875vw;
 }
 
 .A_vkIcon {
-	width: 1.406vw;
-	height: auto;
+  width: 1.406vw;
+  height: auto;
 }
 
 .A_tgIcon {
-	width: 1.094vw;
-	height: auto;
+  width: 1.094vw;
+  height: auto;
 }
 
 .A_linkIcon {
-	width: 1.719vw;
-	height: auto;
+  width: 1.719vw;
+  height: auto;
 }
 
 .A_AddToCollectionIcon {
-	width: 1.25vw;
-	height: 1.25vw;
+  width: 1.25vw;
+  height: 1.25vw;
 }
 
 .A_PhotoCollection {
-	width: 49.862%;
-	height: 100%;
+  width: 49.862%;
+  height: 100%;
 }
 .A_PhotoCollectionEmpty {
-	background: var(--soft-grey, #EBEBEB);
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  background: var(--soft-grey, #ebebeb);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .A_DownloadButton {
-	width: 1.25vw;
-	height: 1.25vw;
+  width: 1.25vw;
+  height: 1.25vw;
 }
 
 .A_PhotoCollectionMini {
-	width: 48.947%;
-	height: 48.947%;
+  width: 48.947%;
+  height: 48.947%;
 }
 
 .A_folowCollectionImage {
-	width: 0.885vw;
-	height: auto;
+  width: 0.885vw;
+  height: auto;
 }
 
 .A_Input {
-	display: flex;
-	height: 2.5vw;
-	width: 15.625vw;
-	padding: 0.417vw 0.833vw;
-	align-self: stretch;
-	border-radius: var(--button, 0.417vw);
-	border: var(--border, 0.104vw) solid var(--grey-tag, #E1E1E1);
-	background: var(--porcelain-white, #FFF);
-	outline: none;
-	font-family: "Basis Grotesque Pro";
-	font-size: 0.833vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 1.042vw;
+  display: flex;
+  height: 2.5vw;
+  width: 15.625vw;
+  padding: 0.417vw 0.833vw;
+  align-self: stretch;
+  border-radius: var(--button, 0.417vw);
+  border: var(--border, 0.104vw) solid var(--grey-tag, #e1e1e1);
+  background: var(--porcelain-white, #fff);
+  outline: none;
+  font-family: "Basis Grotesque Pro";
+  font-size: 0.833vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.042vw;
 }
 
 .A_InputVersion {
-	width: 11.979vw;
-	font-size: 1.042vw;
+  width: 11.979vw;
+  font-size: 1.042vw;
 }
 
 .A_InputEditProfile {
-	font-size: 1.042vw;
+  font-size: 1.042vw;
 }
 
 .A_InputRef {
-	display: flex;
-	width: 100%;
-	height: 3.333vw;
-	padding: 0vw 0.833vw;
-	align-items: center;
-	gap: 0.625vw;
-	align-self: stretch;
-	border-radius: var(--button, 0.417vw);
-	border: var(--border, 0.104vw) solid var(--grey-tag, #E1E1E1);
-	background: var(--porcelain-white, #FFF);
-	color: var(--input-grey, #C7C7CA);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.042vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 1.354vw;
+  display: flex;
+  width: 100%;
+  height: 3.333vw;
+  padding: 0vw 0.833vw;
+  align-items: center;
+  gap: 0.625vw;
+  align-self: stretch;
+  border-radius: var(--button, 0.417vw);
+  border: var(--border, 0.104vw) solid var(--grey-tag, #e1e1e1);
+  background: var(--porcelain-white, #fff);
+  color: var(--input-grey, #c7c7ca);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.354vw;
 }
 
 .A_formElement {
-	width: 100%;
+  width: 100%;
 }
 
 .A_ButtonPrimaryElement {
-	margin: 0.833vw auto 0 auto;
+  margin: 0.833vw auto 0 auto;
 }
 
 .A_searchInput {
-	position: relative;
-	display: flex;
-	width: 15.625vw;
-	height: 2.5vw;
-	padding: 0.417vw 0.833vw 0.417vw 2.5vw;
-	align-items: center;
-	gap: 0.417vw;
-	border-radius: var(--button, 0.417vw);
-	border: var(--border, 0.104vw) solid var(--input-grey, #C7C7CA);
-	background: var(--porcelain-white, #FFF);
-	outline: none;
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.042vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 1.146vw;
+  position: relative;
+  display: flex;
+  width: 15.625vw;
+  height: 2.5vw;
+  padding: 0.417vw 0.833vw 0.417vw 2.5vw;
+  align-items: center;
+  gap: 0.417vw;
+  border-radius: var(--button, 0.417vw);
+  border: var(--border, 0.104vw) solid var(--input-grey, #c7c7ca);
+  background: var(--porcelain-white, #fff);
+  outline: none;
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.146vw;
 }
 
 .A_MainLogo {
-	margin-top: 11.927vw;
-	width: 39.792vw;
-	height: 8.791vw;
+  margin-top: 11.927vw;
+  width: 39.792vw;
+  height: 8.791vw;
 }
 
 .A_HeaderDark {
-	color: var(--charcoal-black, #0E1111);
+  color: var(--charcoal-black, #0e1111);
 }
 
 .A_Program {
-	display: flex;
-	align-items: center;
-	gap: 0.417vw;
+  display: flex;
+  align-items: center;
+  gap: 0.417vw;
 }
 
 .A_hintModeration {
-	cursor: pointer;
-	width: 1.796vw;
-	height: 1.719vw;
+  cursor: pointer;
+  width: 1.796vw;
+  height: 1.719vw;
 }
 
 .A_More {
-	cursor: pointer;
-	color: var(--computer-blue, #0638BD);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.042vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 1.146vw;
-	border: none;
-	outline: none;
-	background-color: transparent;
-	display: flex;
-	align-items: center;
-	gap: 0.313vw;
+  cursor: pointer;
+  color: var(--computer-blue, #0638bd);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.146vw;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.313vw;
+}
+
+.A_MoreMobile {
+  display: none;
 }
 
 .A_MoreElement {
-	padding: 0;
-	margin-top: 0.833vw;
+  padding: 0;
+  margin-top: 0.833vw;
 }
 
 .A_buttonWatchAll {
-	cursor: pointer;
-	color: var(--computer-blue, #0638BD);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.042vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 1.146vw;
-	background: transparent;
-	border: none;
-	outline: none;
+  cursor: pointer;
+  color: var(--computer-blue, #0638bd);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.146vw;
+  background: transparent;
+  border: none;
+  outline: none;
 }
 
 .A_TextM {
-	width: fit-content;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 0 0.625vw;
-	background-color: transparent;
-	border-top-left-radius: 0.313vw;
-	border-top-right-radius: 0.313vw;
-	position: relative;
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.625vw;
+  background-color: transparent;
+  border-top-left-radius: 0.313vw;
+  border-top-right-radius: 0.313vw;
+  position: relative;
 
-	> a, > p {
-		color: var(--charcoal-black);
-		font-family: "Basis Grotesque Pro";
-		font-size: 1.042vw;
-		font-style: normal;
-		font-weight: 400;
-		line-height: normal;
-	}
+  > a,
+  > p {
+    color: var(--charcoal-black);
+    font-family: "Basis Grotesque Pro";
+    font-size: 1.042vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 }
 
 .A_TextMShow {
-	padding: 0;
+  padding: 0;
 }
 
 .A_TextMShowMy {
-	> p {
-		color: var(--ordinary-grey);
-	}
+  > p {
+    color: var(--ordinary-grey);
+  }
 }
 
 .A_TextMPagination {
-	color: var(--charcoal-black);
-	font-family: "Basis Grotesque Pro";
-	font-size: 0.833vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
+  color: var(--charcoal-black);
+  font-family: "Basis Grotesque Pro";
+  font-size: 0.833vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 
-	> a {
-		color: var(--ordinary-grey);
-		font-family: "Basis Grotesque Pro";
-		font-size: 0.833vw;
-		font-style: normal;
-		font-weight: 400;
-		line-height: normal;
-		transition: color .3s ease-out;
+  > a {
+    color: var(--ordinary-grey);
+    font-family: "Basis Grotesque Pro";
+    font-size: 0.833vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: color 0.3s ease-out;
 
-		&:hover {
-			color: var(--charcoal-black) !important;
-		}
-	}
+    &:hover {
+      color: var(--charcoal-black) !important;
+    }
+  }
 }
 
 .A_TextMActive {
-	background-color: var(--foggy-grey);
-	z-index: 3;
+  background-color: var(--foggy-grey);
+  z-index: 3;
 
-	> a {
-		color: var(--computer-blue);
-	}
+  > a {
+    color: var(--computer-blue);
+  }
 
-	> svg path {
-		fill: var(--foggy-grey);
-	}
+  > svg path {
+    fill: var(--foggy-grey);
+  }
 }
 
 .A_IconMenu {
-	cursor: pointer;
-	height: 100%;
-	width: 2.708vw;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: transparent;
-	border-top-left-radius: 0.313vw;
-	border-top-right-radius: 0.313vw;
+  cursor: pointer;
+  height: 100%;
+  width: 2.708vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border-top-left-radius: 0.313vw;
+  border-top-right-radius: 0.313vw;
 
-	> svg {
-		height: 1.354vw;
-		width: auto;
-	}
+  > svg {
+    height: 1.354vw;
+    width: auto;
+  }
 }
 
 .A_FormField2 {
-	> input {
-		width: 10vw;
-		border: none;
-		outline: none;
-		background-color: transparent;
-		color: var(--charcoal-black);
-		font-family: "Basis Grotesque Pro";
-		font-size: 0.833vw;
-		font-style: normal;
-		font-weight: 400;
-		line-height: normal;
+  > input {
+    width: 10vw;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: var(--charcoal-black);
+    font-family: "Basis Grotesque Pro";
+    font-size: 0.833vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 
-		&::placeholder {
-			color: var(--ordinary-grey);
-		}
-	}
+    &::placeholder {
+      color: var(--ordinary-grey);
+    }
+  }
 }
 
 .A_IconMenu.active {
-	background-color: var(--foggy-grey);
+  background-color: var(--foggy-grey);
 
-	> svg path {
-		fill: var(--computer-blue);
-	}
+  > svg path {
+    fill: var(--computer-blue);
+  }
 }
 
 .A_IconMenu.active2 {
-	> svg path {
-		fill: var(--computer-blue);
-	}
+  > svg path {
+    fill: var(--computer-blue);
+  }
 }
 
 .A_IconMenuSearch {
-	background-color: transparent;
+  background-color: transparent;
 }
 
 .A_TagProgram {
-	display: flex;
-	padding: 0.313vw 0px;
-	align-items: center;
-	gap: 0.313vw;
+  display: flex;
+  padding: 0.313vw 0px;
+  align-items: center;
+  gap: 0.313vw;
 
-	> p {
-		color: var(--charcoal-black);
-	}
+  > p {
+    color: var(--charcoal-black);
+  }
 }
 
 .A_Navigation {
-	cursor: pointer;
-	display: flex;
-	padding: 0.417vw 0.625vw;
-	height: fit-content;
-	width: fit-content;
-	justify-content: center;
-	align-items: center;
-	border-radius: 0.313vw;
-	border: 0.078vw solid var(--soft-grey);
-	background: var(--porcelain-white);
-	margin: 1.25vw 0 0 1.25vw;
-	
-	> img {
-		width: 0.938vw;
-		height: auto;
-	}
+  cursor: pointer;
+  display: flex;
+  padding: 0.417vw 0.625vw;
+  height: fit-content;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.313vw;
+  border: 0.078vw solid var(--soft-grey);
+  background: var(--porcelain-white);
+  margin: 1.25vw 0 0 1.25vw;
+
+  > img {
+    width: 0.938vw;
+    height: auto;
+  }
 }
 
 .A_filterEffectGoal {
-	width: 10.677vw;
-	justify-content: space-between;
+  width: 10.677vw;
+  justify-content: space-between;
 }
 
 .A_filterEffectSort {
-	width: 6.771vw;
-	justify-content: space-between;
+  width: 6.771vw;
+  justify-content: space-between;
 }
 
 .A_Check {
-	width: 1.042vw;
-	height: auto;
+  width: 1.042vw;
+  height: auto;
 }
 
 .A_Filter {
-	display: flex;
-	align-items: center;
-	gap: 2.5vw;
-	cursor: pointer;
-	padding: 0.417vw 0.625vw;
-	border-radius: 0.313vw;
-	border: 0.078vw solid var(--soft-grey);
-	background: var(--porcelain-white);
+  display: flex;
+  align-items: center;
+  gap: 2.5vw;
+  cursor: pointer;
+  padding: 0.417vw 0.625vw;
+  border-radius: 0.313vw;
+  border: 0.078vw solid var(--soft-grey);
+  background: var(--porcelain-white);
 
-	> p {
-		color: #000;
-		text-transform: capitalize;
-	}
+  > p {
+    color: #000;
+    text-transform: capitalize;
+  }
 
-	> img {
-		width: 0.521vw;
-		height: auto;
-	}
+  > img {
+    width: 0.521vw;
+    height: auto;
+  }
 }
 
 .A_FilterCategory {
-	width: fit-content;
+  width: fit-content;
   gap: 0.833vw;
-	font-weight: 500;
+  font-weight: 500;
 
-	> img {
-		width: 0.729vw;
-		height: auto;
-	}
+  > img {
+    width: 0.729vw;
+    height: auto;
+  }
 }
 
 .Q_changeSettingsCategory {
-	width: 0.833vw;
-	height: 0.833vw
+  width: 0.833vw;
+  height: 0.833vw;
 }
 
 .A_FilterSearch {
-	cursor: pointer;
-	display: flex;
-	height: 2.5vw;
-	padding: 0.417vw 0.625vw;
-	align-items: center;
-	gap: 0.833vw;
-	border-radius: var(--button, 0.417vw);
-	border: var(--border, 0.104vw) solid var(--grey-tag, #E1E1E1);
-	background: var(--porcelain-white, #FFF);
+  cursor: pointer;
+  display: flex;
+  height: 2.5vw;
+  padding: 0.417vw 0.625vw;
+  align-items: center;
+  gap: 0.833vw;
+  border-radius: var(--button, 0.417vw);
+  border: var(--border, 0.104vw) solid var(--grey-tag, #e1e1e1);
+  background: var(--porcelain-white, #fff);
 
-	> p {
-		color: var(--charcoal-black, #0E1111);
-		font-family: "Basis Grotesque Pro";
-		font-size: 1.042vw;
-		font-style: normal;
-		font-weight: 500;
-		line-height: 1.146vw;
-	}
+  > p {
+    color: var(--charcoal-black, #0e1111);
+    font-family: "Basis Grotesque Pro";
+    font-size: 1.042vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.146vw;
+  }
 }
 
 .A_TextH1 {
-	color: var(--computer-blue);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.25vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: normal;
+  color: var(--computer-blue);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.25vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .A_TextH1News {
-	margin-top: 1.198vw;
-	color: var(--charcoal-black);
+  margin-top: 1.198vw;
+  color: var(--charcoal-black);
 }
 
 .A_TextH1News2 {
-	margin: 0;
+  margin: 0;
 }
 
 .A_Button {
-	cursor: pointer;
-	display: flex;
-	width: 11.458vw;
-	padding: 0.417vw 0;
-	justify-content: center;
-	align-items: center;
-	border-radius: 0.313vw;
-	background: var(--computer-blue);
-	border: none;
-	color: var(--porcelain-white);
-	font-family: "Basis Grotesque Pro";
-	font-size: 0.729vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 0.938vw;
+  cursor: pointer;
+  display: flex;
+  width: 11.458vw;
+  padding: 0.417vw 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.313vw;
+  background: var(--computer-blue);
+  border: none;
+  color: var(--porcelain-white);
+  font-family: "Basis Grotesque Pro";
+  font-size: 0.729vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 0.938vw;
 }
 
 .A_LogoRegister {
-	margin: -0.885vw auto 0 auto;
-	> img {
-		width: 42.604vw;
-		height: auto;
-	}
+  margin: -0.885vw auto 0 auto;
+  > img {
+    width: 42.604vw;
+    height: auto;
+  }
 }
 
 .A_TextMCard {
-	display: flex;
-	padding: 0.625vw 0;
-	width: 100%;
-	justify-content: center;
-	align-items: center;
-	align-self: stretch;
-	border-radius: 0.313vw 0.313vw 0 0;
-	background: var(--computer-blue);
+  display: flex;
+  padding: 0.625vw 0;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 0.313vw 0.313vw 0 0;
+  background: var(--computer-blue);
 
-	> p {
-		color: var(--porcelain-white);
-	}
+  > p {
+    color: var(--porcelain-white);
+  }
 }
 
 .A_TextL {
-	display: flex;
-	padding: 1.25vw;
-	align-items: center;
-	gap: 0.521vw;
-	align-self: stretch;
-	border-radius: 0 0 0.313vw 0.313vw;
-	background: var(--porcelain-white);
+  display: flex;
+  padding: 1.25vw;
+  align-items: center;
+  gap: 0.521vw;
+  align-self: stretch;
+  border-radius: 0 0 0.313vw 0.313vw;
+  background: var(--porcelain-white);
 
-	> p {
-		color: var(--charcoal-black);
-		font-family: "Basis Grotesque Pro";
-		font-size: 1.042vw;
-		font-style: normal;
-		font-weight: 400;
-		line-height: 1.25vw;
-	}
+  > p {
+    color: var(--charcoal-black);
+    font-family: "Basis Grotesque Pro";
+    font-size: 1.042vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25vw;
+  }
 }
 
 .A_TextMRed {
-	background: var(--glamour-pink);
+  background: var(--glamour-pink);
 }
 
 .A_TextMBlack {
-	background: var(--charcoal-black);
+  background: var(--charcoal-black);
 }
 
 .A_TextH1Register {
-	width: fit-content;
-	color: var(--charcoal-black);
-	margin: 1.663vw auto 0 auto;
+  width: fit-content;
+  color: var(--charcoal-black);
+  margin: 1.663vw auto 0 auto;
 }
 
 .A_FormField {
-	> input {
-		max-width: 11.458vw;
-		padding: 0.417vw 0.625vw;
-		border-radius: 0.313vw;
-		border: 0.078vw solid var(--soft-grey);
-		background: var(--porcelain-white);
-		color: var(--charcoal-black);
-		font-family: "Basis Grotesque Pro";
-		font-size: 0.729vw;
-		font-style: normal;
-		font-weight: 400;
-		line-height: 0.938vw;
+  > input {
+    max-width: 11.458vw;
+    padding: 0.417vw 0.625vw;
+    border-radius: 0.313vw;
+    border: 0.078vw solid var(--soft-grey);
+    background: var(--porcelain-white);
+    color: var(--charcoal-black);
+    font-family: "Basis Grotesque Pro";
+    font-size: 0.729vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 0.938vw;
 
-		&::placeholder {
-			color: var(--ordinary-grey);
-		}
-	}
+    &::placeholder {
+      color: var(--ordinary-grey);
+    }
+  }
 }
 
 .A_buttonRegister {
-	> input {
-		cursor: pointer;
-		display: flex;
-		width: 11.458vw;
-		padding: 0.417vw 0.625vw;
-		justify-content: center;
-		align-items: center;
-		align-self: stretch;
-		border-radius: 0.313vw;
-		background: var(--computer-blue);
-		color: var(--porcelain-white);
-		font-family: "Basis Grotesque Pro";
-		font-size: 0.729vw;
-		font-style: normal;
-		font-weight: 400;
-		line-height: 0.938vw;
-	}
+  > input {
+    cursor: pointer;
+    display: flex;
+    width: 11.458vw;
+    padding: 0.417vw 0.625vw;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 0.313vw;
+    background: var(--computer-blue);
+    color: var(--porcelain-white);
+    font-family: "Basis Grotesque Pro";
+    font-size: 0.729vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 0.938vw;
+  }
 }
 
 .A_textLoginLink {
-	width: fit-content;
-	margin: 0.521vw auto 0 auto;
-	> a {
-		color: var(--charcoal-black);
-		font-family: "Basis Grotesque Pro";
-		font-size: 0.625vw;
-		font-style: normal;
-		font-weight: 400;
-		line-height: normal;
-		text-decoration-line: underline;
-		text-decoration-style: solid;
-		text-decoration-skip-ink: none;
-		text-decoration-thickness: auto;
-		text-underline-offset: auto;
-		text-underline-position: from-font;
-	}
+  width: fit-content;
+  margin: 0.521vw auto 0 auto;
+  > a {
+    color: var(--charcoal-black);
+    font-family: "Basis Grotesque Pro";
+    font-size: 0.625vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+  }
 }
 
 .A_TextH2Effect {
-	color: var(--charcoal-black);
-	height: auto;
-	display: -webkit-box;
-	-webkit-line-clamp: 1;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-	text-overflow: ellipsis;
+  color: var(--charcoal-black);
+  height: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   line-clamp: 1;
 }
 
 .A_FavoriteIcon {
-	position: absolute;
-	top: 0.704vw;
-	right: 0.625vw;
-	display: flex;
-	width: 1.563vw;
-	height: 1.563vw;
-	justify-content: center;
-	align-items: center;
-	border-radius: 0.208vw;
-	background: var(--grey-veil);
+  position: absolute;
+  top: 0.704vw;
+  right: 0.625vw;
+  display: flex;
+  width: 1.563vw;
+  height: 1.563vw;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.208vw;
+  background: var(--grey-veil);
 
-	> svg {
-		width: 0.938vw;
-		height: 0.797vw;
-	}
+  > svg {
+    width: 0.938vw;
+    height: 0.797vw;
+  }
 
-	> form {
-		cursor: pointer;
-		width: 0.938vw;
-		height: 0.797vw;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+  > form {
+    cursor: pointer;
+    width: 0.938vw;
+    height: 0.797vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-		> svg {
-		width: 0.938vw;
-		height: 0.797vw;
-	}
-	}
+    > svg {
+      width: 0.938vw;
+      height: 0.797vw;
+    }
+  }
 
-	> svg {
-		cursor: pointer;
-		width: 0.938vw;
-		height: 0.797vw;
-	}
+  > svg {
+    cursor: pointer;
+    width: 0.938vw;
+    height: 0.797vw;
+  }
 }
 
 .A_FavoriteIconEffect {
-	width: 1.771vw;
-	height: 1.771vw;
-	border: 0.078vw solid var(--soft-grey);
-	background: var(--porcelain-white);
+  width: 1.771vw;
+  height: 1.771vw;
+  border: 0.078vw solid var(--soft-grey);
+  background: var(--porcelain-white);
 }
 
 .A_ButtonShow {
-	height: 1.771vw;
+  height: 1.771vw;
 }
 
 .A_ButtonFavorite {
-	cursor: pointer;
-	display: flex;
-	width: 13.021vw;
-	padding: 0.417vw 0.625vw;
-	justify-content: center;
-	align-items: center;
-	border-radius: 0.313vw;
-	border: 0.078vw solid var(--soft-grey);
-	background: var(--porcelain-white);
-	color: var(--charcoal-black);
-	font-family: "Basis Grotesque Pro";
-	font-size: 0.729vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 0.938vw;
+  cursor: pointer;
+  display: flex;
+  width: 13.021vw;
+  padding: 0.417vw 0.625vw;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.313vw;
+  border: 0.078vw solid var(--soft-grey);
+  background: var(--porcelain-white);
+  color: var(--charcoal-black);
+  font-family: "Basis Grotesque Pro";
+  font-size: 0.729vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 0.938vw;
 }
 
 .A_FilterCollections {
-	padding: 0.417vw 1.615vw;
+  padding: 0.417vw 1.615vw;
 
-	> p {
-		text-transform: math-auto;
-	}
+  > p {
+    text-transform: math-auto;
+  }
 }
 
 .A_TextHeaderCollection {
-	display: flex;
-	padding: 0.625vw 0;
-	width: 17.865vw;
-	justify-content: center;
-	align-items: center;
-	align-self: stretch;
-	border-radius: 0.313vw 0.313vw 0 0;
-	background: var(--computer-blue);
+  display: flex;
+  padding: 0.625vw 0;
+  width: 17.865vw;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 0.313vw 0.313vw 0 0;
+  background: var(--computer-blue);
 
-	> p {
-		color: var(--porcelain-white);
-	}
+  > p {
+    color: var(--porcelain-white);
+  }
 }
 
 .A_TextHeaderCollectionRed {
-	background: var(--glamour-pink);
+  background: var(--glamour-pink);
 }
 
 .A_TextHeaderCollectionBlack {
-	background: var(--charcoal-black);
+  background: var(--charcoal-black);
 }
 
 .A_TextSub {
-	color: var(--ordinary-grey);
-	text-transform: math-auto;
+  color: var(--ordinary-grey);
+  text-transform: math-auto;
 }
 
 .A_TextFiltrationName {
-	text-transform: math-auto;
+  text-transform: math-auto;
 }
 
-.A_HeaderChoice{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	align-self: stretch;
+.A_HeaderChoice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
 }
 
 .A_TextCheck {
-	display: flex;
-	align-items: center;
-	gap: 0.417vw;
+  display: flex;
+  align-items: center;
+  gap: 0.417vw;
 }
 
 .A_TextHFiltrationEffects {
-	color: var(--charcoal-black);
-	margin-left: 1.042vw;
+  color: var(--charcoal-black);
+  margin-left: 1.042vw;
 }
 
 .A_TextMBig {
-	padding: 0;
+  padding: 0;
 }
 
 .A_TagProgram {
-	display: flex;
-	padding: 0.313vw 0;
-	align-items: center;
-	gap: 0.313vw;
+  display: flex;
+  padding: 0.313vw 0;
+  align-items: center;
+  gap: 0.313vw;
 }
 
 .A_Avatar {
-	width: 6.25vw;
-	height: auto;
+  width: 6.25vw;
+  height: auto;
 }
 
 .A_inputFeedback {
-	border: none;
-	outline: none;
-	background-color: transparent;
-	width: 19.792vw;
-	color: var(--charcoal-black, #0E1111);
-	font-family: "Basis Grotesque Pro";
-	font-size: 0.833vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 1.042vw;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 19.792vw;
+  color: var(--charcoal-black, #0e1111);
+  font-family: "Basis Grotesque Pro";
+  font-size: 0.833vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.042vw;
 }
 
 .A_AvatarFeedback {
-	width: 2.604vw;
-	height: 2.604vw;
-	border-radius: 100%;
+  width: 2.604vw;
+  height: 2.604vw;
+  border-radius: 100%;
 }
 
 .A_TextH1Profile {
-	color: var(--charcoal-black);
+  color: var(--charcoal-black);
 }
 
 .A_TextSProfile2 {
-	color: var(--charcoal-black);
-	text-transform: math-auto;
+  color: var(--charcoal-black);
+  text-transform: math-auto;
 }
 
 .A_TextSProfile {
-	color: var(--ordinary-grey);
-	text-transform: lowercase;
+  color: var(--ordinary-grey);
+  text-transform: lowercase;
 }
 
 .A_ButtonProfile {
-	padding: 0.417vw 0.625vw;
-	border-radius: 0.313vw;
-	border: 0.078vw solid var(--soft-grey);
-	background: var(--porcelain-white);
-	color: var(--charcoal-black);
+  padding: 0.417vw 0.625vw;
+  border-radius: 0.313vw;
+  border: 0.078vw solid var(--soft-grey);
+  background: var(--porcelain-white);
+  color: var(--charcoal-black);
 }
 
 .A_Navigation2Show {
-	transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 
 .A_TextH1Show {
-	margin-top: 0.625vw;
-	color: var(--charcoal-black);
+  margin-top: 0.625vw;
+  color: var(--charcoal-black);
 }
 
 .A_TextH1Show2 {
-	color: var(--charcoal-black);
+  color: var(--charcoal-black);
 }
 
 .A_Textarea {
-	height: 6.458vw;
-	width: 35.104vw;
-	padding: 1.38vw 0.833vw 0.625vw 4.063vw;
-	border-radius: 0.313vw;
-	background: var(--porcelain-white);
-	border: none;
-	outline: none;
-	color: var(--charcoal-black);
-	font-family: "Basis Grotesque Pro";
-	font-size: 0.833vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
-	resize: none;
+  height: 6.458vw;
+  width: 35.104vw;
+  padding: 1.38vw 0.833vw 0.625vw 4.063vw;
+  border-radius: 0.313vw;
+  background: var(--porcelain-white);
+  border: none;
+  outline: none;
+  color: var(--charcoal-black);
+  font-family: "Basis Grotesque Pro";
+  font-size: 0.833vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  resize: none;
 
-	&::placeholder {
-		color: var(--ordinary-grey);
-	}
+  &::placeholder {
+    color: var(--ordinary-grey);
+  }
 }
 
 .A_TextareaEdit {
-	display: flex;
-	width: 32.813vw;
-	height: 8.854vw;
-	padding: 0.625vw 0.833vw;
-	align-items: flex-start;
-	gap: 0.625vw;
-	flex-shrink: 0;
-	border-radius: var(--button, 0.417vw);
-	border: var(--border, 0.104vw) solid var(--grey-tag, #e1e1e1);
-	background: var(--porcelain-white, #fff);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.042vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 1.354vw;
-	outline: none;
-	resize: none;
+  display: flex;
+  width: 32.813vw;
+  height: 8.854vw;
+  padding: 0.625vw 0.833vw;
+  align-items: flex-start;
+  gap: 0.625vw;
+  flex-shrink: 0;
+  border-radius: var(--button, 0.417vw);
+  border: var(--border, 0.104vw) solid var(--grey-tag, #e1e1e1);
+  background: var(--porcelain-white, #fff);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.354vw;
+  outline: none;
+  resize: none;
 }
 
 .A_TextSShow {
-	margin-top: 0.625vw;
-	width: 6.771vw;
-	gap: 0;
-	justify-content: space-between;
+  margin-top: 0.625vw;
+  width: 6.771vw;
+  gap: 0;
+  justify-content: space-between;
 }
 
 .A_TextLShow {
-	margin-top: 0.625vw;
-	width: 40.781vw;
+  margin-top: 0.625vw;
+  width: 40.781vw;
   padding: 0;
   border-radius: 0;
   background: transparent;
 }
 
 .A_TextH2Show {
-	color: var(--ordinary-grey);
+  color: var(--ordinary-grey);
 }
 
 .A_TextH2Show2 {
-	color: var(--charcoal-black);
+  color: var(--charcoal-black);
 }
 
 .A_TagCollection {
-	display: flex;
-	padding: 0.417vw 0.625vw;
-	align-items: center;
-	gap: 0.521vw;
-	align-self: stretch;
-	border-radius: 0.313vw;
-	background: var(--soft-grey);
+  display: flex;
+  padding: 0.417vw 0.625vw;
+  align-items: center;
+  gap: 0.521vw;
+  align-self: stretch;
+  border-radius: 0.313vw;
+  background: var(--soft-grey);
 
-	> p {
-		color: var(--charcoal-black);
-		font-family: "Basis Grotesque Pro";
-		font-size: 0.729vw;
-		font-style: normal;
-		font-weight: 400;
-		line-height: 0.938vw;
-	}
+  > p {
+    color: var(--charcoal-black);
+    font-family: "Basis Grotesque Pro";
+    font-size: 0.729vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 0.938vw;
+  }
 }
 
 .A_Like {
-	display: flex;
-	align-items: end;
-	gap: 0.313vw;
+  display: flex;
+  align-items: end;
+  gap: 0.313vw;
 
-	> img {
-		width: auto;
-		height: 0.969vw;
-	}
+  > img {
+    width: auto;
+    height: 0.969vw;
+  }
 }
 
 .A_TextXShow {
-	color: var(--charcoal-black);
+  color: var(--charcoal-black);
 }
 
 .A_TagProgramCurrent {
-	margin-left: 1.25vw;
+  margin-left: 1.25vw;
 }
 
 .A_FilterGoal {
-	width: 10.677vw;
-	justify-content: space-between;
+  width: 10.677vw;
+  justify-content: space-between;
 }
 
 .A_FilterSort {
-	width: 6.771vw;
-	gap: 0;
-	justify-content: space-between;
+  width: 6.771vw;
+  gap: 0;
+  justify-content: space-between;
 }
 
 .A_FavoriteIconEffect {
-	position: relative;
-	top: 0;
-	right: 0;
+  position: relative;
+  top: 0;
+  right: 0;
 }
 
 .A_TextH1Effect {
-	margin: 0;
+  margin: 0;
 }
 
 .A_TextLEffect {
-	margin: 0;
-	width: 31.823vw;
+  margin: 0;
+  width: 31.823vw;
 }
 
 .A_TextMEffect {
-	padding: 0;
-	width: 31.771vw;
+  padding: 0;
+  width: 31.771vw;
 }
 
-.A_logoHeader{
-	> img {
-		width: 5.069vw;
-		height: auto;
-	}	
+.A_logoHeader {
+  > img {
+    width: 5.069vw;
+    height: auto;
+  }
 }
 
-.A_logoPromo{
-	> img {
-		width: 24.236vw;
-		height: auto;
-	}	
+.A_logoPromo {
+  > img {
+    width: 24.236vw;
+    height: auto;
+  }
 }
 
-.A_imgVideo{
-	overflow: hidden;
-	position: relative;
-	border-radius: 0.347vw;
-	width: 36.088vw;
-	height: 36.382vw;
-	z-index: 3;
+.A_imgVideo {
+  overflow: hidden;
+  position: relative;
+  border-radius: 0.347vw;
+  width: 36.088vw;
+  height: 36.382vw;
+  z-index: 3;
 
-	> img {
-		width: 36.188vw;
-		height: 36.482vw;
-	}
+  > img {
+    width: 36.188vw;
+    height: 36.482vw;
+  }
 }
 
-.A_imgPhoto{
-	overflow: hidden;
-	position: relative;
-	border-radius: 0.347vw;
-	width: 20.462vw;
-	height: 25.296vw;
-	z-index: 3;
+.A_imgPhoto {
+  overflow: hidden;
+  position: relative;
+  border-radius: 0.347vw;
+  width: 20.462vw;
+  height: 25.296vw;
+  z-index: 3;
 
-	> img {
-		width: 20.462vw;
-		height: 25.296vw;
-	}
+  > img {
+    width: 20.462vw;
+    height: 25.296vw;
+  }
 }
 
 .A_Header2 {
-	color: var(--charcoal-black, #0E1111);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.667vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: normal;
-	text-align: center;
+  color: var(--charcoal-black, #0e1111);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.667vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
 
-	span {
-		color: var(--computer-blue, #0638BD);
-	}
+  span {
+    color: var(--computer-blue, #0638bd);
+  }
 }
 
-.A_Header2Start{
-	text-align: start;
+.A_Header2Start {
+  text-align: start;
 }
 
 .A_Header2Iphone {
-	margin: 0 auto;
-	width: 16.198vw;
+  margin: 0 auto;
+  width: 16.198vw;
 }
 
 .A_Header2App {
-	margin: 0 auto;
-	width: 17.198vw;
+  margin: 0 auto;
+  width: 17.198vw;
 }
 
 .A_Header2Settings {
-	width: 28.385vw;
+  width: 28.385vw;
 }
 
 .A_ButtonPrimary {
-	cursor: pointer;
-	display: flex;
-	width: 11.771vw;
-	height: 2.5vw;
-	gap: 0.417vw;
-	justify-content: center;
-	align-items: center;
-	border-radius: var(--button, 0.417vw);
-	background: var(--computer-blue, #0638BD);
-	color: var(--porcelain-white, #FFF);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.042vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 1.146vw;
-	border: none;
-	outline: none;
-	z-index: 2;
-	
-	> img {
-		width: 1.25vw;
-		height: 1.25vw;
-	}
+  cursor: pointer;
+  display: flex;
+  width: 11.771vw;
+  height: 2.5vw;
+  gap: 0.417vw;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--button, 0.417vw);
+  background: var(--computer-blue, #0638bd);
+  color: var(--porcelain-white, #fff);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.146vw;
+  border: none;
+  outline: none;
+  z-index: 2;
+
+  > img {
+    width: 1.25vw;
+    height: 1.25vw;
+  }
 }
 
 .A_ButtonPrimaryPreview {
-	margin-top: 2.813vw;
+  margin-top: 2.813vw;
 }
 
 .A_ButtonPrimaryCreate {
-	position: relative;
-	z-index: 10;
+  position: relative;
+  z-index: 10;
 }
 
 .A_InputForm {
-	display: flex;
-	height: 3.333vw;
-	padding: 0vw 0.833vw;
-	align-items: center;
-	gap: 0.625vw;
-	align-self: stretch;
-	border-radius: var(--button, 0.417vw);
-	border: var(--border, 0.104vw) solid var(--grey-tag, #E1E1E1);
-	background: var(--porcelain-white, #FFF);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.042vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 1.354vw;
-	outline: none;
+  display: flex;
+  height: 3.333vw;
+  padding: 0vw 0.833vw;
+  align-items: center;
+  gap: 0.625vw;
+  align-self: stretch;
+  border-radius: var(--button, 0.417vw);
+  border: var(--border, 0.104vw) solid var(--grey-tag, #e1e1e1);
+  background: var(--porcelain-white, #fff);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.354vw;
+  outline: none;
 }
 
 .A_InputFormLink {
-	padding-left: 3.125vw;
-	width: 100%;
+  padding-left: 3.125vw;
+  width: 100%;
 }
 
 .A_InputFormTextArea {
-	height: 9.375vw;
-	resize: none;
-	padding: 0.625vw 0.833vw;
+  height: 9.375vw;
+  resize: none;
+  padding: 0.625vw 0.833vw;
 }
 
 .A_InputFormTextAreaBig {
-	height: 30.365vw;
+  height: 30.365vw;
 }
 
 .A_ButtonPrimaryClose {
-	width: 13.771vw;
+  width: 13.771vw;
 }
 
 .A_ButtonPrimaryCollection {
-	margin-top: 1.25vw;
+  margin-top: 1.25vw;
 }
 
 .A_Blue {
-	background: var(--computer-blue, #0638BD);
+  background: var(--computer-blue, #0638bd);
 }
 
 .A_White {
-	color: var(--porcelain-white, #FFF);
+  color: var(--porcelain-white, #fff);
 }
 
-.A_Pink{
-	gap: 0.417vw;
-	background: var(--glamour-pink, #E33081);
+.A_Pink {
+  gap: 0.417vw;
+  background: var(--glamour-pink, #e33081);
 }
 
 .A_LinkPrimary {
-	color: var(--computer-blue, #0638BD);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.25vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 1.563vw;
+  color: var(--computer-blue, #0638bd);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.25vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.563vw;
 }
 
 .A_ButtonPrimaryRegister {
-	width: 15.625vw;
+  width: 15.625vw;
 }
 
 .A_ButtonPrimaryFeed {
-	width: 16.271vw;
-	padding: 0.677vw 1.25vw;
-	height: auto;
+  width: 16.271vw;
+  padding: 0.677vw 1.25vw;
+  height: auto;
 }
 
 .A_raitingCreateEffectTitle {
-	color: var(--charcoal-black, #0E1111);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.29vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: normal;
+  color: var(--charcoal-black, #0e1111);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.29vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .A_raitingCountCreateEffect {
-	color: var(--glamour-pink, #E33081);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.807vw;
-	font-style: normal;
-	font-weight: 500;
-	line-height: normal;
+  color: var(--glamour-pink, #e33081);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.807vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .A_feedbackCounttCreateEffect {
-	color: var(--ordinary-grey, #A3A3A7);
-	font-family: "Basis Grotesque Pro";
-	font-size: 0.726vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
+  color: var(--ordinary-grey, #a3a3a7);
+  font-family: "Basis Grotesque Pro";
+  font-size: 0.726vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .A_header2Promo {
-	text-align: center;
-	width: 83.331vw;
-	font-family: "Basis Grotesque Pro";
-	font-size: 3.056vw;
-	font-weight: 700;
-	line-height: 120%;
-	text-transform: uppercase;
+  text-align: center;
+  width: 83.331vw;
+  font-family: "Basis Grotesque Pro";
+  font-size: 3.056vw;
+  font-weight: 700;
+  line-height: 120%;
+  text-transform: uppercase;
 }
 
 .A_header1Promo {
-	font-family: "Basis Grotesque Pro";
-	font-size: 4.678vw;
-	font-weight: 700;
-	line-height: 115%;
-	text-transform: uppercase;
+  font-family: "Basis Grotesque Pro";
+  font-size: 4.678vw;
+  font-weight: 700;
+  line-height: 115%;
+  text-transform: uppercase;
 }
 
 .A_header2Promo2 {
-	width: 69.418vw;
+  width: 69.418vw;
 }
 
 .A_h2About {
-	color: #050507;
-	width: 31.667vw;
-	text-align: center;
-	font-family: "Basis Grotesque Pro";
-	font-size: 3.056vw;
-	font-weight: 700;
-	line-height: 120%;
-	text-transform: uppercase;
+  color: #050507;
+  width: 31.667vw;
+  text-align: center;
+  font-family: "Basis Grotesque Pro";
+  font-size: 3.056vw;
+  font-weight: 700;
+  line-height: 120%;
+  text-transform: uppercase;
 }
 
 .A_pAbout {
-	width: 39.514vw;
-	text-align: center;
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.944vw;
-	font-weight: 500;
-	line-height: 122.765%;
+  width: 39.514vw;
+  text-align: center;
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.944vw;
+  font-weight: 500;
+  line-height: 122.765%;
 }
 
 .A_InputFormName {
-	display: flex;
-	height: 3.333vw;
-	padding: 0.417vw 0.833vw;
-	align-items: center;
-	gap: 0.598vw;
-	align-self: stretch;
-	border-radius: var(--button, 0.417vw);
-	border: var(--border, 0.104vw) solid var(--grey-tag, #E1E1E1);
-	background: var(--porcelain-white, #FFF);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.042vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 1.354vw;
-	outline: none;
+  display: flex;
+  height: 3.333vw;
+  padding: 0.417vw 0.833vw;
+  align-items: center;
+  gap: 0.598vw;
+  align-self: stretch;
+  border-radius: var(--button, 0.417vw);
+  border: var(--border, 0.104vw) solid var(--grey-tag, #e1e1e1);
+  background: var(--porcelain-white, #fff);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.354vw;
+  outline: none;
 }
 
 .A_InputFormDescription {
-	display: flex;
-	height: 9.375vw;
-	padding: 0.417vw 0.833vw;
-	align-items: center;
-	gap: 0.598vw;
-	align-self: stretch;
-	border-radius: var(--button, 0.417vw);
-	border: var(--border, 0.104vw) solid var(--grey-tag, #E1E1E1);
-	background: var(--porcelain-white, #FFF);
-	font-family: "Basis Grotesque Pro";
-	font-size: 1.042vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 1.354vw;
-	resize: none;
-	outline: none;
+  display: flex;
+  height: 9.375vw;
+  padding: 0.417vw 0.833vw;
+  align-items: center;
+  gap: 0.598vw;
+  align-self: stretch;
+  border-radius: var(--button, 0.417vw);
+  border: var(--border, 0.104vw) solid var(--grey-tag, #e1e1e1);
+  background: var(--porcelain-white, #fff);
+  font-family: "Basis Grotesque Pro";
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.354vw;
+  resize: none;
+  outline: none;
 }
 
 .A_pAbout2 {
-	width: 47.153vw;
+  width: 47.153vw;
 }
 .A_pAbout3 {
-	width: 44.153vw;
+  width: 44.153vw;
 }
 
 .A_h2About2 {
-	width: 37.514vw;
+  width: 37.514vw;
 }
 
 .A_ButtonCollection {
-	position: absolute;
-	top: 3.364vw;
-	right: 3.42vw;
-	width: 10.104vw !important;
+  position: absolute;
+  top: 3.364vw;
+  right: 3.42vw;
+  width: 10.104vw !important;
 }
 
 .A_ButtonPrimaryDisabled {
-	background: var(--input-grey, #C7C7CA);
+  background: var(--input-grey, #c7c7ca);
+}
+
+.A_ButtonSecondaryGrayFit {
+  width: fit-content;
+}
+
+.A_searchWrapper {
+  padding: 0.365vw 0.625vw;
+  cursor: pointer;
+
+  > img {
+    width: 1.25vw;
+    height: 1.25vw;
+  }
+}
+
+.A_UserCard {
+  display: flex;
+  align-items: center;
+  gap: 0.417vw;
+  cursor: pointer;
+}
+
+.A_UserAvatarSize {
+  width: 2.813vw;
+  height: 2.813vw;
+}
+
+.A_Username {
+  color: var(--dirty-grey, #7d7d7d);
+  font-size: 0.938vw;
+  line-height: 0.938vw;
+}
+
+.A_searchWrapper {
+  position: relative;
+}
+
+.A_searchForm {
+  width: 10.417vw;
+  display: flex;
+  align-items: center;
+  height: 1.979vw;
+  padding: 0.208vw 0.729vw 0.208vw 0;
+  border-radius: var(--button, 0.417vw);
+  background: var(--foggy-grey, #f5f5f5);
+}
+
+.A_searchForm.hidden {
+  display: none;
+}
+
+.A_searchInputHeader {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 1.042vw;
+  line-height: 1.354vw;
+}
+
+.A_searchSubmit {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  > img {
+    width: 1.25vw;
+    height: 1.25vw;
+  }
+}
+
+.A_searchWrapperOpen {
+  padding: 0;
+  padding: 0 0.625vw 0 0.365vw;
 }
 
 .hidden {
@@ -1801,65 +1887,229 @@
 }
 
 @media screen and (max-width: 912px) {
+  .A_Header1 {
+    font-size: 5.581vw;
+  }
 
-	.A_logoHeader {
-		> img {
-			width: 15.814vw;
-		}
-	}
-
-	.A_logoPromo {
-		> img {
-			width: 79.153vw;
-		}
-	}
-
-	.A_imgVideo {
-		border-radius: 0.801vw;
-		width: 83.463vw;
-		height: 84.141vw;
-
-		> img {
-			border-radius: 0.801vw;
-			width: 83.463vw;
-			height: 84.141vw;
-		}
-	}
-
-	.A_imgPhoto{
-		width: 39.307vw;
-		height: 47.413vw;
-		border-radius: 0.801vw;
-		> img {
-			width: 39.307vw;
-			height: 47.413vw;
-		}
-	}
-
-	.A_header2Promo {
-    width: 89.793vw;
-    font-size: 6.512vw;
-	}
-
-	.A_header1Promo {
-		font-size: 8.372vw;
-		text-align: center;
-		width: 66.13vw;
-	}
-
-	.A_h2About {
-		width: 64.667vw;
-    font-size: 6.512vw;
-	}
-	.A_h2About2 {
-		width: 74.667vw;
-	}
-	.A_pAbout {
-		width: 62.514vw;
+  .A_TextEffectDescription {
     font-size: 3.721vw;
-	}
-	.A_pAbout3 {
-		width: 72.312vw;
-	}
-}
+    width: auto;
+    line-height: 6.047vw;
+  }
 
+  .A_ProgramName {
+    font-size: 4.186vw;
+    line-height: 4.651vw;
+  }
+
+  .A_Program {
+    gap: 1.86vw;
+  }
+
+  .A_TextEffectCard {
+    font-size: 4.651vw;
+    line-height: normal;
+  }
+
+  .A_PhotoEffect {
+    width: 49.645%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .A_searchInput {
+    width: 78.605vw;
+    height: 11.163vw;
+    padding: 1.86vw 3.721vw 1.86vw 11.163vw;
+    border-radius: var(--button, 1.86vw);
+    border: var(--border, 0.465vw) solid var(--input-grey, #c7c7ca);
+    font-size: 3.721vw;
+    line-height: 4.884vw;
+  }
+
+  .A_Header2 {
+    font-size: 4.651vw;
+  }
+
+  .A_buttonWatchAll {
+    font-size: 3.721vw;
+  }
+
+  .A_TextTag {
+    font-size: 3.721vw;
+  }
+
+  .A_ButtonSecondary {
+    width: 34.749vw;
+    height: 8.542vw;
+    padding: 1.708vw 2.563vw;
+    gap: 1.708vw;
+    border-radius: 1.75vw;
+    border: var(--border, 0.465vw) solid var(--computer-blue, #0638bd);
+  }
+
+  .A_folowCollectionImage {
+    width: 5.116vw;
+    height: auto;
+  }
+
+  .A_Logo2 {
+    > img {
+      width: 34.884vw;
+      height: auto;
+    }
+  }
+
+  .A_Logo2Active {
+    background-color: transparent;
+  }
+
+  .A_burgerMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.93vw;
+    margin-right: 22.326vw;
+    margin-left: 3.385vw;
+  }
+
+  .A_Logo {
+    width: 16.279vw;
+    height: auto;
+  }
+
+  .A_TextS {
+    font-size: 3.256vw;
+    line-height: 4.186vw;
+  }
+
+  .A_TextXS {
+    font-size: 3.256vw;
+    line-height: 4.186vw;
+  }
+
+  .A_TextH2 {
+    font-size: 3.721vw;
+    line-height: 4.651vw;
+  }
+
+  .A_Input {
+    height: 11.163vw;
+    width: 69.767vw;
+    padding: 1.86vw 3.721vw;
+    border-radius: var(--button, 1.86vw);
+    border: var(--border, 0.465vw) solid var(--grey-tag, #e1e1e1);
+    font-size: 3.721vw;
+    line-height: 6.047vw;
+  }
+
+  .A_ButtonPrimary {
+    height: 11.163vw;
+    border-radius: var(--button, 1.86vw);
+    font-size: 4.651vw;
+    line-height: normal;
+    width: 88.837vw;
+  }
+
+  .A_ButtonPrimaryRegister {
+    width: 69.767vw;
+  }
+
+  .A_raitingCreateEffectTitle {
+    font-size: 5.455vw;
+  }
+
+  .A_raitingCountCreateEffect {
+    font-size: 7.64vw;
+  }
+
+  .A_feedbackCounttCreateEffect {
+    font-size: 3.069vw;
+  }
+
+  .A_MorePC {
+    display: none;
+  }
+
+  .A_MoreMobile {
+    display: block;
+  }
+
+  .A_More {
+    font-size: 3.721vw;
+    line-height: 6.047vw;
+  }
+
+  .A_ButtonSecondaryPMobile {
+    width: 88.837vw;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.86vw 2.791vw;
+    border-radius: 1.395vw;
+    background: var(--computer-blue, #0638bd);
+    color: var(--porcelain-white, #fff);
+    font-size: 4.651vw;
+  }
+  .A_AddToCollectionIcon {
+    display: none;
+  }
+  .A_Header3 {
+    font-size: 5.581vw;
+  }
+  .A_CategoryItem {
+    font-size: 3.721vw;
+    line-height: 6.047vw;
+  }
+  .A_TaskList {
+    width: 88.837vw;
+    gap: 1.86vw;
+  }
+  .A_TaskItem {
+    height: 11.163vw;
+    padding: 0vw 5.581vw;
+    gap: 0.598vw;
+    border-radius: var(--button, 1.86vw);
+    font-size: 3.721vw;
+    line-height: 6.047vw;
+  }
+  .A_SocialIcon {
+    width: 8.372vw;
+    height: 8.372vw;
+    border: 0.465vw solid #e1e1e1;
+  }
+  .A_vkIcon {
+    width: 4.237vw;
+  }
+  .A_tgIcon {
+    width: 3.323vw;
+  }
+  .A_linkIcon {
+    width: 4.96vw;
+  }
+  .A_AvatarFeedback {
+    width: 11.628vw;
+    height: 11.628vw;
+  }
+  .A_inputFeedback {
+    width: 65.349vw;
+    font-size: 3.721vw;
+    line-height: normal;
+  }
+  .A_TextComment {
+    font-size: 3.721vw;
+    line-height: normal;
+  }
+  .A_TextCaption {
+    font-size: 3.256vw;
+    line-height: 4.186vw;
+  }
+  .A_Header1Category {
+    color: #0e1111;
+    margin-bottom: 3.721vw;
+  }
+
+  .A_Header1Collection {
+    text-align: start;
+  }
+}

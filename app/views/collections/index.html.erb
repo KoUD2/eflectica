@@ -8,3 +8,48 @@
 
 <% content_for :title, "Collections" %>
 
+<div class='O_Collections'>
+  <div class='W_allCollectionSections'>
+    <div class='M_collectionSection'>
+      <h2 class="A_Header1">Подписки</h2>
+      <% if @subscribed_collections.present? %>
+        <div class="C_Collections C_CollectionsAll">
+          <% @subscribed_collections.each do |collection| %>
+            <%= render partial: "collections/collection", locals: { collection: collection, css_classes: { 
+              header: "A_Blue", 
+              text: "A_White" 
+            }} %>
+          <% end %>
+        </div>
+      <% else %>
+        <p>У вас пока нет подписок на коллекции других пользователей.</p>
+      <% end %>
+    </div>    
+
+    <div class='M_collectionSection'>
+      <div class='O_Effects O_EffectsNewsFeed'>
+        <div class="M_HeaderEffects">
+          <h2 class="A_Header2">Похожие коллекции</h2>
+          <button class='A_buttonWatchAll'>Смотреть все</button>
+        </div>
+        <div class="C_Effects">
+          <% @collections.first(3).each do |collection| %>
+            <%= render partial: "collections/collection", locals: { collection: collection, css_classes: { 
+              header: "A", 
+              text: "A" 
+            }} %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='M_appStore'>
+    <h2 class="A_Header2 A_Header2App">Все референсы под рукой, <span>если скачать приложение</span></h2>
+    <div class='W_qrInfo W_qrInfoCollections'>
+      <%= image_tag("QR.svg", alt: "Картинка рейтинга", class: "Q_QRIcon") %>
+      <p class="A_TextTag">App Store</p>
+    </div>
+    <%= image_tag("iPhoneProMyCollections.png", alt: "Картинка рейтинга", class: "Q_iPhoneProMyCollections") %>
+  </div>
+</div>

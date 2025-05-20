@@ -3,8 +3,23 @@
     <% before_image = effect.images.find_by(image_type: 'before') %>
     <% after_image = effect.images.find_by(image_type: 'after') %>
 
-    <%= image_tag(before_image.file.url, alt: "Before Image", class: "A_PhotoEffect") if before_image %>
-    <%= image_tag(after_image.file.url, alt: "After Image", class: "A_PhotoEffect") if after_image %>
+    <% if before_image && before_image.file.present? %>
+      <%= image_tag(before_image.file.url, alt: "Before Image", class: "A_PhotoEffect") %>
+    <% else %>
+      <div class="A_PhotoEffect placeholder-image">
+        <%= image_tag("placeholder.svg", alt: "No Before Image", class: "placeholder-icon") %>
+        <p>До применения</p>
+      </div>
+    <% end %>
+    
+    <% if after_image && after_image.file.present? %>
+      <%= image_tag(after_image.file.url, alt: "After Image", class: "A_PhotoEffect") %>
+    <% else %>
+      <div class="A_PhotoEffect placeholder-image">
+        <%= image_tag("placeholder.svg", alt: "No After Image", class: "placeholder-icon") %>
+        <p>После применения</p>
+      </div>
+    <% end %>
   </div>
 
   <div class='M_TextEffectСard'>

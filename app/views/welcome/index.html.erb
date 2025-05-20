@@ -25,7 +25,7 @@
     <%= image_tag("line2.svg", alt: "Картинка", class: "Q_Line2") %>
     <%= image_tag("MainLogo.svg", alt: "Картинка", class: "A_MainLogo") %>
     <div class='O_Card O_CardSimple O_Card3'>
-      <p>Следи за модными трендами в индустрии и сохраняй их</p>
+      <p>Следи за модными трендами в&nbsp;индустрии и сохраняй их</p>
     </div>
     <div class='O_Card O_CardMedium O_CardMediumRed'>
       <div class="A_TextM A_TextMCard A_TextMRed"><p>Мои коллекции</p></div>
@@ -43,10 +43,13 @@
   </div>
 
   <div class='M_aboutEffects'>
-    <h1 class='A_Header1'>Топовые эффекты</h1>
+    <div class="W_allEffectsMobile">
+      <h1 class='A_Header1'>Топовые эффекты</h1>
+      <button class='A_More A_MoreMobile'>Смотреть все</button>
+    </div>
     <div class='W_allEffects'>
-      <p class='A_TextEffectDescription'>Если хочется создать контент, который залетит в тренды, посмотри новинки в этом разделе</p>
-      <button class='A_More'>Смотреть все</button>
+      <p class='A_TextEffectDescription'>Если хочется создать контент, который залетит в&nbsp;тренды, посмотри новинки в&nbsp;этом разделе</p>
+      <button class='A_More A_MorePC'>Смотреть все</button>
     </div>
   </div>
 
@@ -62,7 +65,7 @@
           <%= render partial: "effects/effect", locals: { effect: effect } %>
         <% end %>
       </div>
-    </div>    
+    </div>
 
     <div class='Q_Particle'></div>
     <div class='Q_Particle'></div>
@@ -86,7 +89,7 @@
             </button>
           <% end %>
         </div>
-        <p class='A_TextEffectDescription'>Выбери направление, в котором работаешь. Это поможет найти нужный эффект</p>
+        <p class='A_TextEffectDescription'>Выбери направление, в&nbsp;котором работаешь. Это&nbsp;поможет найти нужный эффект</p>
       </div>
 
       <div class='W_searchInfo W_searchInfoFeed'>
@@ -135,6 +138,196 @@
       </div>
     </div>
 
+    <div class='M_createPostCard M_createPostCardMobile'>
+    <h2 class="A_Header2"><span>Поделись эффектом,</span> чтобы улучшить портфолио и развивать свое сообщество</h2>
+    <div class='W_raitingCreateEffect'>
+      <p class='A_raitingCreateEffectTitle'>Рейтинг</p>
+      <div class='W_raitingCountCreateEffect'>
+        <%= image_tag("Q_StarIcon.svg", alt: "Картинка рейтинга", class: "Q_StarIconCreateEffect") %>
+        <p class='A_raitingCountCreateEffect'>4.8</p>
+      </div>
+      <p class='A_feedbackCounttCreateEffect'>На основе 182 оценок</p>
+    </div>
+    <%= image_tag("GlassPhotography.png", alt: "Картинка рейтинга", class: "Q_pictureCreateEffect") %>
+
+    <div data-controller="effect-create" id="mobile_effect_form">
+      <button class="A_ButtonPrimary A_ButtonPrimaryCreate" data-action="effect-create#open" type="button">Написать пост</button>
+      <!-- , scope: :effect -->
+      <%= form_with model: @effect, url: effects_path do |f| %>
+        <dialog class="modal" data-effect-create-target="dialog">
+          <button type="button" style="position: absolute; top: 10px; right: 10px; background: #f00; color: white; z-index: 9999;" 
+                  onclick="
+                    console.log('--- DEBUG INFO ---');
+                    console.log('Current active step:', document.querySelector('.A_TextTagFeedActive')?.textContent.trim());
+                    console.log('All data-effect-create-target elements:');
+                    document.querySelectorAll('[data-effect-create-target]').forEach(el => {
+                      console.log(`Element: ${el.getAttribute('data-effect-create-target')}, Display: ${window.getComputedStyle(el).display}, Visible: ${el.offsetParent !== null}`);
+                    });
+                  ">
+            Debug
+          </button>
+          <div class="modal-content2">
+            <div class="A_HeaderChoice">
+              <h3 class="A_Header3">Создание коллекции</h3>
+              <button class="modal-close" data-action="effect-create#close">
+                <%= image_tag("Q_IconClose.svg", alt: "Картинка", class: "Q_IconClose") %>
+              </button>
+            </div>
+            <div class="M_SettingsNavigation M_SettingsNavigationEffect">
+              <p class="A_TextTagFeed A_TextTagFeedActive" data-modal-target="step1">
+                Об эффекте
+              </p>
+              <p class="A_TextTagFeed" data-modal-target="step2">Инструкция</p>
+              <p class="A_TextTagFeed" data-modal-target="step3">Теги и ссылка</p>
+              <p class="A_TextTagFeed" data-modal-target="step4">Модерация</p>
+            </div>
+            <div class='O_CreateEffectInfo'>
+              <div class='O_EffectInfo' data-effect-create-target="effectInfo">
+                <div class='M_CollectionForm'>
+                  <%= f.text_field :name, 
+                  class: "A_InputForm", 
+                  placeholder: 'Название эффекта',
+                  data: { effect_create_mobile_target: "effectName", action: "input->effect-create#updatePreviewText" } %>
+                  <%= f.text_area :description, 
+                   class: 'A_InputForm A_InputFormTextArea', 
+                   placeholder: 'Описание эффекта' %>
+                </div>
+                <div class='W_PhotoChoice'>
+                  <div class='M_PhotoDescription'>
+                    <h3 class="A_Header3">Фото</h3>
+                    <p class="A_TextTag A_TextTagBig A_TextTagLight">Из этих фотографий создается обложка эффекта. Минимальный размер фото — 1024×1024</p>
+                  </div>
+    
+                  <div class='С_PhotoGalleryEffectPreview'>
+                    <div class='M_PhotoElementPreview'>
+                      <div class="M_PhotoElementLabel">
+                        <%= f.file_field :image_before, 
+                            accept: "image/*", 
+                            class: "M_PhotoElementInput", 
+                            id: "image_before_field_mobile",
+                            data: { effect_create_mobile_target: "inputBefore", action: "change->effect-create#previewImage" },
+                            hidden: true %>
+                        <label for="image_before_field_mobile" class="file-label" style="cursor: pointer; display: block; width: 100%; height: 100%;">
+                          <div class="M_PhotoElementPreviewImage">
+                            <%= image_tag("icon-attachment.svg", alt: "Иконка файла", class: "file-icon", data: { effect_create_mobile_target: "outputBefore" }) %>
+                          </div>
+                        </label>
+                      </div>
+                      <p class='A_TextTag A_TextTagBig A_TextTagLight'>До применения</p>
+                    </div>
+                    <div class='M_PhotoElementPreview'>
+                      <div class="M_PhotoElementLabel">
+                        <%= f.file_field :image_after, 
+                            accept: "image/*", 
+                            class: "M_PhotoElementInput", 
+                            id: "image_after_field_mobile",
+                            data: { effect_create_mobile_target: "inputAfter", action: "change->effect-create#previewImage" },
+                            hidden: true %>
+                        <label for="image_after_field_mobile" class="file-label" style="cursor: pointer; display: block; width: 100%; height: 100%;">
+                          <div class="M_PhotoElementPreviewImage">
+                            <%= image_tag("icon-attachment.svg", alt: "Иконка файла", class: "file-icon", data: { effect_create_mobile_target: "outputAfter" }) %>
+                          </div>
+                        </label>
+                      </div>
+                      <p class='A_TextTag A_TextTagBig A_TextTagLight'>После применения</p>
+                    </div>
+                  </div>                
+                </div>
+              </div>
+              <div class='O_InstructionInfo' data-effect-create-target="instructionBlock" style="display: none;">
+                <div class='M_CollectionForm'>
+                  <p class="A_TextTag A_TextTagBig A_TextTagLight">Объясни, как импортировать эффект в программу или несколько программ. Опиши особенности использования и настройки эффекта</p>
+                  <%= f.text_area :manual, 
+                  class: 'A_InputForm A_InputFormTextArea A_InputFormTextAreaBig', 
+                  placeholder: 'Инструкция по установке и настройке',
+                  data: { effect_create_mobile_target: "instructionText" } %>
+                </div>
+              </div>
+              <div class='W_PreviewArea' data-effect-create-target="previewArea">
+                <h3 class="A_Header3">Превью</h3>
+                <div class='O_EffectCardPreview O_EffectCardPreviewOver'>
+                  <div class='С_PhotoGalleryEffectPreview'>
+                    <div class='M_PhotoElement'>
+                      <%= image_tag("emptyImage.svg", alt: "Картинка", class: "Q_emptyImage") %>
+                    </div>
+                    <div class='M_PhotoElement'>
+                      <%= image_tag("emptyImage.svg", alt: "Картинка", class: "Q_emptyImage") %>
+                    </div>
+                  </div>
+                  <p class='A_TextEffectCard A_TextEffectCardPreview' data-effect-create-target="previewText">Название</p>
+                </div>
+              </div>        
+            </div>
+            <div class='O_TagsLinkInfo' data-effect-create-target="tagsLinkBlock" style="display: none;">
+              <div class='M_CollectionForm M_CollectionFormThird'>
+                <div class="M_CategoriesWrapper">
+                  <h3 class="A_Header3">Категория</h3>
+
+                  <%= f.hidden_field :programs, value: "blender" %>
+                  <%= f.hidden_field :platform, id: "selected_platform" %>
+                  <div class="M_CategoriesContainer">
+                    <% Effect::ALLOWED_TAGS.each do |category| %>
+                      <div class="M_Choice">
+                        <%= f.label "category_list_#{category}", human_readable_category(category), class: 'A_TextButtonSeсondary A_TextButtonSeсondaryBlack' %>
+                        <%= f.radio_button :category_list, category %>
+                      </div>
+                    <% end %>
+                  </div> 
+                </div>
+                
+                <div class="O_CreateEffectTagsArea">
+                  <div class="O_TagsCreateEffect">
+                    <h3 class="A_Header3">Теги</h3>
+                    <button class='A_Filter A_FilterCategory'>
+                      Задача
+                      <%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+                    </button>
+                    <button class='A_Filter A_FilterCategory'>
+                      Программа
+                      <%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+                    </button>
+                    <%= f.text_field :program_version, 
+                    class: 'A_Input A_InputVersion', 
+                    placeholder: 'Минимальная версия' %>
+                    <button class='A_Filter A_FilterCategory'>
+                      Платформа
+                      <%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+                    </button>
+                  </div>
+
+                  <div class="C_LinkArea">
+                    <h3 class="A_Header3">Ссылка на скачивание</h3>
+                    <p class="A_TextTag A_TextTagBig A_TextTagLight">Добавь действительную ссылку на облако или репозиторий, где можно скачать эффект</p>
+                    <div class='W_linkEffect'>
+                      <%= f.text_field :link_to, 
+                      class: 'A_InputForm A_InputFormLink', 
+                      placeholder: 'Ссылка' %>
+                      <%= image_tag("linkIcon.svg", alt: "Картинка рейтинга", class: "Q_linkIcon") %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class='O_ModerationInfo' data-effect-create-target="moderationBlock" style="display: none;">
+              <div class="M_ModerationMessage">
+                <div class="A_ModerationText">Твой эффект опубликуется, когда ссылка пройдет проверку модератором. Мы пришлем уведомление, когда это произойдет. Пока ты можешь посмотреть превью эффекта</div>
+              </div>
+            </div>
+                        <%= f.button 'Далее', 
+             class: "A_ButtonPrimary A_ButtonPrimaryPreview", 
+             data: { effect_create_target: "nextButton", action: "effect-create#nextStep" },
+             type: "button" %>
+            <%= f.button 'Отправить', 
+             class: "A_ButtonPrimary A_ButtonPrimaryPreview", 
+             type: "submit",
+             style: "display: none;",
+             data: { final_submit: true } %>
+          </div>
+        </dialog>
+      <% end %>
+    </div>   
+  </div>
+
     <div class='O_allCategories'>
       <div class='M_aboutEffects'>
         <div class='W_allCategories'>
@@ -175,19 +368,21 @@
       </div>
     </div>
 
-    <div class='W_registrationForm'>
-      <%= render 'devise/registrations/registration_form' %>
-      
-      <%= image_tag("RegistrationFormImage1.png", alt: "Картинка", class: "Q_registrationFormImage1") %>
-      <%= image_tag("RegistrationFormImage2.png", alt: "Картинка", class: "Q_registrationFormImage2") %>
-      <%= image_tag("RegistrationFormImage3.png", alt: "Картинка", class: "Q_registrationFormImage3") %>
-      <%= image_tag("RegistrationFormImage4.png", alt: "Картинка", class: "Q_registrationFormImage4") %>
-      <%= image_tag("RegistrationFormImage5.png", alt: "Картинка", class: "Q_registrationFormImage5") %>
-      <%= image_tag("RegistrationFormImage6.png", alt: "Картинка", class: "Q_registrationFormImage6") %>
-    </div>  
+    <% unless user_signed_in? %>
+      <div class='W_registrationForm'>
+        <%= render 'devise/registrations/registration_form' %>
+        
+        <%= image_tag("RegistrationFormImage1.png", alt: "Картинка", class: "Q_registrationFormImage1") %>
+        <%= image_tag("RegistrationFormImage2.png", alt: "Картинка", class: "Q_registrationFormImage2") %>
+        <%= image_tag("RegistrationFormImage3.png", alt: "Картинка", class: "Q_registrationFormImage3") %>
+        <%= image_tag("RegistrationFormImage4.png", alt: "Картинка", class: "Q_registrationFormImage4") %>
+        <%= image_tag("RegistrationFormImage5.png", alt: "Картинка", class: "Q_registrationFormImage5") %>
+        <%= image_tag("RegistrationFormImage6.png", alt: "Картинка", class: "Q_registrationFormImage6") %>
+      </div>
+    <% end %>  
   </div>
 
-  <div class='M_createPostCard'>
+  <div class='M_createPostCard M_createPostCardPC'>
     <h2 class="A_Header2"><span>Поделись эффектом,</span> чтобы улучшить портфолио и развивать свое сообщество</h2>
     <div class='W_raitingCreateEffect'>
       <p class='A_raitingCreateEffectTitle'>Рейтинг</p>
@@ -357,6 +552,6 @@
           </div>
         </dialog>
       <% end %>
-    </div>   
+    </div> 
   </div>
 </div>

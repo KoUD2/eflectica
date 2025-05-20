@@ -1,326 +1,328 @@
 .W_TopQuestions {
-	display: flex;
-	gap: 1.354vw;
+  display: flex;
+  gap: 1.354vw;
 }
 
 .W_allButtons {
-	margin-top: 1.483vw;
-	display: flex;
-	gap: 10.986vw;
-	margin-left: 2.135vw;
+  margin-top: 1.483vw;
+  display: flex;
+  gap: 10.986vw;
+  margin-left: 2.135vw;
 }
 
 .W_allEffects {
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .W_allCategories {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .W_Effects {
-	display: flex;
-	flex-direction: column;
-	gap: 1.25vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625vw;
 }
 
 .W_raitingCreateEffect {
-	position: absolute;
-	bottom: 8.443vw;
-	left: 2.354vw;
-	display: flex;
-	flex-direction: column;
-	transform: rotate(-9.019deg);
-	z-index: 0;
+  position: absolute;
+  bottom: 8.443vw;
+  left: 2.354vw;
+  display: flex;
+  flex-direction: column;
+  transform: rotate(-9.019deg);
+  z-index: 0;
 }
 
 .W_raitingCountCreateEffect {
-	display: inline-flex;
-	align-items: center;
-	margin: 0.246vw 0 0.393vw 0;
-	gap: 0.181vw;
+  display: inline-flex;
+  align-items: center;
+  margin: 0.246vw 0 0.393vw 0;
+  gap: 0.181vw;
 }
 
 .W_feedsMain {
-	display: flex;
-	flex-direction: column;
-	gap: 0.833vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.833vw;
 }
 
 .W_headerMainFeed {
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .W_allCategoriesFeed {
-	display: flex;
-	flex-direction: column;
-	gap: 0.833vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.833vw;
 }
 
 .W_nameMainFeed {
-	display: flex;
-	align-items: center;
-	gap: 1.146vw;
+  display: flex;
+  align-items: center;
+  gap: 1.146vw;
 }
 
 .W_Categories {
-	position: relative;
-	display: flex;
-	gap: 0.833vw;
+  position: relative;
+  display: flex;
+  gap: 0.833vw;
 }
 
 .W_PhotoChoice {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 1.25vw;
-	align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25vw;
+  align-self: stretch;
 }
 
 .W_PreviewArea {
-	display: flex;
-	width: 21.667vw;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 0.99vw;
+  display: flex;
+  width: 21.667vw;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.99vw;
 }
 
 .W_linkEffect {
-	width: 100%;
-	position: relative;
+  width: 100%;
+  position: relative;
 }
 
 .W_allCategoriesBanner {
-	margin-top: 0.833vw;
-	display: flex;
-	justify-content: space-between;
+  margin-top: 0.833vw;
+  display: flex;
+  justify-content: space-between;
 }
 
 .W_Agitation {
-	display: inline-flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 0.625vw;
-	margin-top: 0.313vw;
-	margin-bottom: 1.615vw;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625vw;
+  margin-top: 0.313vw;
+  margin-bottom: 1.615vw;
 }
 
 .W_inputIcon {
-	position: relative;
+  position: relative;
 }
 
 .W_appInfo {
-	margin-top: 0.99vw;
-	margin-left: 1.719vw;
-	display: flex;
-	gap: 1.406vw;
+  margin-top: 0.99vw;
+  margin-left: 1.719vw;
+  display: flex;
+  gap: 1.406vw;
 }
 
 .W_allCollectionSections {
-	display: flex;
-	flex-direction: column;
-	gap: 0.833vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.833vw;
 }
 
 .W_qrInfo {
-	margin-top: 4.479vw;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  margin-top: 4.479vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .W_qrInfoCollections {
-	margin-top: 1.406vw;
+  margin-top: 1.406vw;
   margin-bottom: 1.979vw;
 }
 
 .W_nameImg {
-	display: flex;
-	align-items: center;
-	gap: 0.417vw;
+  display: flex;
+  align-items: center;
+  gap: 0.417vw;
 }
 
 .W_searchInfo {
-	margin-top: 0.833vw;
-	display: flex;
-	align-items: center;
-	gap: 0.625vw;
+  margin-top: 0.833vw;
+  display: flex;
+  align-items: center;
+  gap: 0.625vw;
 }
 
 .W_searchInfoFeed {
-	margin-top: 1.667vw;
+  margin-top: 1.667vw;
 }
 
 .W_categoriesCreatePost {
-	margin-top: 0.833vw;
-	display: flex;
-	width: 96.875vw;
-	justify-content: space-between;
+  margin-top: 0.833vw;
+  display: flex;
+  width: 96.875vw;
+  justify-content: space-between;
 }
 
 .W_TextEffectTopCard {
-	display: flex;
-	align-items: center;
-	gap: 0.625vw;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  gap: 0.625vw;
 }
 
 .W_allSectionsMain {
-	display: flex;
-	flex-direction: column;
-	gap: 0.833vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.833vw;
 }
 
 .W_EffectBody {
-	display: flex;
-	padding: 0 0.833vw;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 0.417vw;
-	align-self: stretch;
+  display: flex;
+  padding: 0 0.833vw;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.417vw;
+  align-self: stretch;
 }
 
 .W_allCollectionsButton {
-	display: flex;
-	gap: 0.469vw;
-	margin: 1.563vw auto 0 auto;
+  display: flex;
+  gap: 0.469vw;
+  margin: 1.563vw auto 0 auto;
 }
 
 .W_Collection {
-	display: flex;
-	width: 100%;
-	height: 85.629%;
-	padding: 3.846%;
-	flex-direction: column;
-	align-items: flex-start;
-	justify-content: space-between;
-	gap: 3.846%;
-	background: var(--porcelain-white, #FFF);
+  display: flex;
+  width: 100%;
+  height: 85.629%;
+  padding: 3.846%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 3.846%;
+  background: var(--porcelain-white, #fff);
 }
 
 .W_allContent {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 88.906vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 88.906vw;
 }
 
-.W_PlatformArea{
-	margin-top: 1.667vw;
-	display: flex;
-	flex-direction: column;
-	gap: 0.521vw;
+.W_PlatformArea {
+  margin-top: 1.667vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.521vw;
 }
 
 .W_CategoryArea {
-	margin-top: 1.667vw;
-	display: flex;
-	flex-direction: column;
-	gap: 0.625vw;
+  margin-top: 1.667vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625vw;
 }
 
 .W_InstructionEffect {
-	margin-top: 3.333vw;
-	display: flex;
-	width: 36.25vw;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 1.25vw;
+  margin-top: 3.333vw;
+  display: flex;
+  width: 36.25vw;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25vw;
 
-	p {
-		text-align: start;
-	}
+  p {
+    text-align: start;
+  }
 }
 
-.W_More{
-	margin-top: 2.813vw;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 1.146vw;
+.W_More {
+  margin-top: 2.813vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.146vw;
 
-	h2 {
-		text-align: start;
-	}
+  h2 {
+    text-align: start;
+  }
 }
 
 .W_shareRaiting {
-	display: flex;
-	gap: 5.625vw;
+  display: flex;
+  gap: 5.625vw;
 }
 
 .W_ShareArea {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 0.417vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.417vw;
 }
 
 .W_RatingArea {
-	display: inline-flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 0.417vw;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.417vw;
 }
 
 .W_infoEffect {
-	width: 39.479vw;
+  width: 39.479vw;
 }
 
 .W_allComments {
-	margin-top: 3.542vw;
-	display: flex;
-	flex-direction: column;
-	gap: 1.25vw;
+  margin-top: 3.542vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25vw;
 
-	h2 {
-		text-align: start;
-	}
+  h2 {
+    text-align: start;
+  }
 }
 
 .W_CommentArea {
-	display: flex;
-	padding: 0.833vw 1.25vw;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 1.25vw;
-	align-self: stretch;
-	border-radius: var(--button, 0.417vw);
-	background: var(--porcelain-white, #FFF);
+  display: flex;
+  padding: 0.833vw 1.25vw;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25vw;
+  align-self: stretch;
+  border-radius: var(--button, 0.417vw);
+  background: var(--porcelain-white, #fff);
 }
 
 .W_FooterComment {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
 }
 
 .W_similarEffects {
-	margin-top: 0.833vw;
-	width: 100%;
-	height: 21.875vw;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: var(--button, 0.417vw);
-	background: var(--foggy-grey, #F5F5F5);
+  margin-top: 0.833vw;
+  width: 100%;
+  height: 21.875vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--button, 0.417vw);
+  background: var(--foggy-grey, #f5f5f5);
 }
 
 .W_feedSettings {
-	display: flex;
-	flex-direction: column;
-	gap: 0.833vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.833vw;
 }
 
 .W_feedSettingsButtons {
-	display: flex;
-	gap: 0.625vw;
+  display: flex;
+  gap: 0.625vw;
 }
 
 .W_HintModeration {
@@ -334,474 +336,505 @@
 }
 
 .W_registrationForm {
-	position: relative;
-	padding: 2.708vw 0 3.229vw 0;
-	height: 26.042vw;
-	border-radius: 0.313vw;
-	background: var(--foggy-grey, #F5F5F5);
-	display: flex;
-	justify-content: center;
-	overflow: hidden;
+  position: relative;
+  padding: 2.708vw 0 3.229vw 0;
+  height: 26.042vw;
+  border-radius: 0.313vw;
+  background: var(--foggy-grey, #f5f5f5);
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .W_PhotoCollection {
-	display: flex;
-	align-items: center;
-	height: 75.547%;
-	width: 100%;
-	gap: 0.481%;
+  display: flex;
+  align-items: center;
+  height: 75.547%;
+  width: 100%;
+  gap: 0.481%;
 }
 
-.W_allCollections{
-	margin-top: 2.083vw;
-	display: flex;
-	flex-direction: column;
-	gap: 1.25vw;
+.W_allCollections {
+  margin-top: 2.083vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25vw;
 }
 
 .W_twoImages {
-	display: flex;
-	flex-direction: column;
-	gap: 0.417vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.417vw;
 
-	> img {
-		width: 4.844vw;
-		height: auto;
-	}
+  > img {
+    width: 4.844vw;
+    height: auto;
+  }
 }
 
 .W_columnCollections {
-	display: flex;
-	flex-direction: column;
-	gap: 1.25vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25vw;
 }
 
 .W_allSubscriptions {
-	margin-top: 0.833vw;
-	display: flex;
-	gap: 0.625vw;
+  margin-top: 0.833vw;
+  display: flex;
+  gap: 0.625vw;
 }
 
 .W_SubscriptionBody {
-	display: flex;
-	flex-direction: column;
-	gap: 0.417vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.417vw;
 }
 
 .W_filtrationProgrammEffects {
-	display: flex;
-	flex-direction: column;
-	gap: 0.625vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625vw;
 }
 
 .W_Profile {
-	display: flex;
-	flex-direction: column;
-	gap: 1.25vw;
-	align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25vw;
+  align-self: stretch;
 }
 
 .W_ProfileEffects {
-	display: flex;
-	flex-direction: column;
-	gap: 0.833vw;
-	align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.833vw;
+  align-self: stretch;
 }
 
 .W_EffectBody2 {
-	display: flex;
-	max-width: 6.771vw;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 0.208vw;
-	flex: 1 0 0;
+  display: flex;
+  max-width: 6.771vw;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.208vw;
+  flex: 1 0 0;
 }
 
 .W_Answer {
-	display: flex;
-	padding: 0.833vw 1.25vw;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 1.25vw;
-	align-self: stretch;
-	border-radius: 0.313vw;
-	background: var(--porcelain-white);
+  display: flex;
+  padding: 0.833vw 1.25vw;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25vw;
+  align-self: stretch;
+  border-radius: 0.313vw;
+  background: var(--porcelain-white);
 }
 
 .W_effectNaming {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 47.708vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 47.708vw;
 }
 
 .W_favoriteButtons {
-	margin-top: 0.625vw;
-	display: flex;
-	gap: 0.417vw;
+  margin-top: 0.625vw;
+  display: flex;
+  gap: 0.417vw;
 }
 
 .W_descEffect {
-	margin-top: 1.702vw;
-	display: flex;
-	gap: 2.604vw;
+  margin-top: 1.702vw;
+  display: flex;
+  gap: 2.604vw;
 }
 
 .W_buttonDownload {
-	display: flex;
-	gap: 0.417vw;
+  display: flex;
+  gap: 0.417vw;
 
-	> img {
-		width: 1.771vw;
-		height: 1.695vw;
-	}
+  > img {
+    width: 1.771vw;
+    height: 1.695vw;
+  }
 }
 
 .W_programmEffect {
-	display: flex;
-	flex-direction: column;
-	gap: 0.625vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625vw;
 }
 
 .W_exectProgrammCurrent {
-	display: flex;
-	align-items: center;
-	gap: 0.313vw;
+  display: flex;
+  align-items: center;
+  gap: 0.313vw;
 }
 
 .W_filtersGoalEffects {
-	display: flex;
-	gap: 1.25vw;
-	margin-bottom: 1.042vw;
+  display: flex;
+  gap: 1.25vw;
+  margin-bottom: 1.042vw;
 }
 
 .W_EffectBody {
-	display: flex;
-	padding: 0 0.833vw;
-	flex-direction: column;
-	gap: 0.417vw;
-	align-self: stretch;
+  display: flex;
+  padding: 0 0.833vw;
+  flex-direction: column;
+  gap: 0.417vw;
+  align-self: stretch;
 }
 
 .W_allAssetsCollection {
-	display: flex;
-	gap: 0.833vw;
+  display: flex;
+  gap: 0.833vw;
 }
 
 .W_tutorsCollection {
-	display: flex;
-	flex-direction: column;
-	gap: 0.833vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.833vw;
 }
 
-.W_allLinksHeader{
-	display: flex;
-	gap: 4.931vw;
+.W_allLinksHeader {
+  display: flex;
+  gap: 4.931vw;
 
-	> a {
-		color: black;
-		font-family: "Basis Grotesque Pro";
-		font-size: 1.667vw;
-		font-weight: 400;
-		line-height: 101%;
-	}
+  > a {
+    color: black;
+    font-family: "Basis Grotesque Pro";
+    font-size: 1.667vw;
+    font-weight: 400;
+    line-height: 101%;
+  }
 }
 
-.W_headerPromo{
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+.W_headerPromo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-	> h1 {
-		font-family: "Basis Grotesque Pro";
-		font-size: 4.578vw;
-		font-weight: 700;
-		line-height: 115%;
-		text-transform: uppercase;
-		flex-shrink: 2;
-		width: 65.206vw;
-	}
+  > h1 {
+    font-family: "Basis Grotesque Pro";
+    font-size: 4.578vw;
+    font-weight: 700;
+    line-height: 115%;
+    text-transform: uppercase;
+    flex-shrink: 2;
+    width: 65.206vw;
+  }
 }
 
-.W_imgThreeBacsDesc{
-	display: flex;
-	flex-direction: column;
-	gap: 0.849vw;
+.W_imgThreeBacsDesc {
+  display: flex;
+  flex-direction: column;
+  gap: 0.849vw;
 
-	> p {
-		font-family: "Basis Grotesque Pro";
-		font-size: 1.667vw;
-		font-weight: 500;
-		line-height: 122.765%;
-	}
+  > p {
+    font-family: "Basis Grotesque Pro";
+    font-size: 1.667vw;
+    font-weight: 500;
+    line-height: 122.765%;
+  }
 }
 
-.W_imgThreeBacsDescMini{
-	position: relative;
+.W_imgThreeBacsDescMini {
+  position: relative;
 
-	div:nth-child(1), div:nth-child(2) {
-		position: absolute;
-		width: 36.188vw;
-		height: 36.482vw;
-		flex-shrink: 0;
-		border-radius: 0.347vw;
-		border: 1px solid #8F8F8F;
-	}
+  div:nth-child(1),
+  div:nth-child(2) {
+    position: absolute;
+    width: 36.188vw;
+    height: 36.482vw;
+    flex-shrink: 0;
+    border-radius: 0.347vw;
+    border: 1px solid #8f8f8f;
+  }
 
-	> div:nth-child(1) {
-		top: -0.616vw;
-		left: 0.574vw;
-	}
+  > div:nth-child(1) {
+    top: -0.616vw;
+    left: 0.574vw;
+  }
 
-	> div:nth-child(2) {
-		top: -1.231vw;
-		left: 1.21vw;
-	}
+  > div:nth-child(2) {
+    top: -1.231vw;
+    left: 1.21vw;
+  }
 }
 
-.W_imgThreeBacsDescMini2{
-	position: relative;
+.W_imgThreeBacsDescMini2 {
+  position: relative;
 
-	div:nth-child(1), div:nth-child(2) {
-		position: absolute;
-		width: 20.462vw;
-		height: 25.296vw;
-		border-radius: 0.347vw;
-		border: 1px solid #8F8F8F;
-	}
+  div:nth-child(1),
+  div:nth-child(2) {
+    position: absolute;
+    width: 20.462vw;
+    height: 25.296vw;
+    border-radius: 0.347vw;
+    border: 1px solid #8f8f8f;
+  }
 
-	> div:nth-child(1) {
-		top: -0.616vw;
-		left: 0.574vw;
-	}
+  > div:nth-child(1) {
+    top: -0.616vw;
+    left: 0.574vw;
+  }
 
-	> div:nth-child(2) {
-		top: -1.231vw;
-		left: 1.21vw;
-	}
+  > div:nth-child(2) {
+    top: -1.231vw;
+    left: 1.21vw;
+  }
 }
 
 .W_imgsOpportunity {
-	margin-top: 3.373vw;
+  margin-top: 3.373vw;
 
-	img {
-		width: 62.71vw;
-		height: 30.535vw;
-	}
+  img {
+    width: 62.71vw;
+    height: 30.535vw;
+  }
 }
 
 .W_allImagesCollections {
-	margin-top: 4.981vw;
-	display: flex;
-	align-items: flex-end;
+  margin-top: 4.981vw;
+  display: flex;
+  align-items: flex-end;
 }
 
 .W_aboutUser {
-	display: inline-flex;
-	align-items: center;
-	gap: 1.175vw;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.175vw;
 
-	> img {
-		width: 3.598vw;
-		height: 3.598vw;
-	}
+  > img {
+    width: 3.598vw;
+    height: 3.598vw;
+  }
 
-	> div {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 0.661vw;
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.661vw;
 
-		> h2:nth-child(1) {
-			color: #343434;
-			font-family: "Suisse Intl";
-			font-size: 1.346vw;
-			font-weight: 500;
-			line-height: 1.162vw;
-		}
+    > h2:nth-child(1) {
+      color: #343434;
+      font-family: "Suisse Intl";
+      font-size: 1.346vw;
+      font-weight: 500;
+      line-height: 1.162vw;
+    }
 
-		> h2:nth-child(2) {
-			color: #343434;
-			font-family: "SuisseIntl-Medium";
-			font-size: 0.856vw;
-			font-weight: 500;
-			line-height: 0.856vw;
-		}
-	}
+    > h2:nth-child(2) {
+      color: #343434;
+      font-family: "SuisseIntl-Medium";
+      font-size: 0.856vw;
+      font-weight: 500;
+      line-height: 0.856vw;
+    }
+  }
 }
 
 .W_allUserInfo {
-	display: flex;
-	flex-direction: column;
-	gap: 1.124vw;
-	position: relative;
-	z-index: 5;
-	width: 29.768vw;
-	height: 11.177vw;
-	border-radius: 0.347vw;
-	border: 1px solid #E8E2F0;
-	background:#E8E2F0;
-	padding: 1.126vw 1.431vw 1.301vw 1.142vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.124vw;
+  position: relative;
+  z-index: 5;
+  width: 29.768vw;
+  height: 11.177vw;
+  border-radius: 0.347vw;
+  border: 1px solid #e8e2f0;
+  background: #e8e2f0;
+  padding: 1.126vw 1.431vw 1.301vw 1.142vw;
 
-	> p {
-		font-family: "Basis Grotesque Pro";
-		font-size: 1.667vw;
-		font-weight: 500;
-		line-height: 122.765%;
-	}
+  > p {
+    font-family: "Basis Grotesque Pro";
+    font-size: 1.667vw;
+    font-weight: 500;
+    line-height: 122.765%;
+  }
 }
 
 .W_allUsersInfo {
-	margin-top: 4.426vw;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 2.802vw;
+  margin-top: 4.426vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.802vw;
 }
 
 .W_interfaceItemsProfile {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .W_userInfo {
-	margin-top: 0.156vw;
-	display: flex;
-	flex-direction: column;
-	gap: 0.833vw;
-	width: 24.271vw;
+  margin-top: 0.156vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.833vw;
+  width: 24.271vw;
 }
 
 .W_buttonsProfile {
-	margin-top: 1.25vw;
-	display: flex;
-	flex-direction: column;
-	gap: 0.625vw;
-	width: 11.979vw;
+  margin-top: 1.25vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625vw;
+  width: 11.979vw;
 }
 
 .W_postsProfile {
-	margin-top: 2.813vw;
-	width: 24.271vw;
-	display: flex;
-	flex-direction: column;
-	gap: 0.833vw;
+  margin-top: 2.813vw;
+  width: 24.271vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.833vw;
 }
 
 .W_shareProfile {
-	display: flex;
-	align-items: center;
-	gap: 2.865vw;
+  display: flex;
+  align-items: center;
+  gap: 2.865vw;
 }
 
 .W_shareProfileEdit {
-	opacity: 0;
+  opacity: 0;
 }
 
 .W_allInfoEditProfileDesc {
-	display: flex;
-	gap: 1.563vw;
+  display: flex;
+  gap: 1.563vw;
 }
 
 .W_imageUploadAvatar {
-	display: flex;
-	flex-direction: column;
-	gap: 1.25vw;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25vw;
+  align-items: center;
 }
 
-.W_buttonsSafeDelete{
-	position: absolute;
-	bottom: 2.303vw;
-	display: flex;
-	width: 90.417vw;
-	justify-content: space-between;
+.W_buttonsSafeDelete {
+  position: absolute;
+  bottom: 2.303vw;
+  display: flex;
+  width: 90.417vw;
+  justify-content: space-between;
 }
 
 .W_nameUser {
-	display: flex;
-	flex-direction: column;
-	gap: 0.625vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625vw;
 }
 
-.W_tgSection{
-	display: flex;
-	align-items: center;
-	gap: 0.417vw;
+.W_tgSection {
+  display: flex;
+  align-items: center;
+  gap: 0.417vw;
 }
 
-.W_socialTg{
-	margin-top: 0.833vw;
-	display: flex;
-	flex-direction: column;
-	gap: 0.625vw;
+.W_socialTg {
+  margin-top: 0.833vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625vw;
 }
 
 .W_collectionElements {
-	display: flex;
-	flex-direction: column;
-	gap: 0.833vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.833vw;
 
-	>h2 {
-		text-align: start;
-	}
+  > h2 {
+    text-align: start;
+  }
 }
 
 .W_editCollection {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .W_coverCategory {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 90.365vw;
-	height: 22.083vw;
-	border-radius: var(--main, 0.625vw);
-	background: var(--soft-grey, #EBEBEB);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90.365vw;
+  height: 22.083vw;
+  border-radius: var(--main, 0.625vw);
+  background: var(--soft-grey, #ebebeb);
 }
 
 .W_allButtonsCategory {
-	margin-top: 2.813vw;
-	display: flex;
-	align-items: flex-end;
-	justify-content: space-between;
+  margin-top: 2.813vw;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
 }
 
 .W_allCategoriesShow {
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .W_tasksCategories {
-	display: flex;
-	flex-direction: column;
-	gap: 0.833vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.833vw;
 }
 
 .W_socialTgDesc {
-	margin: 0;
+  margin: 0;
 }
 
 .W_allInfoProfole {
-	display: flex;
+  display: flex;
 }
 
-.W_allInfoEditProfile{
-	margin-top: 0.156vw;
-	display: flex;
-	flex-direction: column;
-	gap: 1.667vw;
+.W_allInfoEditProfile {
+  margin-top: 0.156vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.667vw;
 }
 
 .W_infoEditProfile {
-	display: flex;
-	width: 21.979vw;
-	flex-direction: column;
-	gap: 0.625vw;
+  display: flex;
+  width: 21.979vw;
+  flex-direction: column;
+  gap: 0.625vw;
+}
+
+.W_allLinksHeaderMain,
+.W_commonLinksHeader {
+  display: flex;
+}
+
+.W_allMyEffects {
+  margin-top: 0.833vw;
+}
+
+.W_inputIconEffectSearch {
+  width: 12.275vw;
+}
+
+.W_ShareAreaUser {
+  gap: 0.833vw;
+}
+
+.W_searchPublishPost {
+  display: flex;
+  justify-content: space-between;
+}
+
+.W_EffectsCollection {
+  display: flex;
+  gap: 0.417vw;
+  flex-wrap: wrap;
+  width: 90vw;
 }
 
 .hidden {
@@ -809,127 +842,168 @@
 }
 
 @media screen and (max-width: 912px) {
-	.W_allLinksHeader {
-		gap: 8.372vw;
+  body,
+  html {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
 
-		> a {
-			font-size: 3.721vw;
-		}
-	}
+  .W_categoriesCreatePost {
+    margin-top: 3.721vw;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
 
-	.W_headerPromo{
-		flex-direction: column;
+  .W_allSectionsMain {
+    gap: 3.428vw;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
 
-		> h1 {
-			margin-top: 16.744vw;
-			width: 89.792vw;
-			font-size: 8.372vw;
-			text-align: center;
-		}
-	}
+  .W_Effects {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
 
-	.W_imgThreeBacsDesc {
-		gap: 1.772vw;
+  .W_Effects .C_Effects {
+    flex-wrap: nowrap;
+    width: 100%;
+  }
 
-		> p {
-			font-size: 3.721vw;
-		}
-	}
+  .W_Effects .C_Effects + .C_Effects {
+    margin-top: -2.326vw;
+    padding-top: 0;
+  }
 
-	.W_imgThreeBacsDescMini {
-		> div:nth-child(1), > div:nth-child(2) {
-			width: 83.463vw;
-			height: 84.141vw;
-		}
-	}
+  .W_TextEffectTopCard {
+    gap: 2.791vw;
+  }
 
-	.W_imgThreeBacsDescMini {
-		> div:nth-child(1) {
-			top: -1.421vw;
-			left: 1.323vw;
-		}
-		> div:nth-child(2) {
-			top: -2.84vw;
-			left: 2.791vw;
-		}
-	}
-
-	.W_imgThreeBacsDescMini2 {
-    div:nth-child(1), div:nth-child(2) {
-        width: 39.307vw;
-        height: 47.413vw;
-        border-radius: 0.801vw;
+  .W_allCategories {
+    > a {
+      display: none;
     }
+  }
 
-		> div:nth-child(1) {
-			top: -1.163vw;
-			left: 1.163vw;
-		}
-		> div:nth-child(2) {
-			top: -2.326vw;
-			left: 2.326vw;
-		}
-	}
+  .W_searchInfoFeed {
+    margin-top: 3.721vw;
+  }
 
-	.W_imgsOpportunity {
-		margin-top: 9.419vw;
-		img {
-			width: 86.512vw;
-			height: 99.336vw;
-		}
-	}
+  .W_searchInfo {
+    gap: 4.651vw;
+  }
 
-	.W_allImagesCollections{
-		flex-wrap: wrap;
-		margin-top: 11.765vw;
-	}
+  .W_allCollections {
+    margin-top: 6.977vw;
+    display: flex;
+    flex-direction: column;
+    gap: 4.651vw;
+  }
 
-	.W_allUsersInfo {
-		gap: 8.323vw;
-		margin-top: 11.97vw;
-	}
+  .W_registrationForm {
+    padding: 6.512vw 0 9.767vw 0;
+    height: 120vw;
+    border-radius: 0;
+  }
 
-	.W_allUserInfo {
-    gap: 2.593vw;
-    width: 68.656vw;
-    height: 25.78vw;
-    border-radius: 0.801vw;
-    padding: 2.598vw 3.3vw 2.988vw 2.633vw;
+  .W_raitingCreateEffect {
+    bottom: 38.372vw;
+    left: 11.628vw;
+    transform: rotate(-9.019deg);
+  }
 
-		> p {
-			font-size: 3.844vw;
-		}
-	}
+  .W_raitingCountCreateEffect {
+    margin: 1.035vw 0 0.107vw 0;
+    gap: 0.763vw;
+  }
 
-	.W_aboutUser {
-		gap: 2.709vw;
+  .W_allEffectsMobile {
+    display: flex;
+    gap: 14.186vw;
+    align-items: center;
+  }
+  .W_allContent {
+    align-items: flex-start;
+    width: 100vw;
+    padding: 5.581vw;
+  }
+  .W_HintModeration {
+    display: none;
+  }
+  .W_infoEffect {
+    width: 100%;
+  }
+  .W_PlatformArea {
+    margin-top: 6.977vw;
+    gap: 4.651vw;
+  }
+  .W_CategoryArea {
+    margin-top: 6.977vw;
+    gap: 4.651vw;
+  }
+  .W_InstructionEffect {
+    margin-top: 6.977vw;
+    width: 88.837vw;
+    gap: 4.651vw;
+  }
+  .W_shareRaiting {
+    flex-direction: column-reverse;
+    gap: 4.651vw;
+  }
+  .W_RatingArea {
+    gap: 4.651vw;
+  }
+  .W_RatingAreaMobile {
+    gap: 0.465vw;
+  }
+  .W_ShareArea {
+    gap: 4.651vw;
+  }
+  .W_allComments {
+    margin-top: 4.651vw;
+    gap: 4.651vw;
+  }
+  .W_CommentArea {
+    padding: 3.721vw 5.581vw;
+    gap: 5.581vw;
+    border-radius: 1.395vw;
+  }
 
-		> img {
-			width: 8.298vw;
-			height: 8.298vw;
-		}
+  .W_similarEffects {
+    margin-top: 4.651vw;
+    width: 100%;
+    max-width: 100vw;
+    height: auto !important;
+    overflow-x: hidden;
+    padding: 0 !important;
+    border-radius: 0;
+    display: block !important;
+  }
 
-		> div {
-			gap: 1.523vw;
+  .W_allButtonsCategory {
+    display: none;
+  }
 
-			> h2:nth-child(1) {
-				font-size: 3.104vw;
-				line-height: 2.68vw;
-			}
-			> h2:nth-child(2) {
-				font-size: 1.975vw;
-				line-height: 1.975vw;
-			}
-		}
-	}
+  .W_coverCategory {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 90.365vw;
+    height: fit-content;
+    border-radius: var(--main, 0.625vw);
+    background: transparent;
+  }
 
-	.M_userCommentLast {
-    & > div {
-        & .W_allUserInfo {
-            > p {
-							width: 56.373vw;
-            }
-        }
-    }
-	}
+  .W_commonLinksHeader {
+    display: none;
+  }
 }

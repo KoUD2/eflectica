@@ -43,7 +43,7 @@ Rails.application.routes.draw do
 
   resources :sub_collections
   resources :collection_effects
-  resources :collections do
+  resources :collections, path: 'collection' do
     resources :links, only: [:index]
     resources :images
     collection do
@@ -60,6 +60,9 @@ Rails.application.routes.draw do
   resources :subscriptions, only: [:create]
   resources :favorites
   resources :effects do
+    collection do
+      get 'my', to: 'effects#my', as: :my
+    end
     member do
       patch :approve
       patch :reject

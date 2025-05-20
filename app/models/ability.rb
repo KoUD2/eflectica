@@ -12,6 +12,8 @@ class Ability
     can :manage, Effect, user_id: user.id
     can :manage, Collection, user_id: user.id
     can :manage, Comment, user_id: user.id
+    can :subscribe, Collection
+    can :unsubscribe, Collection
 
     return unless user.is_admin?
     can :manage, :all

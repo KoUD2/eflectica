@@ -8,14 +8,6 @@
 
 <% content_for :title, "News feeds" %>
 
-<div class='Q_Section Q_sectionSubscription'>
-  <h1 class="A_Header1">Поиск</h1>
-  <div class='W_inputIcon'>
-    <input type="text" class='A_searchInput' placeholder='Поиск коллекций'>
-    <%= image_tag("Q_IconSearch.svg", alt: "Картинка рейтинга", class: "Q_IconSearch") %>
-  </div>
-</div>
-
 <div class='O_Collections'>
   <div class='W_allCollectionSections'>
     <div class='M_collectionSection' data-controller="collection-modal">
@@ -75,39 +67,6 @@
         <% end %>
       </div>
     </div>    
-
-    <div class='M_collectionSection'>
-      <h2 class="A_Header1">Подписки</h2>
-      <% if @subscribed_collections.present? %>
-        <div class="C_Collections C_CollectionsAll">
-          <% @subscribed_collections.each do |collection| %>
-            <%= render partial: "collections/collection", locals: { collection: collection, css_classes: { 
-              header: "A_Blue", 
-              text: "A_White" 
-            }} %>
-          <% end %>
-        </div>
-      <% else %>
-        <p>У вас пока нет подписок на коллекции других пользователей.</p>
-      <% end %>
-    </div>    
-
-    <div class='M_collectionSection'>
-      <div class='O_Effects O_EffectsNewsFeed'>
-        <div class="M_HeaderEffects">
-          <h2 class="A_Header2">Похожие коллекции</h2>
-          <button class='A_buttonWatchAll'>Смотреть все</button>
-        </div>
-        <div class="C_Effects">
-          <% @collections.first(3).each do |collection| %>
-            <%= render partial: "collections/collection", locals: { collection: collection, css_classes: { 
-              header: "A", 
-              text: "A" 
-            }} %>
-          <% end %>
-        </div>
-      </div>
-    </div>
   </div>
 
   <div class='M_appStore'>

@@ -14,12 +14,21 @@
         <p class="A_TextCaption">@<%= comment.user.username %></p>
       </div>
       <div class="M_Stars">
-        <% user_rating = comment.user.ratings.find_by(ratingable: @effect)&.number || 0 %>
+        <% 
+          # Проверяем рейтинг через несколько вариантов связей
+          comment_rating = if comment.rating&.number
+                             comment.rating.number
+                           elsif comment.user.ratings.find_by(ratingable: @effect)&.number
+                             comment.user.ratings.find_by(ratingable: @effect).number
+                           else
+                             0
+                           end
+        %>
         <% 5.times do |i| %>
           <%= image_tag(
-            (i < user_rating) ? "Q_StarIcon.svg" : "Q_StarIconEmpty.svg",
-            alt: (i < user_rating) ? "Заполненная звезда" : "Пустая звезда",
-            class: "Q_StarIconBigFeedback #{i < user_rating ? 'filled-star' : 'empty-star'}"
+            (i < comment_rating) ? "Q_StarIcon.svg" : "Q_StarIconEmpty.svg",
+            alt: (i < comment_rating) ? "Заполненная звезда" : "Пустая звезда",
+            class: "Q_StarIconBigFeedback #{i < comment_rating ? 'filled-star' : 'empty-star'}"
           ) %>
         <% end %>
       </div>      

@@ -3,7 +3,9 @@ class ImagesController < ApplicationController
   before_action :set_collection
 
   def create
-    @image = @collection.images.new(image_params)
+    @image = Image.new(image_params)
+    @image.imageable = @collection
+    @image.image_type = 'description' # Установим тип image_type для референса
     
     if @image.save
       CollectionImage.create!(collection: @collection, image: @image)
