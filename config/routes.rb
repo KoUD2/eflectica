@@ -18,7 +18,11 @@ Rails.application.routes.draw do
         resources :comments, only: [:index, :show, :create, :update, :destroy]
     
       end
-      resources :users, only: [:index, :show]
+      resources :users, only: [:index, :show] do
+        collection do
+          get 'me', to: 'users#me'
+        end
+      end
       resources :favorites, only: [:create] do
         delete ":effect_id", to: "favorites#destroy", on: :collection
       end      

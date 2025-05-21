@@ -57,7 +57,10 @@ class Api::V1::SubCollectionsController < ApplicationController
   end
 
   def current_user
-    @current_user ||= User.find_by_jti(decrypt_payload[0]['jti'])
+    payload = decrypt_payload
+    return nil if payload.nil?
+    
+    @current_user ||= User.find_by_jti(payload[0]['jti'])
   end
 
   def authenticate_user!
