@@ -14,21 +14,43 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :effects, only: [:index, :show] do
+      resources :effects, only: [:index, :show, :destroy] do
+        collection do
+          get 'my', to: 'effects#my_effects'
+        end
         resources :comments, only: [:index, :show, :create, :update, :destroy]
-    
       end
       resources :users, only: [:index, :show] do
         collection do
           get 'me', to: 'users#me'
         end
       end
+      
+      resources :profiles, only: [:show] do
+        collection do
+          get 'me', to: 'profiles#me'
+          patch '', to: 'profiles#update'
+          delete '', to: 'profiles#destroy'
+        end
+      end
+      
       resources :favorites, only: [:create] do
         delete ":effect_id", to: "favorites#destroy", on: :collection
       end      
-      resources :collections, only: [:index, :show, :create] do
+      resources :collections, only: [:index, :show, :create, :destroy] do
+        collection do
+          get 'my', to: 'collections#my_collections'
+        end
         member do
           patch 'update_status'
+          post 'effects/:effect_id', to: 'collections#add_effect', as: 'add_effect'
+          delete 'effects/:effect_id', to: 'collections#remove_effect', as: 'remove_effect'
+          post 'links', to: 'collections#add_link', as: 'add_link'
+          patch 'links/:link_id', to: 'collections#update_link', as: 'update_link'
+          delete 'links/:link_id', to: 'collections#remove_link', as: 'remove_link'
+          post 'images', to: 'collections#add_image', as: 'add_image'
+          patch 'images/:image_id', to: 'collections#update_image', as: 'update_image'
+          delete 'images/:image_id', to: 'collections#remove_image', as: 'remove_image'
         end
         resources :collection_effects, only: [:create], path: 'effects'
       end

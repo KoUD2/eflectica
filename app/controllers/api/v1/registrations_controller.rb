@@ -13,7 +13,8 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
     else
       render json: {
         messages: "Sign Up Failed",
-        is_success: false
+        is_success: false,
+        errors: @user.errors.full_messages
       }, status: :unprocessable_entity
     end
   end

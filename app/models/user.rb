@@ -20,15 +20,18 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, UserImageUploader
 
+  # Валидации для профиля
+  validates :username, uniqueness: true, length: { minimum: 3, maximum: 30 }, allow_blank: true
+  validates :name, length: { maximum: 100 }, allow_blank: true
+  validates :bio, length: { maximum: 500 }, allow_blank: true
+  validates :contact, length: { maximum: 100 }, allow_blank: true
+  validates :portfolio, length: { maximum: 255 }, allow_blank: true
+
   def subscribed_to?(collection)
        sub_collections.exists?(collection: collection)
   end
 
   def is_admin?
        self.is_admin == true
-       end
-     
-
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  end
 end
