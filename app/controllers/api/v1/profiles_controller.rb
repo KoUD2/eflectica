@@ -19,7 +19,9 @@ class Api::V1::ProfilesController < Api::V1::BaseController
   end
 
   def update
-    if current_user.update(profile_params)
+    update_params = profile_params
+    
+    if current_user.update(update_params)
       render json: {
         message: "Профиль успешно обновлён",
         user: current_user.as_json(
@@ -45,13 +47,26 @@ class Api::V1::ProfilesController < Api::V1::BaseController
   private
 
   def profile_params
-    params.require(:profile).permit(
-      :username,
-      :name,
-      :bio,
-      :contact,
-      :portfolio,
-      :avatar
-    )
+    # Для multipart form data (с файлом аватара)
+    if request.content_type&.include?('multipart/form-data')
+      permitted_params = {}
+      permitted_params[:username] = params[:username] if params[:username].present?
+      permitted_params[:name] = params[:name] if params[:name].present?
+      permitted_params[:bio] = params[:bio] if params[:bio].present?
+      permitted_params[:contact] = params[:contact] if params[:contact].present?
+      permitted_params[:portfolio] = params[:portfolio] if params[:portfolio].present?
+      permitted_params[:avatar] = params[:avatar] if params[:avatar].present?
+      permitted_params
+    else
+      # Для JSON данных
+      params.require(:profile).permit(
+        :username,
+        :name,
+        :bio,
+        :contact,
+        :portfolio,
+        :avatar
+      )
+    end
   end
 end 
