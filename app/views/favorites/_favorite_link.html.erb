@@ -1,0 +1,26 @@
+<%
+  youtube_id = favorite_link.url.match(/(?:youtube\.com\/watch\?v=|youtu.be\/)([^\&\?\/]+)/).try(:[], 1)
+  preview_url = youtube_id ? "https://img.youtube.com/vi/#{youtube_id}/0.jpg" : nil
+%>
+
+<div class="O_LinkCard" 
+     data-controller="favorite-link-card"
+     data-action="click->favorite-link-card#open"
+     data-link-id="<%= favorite_link.id %>"
+     data-link-title="<%= favorite_link.name %>"
+     data-link-url="<%= favorite_link.url %>"
+     data-link-notes="<%= favorite_link.notes %>">
+  <% if preview_url %>
+    <%= image_tag preview_url, alt: "YouTube preview", class: "A_PhotoLink" %>
+  <% end %>
+
+  <div class="C_LinkInfo">
+    <p class="A_TextTag A_TextTagBig A_TextTagLight A_TextTagLink">
+      <%= truncate(favorite_link.url, length: 40) %>
+    </p>
+
+    <% if favorite_link.name.present? %>
+      <p class="A_TextEffectCard"><%= favorite_link.name %></p>
+    <% end %>
+  </div>
+</div> 

@@ -9,44 +9,132 @@
 <% content_for :title, "Effects" %>
 
 <div class='W_Categories'>
-	<div class='M_allCategories'>
-		<h1 class="A_Header1">Категории</h1>
+	<div class='M_allCategories' data-controller="categories-filter effect-selection" 
+			 <% if @collection_id %>data-effect-selection-collection-id-value="<%= @collection_id %>"<% end %>>
+		<h1 class="A_Header1">
+			<% if @collection_id %>
+				Категории
+			<% else %>
+				Категории
+			<% end %>
+		</h1>
 		<div class='W_searchInfo'>
-			<div class='W_inputIcon'>
-				<input type="text" class='A_searchInput' placeholder='Поиск'>
+			<div class='W_inputIcon' data-controller="search-categories">
+				<input type="text" class='A_searchInput' placeholder='Поиск'
+							 data-search-categories-target="input" 
+							 data-action="input->search-categories#search">
 				<%= image_tag("Q_IconSearch.svg", alt: "Картинка рейтинга", class: "Q_IconSearch") %>
 			</div>
-			<button class='A_FilterSearch'>
-				<p>Где искать</p>
-				<%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+			<div class="Q_FilterDropdown">
+				<button class='A_FilterSearch' data-action="categories-filter#toggle" data-categories-filter-target="toggleButton">
+					<p>Где искать</p>
+					<%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+				</button>
+				
+				<!-- Контейнер для отображения выбранных категорий -->
+				<div class="C_SelectedCategories" data-categories-filter-target="selectedCategories" style="display: none;">
+					<div class="Q_SelectedCategoriesList" data-categories-filter-target="selectedCategoriesList">
+						<!-- Выбранные категории будут добавляться сюда динамически -->
+					</div>
+				</div>
+				
+				<div class="Q_CategoryDropdown" data-categories-filter-target="dropdown" style="display: none;">
+					<div class="Q_CategoryList">
+						<label class="Q_CategoryItem custom-checkbox">
+							<span>Обработка фото</span>
+							<input type="checkbox" value="photoProcessing" data-action="categories-filter#filterEffects">
+							<span class="checkmark"></span>
+						</label>
+						<label class="Q_CategoryItem custom-checkbox">
+							<span>3D-графика</span>
+							<input type="checkbox" value="3dGrafics" data-action="categories-filter#filterEffects">
+							<span class="checkmark"></span>
+						</label>
+						<label class="Q_CategoryItem custom-checkbox">
+							<span>Моушен</span>
+							<input type="checkbox" value="motion" data-action="categories-filter#filterEffects">
+							<span class="checkmark"></span>
+						</label>
+						<label class="Q_CategoryItem custom-checkbox">
+							<span>Иллюстрация</span>
+							<input type="checkbox" value="illustration" data-action="categories-filter#filterEffects">
+							<span class="checkmark"></span>
+						</label>
+						<label class="Q_CategoryItem custom-checkbox">
+							<span>Анимация</span>
+							<input type="checkbox" value="animation" data-action="categories-filter#filterEffects">
+							<span class="checkmark"></span>
+						</label>
+						<label class="Q_CategoryItem custom-checkbox">
+							<span>UI/UX-анимация</span>
+							<input type="checkbox" value="uiux" data-action="categories-filter#filterEffects">
+							<span class="checkmark"></span>
+						</label>
+						<label class="Q_CategoryItem custom-checkbox">
+							<span>Обработка видео</span>
+							<input type="checkbox" value="videoProcessing" data-action="categories-filter#filterEffects">
+							<span class="checkmark"></span>
+						</label>
+						<label class="Q_CategoryItem custom-checkbox">
+							<span>VFX</span>
+							<input type="checkbox" value="vfx" data-action="categories-filter#filterEffects">
+							<span class="checkmark"></span>
+						</label>
+						<label class="Q_CategoryItem custom-checkbox">
+							<span>Геймдев</span>
+							<input type="checkbox" value="gamedev" data-action="categories-filter#filterEffects">
+							<span class="checkmark"></span>
+						</label>
+						<label class="Q_CategoryItem custom-checkbox">
+							<span>AR & VR</span>
+							<input type="checkbox" value="arvr" data-action="categories-filter#filterEffects">
+							<span class="checkmark"></span>
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<% if @collection_id %>
+			<button class='A_ButtonPrimary A_SubscribeButton A_SubscribeButtonAdd' 
+							id="saveSelectedEffects" 
+							data-collection-id="<%= @collection_id %>"
+							style="display: none;">
+				Сохранить выбор
 			</button>
+		<% end %>
 		</div>
 		<div class='C_allCategories' data-controller="category">
 			<% @categories.each do |category| %>
-				<div class='W_allCategoriesShow'>
-					<button class='M_HeaderEffectsCategories' 
-									data-action="click->category#toggle" 
-									data-category="<%= category %>">
-						<h2 class='A_Header2'><%= human_readable_category(category) %></h2>
-						<%= image_tag("Q_IconArrowGray.svg", alt: "Иконка стрелки", class: "Q_IconArrowBlack") %>
-					</button>
-					
-					<%= link_to effects_categorie_path(category), 
-							class: 'M_HeaderEffectsCategories hidden', 
-							data: { 
-								category: category,
-								category_target: "viewAllButton" 
-							} do %>
-						<button class='A_More'>Смотреть все</button>
-					<% end %>
-				</div>
-		
-				<div class="C_Effects C_EffectsCategories hidden" 
-						 data-category-target="effectsItem" 
-						 data-category-name="<%= category %>">
-					<% @effects.tagged_with(category, on: :categories).approved.each do |effect| %>
-						<%= render partial: 'effects/collection_effect', locals: { effect: effect } %>
-					<% end %>
+				<div class='W_allCategoriesShow' data-category="<%= category %>" data-categories-filter-target="effectSection">
+					<div class='W_headerLinkCategory'>
+						<button class='M_HeaderEffectsCategories' 
+										data-action="click->category#toggle" 
+										data-category="<%= category %>">
+							<h2 class='A_Header2'><%= human_readable_category(category) %></h2>
+							<%= image_tag("Q_IconArrowGray.svg", alt: "Иконка стрелки", class: "Q_IconArrowBlack") %>
+						</button>
+						
+						<%= link_to effects_categorie_path(category, collection_id: @collection_id), 
+								class: 'M_HeaderEffectsCategories hidden', 
+								data: { 
+									category: category,
+									category_target: "viewAllButton" 
+								} do %>
+							<button class='A_More'>Смотреть все</button>
+						<% end %>
+					</div>
+				
+					<div class="C_Effects C_EffectsCategories <%= 'hidden' unless @collection_id && @categories.first(3).include?(category) %>" 
+							 data-category-target="effectsItem" 
+							 data-category-name="<%= category %>">
+						<% @effects.tagged_with(category, on: :categories).approved.each do |effect| %>
+							<% if @collection_id %>
+								<%= render partial: 'effects/selectable_effect', locals: { effect: effect, collection_effect_ids: @collection_effect_ids } %>
+							<% else %>
+								<%= render partial: 'effects/collection_effect', locals: { effect: effect } %>
+							<% end %>
+						<% end %>
+					</div>
 				</div>
 			<% end %>
 		</div>			

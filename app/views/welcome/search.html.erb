@@ -1,0 +1,110 @@
+<%
+  set_meta_tags(
+    title: @query.present? ? "Результаты поиска «#{@query}»" : "Поиск",
+    description: "Результаты поиска по эффектам и коллекциям на Eflectica",
+    keywords: "поиск, эффекты, коллекции, результаты"
+  )
+%>
+
+<% content_for :title, "Search Results" %>
+
+<div class='Q_Section Q_SectionActive Q_SectionSearch'>
+  <div class="W_searchHeader">
+    <h1 class="A_Header1">
+      <% if @query.present? %>
+        Результаты по поиску «<%= @query %>»
+      <% else %>
+        Поиск
+      <% end %>
+    </h1>
+  </div>
+
+  <div class='W_allSearch'>
+    <% if @query.present? %>
+      <!-- Мои эффекты -->
+      <% if current_user && @my_effects.any? %>
+        <div class="W_searchSection">
+          <div class="M_HeaderEffects">
+            <h2 class="A_Header2">Мои эффекты</h2>
+          </div>
+          <div class="C_Effects">
+            <% @my_effects.each do |effect| %>
+              <%= render partial: "effects/collection_effect", locals: { effect: effect } %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- Все эффекты -->
+      <% if @all_effects.any? %>
+        <div class="W_searchSection">
+          <div class="M_HeaderEffects">
+            <h2 class="A_Header2">Все эффекты</h2>
+            <%= link_to effects_path(search: @query), class: 'A_buttonWatchAll' do %>
+              Смотреть все
+            <% end %>
+          </div>
+          <div class="C_Effects">
+            <% @all_effects.each do |effect| %>
+              <%= render partial: "effects/collection_effect", locals: { effect: effect } %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- Мои коллекции -->
+      <% if current_user && @my_collections.any? %>
+        <div class="W_searchSection">
+          <div class="M_HeaderEffects">
+            <h2 class="A_Header2">Мои коллекции</h2>
+          </div>
+          <div class="C_Collections">
+            <% @my_collections.each do |collection| %>
+              <%= render partial: "collections/collection", locals: { 
+                collection: collection, 
+                css_classes: { header: "A", text: "A" } 
+              } %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- Подписки -->
+      <% if current_user && @subscriptions.any? %>
+        <div class="W_searchSection">
+          <div class="M_HeaderEffects">
+            <h2 class="A_Header2">Подписки</h2>
+          </div>
+          <div class="C_Collections">
+            <% @subscriptions.each do |collection| %>
+              <%= render partial: "collections/collection", locals: { 
+                collection: collection, 
+                css_classes: { header: "A_Blue", text: "A_White" } 
+              } %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- Все коллекции -->
+      <% if @all_collections.any? %>
+        <div class="W_searchSection">
+          <div class="M_HeaderEffects">
+            <h2 class="A_Header2">Все коллекции</h2>
+            <%= link_to collections_path, class: 'A_buttonWatchAll' do %>
+              Смотреть все
+            <% end %>
+          </div>
+          <div class="C_Collections">
+            <% @all_collections.each do |collection| %>
+              <%= render partial: "collections/collection", locals: { 
+                collection: collection, 
+                css_classes: { header: "A", text: "A" } 
+              } %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div> 

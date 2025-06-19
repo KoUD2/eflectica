@@ -2,8 +2,12 @@ require 'json'
 
 def seed
     reset_db
+    create_effect_categories
+    create_effect_programs
+    create_effect_tasks
     create_users(10)
     create_effects(18)
+    create_user_preferences
     create_favorites
     create_collections(15)
     create_subscriptions(15)
@@ -35,6 +39,72 @@ def create_sub_collections
     end
   end
 end
+
+def create_effect_categories
+  categories = ["photoProcessing", "3dGrafics", "motion", "illustration", "animation", "uiux", "videoProcessing", "vfx", "gamedev", "arvr"]
+  
+  categories.each do |category_name|
+    begin
+      EffectCategory.create!(name: category_name)
+      puts "✅ Category '#{category_name}' created"
+    rescue ActiveRecord::RecordInvalid => e
+      puts "❌ Error creating category '#{category_name}': #{e.message}"
+    end
+  end
+end
+
+def create_effect_programs
+  programs = ["photoshop", "lightroom", "after_effects", "illustrator", "premiere_pro", "blender", "affinity_photo", "capture_one", "maya", "cinema_4d", "3ds_max", "zbrush"]
+  
+  programs.each do |program_name|
+    begin
+      EffectProgram.create!(name: program_name)
+      puts "✅ Program '#{program_name}' created"
+    rescue ActiveRecord::RecordInvalid => e
+      puts "❌ Error creating program '#{program_name}': #{e.message}"
+    end
+  end
+end
+
+def create_effect_tasks
+  tasks = ["portraitRetouching", "colorCorrection", "improvePhotoQuality", "preparationForPrinting", "socialMediaContent", "advertisingProcessing", "stylization", "backgroundEditing", "graphicContent", "setLight", "simulation3d", "atmosphereWeather"]
+  
+  tasks.each do |task_name|
+    begin
+      EffectTask.create!(name: task_name)
+      puts "✅ Task '#{task_name}' created"
+    rescue ActiveRecord::RecordInvalid => e
+      puts "❌ Error creating task '#{task_name}': #{e.message}"
+    end
+  end
+end
+
+def create_user_preferences
+  User.all.each do |user|
+    # Случайный выбор 2-4 категорий для каждого пользователя
+    selected_categories = EffectCategory.all.sample(rand(2..4))
+    selected_categories.each do |category|
+      begin
+        UserEffectCategory.create!(user: user, effect_category: category)
+        puts "✅ User #{user.username} prefers category '#{category.name}'"
+      rescue ActiveRecord::RecordInvalid => e
+        puts "❌ Error creating user category preference: #{e.message}"
+      end
+    end
+    
+    # Случайный выбор 2-3 программ для каждого пользователя
+    selected_programs = EffectProgram.all.sample(rand(2..3))
+    selected_programs.each do |program|
+      begin
+        UserEffectProgram.create!(user: user, effect_program: program)
+        puts "✅ User #{user.username} prefers program '#{program.name}'"
+      rescue ActiveRecord::RecordInvalid => e
+        puts "❌ Error creating user program preference: #{e.message}"
+      end
+    end
+  end
+end
+
 
 def upload_effect_image(filename)
   uploader = EffectImageUploader.new(Effect.new, :img)
@@ -99,6 +169,7 @@ def create_effects(quantity)
 
   all_categories = ["photoProcessing", "3dGrafics", "motion", "illustration", "animation", "uiux", "videoProcessing", "vfx", "gamedev", "arvr"]
   all_tasks = ["portraitRetouching", "colorCorrection", "improvePhotoQuality", "preparationForPrinting", "socialMediaContent", "advertisingProcessing", "stylization", "backgroundEditing", "graphicContent", "setLight", "simulation3d", "atmosphereWeather"]
+  all_programs = ["photoshop", "lightroom", "after_effects", "illustrator", "premiere_pro", "blender", "affinity_photo", "capture_one", "maya", "cinema_4d", "3ds_max", "zbrush"]
 
   effects_data.sample(quantity).each do |effect_data|
     begin
@@ -109,18 +180,45 @@ def create_effects(quantity)
         description: effect_data["Description"].to_s,
         speed: effect_data["Speed"].to_i,
         platform: effect_data["Platform"].to_s,
-        programs: effect_data["Programs"].to_s,
         manual: effect_data["Manual"].to_s,
         link_to: effect_data["Link_to"].presence || "#",
-        is_secure: effect_data["Is_secure"],
-        program_version: effect_data["Program version"].presence || "1.0"
+        is_secure: effect_data["Is_secure"]
       )
 
+      # Сохраняем старые теги для совместимости
       effect.category_list = all_categories.sample(1).join(', ')
       effect.task_list = all_tasks.sample(rand(2..3)).join(', ')
 
       if effect.save!
         puts "✅ Effect ##{effect.id} создан."
+        
+        # Создаем связи с программами через связующую таблицу с версиями
+        selected_programs = EffectProgram.where(name: all_programs.sample(rand(1..3)))
+        selected_programs.each do |program|
+          # Обновляем версию программы из JSON данных или используем случайную
+          program_version = effect_data["Program version"].presence || effect_data["Program_version"].presence || "#{rand(1..5)}.#{rand(0..9)}.#{rand(0..9)}"
+          
+          # Обновляем версию программы
+          program.update!(version: program_version)
+          
+          EffectEffectProgram.create!(effect: effect, effect_program: program)
+          puts "  ✅ Связь с программой '#{program.name}' (версия #{program_version}) создана"
+        end
+        
+        # Создаем связи с категориями через связующую таблицу
+        selected_categories = EffectCategory.where(name: all_categories.sample(rand(1..2)))
+        selected_categories.each do |category|
+          EffectEffectCategory.create!(effect: effect, effect_category: category)
+          puts "  ✅ Связь с категорией '#{category.name}' создана"
+        end
+        
+        # Создаем связи с задачами через связующую таблицу
+        selected_tasks = EffectTask.where(name: all_tasks.sample(rand(2..4)))
+        selected_tasks.each do |task|
+          EffectEffectTask.create!(effect: effect, effect_task: task)
+          puts "  ✅ Связь с задачей '#{task.name}' создана"
+        end
+        
         create_dependencies(effect, effect_data, comments_data)
       else
         puts "❌ Ошибки валидации: #{effect.errors.full_messages}"

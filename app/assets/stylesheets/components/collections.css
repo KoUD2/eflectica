@@ -12,17 +12,43 @@
 
 .C_Effects {
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.625vw;
 }
 
+.C_EffectsMy {
+  width: 100%;
+  gap: inherit;
+  justify-content: space-between;
+}
+
+.C_EffectsTop {
+  margin-top: 1.25vw;
+}
+
+.C_allCollectionsSubscription {
+  display: flex;
+  flex-direction: column;
+  gap: 3.33vw;
+}
+
 .C_EffectsCategories {
   flex-wrap: wrap;
+  margin-top: 1.25vw;
 }
 
 .C_EffectsCategory {
   margin-top: 1.25vw;
   flex-wrap: wrap;
+}
+
+.C_CollectionsCategory {
+  margin-top: 1.25vw;
+  flex-wrap: wrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625vw;
 }
 
 .C_LinkArea {
@@ -31,6 +57,17 @@
   align-items: flex-start;
   gap: 0.625vw;
   align-self: stretch;
+}
+
+.C_LinkAreaRow {
+  width: 26.46vw;
+}
+
+.C_allButtonsCollection {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .С_PhotoGalleryEffectPreview {
@@ -43,7 +80,7 @@
 
 .С_PhotoGalleryEffect {
   display: flex;
-  height: 85.366%;
+  height: 10.73vw;
   align-items: center;
   gap: 0.709%;
   align-self: stretch;
@@ -65,6 +102,10 @@
   align-self: stretch;
 }
 
+.С_PhotoGalleryEffectImages {
+  height: 14.58vw;
+}
+
 .C_Commets {
   display: flex;
   flex-direction: column;
@@ -75,8 +116,14 @@
   display: flex;
   padding: 0 1.25vw;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   align-self: stretch;
+}
+
+.С_CommentOptionsButtons {
+  display: flex;
+  gap: 1.25vw;
+  align-items: center;
 }
 
 .С_PhotoGalleryCollectionEffect {
@@ -128,6 +175,9 @@
 
 .C_ChoiceFeed {
   width: 100%;
+  height: 19vw;
+  overflow-y: scroll;
+  padding-right: 0.625vw;
 }
 
 .C_Comments {
@@ -170,6 +220,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.417vw;
+  flex-wrap: wrap;
 }
 
 .C_CollectionsAll {
@@ -187,6 +238,21 @@
 .C_IconsMenu {
   display: flex;
   align-items: center;
+}
+
+.C_SelectedCategories {
+  display: flex;
+  align-items: center;
+  gap: 0.63vw;
+  flex-wrap: wrap;
+}
+
+.Q_SelectedCategoriesList {
+  display: flex;
+  align-items: center;
+  gap: 0.63vw;
+  width: 40.78vw;
+  flex-wrap: wrap;
 }
 
 .C_QuestionBody {
@@ -524,6 +590,10 @@
 .C_usersInfo2 {
   display: flex;
   gap: 12.258vw;
+}
+
+.С_PhotoGalleryEffectImagesSmall {
+  height: 10.73vw;
 }
 
 .hidden {

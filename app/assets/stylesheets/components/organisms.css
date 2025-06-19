@@ -174,11 +174,16 @@
   display: flex;
   width: 25.521vw;
   padding: 0.833vw 1.25vw;
+  background: var(--porcelain-white, #fff);
   flex-direction: column;
   align-items: flex-start;
   gap: 0.625vw;
   border-radius: var(--button, 0.417vw);
-  background: var(--porcelain-white, #fff);
+  margin-bottom: 1.67vw;
+}
+
+.O_CommentMyBottom {
+  margin-bottom: 1.67vw;
 }
 
 .O_lineCard {
@@ -405,11 +410,12 @@
   transform: translate(-50%, -50%);
   z-index: 1000;
   display: flex;
-  padding: 1.25vw;
+  width: 28.02vw;
+  padding: 1.67vw;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.833vw;
+  gap: 1.25vw;
   border-radius: var(--main, 0.625vw);
   border: var(--border, 0.104vw) solid var(--grey-tag, #e1e1e1);
   background: var(--porcelain-white, #fff);
@@ -434,9 +440,9 @@
 
 .O_EffectInfo {
   display: flex;
-  width: 25.469vw;
-  flex-direction: column;
-  align-items: flex-start;
+  /* width: 25.469vw; */
+  /* flex-direction: column;
+  align-items: flex-start; */
   gap: 2.813vw;
 }
 
@@ -668,6 +674,7 @@
 
 .O_EffectsNewsFeed {
   margin-top: 0;
+  width: fit-content;
 }
 
 .O_FeedSettings {
@@ -676,6 +683,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 0.833vw;
+  margin-bottom: 0.755vw;
 }
 
 .O_subscribtionsAbout {
@@ -733,11 +741,50 @@
   top: 50%;
 }
 
+.O_TagsInfo {
+  width: 100%;
+
+  > div {
+    > div {
+      padding: 0 0 2.188vw 0;
+    }
+  }
+}
+
+.O_EffectCardPreviewSmall {
+  height: auto;
+}
+
 .O_myEffects {
   margin: 1.708vw 0;
   display: flex;
   flex-direction: column;
   gap: 0.833vw;
+}
+
+.O_errorPage {
+  width: 96.875vw;
+  height: 41.72vw;
+  padding-top: 5.73vw;
+  background-color: var(--foggy-grey, #f5f5f5);
+  border-radius: var(--button, 0.417vw);
+  display: flex;
+  justify-content: center;
+}
+
+.O_EffectSelectableCard {
+  position: relative;
+}
+
+.O_SelectedCategoryTag {
+  display: flex;
+  height: 2.5vw;
+  padding: 0.42vw 0.63vw 0.42vw 0.83vw;
+  align-items: center;
+  gap: 0.83vw;
+  border-radius: var(--desktop-button, 0.42vw);
+  border: var(--desktop-border, 0.1vw) solid var(--computer-blue, #0638bd);
+  background: var(--porcelain-white, #fff);
 }
 
 .hidden {
@@ -872,4 +919,15 @@
     padding: 5.581vw;
     border-radius: 0;
   }
+}
+
+.W_searchHeader {
+  margin-top: 2.02vw;
+  margin-bottom: 1.67vw;
+}
+
+.W_searchSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25vw;
 }

@@ -127,7 +127,7 @@
 
 .Q_FavoriteSection {
   padding: 1.302vw 1.667vw 1.615vw 1.406vw;
-  width: 92.448vw;
+  width: 92.748vw;
   height: 38.333vw;
   margin-left: -1.406vw;
   border: 1px solid var(--computer-blue);
@@ -135,6 +135,10 @@
   position: relative;
   margin-top: 1.719vw;
   margin-bottom: 2.5vw;
+}
+
+.Q_whiteText {
+  color: var(--porcelain-white, #fff);
 }
 
 .Q_Particle {
@@ -370,13 +374,16 @@
   width: 2.813vw;
   height: 2.813vw;
   border-radius: 100%;
-  border: 2px solid var(--grey-tag, #e1e1e1);
   background: var(--porcelain-white, #fff);
 
   img {
     height: 44.444%;
     width: auto;
   }
+}
+
+.Q_ProgramIconEffectPlat {
+  border: 2px solid var(--grey-tag, #e1e1e1);
 }
 
 .Q_ProgramIconEffectMain {
@@ -553,6 +560,76 @@
   width: 0.732vw;
   height: 0.526vw;
   transition: all 0.3s ease;
+}
+
+.Q_IconArrowBlack.rotated {
+  transform: rotate(180deg);
+}
+
+.Q_IconCategory1 {
+  position: absolute;
+  bottom: -4.1vw;
+  left: 26.16vw;
+  width: 21.46vw;
+  height: 21.6vw;
+  transform: rotate(-5deg);
+  flex-shrink: 0;
+  aspect-ratio: 412.1/414.75;
+  border-radius: 1.09vw;
+  box-shadow: 0vw 0vw 1.81vw 0vw rgba(0, 0, 0, 0.15);
+}
+
+.Q_IconCategory2 {
+  position: absolute;
+  top: -2.79vw;
+  left: 5.78vw;
+  width: 21.15vw;
+  height: 19.95vw;
+  transform: rotate(-13.128deg);
+  flex-shrink: 0;
+  border-radius: 1.09vw;
+  box-shadow: 0vw 0vw 1.81vw 0vw rgba(0, 0, 0, 0.15);
+}
+
+.Q_IconCategory3 {
+  position: absolute;
+  top: -3.49vw;
+  left: 45.07vw;
+  width: 21.17vw;
+  height: 20.22vw;
+  transform: rotate(13.78deg);
+  flex-shrink: 0;
+  border-radius: 1.09vw;
+  box-shadow: 0vw 0vw 1.81vw 0vw rgba(0, 0, 0, 0.15);
+}
+
+.Q_IconCategory4 {
+  position: absolute;
+  bottom: -4.55vw;
+  right: 5.88vw;
+  width: 21.3vw;
+  height: 21.41vw;
+  transform: rotate(7.747deg);
+  flex-shrink: 0;
+  aspect-ratio: 412.1/414.75;
+  border-radius: 1.09vw;
+  box-shadow: 0vw 0vw 1.81vw 0vw rgba(0, 0, 0, 0.15);
+}
+
+.Q_IconCategory5 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 26.46vw;
+  height: 21.93vw;
+}
+
+.Q_IconCategory6 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 24.11vw;
+  height: 22.08vw;
 }
 
 .Q_shareProfile {
@@ -742,6 +819,95 @@
   height: 1.25vw;
 }
 
+.Q_ProgressFill {
+  height: 100%;
+  background: var(--computer-blue, #0638bd);
+  border-radius: 0.417vw;
+  transition: width 0.3s ease;
+}
+
+.Q_CategoryListCollection {
+  width: 100%;
+  padding: 0;
+}
+
+.Q_SectionSearch {
+  padding-bottom: 3.91vw;
+}
+
+.Q_RemoveCategoryButton {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 1vw;
+  height: 1vw;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.Q_CancelFilterIcon {
+  width: 1vw;
+  height: 1vw;
+}
+
+.Q_plusMinusIcon {
+  width: 1.25vw;
+  height: 1.25vw;
+}
+
+.Q_SectionSimilar {
+  padding: 1.67vw 3.906vw 3.906vw 3.385vw;
+  gap: 1.25vw;
+}
+
+.Q_ProgramIconImage {
+  width: 1.88vw;
+  height: 1.88vw;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.Q_ProgramIconDropdown {
+  width: 1.88vw;
+  height: 1.88vw;
+  margin-right: 0.42vw;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.Q_ProgramItemContent {
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.Q_SortItem {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border-bottom: var(--desktop-border, 0.1vw) solid var(--grey-tag, #e1e1e1);
+}
+
+.Q_SortItem.active {
+  > span {
+    color: #0638bd;
+  }
+}
+
+.Q_SortItem:last-child {
+  border-bottom: none;
+}
+
+.Q_SortItem span {
+  pointer-events: none;
+}
+
 .hidden {
   display: none;
 }
@@ -821,8 +987,6 @@
     height: 59.914vw;
     transform: rotate(8.51deg);
     border-radius: 2.608vw;
-    background: url(<path-to-image>) lightgray -13.54vw -8.991vw / 264.556%
-      146.217% no-repeat;
     box-shadow: 0vw 0vw 4.405vw 0vw rgba(0, 0, 0, 0.15);
   }
 
@@ -852,5 +1016,17 @@
   .Q_StarIconBigFeedback {
     width: 4.651vw;
     height: 4.651vw;
+  }
+
+  .Q_ProgramIconImage {
+    width: 3.721vw;
+    height: 3.721vw;
+    margin-right: 0.93vw;
+  }
+
+  .Q_ProgramIconDropdown {
+    width: 4.651vw;
+    height: 4.651vw;
+    margin-right: 1.86vw;
   }
 }

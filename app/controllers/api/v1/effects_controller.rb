@@ -1,28 +1,75 @@
 class Api::V1::EffectsController < Api::V1::BaseController
-  before_action :authenticate_user!, only: [:my_effects, :destroy]
+  before_action :authenticate_user!, only: [:my_effects, :destroy, :feed]
   before_action :find_user_effect, only: [:destroy]
 
   def index
     @effects = Effect.includes(:images, :comments, :ratings).all
     render json: @effects.as_json(
-      only: [:id, :name, :img, :description, :speed, :platform, :manual, :programs, :program_version],
-      methods: [:category_list, :task_list, :average_rating, :before_image, :after_image]
+      only: [:id, :name, :img, :description, :speed, :platform, :manual, :created_at],
+      methods: [:category_list, :task_list, :programs_with_versions, :average_rating, :before_image, :after_image]
     )
   end
 
   def show
     @effect = Effect.includes(:images, :comments, :ratings).find(params[:id])
     render json: @effect.as_json(
-      only: [:id, :name, :img, :description, :speed, :platform, :manual, :programs, :program_version],
-      methods: [:category_list, :task_list, :average_rating, :before_image, :after_image]
+      only: [:id, :name, :img, :description, :speed, :platform, :manual, :created_at],
+      methods: [:category_list, :task_list, :programs_with_versions, :average_rating, :before_image, :after_image]
     )
   end
 
   def my_effects
     @effects = current_user.effects.includes(:images, :comments, :ratings)
     render json: @effects.as_json(
-      only: [:id, :name, :img, :description, :speed, :platform, :manual, :programs, :program_version, :is_secure, :created_at, :updated_at],
-      methods: [:category_list, :task_list, :average_rating, :before_image, :after_image],
+      only: [:id, :name, :img, :description, :speed, :platform, :manual, :is_secure, :created_at, :updated_at],
+      methods: [:category_list, :task_list, :programs_with_versions, :average_rating, :before_image, :after_image],
+      include: {
+        user: { only: [:id, :username, :avatar] }
+      }
+    )
+  end
+
+  def feed
+    # Получаем предпочтения пользователя
+    user_program_ids = current_user.user_effect_programs.pluck(:effect_program_id)
+    user_category_ids = current_user.user_effect_categories.pluck(:effect_category_id)
+    
+    # Если у пользователя нет предпочтений, возвращаем популярные эффекты
+    if user_program_ids.empty? && user_category_ids.empty?
+      @effects = Effect.includes(:images, :comments, :ratings, :user)
+                       .where(is_secure: "Одобрено")
+                       .where.not(user_id: current_user.id)
+                       .joins(:ratings)
+                       .group('effects.id')
+                       .order('AVG(ratings.number) DESC, effects.created_at DESC')
+                       .limit(20)
+    else
+      # Строим запрос для поиска эффектов на основе предпочтений
+      effect_ids_from_programs = []
+      effect_ids_from_categories = []
+      
+      if user_program_ids.any?
+        effect_ids_from_programs = EffectEffectProgram.where(effect_program_id: user_program_ids).pluck(:effect_id)
+      end
+      
+      if user_category_ids.any?
+        effect_ids_from_categories = EffectEffectCategory.where(effect_category_id: user_category_ids).pluck(:effect_id)
+      end
+      
+      # Объединяем ID эффектов из предпочтений по программам и категориям
+      effect_ids = (effect_ids_from_programs + effect_ids_from_categories).uniq
+      
+      @effects = Effect.includes(:images, :comments, :ratings, :user)
+                       .where(id: effect_ids)
+                       .where(is_secure: "Одобрено")
+                       .where.not(user_id: current_user.id)
+                       .order('effects.created_at DESC')
+                       .limit(20)
+    end
+    
+    render json: @effects.as_json(
+      only: [:id, :name, :img, :description, :speed, :platform, :manual, :created_at],
+      methods: [:category_list, :task_list, :programs_with_versions, :average_rating, :before_image, :after_image],
       include: {
         user: { only: [:id, :username, :avatar] }
       }

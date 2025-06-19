@@ -3,6 +3,7 @@
     <%= button_to unsubscribe_collection_path(collection), 
         method: :delete, 
         class: "A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryGrayFit A_UnsubscribeButton" do %>
+      <%= image_tag("minusIconBlack.svg", alt: "Отписаться", class:"Q_plusMinusIcon") %>
       Отписаться
     <% end %>
   <% elsif current_user %>
@@ -10,6 +11,7 @@
         method: :post, 
         class: "A_ButtonPrimary A_SubscribeButton",
         disabled: collection.status == 'private' do %>
+      <%= image_tag("plusIconWhite.svg", alt: "Подписаться", class:"Q_plusMinusIcon") %>
       Подписаться
     <% end %>
   <% else %>

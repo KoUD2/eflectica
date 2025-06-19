@@ -18,12 +18,7 @@ export default class extends Controller {
       });
   }
 
-  handleKeyPress(event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      this.submitComment();
-    }
-  }
+  // Удалили обработку Enter - теперь отправка только по кнопке
 
   submitComment() {
     const commentBody = this.commentInputTarget.value;

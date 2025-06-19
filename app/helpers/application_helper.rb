@@ -35,4 +35,23 @@ module ApplicationHelper
       "mac" => "mac_icon.svg"
     }.freeze
   end
+
+  def human_readable_program(program)
+    program_mappings = {
+      "photoshop" => "Photoshop",
+      "lightroom" => "Lightroom",
+      "after_effects" => "After Effects",
+      "illustrator" => "Illustrator",
+      "premiere_pro" => "Premiere Pro",
+      "blender" => "Blender",
+      "affinity_photo" => "Affinity Photo",
+      "capture_one" => "Capture One",
+      "maya" => "Maya",
+      "cinema_4d" => "Cinema 4D",
+      "3ds_max" => "3ds Max",
+      "zbrush" => "ZBrush"
+    }.freeze
+    
+    program_mappings[program] || program.gsub('_', ' ').titleize
+  end
 end

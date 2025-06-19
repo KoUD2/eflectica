@@ -15,7 +15,7 @@
           <div data-search-target="icon" data-action="click->search#toggleSearch">
             <%= image_tag("Q_IconSearchHeader.svg", alt: "Поиск", class: "Q_SearchIcon") %>
           </div>
-          <form action="/effects" method="get" class="A_searchForm hidden" data-search-target="input">
+          <form action="<%= search_results_path %>" method="get" class="A_searchForm hidden" data-search-target="input">
             <button type="submit" class="A_searchSubmit">
               <%= image_tag("Q_IconSearch.svg", alt: "Искать") %>
             </button>

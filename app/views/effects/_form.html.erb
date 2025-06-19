@@ -47,10 +47,7 @@
       <%= form.file_field :img %>
     </div>
 
-    <div>
-      <%= form.label :tag_list, "Выберите теги:", style: "display: block" %>
-      <%= form.select :tag_list, Effect::ALLOWED_TAGS, {}, multiple: true, class: "form-control", selected: effect.tag_list %>
-    </div>    
+    
     
     <div>
       <%= form.submit %>

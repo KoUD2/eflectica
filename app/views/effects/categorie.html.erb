@@ -9,34 +9,129 @@
 
 <% content_for :title, category_name %>
 
-<div class='O_Category'>
+<div class='O_Category' data-controller="task-filter sort-filter effect-selection" 
+		 <% if @collection_id %>data-effect-selection-collection-id-value="<%= @collection_id %>"<% end %>>
 	<div class='W_coverCategory'>
-		<h1 class="A_Header1 A_Header1Category"><%= category_name %></h1>
+		<%= image_tag("imageCategory5.png", alt: "Картинка рейтинга", class: "Q_IconCategory5") %>
+		<%= image_tag("imageCategory2.png", alt: "Картинка рейтинга", class: "Q_IconCategory2") %>
+		<%= image_tag("imageCategory3.png", alt: "Картинка рейтинга", class: "Q_IconCategory3") %>
+		<%= image_tag("imageCategory1.png", alt: "Картинка рейтинга", class: "Q_IconCategory1") %>
+		<%= image_tag("imageCategory6.png", alt: "Картинка рейтинга", class: "Q_IconCategory6") %>
+		<%= image_tag("imageCategory4.png", alt: "Картинка рейтинга", class: "Q_IconCategory4") %>
 	</div>
+
+	<h1 class="A_Header1 A_Header1Category"><%= category_name %></h1>
 
 	<div class='W_allButtonsCategory'>
 		<div class='W_tasksCategories'>
-			<button class='A_Filter A_FilterCategory A_TextTagBig'>
-				Задача
-				<%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
-			</button>
-			<button class='A_Filter A_FilterCategory A_TextTagBig'>
-				Программа
-				<%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
-			</button>
+			<div class="Q_FilterDropdown">
+				<button class='A_Filter A_FilterCategory A_TextTagBig' data-action="task-filter#toggle" data-task-filter-target="toggleButton">
+					Задача
+					<%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+				</button>
+				
+				<!-- Контейнер для отображения выбранных задач -->
+				<div class="C_SelectedCategories" data-task-filter-target="selectedTasks" style="display: none;">
+					<div class="Q_SelectedCategoriesList" data-task-filter-target="selectedTasksList">
+						<!-- Выбранные задачи будут добавляться сюда динамически -->
+					</div>
+				</div>
+				
+				<div class="Q_CategoryDropdown" data-task-filter-target="dropdown" style="display: none;">
+					<div class="Q_CategoryList">
+						<% if @tasks && @tasks.any? %>
+							<% @tasks.each do |task| %>
+								<label class="Q_CategoryItem custom-checkbox">
+									<span><%= human_readable_task(task) %></span>
+									<input type="checkbox" value="<%= task %>" data-action="task-filter#filterEffects">
+									<span class="checkmark"></span>
+								</label>
+							<% end %>
+						<% else %>
+							<div class="Q_CategoryItem">
+								<span>Нет доступных задач для этой категории</span>
+							</div>
+							<!-- DEBUG: Категория: <%= @category %>, Эффектов: <%= @effects&.count %>, Задач: <%= @tasks&.inspect %> -->
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="Q_FilterDropdown">
+				<button class='A_Filter A_FilterCategory A_TextTagBig' data-action="task-filter#togglePrograms" data-task-filter-target="programToggleButton">
+					Программа
+					<%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+				</button>
+				
+				<!-- Контейнер для отображения выбранных программ -->
+				<div class="C_SelectedCategories" data-task-filter-target="selectedPrograms" style="display: none;">
+					<div class="Q_SelectedCategoriesList" data-task-filter-target="selectedProgramsList">
+						<!-- Выбранные программы будут добавляться сюда динамически -->
+					</div>
+				</div>
+				
+				<div class="Q_CategoryDropdown" data-task-filter-target="programDropdown" style="display: none;">
+					<div class="Q_CategoryList">
+						<% if @programs && @programs.any? %>
+							<% @programs.each do |program| %>
+								<label class="Q_CategoryItem custom-checkbox">
+									<div class="Q_ProgramItemContent">
+										<%= image_tag(program_icon(program), alt: human_readable_program(program), class: "Q_ProgramIconDropdown") if program_icon(program) %>
+										<span><%= human_readable_program(program) %></span>
+									</div>
+									<input type="checkbox" value="<%= program %>" data-action="task-filter#filterByPrograms">
+									<span class="checkmark"></span>
+								</label>
+							<% end %>
+						<% else %>
+							<div class="Q_CategoryItem">
+								<span>Нет доступных программ для этой категории</span>
+							</div>
+							<!-- DEBUG: Категория: <%= @category %>, Эффектов: <%= @effects&.count %>, Программ: <%= @programs&.inspect %> -->
+						<% end %>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class='M_Sort'>
-			<button class='A_Filter A_FilterCategory A_TextTagBig'>
-				Сортировка
-				<%= image_tag("sortCategory.svg", alt: "Картинка", class: "Q_changeSettingsCategory") %>
-			</button>
-			<p class='A_TextTag A_TextTagBig A_TextTagLight'>Сначала новые</p>
+			<% if not @collection_id %>
+				<div class="Q_FilterDropdown">
+					<button class='A_Filter A_FilterCategory A_TextTagBig' data-action="sort-filter#toggle" data-sort-filter-target="toggleButton">
+						Сортировка
+						<%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+					</button>
+					
+					<div class="Q_CategoryDropdown" data-sort-filter-target="dropdown" style="display: none;">
+						<div class="Q_CategoryList">
+							<button class="Q_CategoryItem Q_SortItem" data-action="sort-filter#sortByNewest">
+								<span>Сначала новые</span>
+							</button>
+							<button class="Q_CategoryItem Q_SortItem" data-action="sort-filter#sortByPopular">
+								<span>Сначала популярные</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<p class='A_TextTag A_TextTagBig A_TextTagLight' data-sort-filter-target="currentSort">Сначала новые</p>
+			<% end %>
+
+			<% if @collection_id %>
+				<button class='A_ButtonPrimary A_SubscribeButton A_SubscribeButtonAdd' 
+								id="saveSelectedEffects" 
+								data-collection-id="<%= @collection_id %>"
+								style="display: none;">
+					Сохранить выбор
+				</button>
+			<% end %>
 		</div>
 	</div>
 
-	<div class='C_Effects C_EffectsCategory'>
+	<div class='C_Effects C_EffectsCategory' data-task-filter-target="effectSection" data-sort-filter-target="effectSection">
     <% @effects.each do |effect| %>
-      <%= render partial: 'effects/collection_effect', locals: { effect: effect } %>
+      <% if @collection_id %>
+        <%= render partial: 'effects/selectable_effect', locals: { effect: effect, collection_effect_ids: @collection_effect_ids } %>
+      <% else %>
+        <%= render partial: 'effects/collection_effect', locals: { effect: effect } %>
+      <% end %>
     <% end %>
   </div>
 </div>

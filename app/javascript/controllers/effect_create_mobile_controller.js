@@ -106,7 +106,7 @@ export default class extends Controller {
       if (this.hasEffectInfoTarget)
         this.effectInfoTarget.style.display = "none";
       if (this.hasInstructionBlockTarget)
-        this.instructionBlockTarget.style.display = "block";
+        this.instructionBlockTarget.style.display = "flex";
 
       navItems[0].classList.remove("A_TextTagFeedActive");
       navItems[1].classList.add("A_TextTagFeedActive");
@@ -116,7 +116,7 @@ export default class extends Controller {
       if (this.hasPreviewAreaTarget)
         this.previewAreaTarget.style.display = "none";
       if (this.hasTagsLinkBlockTarget)
-        this.tagsLinkBlockTarget.style.display = "block";
+        this.tagsLinkBlockTarget.style.display = "flex";
 
       navItems[1].classList.remove("A_TextTagFeedActive");
       navItems[2].classList.add("A_TextTagFeedActive");
@@ -124,7 +124,7 @@ export default class extends Controller {
       if (this.hasTagsLinkBlockTarget)
         this.tagsLinkBlockTarget.style.display = "none";
       if (this.hasModerationBlockTarget)
-        this.moderationBlockTarget.style.display = "block";
+        this.moderationBlockTarget.style.display = "flex";
 
       if (this.hasNextButtonTarget) {
         this.nextButtonTarget.textContent = "Посмотреть превью";

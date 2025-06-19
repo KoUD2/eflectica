@@ -1,0 +1,70 @@
+<div class='O_EffectCollectionCard O_EffectSelectableCard' 
+     data-effect-id="<%= effect.id %>"
+     data-categories="<%= effect.category_list.join(',') %>"
+     data-tasks="<%= effect.task_list.join(',') %>"
+     data-programs="<%= effect.programs_list.join(',') %>"
+     data-name="<%= effect.name %>"
+     data-description="<%= effect.description %>"
+     data-created-at="<%= effect.created_at.iso8601 %>"
+     data-likes="<%= effect.ratings.where('number >= ?', 4).count %>">
+
+  <!-- Чекбокс для выбора эффекта -->
+  <div class="W_effectCheckbox">
+
+    <label class="custom-checkbox">
+      <input type="checkbox" 
+             class="effect-checkbox" 
+             data-effect-id="<%= effect.id %>"
+             data-action="change->effect-selection#toggleEffect"
+             <% if collection_effect_ids&.include?(effect.id) %>checked="checked"<% end %>>
+      <span class="checkmark checkmarkSelect"></span>  
+    </label>
+  </div>
+
+  <!-- Ссылка на эффект -->
+  <%= link_to effect_path(effect), class: 'A_effectLink' do %>
+    <div class='С_PhotoGalleryEffect С_PhotoGalleryCollectionEffect'>
+      <% before_image = effect.images.find_by(image_type: 'before') %>
+      <% after_image = effect.images.find_by(image_type: 'after') %>
+
+      <% if before_image && before_image.file.present? %>
+        <%= image_tag(before_image.file.url, alt: "Before Image", class: "A_PhotoEffect") %>
+      <% else %>
+        <div class="A_PhotoEffect placeholder-image">
+          <%= image_tag("placeholder.svg", alt: "No Before Image", class: "placeholder-icon") %>
+          <p>До применения</p>
+        </div>
+      <% end %>
+      
+      <% if after_image && after_image.file.present? %>
+        <%= image_tag(after_image.file.url, alt: "After Image", class: "A_PhotoEffect") %>
+      <% else %>
+        <div class="A_PhotoEffect placeholder-image">
+          <%= image_tag("placeholder.svg", alt: "No After Image", class: "placeholder-icon") %>
+          <p>После применения</p>
+        </div>
+      <% end %>
+    </div>
+
+    <div class='M_TextEffectСard'>
+      <div class='W_TextEffectTopCard'>
+        <p class='A_TextEffectCard'><%= effect.name %></p>
+      </div>
+
+      <div class='A_Program'>
+        <% programs_list = effect.programs_list %>
+        <% programs_list.each do |program_name| %>
+          <div class="A_Program">
+            <% if programs().key?(program_name) %>
+              <%= image_tag programs()[program_name], alt: program_name, class: "Q_ProgramIconImage" %>
+            <% else %>
+              <div class="Q_ProgramIconEffectMain">
+                <p>Такой проги нет</p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>  
+    </div>
+  <% end %>
+</div> 

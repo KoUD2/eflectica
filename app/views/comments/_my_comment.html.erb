@@ -1,37 +1,153 @@
-<div data-controller="star-rating" 
-     class='O_CommentMy' 
-     data-effect-id="<%= @effect.id %>">
-  <div class="M_AuthorComment">
-		<% if current_user&.avatar&.present? %>
-			<%= image_tag(current_user.avatar.url, alt: "User Avatar", class: "A_AvatarFeedback") %>
-		<% else %>
-			<%= image_tag("avatar_default.png", alt: "Default Avatar", class: "A_AvatarFeedback") %>
-		<% end %>
-    <input type="text" 
-       name="comment[body]" 
-       placeholder="Напиши комментарий или поставь оценку" 
-       class="A_inputFeedback"
-       data-action="keypress->star-rating#handleKeyPress"
-       data-star-rating-target="commentInput">
+<% 
+  # Проверяем, есть ли у пользователя уже созданный комментарий к этому эффекту
+  existing_comment = current_user ? @effect.comments.find_by(user: current_user) : nil
+%>
 
+<% if existing_comment %>
+  <!-- Отображение существующего комментария пользователя -->
+  <div id="<%= dom_id existing_comment %>" class='O_Comment O_CommentMyBottom' data-controller="comment-actions">
+    <div class='W_CommentArea'>
+      <p class='A_TextComment'>
+        <%= existing_comment.body %>
+      </p>
+      
+      <div class='W_FooterComment'>
+        <div class='M_AuthorComment'>
+          <% if current_user&.avatar&.present? %>
+            <%= image_tag(current_user.avatar.url, alt: "User Avatar", class: "A_AvatarFeedback") %>
+          <% else %>
+            <%= image_tag("avatar_default.png", alt: "Default Avatar", class: "A_AvatarFeedback") %>
+          <% end %>
+          <p class="A_TextCaption">@<%= current_user.username || current_user.email.split('@').first %></p>
+        </div>
+        <div class="M_Stars">
+          <% 
+            # Проверяем рейтинг через несколько вариантов связей
+            comment_rating = if existing_comment.rating&.number
+                               existing_comment.rating.number
+                             elsif current_user.ratings.find_by(ratingable: @effect)&.number
+                               current_user.ratings.find_by(ratingable: @effect).number
+                             else
+                               0
+                             end
+          %>
+          <% 5.times do |i| %>
+            <%= image_tag(
+              (i < comment_rating) ? "Q_StarIcon.svg" : "Q_StarIconEmpty.svg",
+              alt: (i < comment_rating) ? "Заполненная звезда" : "Пустая звезда",
+              class: "Q_StarIconBigFeedback #{i < comment_rating ? 'filled-star' : 'empty-star'}"
+            ) %>
+          <% end %>
+        </div>      
+      </div>
+    </div>
+
+    <div class='С_CommentOptions'>
+      <div class='С_CommentOptionsButtons'>
+        <%= button_to "Редактировать", "#", 
+            class: 'A_TextButton', 
+            method: :get,
+            data: { action: "click->comment-actions#editComment" } %>
+        <%= button_to "Удалить", 
+            effect_comment_path(@effect, existing_comment), 
+            method: :delete,
+            class: 'A_TextButton',
+            confirm: "Вы уверены, что хотите удалить комментарий?",
+            data: { action: "click->comment-actions#deleteComment" } %>
+      </div>
+      <p class='A_TextCaption'>
+        <%= existing_comment.created_at.day %> 
+        <%= I18n.t('date.month_names')[existing_comment.created_at.month] %> 
+        <%= existing_comment.created_at.year %>
+      </p>
+    </div>
+
+    <!-- Форма редактирования (в стиле создания комментария) -->
+    <div class="hidden O_CommentMy" data-comment-actions-target="editForm" data-controller="star-rating-edit" data-effect-id="<%= @effect.id %>" data-comment-id="<%= existing_comment.id %>">
+      <div class="M_AuthorComment">
+        <% if current_user&.avatar&.present? %>
+          <%= image_tag(current_user.avatar.url, alt: "User Avatar", class: "A_AvatarFeedback") %>
+        <% else %>
+          <%= image_tag("avatar_default.png", alt: "Default Avatar", class: "A_AvatarFeedback") %>
+        <% end %>
+                 <input type="text" 
+            name="comment[body]" 
+            value="<%= existing_comment.body %>"
+            placeholder="Напиши комментарий или поставь оценку" 
+            class="A_inputFeedback"
+            data-star-rating-edit-target="commentInput">
+       </div>
+       <input type="hidden" name="comment[rating]" value="<%= comment_rating %>" data-star-rating-edit-target="input">
+
+       <div class="W_starsSend" data-star-rating-edit-target="container">
+        <div class="M_Stars M_StarsMy">
+          <% 5.times do |i| %>
+            <button type="button" 
+                    data-action="click->star-rating-edit#rate" 
+                    data-rating="<%= i + 1 %>"
+                    class="star-button">
+              <svg xmlns="http://www.w3.org/2000/svg" 
+                    width="30" 
+                    height="30" 
+                    viewBox="0 0 30 30"
+                    class="Q_StarIconFeedback <%= 'active' if i < comment_rating %>">
+                <path d="M13.0848 6.3648C13.656 4.46651 16.344 4.4665 16.9152 6.3648L17.7534 9.15052C18.0124 10.0112 18.8137 10.5934 19.7123 10.5738L22.6207 10.5101C24.6026 10.4668 25.4333 13.0232 23.8044 14.153L21.414 15.8111C20.6755 16.3233 20.3694 17.2654 20.6658 18.1139L21.6251 20.8603C22.2787 22.7318 20.1041 24.3117 18.5262 23.1117L16.2107 21.3507C15.4953 20.8066 14.5047 20.8066 13.7893 21.3507L11.4738 23.1117C9.89587 24.3117 7.72126 22.7318 8.37494 20.8603L9.33421 18.1139C9.63059 17.2654 9.32451 16.3233 8.58597 15.8111L6.19561 14.153C4.56674 13.0232 5.39736 10.4668 7.37926 10.5101L10.2877 10.5738C11.1863 10.5934 11.9876 10.0112 12.2466 9.15053L13.0848 6.3648Z"/>
+              </svg>
+            </button>
+          <% end %>
+        </div>
+         <button type="button" 
+                 class="A_More" 
+                 style="margin-left: 10px;"
+                 data-action="click->star-rating-edit#submitComment">
+           Отправить
+         </button>
+       </div>
+    </div>
   </div>
-	<%= hidden_field_tag :user_id, current_user.id %>
-  <input type="hidden" name="comment[rating]" data-star-rating-target="input">
+<% else %>
+  <!-- Форма для создания нового комментария -->
+  <div data-controller="star-rating" 
+       class='O_CommentMy' 
+       data-effect-id="<%= @effect.id %>">
+    <div class="M_AuthorComment">
+      <% if current_user&.avatar&.present? %>
+        <%= image_tag(current_user.avatar.url, alt: "User Avatar", class: "A_AvatarFeedback") %>
+      <% else %>
+        <%= image_tag("avatar_default.png", alt: "Default Avatar", class: "A_AvatarFeedback") %>
+      <% end %>
+      <input type="text" 
+         name="comment[body]" 
+         placeholder="Напиши комментарий или поставь оценку" 
+         class="A_inputFeedback"
+         data-star-rating-target="commentInput">
 
-  <div class="M_Stars M_StarsMy" data-star-rating-target="container">
-    <% 5.times do |i| %>
+    </div>
+    <%= hidden_field_tag :user_id, current_user.id %>
+    <input type="hidden" name="comment[rating]" data-star-rating-target="input">
+
+    <div class="W_starsSend" data-star-rating-target="container">
+      <div class="M_Stars M_StarsMy">
+        <% 5.times do |i| %>
+          <button type="button" 
+                  data-action="click->star-rating#rate" 
+                  data-rating="<%= i + 1 %>"
+                  class="star-button">
+            <svg xmlns="http://www.w3.org/2000/svg" 
+                width="30" 
+                height="30" 
+                viewBox="0 0 30 30"
+                class="Q_StarIconFeedback">
+              <path d="M13.0848 6.3648C13.656 4.46651 16.344 4.4665 16.9152 6.3648L17.7534 9.15052C18.0124 10.0112 18.8137 10.5934 19.7123 10.5738L22.6207 10.5101C24.6026 10.4668 25.4333 13.0232 23.8044 14.153L21.414 15.8111C20.6755 16.3233 20.3694 17.2654 20.6658 18.1139L21.6251 20.8603C22.2787 22.7318 20.1041 24.3117 18.5262 23.1117L16.2107 21.3507C15.4953 20.8066 14.5047 20.8066 13.7893 21.3507L11.4738 23.1117C9.89587 24.3117 7.72126 22.7318 8.37494 20.8603L9.33421 18.1139C9.63059 17.2654 9.32451 16.3233 8.58597 15.8111L6.19561 14.153C4.56674 13.0232 5.39736 10.4668 7.37926 10.5101L10.2877 10.5738C11.1863 10.5934 11.9876 10.0112 12.2466 9.15053L13.0848 6.3648Z"/>
+            </svg>
+          </button>
+        <% end %>
+      </div>
       <button type="button" 
-              data-action="click->star-rating#rate" 
-              data-rating="<%= i + 1 %>"
-              class="star-button">
-        <svg xmlns="http://www.w3.org/2000/svg" 
-             width="30" 
-             height="30" 
-             viewBox="0 0 30 30"
-             class="Q_StarIconFeedback">
-          <path d="M13.0848 6.3648C13.656 4.46651 16.344 4.4665 16.9152 6.3648L17.7534 9.15052C18.0124 10.0112 18.8137 10.5934 19.7123 10.5738L22.6207 10.5101C24.6026 10.4668 25.4333 13.0232 23.8044 14.153L21.414 15.8111C20.6755 16.3233 20.3694 17.2654 20.6658 18.1139L21.6251 20.8603C22.2787 22.7318 20.1041 24.3117 18.5262 23.1117L16.2107 21.3507C15.4953 20.8066 14.5047 20.8066 13.7893 21.3507L11.4738 23.1117C9.89587 24.3117 7.72126 22.7318 8.37494 20.8603L9.33421 18.1139C9.63059 17.2654 9.32451 16.3233 8.58597 15.8111L6.19561 14.153C4.56674 13.0232 5.39736 10.4668 7.37926 10.5101L10.2877 10.5738C11.1863 10.5934 11.9876 10.0112 12.2466 9.15053L13.0848 6.3648Z"/>
-        </svg>
+              class="A_More"
+              data-action="click->star-rating#submitComment">
+        Отправить
       </button>
-    <% end %>
+    </div>
   </div>
-</div>
+<% end %>

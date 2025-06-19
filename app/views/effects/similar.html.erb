@@ -1,0 +1,15 @@
+<div class='Q_Section Q_SectionSimilar'>
+  <h1 class="A_Header1"><%= @page_title %></h1>
+  
+  <% if @effects.any? %>
+    <div class="C_Effects">
+      <% @effects.each do |effect| %>
+        <%= render partial: 'effects/collection_effect', locals: { effect: effect, programs: @programs } %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="W_EmptyState">
+      <p class="A_TextTag A_TextTagBig">Похожие эффекты не найдены</p>
+    </div>
+  <% end %>
+</div> 

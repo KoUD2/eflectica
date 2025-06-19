@@ -1,5 +1,9 @@
 <% if image.file.present? %>
-<div class="O_ReferenceCard">
+<div class="O_ReferenceCard" 
+     data-controller="reference-card" 
+     data-image-id="<%= image.id %>" 
+     data-collection-id="<%= collection_id %>"
+     data-action="click->reference-card#openPreview">
   <%= image_tag image.file.url, alt: image.title, class: "A_PhotoRef" %>
   
   <% if image.title.present? %>

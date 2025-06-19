@@ -1,5 +1,5 @@
 <%= link_to effect_path(effect), class: 'O_EffectCard' do %>
-  <div class='С_PhotoGalleryEffect'>
+  <div class='С_PhotoGalleryEffect С_PhotoGalleryEffectImages'>
     <% before_image = effect.images.find_by(image_type: 'before') %>
     <% after_image = effect.images.find_by(image_type: 'after') %>
 
@@ -17,21 +17,15 @@
     </div>
 
     <div class='A_Program'>
-      <% programs_list = effect.programs.split(",").map(&:strip) %>
+      <% programs_list = effect.programs_list %>
       <% programs_list.each do |program_name| %>
         <div class="A_Program">
-          <% if programs.key?(program_name) %>
-            <%= image_tag programs[program_name], alt: program_name, class: "Q_ProgramIconImage" %>
+          <% if programs().key?(program_name) %>
+            <%= image_tag programs()[program_name], alt: program_name, class: "Q_ProgramIconImage" %>
           <% else %>
             <div class="Q_ProgramIconEffectMain">
               <p>Такой проги нет</p>
             </div>
-          <% end %>
-    
-          <% if programs_list.size == 1 %>
-            <p class="A_ProgramName">
-              <%= program_name.gsub('_', ' ').titleize %> 
-            </p>
           <% end %>
         </div>
       <% end %>

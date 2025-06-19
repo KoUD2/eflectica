@@ -6,6 +6,18 @@ class Effect < ApplicationRecord
   has_many :collections, through: :collection_effects
   has_many :news_feeds, dependent: :destroy
 
+  # Связи с программами, категориями и задачами через связующие таблицы
+  has_many :effect_effect_programs, dependent: :destroy
+  has_many :effect_programs, through: :effect_effect_programs, source: :effect_program
+  
+  accepts_nested_attributes_for :effect_programs, allow_destroy: true
+  
+  has_many :effect_effect_categories, dependent: :destroy
+  has_many :categories_list, through: :effect_effect_categories, source: :effect_category
+  
+  has_many :effect_effect_tasks, dependent: :destroy
+  has_many :tasks_list, through: :effect_effect_tasks, source: :effect_task
+
   has_many :images, as: :imageable, dependent: :destroy
   has_one :before_image, -> { where(image_type: "before") }, class_name: "Image", as: :imageable, dependent: :destroy
   has_one :after_image, -> { where(image_type: "after") }, class_name: "Image", as: :imageable, dependent: :destroy
@@ -55,13 +67,31 @@ class Effect < ApplicationRecord
     images.find_by(image_type: "after")&.file
   end
 
+  # Методы для работы с новыми связями
+  def programs_list
+    effect_programs.pluck(:name) rescue []
+  end
+
+  def programs_with_versions
+    effect_programs.pluck(:name, :version).map { |name, version| { name: name, version: version } } rescue []
+  end
 
   def category_list
-    categories.pluck(:name)
+    # Сохраняем старый метод для совместимости с тегами
+    begin
+      (categories.pluck(:name) + categories_list.pluck(:name)).uniq
+    rescue
+      []
+    end
   end
 
   def task_list
-    tasks.pluck(:name)
+    # Сохраняем старый метод для совместимости с тегами
+    begin
+      (tasks.pluck(:name) + tasks_list.pluck(:name)).uniq
+    rescue
+      []
+    end
   end
 
   # validate :validate_tags

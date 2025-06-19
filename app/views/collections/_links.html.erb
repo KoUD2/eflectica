@@ -3,21 +3,21 @@
   preview_url = youtube_id ? "https://img.youtube.com/vi/#{youtube_id}/0.jpg" : nil
 %>
 
-<div class="O_LinkCard">
+<div class="O_LinkCard" 
+     data-controller="link-card"
+     data-action="click->link-card#open"
+     data-link-id="<%= link.id %>"
+     data-link-title="<%= link.title %>"
+     data-link-url="<%= link.path %>"
+     data-link-notes="<%= link.description %>">
   <% if preview_url %>
     <%= image_tag preview_url, alt: "YouTube preview", class: "A_PhotoLink" %>
-  <% else %>
-    <div>
-      Неа
-    </div>
   <% end %>
 
   <div class="C_LinkInfo">
-    <%= link_to link.path, target: "_blank", class: "link-url" do %>
-      <p class="A_TextTag A_TextTagBig A_TextTagLight A_TextTagLink">
-        <%= truncate(link.path, length: 40) %>
-      </p>
-    <% end %>
+    <p class="A_TextTag A_TextTagBig A_TextTagLight A_TextTagLink">
+      <%= truncate(link.path, length: 40) %>
+    </p>
 
     <% if link.title.present? %>
       <p class="A_TextEffectCard"><%= link.title %></p>

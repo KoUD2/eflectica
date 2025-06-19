@@ -6,13 +6,17 @@
   )
 %>
 
-<div class='Q_Section Q_SectionActive Q_SectionActiveMyEffect'>
+<div class='Q_Section Q_SectionActive Q_SectionActiveMyEffect' data-controller="my-effects-search">
   <div class="O_myEffects">
     <h1 class="A_Header1">Мои эффекты</h1>
 
     <div class="W_searchPublishPost">
       <div class='W_inputIcon'>
-        <input type="text" class='A_searchInput W_inputIconEffectSearch' placeholder='Поиск эффектов'>
+        <input type="text" 
+               class='A_searchInput W_inputIconEffectSearch' 
+               placeholder='Поиск эффектов'
+               data-my-effects-search-target="searchInput"
+               data-action="input->my-effects-search#search">
         <%= image_tag("Q_IconSearch.svg", alt: "Картинка рейтинга", class: "Q_IconSearch") %>
       </div>
       <button class='A_ButtonPrimary A_MorePC'>
@@ -23,9 +27,9 @@
 
     <div class="W_allMyEffects">
       <% if @effects.present? %>
-        <div class="C_Effects">
+        <div class="C_Effects C_EffectsMy" data-my-effects-search-target="effectsContainer">
           <% @effects.each do |effect| %>
-            <%= render partial: "effects/effect", locals: { effect: effect } %>
+            <%= render partial: "effects/collection_effect", locals: { effect: effect } %>
           <% end %>
         </div>
       <% else %>

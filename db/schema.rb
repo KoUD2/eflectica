@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
+ActiveRecord::Schema[7.2].define(version: 2025_06_19_130100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -91,6 +91,55 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "effect_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "effect_effect_categories", force: :cascade do |t|
+    t.bigint "effect_id", null: false
+    t.bigint "effect_category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["effect_category_id"], name: "index_effect_effect_categories_on_effect_category_id"
+    t.index ["effect_id", "effect_category_id"], name: "idx_on_effect_id_effect_category_id_47e47d0298", unique: true
+    t.index ["effect_id"], name: "index_effect_effect_categories_on_effect_id"
+  end
+
+  create_table "effect_effect_programs", force: :cascade do |t|
+    t.bigint "effect_id", null: false
+    t.bigint "effect_program_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["effect_id", "effect_program_id"], name: "idx_on_effect_id_effect_program_id_0839fbb240", unique: true
+    t.index ["effect_id"], name: "index_effect_effect_programs_on_effect_id"
+    t.index ["effect_program_id"], name: "index_effect_effect_programs_on_effect_program_id"
+  end
+
+  create_table "effect_effect_tasks", force: :cascade do |t|
+    t.bigint "effect_id", null: false
+    t.bigint "effect_task_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["effect_id", "effect_task_id"], name: "index_effect_effect_tasks_on_effect_id_and_effect_task_id", unique: true
+    t.index ["effect_id"], name: "index_effect_effect_tasks_on_effect_id"
+    t.index ["effect_task_id"], name: "index_effect_effect_tasks_on_effect_task_id"
+  end
+
+  create_table "effect_programs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "version"
+  end
+
+  create_table "effect_tasks", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "effects", force: :cascade do |t|
     t.string "name"
     t.string "img"
@@ -103,9 +152,31 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "programs"
-    t.string "program_version"
     t.index ["user_id"], name: "index_effects_on_user_id"
+  end
+
+  create_table "favorite_images", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title", null: false
+    t.text "notes"
+    t.string "image_url"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_favorite_images_on_user_id"
+  end
+
+  create_table "favorite_links", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.text "notes"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_favorite_links_on_user_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -125,6 +196,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
     t.datetime "updated_at", null: false
     t.string "image_type"
     t.string "title"
+    t.text "description"
     t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable"
   end
 
@@ -143,6 +215,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
+    t.text "description"
   end
 
   create_table "news_feeds", force: :cascade do |t|
@@ -212,6 +285,24 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
+  create_table "user_effect_categories", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "effect_category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["effect_category_id"], name: "index_user_effect_categories_on_effect_category_id"
+    t.index ["user_id"], name: "index_user_effect_categories_on_user_id"
+  end
+
+  create_table "user_effect_programs", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "effect_program_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["effect_program_id"], name: "index_user_effect_programs_on_effect_program_id"
+    t.index ["user_id"], name: "index_user_effect_programs_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -245,7 +336,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
   add_foreign_key "comments", "comments", column: "parent_id", on_delete: :cascade
   add_foreign_key "comments", "effects"
   add_foreign_key "comments", "users"
+  add_foreign_key "effect_effect_categories", "effect_categories"
+  add_foreign_key "effect_effect_categories", "effects"
+  add_foreign_key "effect_effect_programs", "effect_programs"
+  add_foreign_key "effect_effect_programs", "effects"
+  add_foreign_key "effect_effect_tasks", "effect_tasks"
+  add_foreign_key "effect_effect_tasks", "effects"
   add_foreign_key "effects", "users"
+  add_foreign_key "favorite_images", "users"
+  add_foreign_key "favorite_links", "users"
   add_foreign_key "favorites", "effects"
   add_foreign_key "favorites", "users"
   add_foreign_key "likes", "users"
@@ -255,4 +354,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_080551) do
   add_foreign_key "sub_collections", "collections"
   add_foreign_key "sub_collections", "users"
   add_foreign_key "taggings", "tags"
+  add_foreign_key "user_effect_categories", "effect_categories"
+  add_foreign_key "user_effect_categories", "users"
+  add_foreign_key "user_effect_programs", "effect_programs"
+  add_foreign_key "user_effect_programs", "users"
 end

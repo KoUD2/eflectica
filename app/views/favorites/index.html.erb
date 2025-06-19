@@ -1,24 +1,307 @@
 <%
   set_meta_tags(
     title: "Избранное",
-    description: "Ваши избранные коллекции на Eflectica",
-    keywords: "коллекции эффектов, коллекции пресетов"
+    description: "Ваши избранные эффекты на Eflectica",
+    keywords: "избранные эффекты, избранные пресеты"
   )
 %>
 
-<% content_for :title, "Favorites" %>
+<div class='S_Collection' data-controller="collection collection-edit" data-collection-id="favorites">
+  <h1 class="A_Header1 A_Header1Collection">
+    Избранное
+  </h1>
+  
+  <div class='W_editCollection'>
+    <button class="A_ButtonPrimary A_SubscribeButton" data-action="click->collection#open">
+      <%= image_tag("plusIconWhite.svg", alt: "Картинка рейтинга", class: "Q_plusIconBlack") %>
+      Добавить элемент
+    </button>
+  </div>
+  
+  <div class="modal-overlay hidden" data-collection-target="backdrop">
+    <div class="O_ChoiceCollection O_ChoiceCollectionElement O_ChoiceCollectionElementTop">
+      <div class="A_HeaderChoice">
+        <h3 class='A_Header2'>Добавление элемента</h3>
+        <button id="closePopup" class="Q_IconClose" data-action="click->collection#close">
+          <%= image_tag("CloseCollection.svg", alt: "Закрыть", class: 'A_CloseCollectionIcon') %>
+        </button>
+      </div>
+      <div class='A_formElement'>
+        <div class="C_RadioSettings">
+          <label class='M_RadioSettings'>
+            <input type="radio" name="collectionType" value="effect" checked data-action="change->collection#updateForm">
+            <p class='A_TextTag A_TextTagBig'>Эффект</p>
+          </label>
+          <label class='M_RadioSettings'>
+            <input type="radio" name="collectionType" value="link" data-action="change->collection#updateForm">
+            <p class='A_TextTag A_TextTagBig'>Ссылка</p>
+          </label>
+          <label class='M_RadioSettings'>
+            <input type="radio" name="collectionType" value="reference" data-action="change->collection#updateForm">
+            <p class='A_TextTag A_TextTagBig'>Референс</p>
+          </label>
+        </div>
 
-<div class='Q_Section Q_SectionFavorites'>
-  <% if @favorites.any? %>
-    <div class='C_allFavorites'>
-      <% @favorites.each do |favorite| %>
-        <%= render partial: "effects/effect_favorite", locals: { effect: favorite.effect } %>
+        <!-- Секция для эффектов -->
+        <div class="effect-section" data-collection-target="effectSection">
+          <p class="A_TextEffectDescription A_TextEffectDescriptionElement">
+            Ты можешь перейти на страницу категорий, чтобы найти эффект. На странице эффекта можно добавить его в избранное.
+          </p>
+          <a href="/effects/categories">
+            <button type="button" class='A_ButtonPrimary A_SubscribeButton A_ButtonPrimaryChooseEffects'>
+              Выбрать эффекты
+            </button>
+          </a>
+        </div>
+
+        <!-- Секция для ссылок -->
+        <div class="link-section hidden" data-collection-target="linkSection">
+          <div class="W_linkFormInputs">
+            <input type="text" 
+                   class="A_InputText A_InputTextCollection" 
+                   placeholder="Название ссылки" 
+                   data-collection-target="linkName"
+                   data-action="input->collection#validateLinkForm">
+            
+            <textarea class="A_InputText A_InputTextCollection A_TextareaCollection" 
+                      placeholder="Заметки" 
+                      data-collection-target="linkNotes"
+                      data-action="input->collection#validateLinkForm"></textarea>
+            
+            <div style="position: relative;">
+              <%= image_tag("icon-attachment.svg", alt: "Иконка ссылки", class: "Q_IconCategory5" , style: "position: absolute; left: 0.63vw; top: 50%; transform: translateY(-50%); width: 1.67vw; height: 1.67vw; z-index: 1;") %>
+              <input type="url" 
+                     class="A_InputText A_InputTextCollection A_InputTextCollectionLink" 
+                     placeholder="Вставь ссылку" 
+                     style="padding-left: 40px;"
+                     data-collection-target="linkUrl"
+                     data-action="input->collection#validateLinkForm">
+            </div>
+          </div>
+          
+          <button type="button" 
+                  class='A_ButtonPrimary A_SubscribeButton A_ButtonPrimaryChooseEffects A_ButtonDisabled A_ButtonPrimaryAdd' 
+                  data-collection-target="addLinkButton"
+                  data-action="click->collection#addLink"
+                  disabled>
+            Добавить
+          </button>
+        </div>
+
+        <div class="M_CollectionForm M_CollectionFormRef hidden" data-collection-target="referenceSection">
+          <div class="M_CollectionForm">
+            <input type="text" placeholder="Название референса" class="A_Input A_InputRef" style="color: black" data-collection-target="referenceTitle" data-action="input->collection#validateReferenceForm">
+            
+            <textarea placeholder="Заметки" class="A_InputText A_InputTextCollection A_TextareaCollection" data-collection-target="referenceNotes" data-action="input->collection#validateReferenceForm"></textarea>
+
+            <div>
+              <label for="file_upload" class="file-label">
+                <div class="W_linkAddLink" style="display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <%= image_tag("icon-attachment2.svg", alt: "Иконка ссылки", class: "file-icon" , style: "max-width: 100%; max-height: 100%; object-fit: contain;") %>
+                  <p class="A_descLinkAdd" data-collection-target="fileName">Выбери файл</p>
+                </div>
+              </label>
+              <input type="file" id="file_upload" class="hidden-input" data-action="change->collection#updateFileName change->collection#previewImage">
+            </div>
+
+            <button type="button" class="A_ButtonPrimary A_ButtonPrimaryElement A_ButtonDisabled" disabled data-collection-target="addReferenceButton" data-action="click->collection#addReference">Добавить</button>
+          </div>
+        </div>                         
+      </div>
+    </div>
+  </div>
+  
+  <div class='M_allStaff'>
+    <div class='W_collectionElements'>
+      <h2 class="A_Header2">Эффекты</h2>
+      <% if @favorite_effects.any? %>
+        <div class='C_collectionElements'>
+          <% @favorite_effects.each do |effect| %>
+            <%= render partial: 'effects/collection_effect', locals: { effect: effect, programs: @programs } %>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="A_TextTag A_TextTagBig">Здесь пока ничего нет</p>
+      <% end %>
+    </div>       
+        <div class='W_collectionElements'>
+      <h2 class="A_Header2">Референсы</h2>
+      <% if @favorite_images.any? %>
+        <div class='C_collectionElements'>
+          <% @favorite_images.each do |favorite_image| %>
+            <%= render partial: 'favorite_image', locals: { favorite_image: favorite_image } %>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="A_TextTag A_TextTagBig">Здесь пока ничего нет</p>
       <% end %>
     </div>
-    <div class="O_Pagination">
-      <%= paginate @favorites %>
+    <div class='W_collectionElements'>
+      <h2 class="A_Header2">Ссылки</h2>
+      <% if @favorite_links.any? %>
+        <div class='C_collectionElements'>
+          <% @favorite_links.each do |favorite_link| %>
+            <%= render partial: 'favorite_link', locals: { favorite_link: favorite_link } %>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="A_TextTag A_TextTagBig">Здесь пока ничего нет</p>
+      <% end %>
     </div>
-  <% else %>
-    <p>Такого у нас нет :(</p>
-  <% end %>
+  </div>
+
+  <!-- Блок контроллера favorite-link-preview для избранного -->
+  <div data-controller="favorite-link-preview">
+    <!-- Модальное окно превью ссылки -->
+    <div class="modal-overlay hidden" data-favorite-link-preview-target="modal" data-action="click->favorite-link-preview#closeOnBackdrop">
+      <div class="S_FeedSettings S_FeedSettingsLink">
+        <div class="A_HeaderChoice">
+          <h3 class="A_Header2">Ссылка</h3>
+          <button class="modal-close" data-action="click->favorite-link-preview#close">
+            <%= image_tag("Q_IconClose.svg", alt: "Закрыть", class: "Q_IconClose") %>
+          </button>
+        </div>
+        
+        <div class="M_CollectionForm M_CollectionFormVideo">
+          <!-- Превью изображение для YouTube ссылок -->
+          <div data-favorite-link-preview-target="imageContainer" class="hidden">
+            <img data-favorite-link-preview-target="previewImage" alt="Превью" class="A_imagePreviewLink">
+          </div>
+          
+          <div class="W_linkFormInputs W_linkFormInputsPreview">
+            <input type="text" 
+                   class="A_InputText A_InputTextCollection" 
+                   placeholder="Название ссылки" 
+                   data-favorite-link-preview-target="title"
+                   data-action="input->favorite-link-preview#trackChanges">
+            
+            <textarea class="A_InputText A_InputTextCollection A_TextareaCollection" 
+                      placeholder="Заметки" 
+                      data-favorite-link-preview-target="notes"
+                      data-action="input->favorite-link-preview#trackChanges"></textarea>
+            
+            <div style="position: relative;">
+              <%= image_tag("icon-attachment.svg", alt: "Иконка ссылки", class: "Q_IconCategory5" , style: "position: absolute; left: 0.63vw; top: 50%; transform: translateY(-50%); width: 1.67vw; height: 1.67vw; z-index: 1;") %>
+              <input type="url" 
+                     class="A_InputText A_InputTextCollection A_InputTextCollectionLink" 
+                     placeholder="Ссылка" 
+                     style="padding-left: 40px;"
+                     data-favorite-link-preview-target="url"
+                     data-action="input->favorite-link-preview#trackChanges">
+            </div>
+
+            <button type="button" 
+                  class="A_ButtonDelete" 
+                  data-action="click->favorite-link-preview#showDeleteDialog">
+            Удалить
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Диалог подтверждения удаления -->
+    <div class="modal-overlay hidden" data-favorite-link-preview-target="deleteDialog" data-action="click->favorite-link-preview#closeDeleteDialog" style="z-index: 1001;">
+      <div class="S_FeedSettings S_FeedSettingsSave">
+        <div class="M_CollectionForm">
+          <h3 class="A_Header2">Удаление элемента</h3>
+          <p class="A_TextTag A_TextTagBig" style="margin-bottom: 1.67vw;">
+            После удаления элемент исчезнет из избранного. Ты точно хочешь удалить его?
+          </p>
+          
+          <div class="W_buttonsSave">        
+            <button type="button" 
+                    class="A_ButtonDelete A_ButtonDeleteLeft" 
+                    data-action="click->favorite-link-preview#confirmDelete">
+              Удалить
+            </button>
+
+            <button type="button" 
+                    class="A_ButtonPrimary" 
+                    data-action="click->favorite-link-preview#cancelDelete">
+              Не удалять
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Блок контроллера favorite-reference-preview для избранного -->
+  <div data-controller="favorite-reference-preview">
+    <!-- Модальное окно превью референса -->
+    <div class="modal-overlay hidden" data-favorite-reference-preview-target="modal" data-action="click->favorite-reference-preview#closeOnBackdrop">
+      <div class="S_FeedSettings S_FeedSettingsLink">
+        <div class="A_HeaderChoice">
+          <h3 class="A_Header2">Референс</h3>
+          <button class="modal-close" data-action="click->favorite-reference-preview#close">
+            <%= image_tag("Q_IconClose.svg", alt: "Закрыть", class: "Q_IconClose") %>
+          </button>
+        </div>
+        
+        <div class="M_CollectionForm M_CollectionFormVideo">
+          <!-- Превью изображения -->
+          <div>
+            <img data-favorite-reference-preview-target="imagePreview" alt="Превью" src="<%= asset_path('placeholder.svg') %>" class="A_imagePreviewLink">
+          </div>
+          
+          <div class="W_linkFormInputs W_linkFormInputsPreview">
+            <input type="text" 
+                   class="A_InputText A_InputTextCollection" 
+                   placeholder="Название референса" 
+                   data-favorite-reference-preview-target="title"
+                   data-action="input->favorite-reference-preview#trackChanges">
+            
+            <textarea class="A_InputText A_InputTextCollection A_TextareaCollection" 
+                      placeholder="Заметки" 
+                      data-favorite-reference-preview-target="notes"
+                      data-action="input->favorite-reference-preview#trackChanges"></textarea>
+
+            <!-- Поле для отображения текущего файла -->
+            <div style="position: relative;">
+              <%= image_tag("icon-attachment2.svg", alt: "Иконка ссылки", class: "file-icon" , style: "position: absolute; top: 50%; transform: translateY(-50%); width: 1.67vw; height: 1.67vw; z-index: 1;") %>
+              <input type="text" 
+                     class="A_InputText A_InputTextCollection A_InputTextCollectionLink A_InputTextCollectionLinkNone" 
+                     placeholder="Текущий файл" 
+                     data-favorite-reference-preview-target="currentFileName"
+                     data-action="input->favorite-reference-preview#trackChanges"
+                     readonly>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" 
+                  class="A_ButtonDelete A_ButtonDeleteTop" 
+                  data-action="click->favorite-reference-preview#showDeleteDialog">
+            Удалить
+        </button>
+      </div>
+    </div>
+
+    <!-- Диалог подтверждения удаления -->
+    <div class="modal-overlay hidden" data-favorite-reference-preview-target="deleteDialog" data-action="click->favorite-reference-preview#closeDeleteDialog" style="z-index: 1001;">
+      <div class="S_FeedSettings S_FeedSettingsSave">
+        <div class="M_CollectionForm">
+          <h3 class="A_Header2">Удаление элемента</h3>
+          <p class="A_TextTag A_TextTagBig" style="margin-bottom: 1.67vw;">
+            После удаления элемент исчезнет из избранного. Ты точно хочешь удалить его?
+          </p>
+          
+          <div class="W_buttonsSave">        
+            <button type="button" 
+                    class="A_ButtonDelete A_ButtonDeleteLeft" 
+                    data-action="click->favorite-reference-preview#confirmDelete">
+              Удалить
+            </button>
+
+            <button type="button" 
+                    class="A_ButtonPrimary" 
+                    data-action="click->favorite-reference-preview#cancelDelete">
+              Не удалять
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

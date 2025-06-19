@@ -37,6 +37,7 @@ gem "bootsnap", require: false
 
 gem 'carrierwave', '~> 2.1'
 gem 'carrierwave-imageoptimizer', '~> 1.5.0'
+gem 'mini_magick', '~> 4.11'
 gem "rack-cors"
 gem "devise"
 gem "acts-as-taggable-on"

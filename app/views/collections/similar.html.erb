@@ -1,0 +1,18 @@
+<div class='Q_Section Q_SectionSimilar'>
+  <h1 class="A_Header1"><%= @page_title %></h1>
+  
+  <% if @collections.any? %>
+    <div class="C_Collections">
+      <% @collections.each do |collection| %>
+        <%= render partial: 'collections/collection', locals: { 
+          collection: collection, 
+          css_classes: { header: "A", text: "A" } 
+        } %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="W_EmptyState">
+      <p class="A_TextTag A_TextTagBig">Похожие коллекции не найдены</p>
+    </div>
+  <% end %>
+</div> 

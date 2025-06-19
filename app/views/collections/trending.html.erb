@@ -1,0 +1,92 @@
+<% 
+  set_meta_tags(
+    title: "Трендовые коллекции",
+    description: "Самые популярные коллекции эффектов на Eflectica",
+    keywords: "трендовые коллекции, популярные коллекции, тренды"
+  )
+%>
+
+<% content_for :title, "Трендовые коллекции" %>
+
+<div class='O_Category'>
+	<div class='W_coverCategory'>
+		<%= image_tag("imageCategory5.png", alt: "Картинка рейтинга", class: "Q_IconCategory5") %>
+		<%= image_tag("imageCategory2.png", alt: "Картинка рейтинга", class: "Q_IconCategory2") %>
+		<%= image_tag("imageCategory3.png", alt: "Картинка рейтинга", class: "Q_IconCategory3") %>
+		<%= image_tag("imageCategory1.png", alt: "Картинка рейтинга", class: "Q_IconCategory1") %>
+		<%= image_tag("imageCategory6.png", alt: "Картинка рейтинга", class: "Q_IconCategory6") %>
+		<%= image_tag("imageCategory4.png", alt: "Картинка рейтинга", class: "Q_IconCategory4") %>
+	</div>
+
+	<h1 class="A_Header1 A_Header1Category">Трендовые коллекции</h1>
+
+	<div class='W_allButtonsCategory W_allButtonsCategoryTrends'>
+		<div class='M_Sort'>
+			<div class="Q_FilterDropdown">
+				<button class='A_Filter A_FilterCategory A_TextTagBig'>
+					Сортировка
+					<%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+				</button>
+				
+				<div class="Q_CategoryDropdown" style="display: none;">
+					<div class="Q_CategoryList">
+						<button class="Q_CategoryItem Q_SortItem" onclick="sortCollections('newest')">
+							<span>Сначала новые</span>
+						</button>
+						<button class="Q_CategoryItem Q_SortItem" onclick="sortCollections('popular')">
+							<span>Сначала популярные</span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<p class='A_TextTag A_TextTagBig A_TextTagLight'>Сначала популярные</p>
+		</div>
+	</div>
+
+	<div class='C_Collections C_CollectionsCategory' id="collections-container">
+    <% @collections.each do |collection| %>
+      <%= render partial: 'collections/collection', locals: { 
+        collection: collection, 
+        css_classes: { 
+          header: "A", 
+          text: "A" 
+        } 
+      } %>
+    <% end %>
+  </div>
+</div>
+
+<script>
+function sortCollections(type) {
+  const container = document.getElementById('collections-container');
+  const collections = Array.from(container.children);
+  
+  collections.sort((a, b) => {
+    if (type === 'newest') {
+      const dateA = new Date(a.dataset.createdAt);
+      const dateB = new Date(b.dataset.createdAt);
+      return dateB - dateA;
+    } else if (type === 'popular') {
+      const subscribersA = parseInt(a.dataset.subscribers) || 0;
+      const subscribersB = parseInt(b.dataset.subscribers) || 0;
+      return subscribersB - subscribersA;
+    }
+  });
+  
+  collections.forEach(collection => container.appendChild(collection));
+  
+  // Обновляем текст сортировки
+  const sortText = document.querySelector('.A_TextTagLight');
+  sortText.textContent = type === 'newest' ? 'Сначала новые' : 'Сначала популярные';
+  
+  // Закрываем выпадающий список
+  const dropdown = document.querySelector('.Q_CategoryDropdown');
+  dropdown.style.display = 'none';
+}
+
+// Обработчик для открытия/закрытия выпадающего списка
+document.querySelector('.A_Filter').addEventListener('click', function() {
+  const dropdown = document.querySelector('.Q_CategoryDropdown');
+  dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+});
+</script> 

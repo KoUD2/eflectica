@@ -40,16 +40,38 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1.667vw;
+  gap: 0.911vw;
   border-radius: var(--main, 0.625vw);
   border: var(--border, 0.104vw) solid var(--input-grey, #c7c7ca);
   background: var(--porcelain-white, #fff);
   z-index: 1000;
 }
 
+.S_FeedSettingsSave {
+  display: inline-flex;
+  padding: 1.25vw 1.25vw 1.25vw 1.67vw;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.5vw;
+  border-radius: var(--desktop-main, 0.63vw);
+  background: var(--porcelain-white, #fff);
+}
+
+.S_FeedSettingsLink {
+  display: flex;
+  width: 50.31vw;
+  padding: 1.25vw 1.67vw 1.67vw 1.67vw;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.51vw;
+  border-radius: var(--desktop-main, 0.63vw);
+  border: var(--desktop-border, 0.1vw) solid var(--grey-tag, #e1e1e1);
+  background: var(--porcelain-white, #fff);
+}
+
 .S_Profile {
   position: relative;
-  padding: 1.708vw 3.151vw 0 3.229vw;
+  padding: 1.708vw 3.151vw 3.33vw 3.229vw;
   width: 96.875vw;
   border-radius: var(--button, 0.417vw) 0 var(--button, 0.417vw)
     var(--button, 0.417vw);

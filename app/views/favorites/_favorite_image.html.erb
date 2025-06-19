@@ -1,0 +1,16 @@
+<div class="O_ReferenceCard" 
+     data-controller="favorite-reference-card" 
+     data-image-id="<%= favorite_image.id %>" 
+     data-collection-id="favorites"
+     data-action="click->favorite-reference-card#openModal">
+  <% if favorite_image.image_file_name.present? %>
+    <!-- Для избранного пока показываем placeholder, так как файлы не загружаются -->
+    <%= image_tag "placeholder.svg", alt: favorite_image.title, class: "A_PhotoRef" %>
+  <% else %>
+    <%= image_tag "placeholder.svg", alt: favorite_image.title, class: "A_PhotoRef" %>
+  <% end %>
+  
+  <% if favorite_image.title.present? %>
+    <p class="A_TextEffectCard A_TextRefCard"><%= favorite_image.title %></p>
+  <% end %>
+</div> 

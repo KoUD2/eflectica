@@ -7,7 +7,7 @@ class Api::V1::CollectionsController < Api::V1::BaseController
     render json: @collections.as_json(
       only: [:id, :name, :description, :status, :user_id],
       include: {
-        effects: {},
+        effects: { only: [:id, :name, :img, :description, :speed, :platform, :manual, :created_at], methods: [:programs_with_versions] },
         links: { only: [:id, :path] },
         images: { only: [:id, :file, :title], methods: [:image_url] }
       }
@@ -22,7 +22,7 @@ class Api::V1::CollectionsController < Api::V1::BaseController
       collections: @collections.as_json(
         only: [:id, :name, :description, :status, :user_id, :created_at, :updated_at],
         include: {
-          effects: { only: [:id, :name, :img, :description] },
+          effects: { only: [:id, :name, :img, :description, :created_at] },
           links: { only: [:id, :path, :title] },
           images: { only: [:id, :file, :title, :image_type], methods: [:image_url] }
         }
@@ -31,8 +31,8 @@ class Api::V1::CollectionsController < Api::V1::BaseController
         only: [:id, :created_at],
         include: {
           effect: {
-            only: [:id, :name, :img, :description, :speed, :platform, :programs],
-            methods: [:category_list, :task_list, :average_rating, :before_image, :after_image]
+            only: [:id, :name, :img, :description, :speed, :platform, :created_at],
+            methods: [:programs_with_versions, :category_list, :task_list, :average_rating, :before_image, :after_image]
           }
         }
       )
@@ -44,7 +44,7 @@ class Api::V1::CollectionsController < Api::V1::BaseController
     render json: @collection.as_json(
       only: [:id, :name, :description, :status, :user_id],
       include: {
-        effects: {},
+        effects: { only: [:id, :name, :img, :description, :speed, :platform, :manual, :created_at], methods: [:programs_with_versions] },
         links: { only: [:id, :path] },
         images: { only: [:id, :file, :title], methods: [:image_url] }
       }
@@ -172,16 +172,16 @@ class Api::V1::CollectionsController < Api::V1::BaseController
     link = @collection.links.find_by(id: params[:link_id])
     
     unless link
-      return render json: { error: 'Ссылка не найдена в коллекции' }, status: :not_found
+      return render json: { success: false, error: 'Ссылка не найдена в коллекции' }, status: :not_found
     end
 
     if link.update(link_params)
       render json: { 
-        message: 'Ссылка обновлена',
-        collection: collection_with_includes
+        success: true,
+        message: 'Ссылка обновлена'
       }, status: :ok
     else
-      render json: { error: link.errors.full_messages }, status: :unprocessable_entity
+      render json: { success: false, error: link.errors.full_messages.join(", ") }, status: :unprocessable_entity
     end
   end
 
@@ -267,7 +267,17 @@ class Api::V1::CollectionsController < Api::V1::BaseController
   end
 
   def link_params
-    params.require(:link).permit(:path, :title)
+    # Для прямых параметров (без обертки link)
+    if params[:title].present? || params[:path].present? || params[:description].present?
+      {
+        title: params[:title],
+        path: params[:path],
+        description: params[:description]
+      }.compact
+    else
+      # Для параметров с оберткой link
+      params.require(:link).permit(:path, :title, :description)
+    end
   end
 
   def image_params
@@ -310,7 +320,7 @@ class Api::V1::CollectionsController < Api::V1::BaseController
     @collection.as_json(
       only: [:id, :name, :description, :status, :user_id],
       include: {
-        effects: {},
+        effects: { only: [:id, :name, :img, :description, :speed, :platform, :manual, :created_at], methods: [:programs_with_versions] },
         links: { only: [:id, :path, :title] },
         images: { only: [:id, :file, :title, :image_type], methods: [:image_url] }
       }

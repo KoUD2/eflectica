@@ -8,23 +8,33 @@
 
 <% content_for :title, "News feeds" %>
 
-<div class='O_Collections'>
+<div class='O_Collections' data-controller="search-collections">
   <div class='W_allCollectionSections'>
-    <div class='M_collectionSection' data-controller="collection-modal">
+    <div class='M_collectionSection M_collectionSectionFull' data-controller="collection-modal" data-search-collections-target="subscriptionsSection">
       <h2 class="A_Header1">Мои коллекции</h2>
-      <button class="A_ButtonPrimary A_ButtonPrimaryCollection" data-action="collection-modal#open">
-        <%= image_tag("Q_IconPlusWhite.svg", alt: "Картинка рейтинга", class: "Q_IconPlusWhite") %>
-        Создать новую
-      </button>
       
+      <div class="W_buttonMyCollection">
+        <div class='W_inputIcon W_searchInfoFeed'>
+          <input type="text" class='A_searchInput' placeholder='Поиск коллекций'
+                data-search-collections-target="input" 
+                data-action="input->search-collections#search">
+          <%= image_tag("Q_IconSearch.svg", alt: "Картинка рейтинга", class: "Q_IconSearch") %>
+        </div>
+        <button class="A_ButtonPrimary A_ButtonPrimaryCollection" data-action="collection-modal#open">
+          <%= image_tag("Q_IconPlusWhite.svg", alt: "Картинка рейтинга", class: "Q_IconPlusWhite") %>
+          Создать коллекцию
+        </button>
+      </div>
+
       <div class="modal-overlay hidden" data-collection-modal-target="modal">
         <div class="S_FeedSettings">
           <div class="A_HeaderChoice">
-            <h3 class="A_Header3">Создание коллекции</h3>
+            <h3 class="A_Header2">Создать коллекцию</h3>
             <button class="modal-close" data-action="collection-modal#close">
               <%= image_tag("Q_IconClose.svg", alt: "Картинка", class: "Q_IconClose") %>
             </button>
           </div>
+          <h3 class="A_Header3 A_Header3CollectionDesc">Описание</h3>
           <%= form_with model: Collection.new, url: collections_path, method: :post, local: true do |f| %>
             <div class='M_CollectionForm'>
               <%= f.text_field :name, placeholder: 'Название коллекции', class: 'A_InputFormName' %>
@@ -51,30 +61,24 @@
         </div>      
       </div>      
 
-      <div class="C_Collections C_CollectionsAll">
+      <div class="C_Collections C_CollectionsAll" data-search-collections-target="subscriptionsContainer">
         <%= render partial: "favorites/favorite", 
             locals: { favorite_effects: @favorite_effects } %>
       
         <% if @my_collections.present? %>  
           <% @my_collections.each do |collection| %>
-            <%= render partial: "collections/collection", locals: { collection:collection, css_classes: { 
+            <%= render partial: "collections/collection", locals: { 
+              collection: collection, 
+              css_classes: { 
               header: "A_Pink", 
               text: "A_White" 
-            }} %>
+              } 
+            } %>
           <% end %>
-        <% else %>
-          <p>У вас пока нет созданных коллекций.</p>
         <% end %>
       </div>
-    </div>    
-  </div>
 
-  <div class='M_appStore'>
-    <h2 class="A_Header2 A_Header2App">Все референсы под рукой, <span>если скачать приложение</span></h2>
-    <div class='W_qrInfo W_qrInfoCollections'>
-      <%= image_tag("QR.svg", alt: "Картинка рейтинга", class: "Q_QRIcon") %>
-      <p class="A_TextTag">App Store</p>
-    </div>
-    <%= image_tag("iPhoneProMyCollections.png", alt: "Картинка рейтинга", class: "Q_iPhoneProMyCollections") %>
+
+    </div>    
   </div>
 </div>

@@ -1,4 +1,10 @@
-<%= link_to collection_path(collection), class: 'O_CollectionCardLink' do %>
+<%= link_to collection_path(collection), class: 'O_CollectionCardLink', 
+                     data: { 
+                       name: collection.name,
+                       description: collection.description || '',
+                       created_at: collection.created_at.iso8601,
+                       subscribers: collection.sub_collections.count
+                     } do %>
   <div class='O_CollectionCard'>
     <div class="A_HeaderCollection <%= css_classes[:header] %>">
       <p class="A_HeaderCollectionText <%= css_classes[:text] %>"><%= collection.name %></p>

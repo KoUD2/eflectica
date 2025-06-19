@@ -28,6 +28,20 @@
   gap: 0.625vw;
 }
 
+.W_ProgressContainer {
+  width: 100%;
+  position: relative;
+}
+
+.W_ProgressLine {
+  width: 100%;
+  height: 0.469vw;
+  border-radius: 0.417vw;
+  margin-bottom: 0.755vw;
+  background: var(--soft-grey, #ebebeb);
+  position: relative;
+}
+
 .W_raitingCreateEffect {
   position: absolute;
   bottom: 8.443vw;
@@ -81,6 +95,28 @@
   align-items: flex-start;
   gap: 1.25vw;
   align-self: stretch;
+  width: 25.469vw;
+}
+
+.W_headerLinkCategory {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: flex-end;
+  /* margin-bottom: 1.25vw; */
+}
+
+.W_starsSend {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.W_allSearch {
+  display: flex;
+  flex-direction: column;
+  gap: 2.19vw;
 }
 
 .W_PreviewArea {
@@ -113,6 +149,10 @@
 
 .W_inputIcon {
   position: relative;
+}
+
+.W_inputIconSubscription {
+  margin-top: 0.78vw;
 }
 
 .W_appInfo {
@@ -149,12 +189,128 @@
 .W_searchInfo {
   margin-top: 0.833vw;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.625vw;
 }
 
 .W_searchInfoFeed {
   margin-top: 1.667vw;
+}
+
+.W_searchInfoSmall {
+  margin-top: 0;
+}
+
+.W_effectCheckbox {
+  position: absolute;
+  top: 0.83vw;
+  right: 0.83vw;
+}
+
+.W_Particles {
+  position: absolute;
+  top: -1.17vw;
+  left: -5.85vw;
+  width: 22.01vw;
+  height: 12.06vw;
+  border: 0.11vw solid var(--computer-blue, #0638bd);
+
+  .Q_Particle:nth-child(1) {
+    top: -0.313vw;
+    left: -0.313vw;
+  }
+  .Q_Particle:nth-child(2) {
+    top: -0.313vw;
+    right: -0.313vw;
+    left: auto;
+  }
+  .Q_Particle:nth-child(3) {
+    bottom: -0.313vw;
+    left: -0.313vw;
+    transform: translateX(0%);
+    top: auto;
+  }
+  .Q_Particle:nth-child(4) {
+    bottom: -0.313vw;
+    right: -0.313vw;
+    top: auto;
+  }
+}
+
+.W_errorContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 19.48vw;
+
+  > h3 {
+    margin-top: -0.24vw;
+    text-align: center;
+  }
+
+  > button {
+    margin-top: 1.67vw;
+  }
+}
+
+.W_buttonsSave {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.W_buttonMyCollection {
+  margin-top: 0.83vw;
+  padding-right: 3.229vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > div,
+  button {
+    margin: 0;
+  }
+
+  > div {
+    > input {
+      width: 11.88vw;
+    }
+  }
+
+  > button {
+    width: 13.91vw;
+  }
+}
+
+.W_buttonsSaveEffect {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.67vw;
+}
+
+.W_linkFormInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.83vw;
+  margin-top: 1.67vw;
+  margin-bottom: 1.25vw;
+}
+
+.W_linkFormInputsPreview {
+  width: 17.45vw;
+  margin: 0;
+}
+
+.W_linkAddLink {
+  cursor: pointer;
+  margin-top: 0.83vw;
+  display: flex;
+  align-items: center;
+  gap: 0.63vw;
 }
 
 .W_categoriesCreatePost {
@@ -729,6 +885,12 @@
   gap: 0.625vw;
 }
 
+.W_SelectedCategoryTag {
+  display: flex;
+  align-items: center;
+  gap: 0.42vw;
+}
+
 .W_tgSection {
   display: flex;
   align-items: center;
@@ -758,13 +920,15 @@
 }
 
 .W_coverCategory {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 90.365vw;
   height: 22.083vw;
   border-radius: var(--main, 0.625vw);
-  background: var(--soft-grey, #ebebeb);
+  background: #ffffff;
+  overflow: hidden;
 }
 
 .W_allButtonsCategory {
@@ -774,10 +938,15 @@
   justify-content: space-between;
 }
 
+.W_allButtonsCategoryTrends {
+  justify-content: flex-end;
+}
+
 .W_allCategoriesShow {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
+  flex-direction: column;
 }
 
 .W_tasksCategories {

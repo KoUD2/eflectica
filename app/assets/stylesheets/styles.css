@@ -146,6 +146,11 @@ dialog::backdrop {
   width: 56.198vw;
 }
 
+.modalEffect {
+  height: 34.06vw;
+  justify-content: flex-start;
+}
+
 :-moz-placeholder {
   color: var(--input-grey, #c7c7ca);
 }
@@ -349,6 +354,10 @@ a {
     height: 100px;
     width: 300px;
   }
+}
+
+.checkmarkSelect {
+  background-color: var(--porcelain-white, #fff) !important;
 }
 
 .form {

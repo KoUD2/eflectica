@@ -44,12 +44,16 @@
 
   <div class='M_aboutEffects'>
     <div class="W_allEffectsMobile">
-      <h1 class='A_Header1'>Топовые эффекты</h1>
-      <button class='A_More A_MoreMobile'>Смотреть все</button>
+      <h1 class='A_Header1'>Трендовые эффекты</h1>
+      <%= link_to trending_effects_path do %>
+        <button class='A_More A_MoreMobile'>Смотреть все</button>
+      <% end %>
     </div>
     <div class='W_allEffects'>
       <p class='A_TextEffectDescription'>Если хочется создать контент, который залетит в&nbsp;тренды, посмотри новинки в&nbsp;этом разделе</p>
-      <button class='A_More A_MorePC'>Смотреть все</button>
+      <%= link_to trending_effects_path do %>
+        <button class='A_More A_MorePC'>Смотреть все</button>
+      <% end %>
     </div>
   </div>
 
@@ -78,7 +82,7 @@
 
 <div class='W_categoriesCreatePost'>
   <div class="W_allSectionsMain">
-    <div class='O_allCategories'>
+    <div class='O_allCategories' data-controller="category-filter">
       <div class='M_aboutEffects'>
         <div class='W_allCategories'>
           <h1 class='A_Header1'>Категории</h1>
@@ -93,45 +97,197 @@
       </div>
 
       <div class='W_searchInfo W_searchInfoFeed'>
-        <div class='W_inputIcon'>
-          <input type="text" class='A_searchInput' placeholder='Поиск'>
+        <div class='W_inputIcon' data-controller="search-effects">
+          <input type="text" class='A_searchInput' placeholder='Поиск' 
+                 data-search-effects-target="input" 
+                 data-action="input->search-effects#search">
           <%= image_tag("Q_IconSearch.svg", alt: "Картинка рейтинга", class: "Q_IconSearch") %>
         </div>
-        <button class='A_FilterSearch'>
-          <p>Где искать</p>
-          <%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
-        </button>
+        <div class="Q_FilterDropdown">
+          <button class='A_FilterSearch' data-action="category-filter#toggle" data-category-filter-target="toggleButton">
+            <p>Где искать</p>
+            <%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+          </button>
+          <div class="Q_CategoryDropdown" data-category-filter-target="dropdown" style="display: none;">
+            <div class="Q_CategoryList">
+              <label class="Q_CategoryItem custom-checkbox">
+                <span>Обработка фото</span>
+                <input type="checkbox" value="photoProcessing" data-action="category-filter#filterEffects">
+                <span class="checkmark"></span>
+              </label>
+              <label class="Q_CategoryItem custom-checkbox">
+                <span>3D-графика</span>
+                <input type="checkbox" value="3dGrafics" data-action="category-filter#filterEffects">
+                <span class="checkmark"></span>
+              </label>
+              <label class="Q_CategoryItem custom-checkbox">
+                <span>Моушен</span>
+                <input type="checkbox" value="motion" data-action="category-filter#filterEffects">
+                <span class="checkmark"></span>
+              </label>
+              <label class="Q_CategoryItem custom-checkbox">
+                <span>Иллюстрация</span>
+                <input type="checkbox" value="illustration" data-action="category-filter#filterEffects">
+                <span class="checkmark"></span>
+              </label>
+              <label class="Q_CategoryItem custom-checkbox">
+                <span>Анимация</span>
+                <input type="checkbox" value="animation" data-action="category-filter#filterEffects">
+                <span class="checkmark"></span>
+              </label>
+              <label class="Q_CategoryItem custom-checkbox">
+                <span>UI/UX-анимация</span>
+                <input type="checkbox" value="uiux" data-action="category-filter#filterEffects">
+                <span class="checkmark"></span>
+              </label>
+              <label class="Q_CategoryItem custom-checkbox">
+                <span>Обработка видео</span>
+                <input type="checkbox" value="videoProcessing" data-action="category-filter#filterEffects">
+                <span class="checkmark"></span>
+              </label>
+              <label class="Q_CategoryItem custom-checkbox">
+                <span>VFX</span>
+                <input type="checkbox" value="vfx" data-action="category-filter#filterEffects">
+                <span class="checkmark"></span>
+              </label>
+              <label class="Q_CategoryItem custom-checkbox">
+                <span>Геймдев</span>
+                <input type="checkbox" value="gamedev" data-action="category-filter#filterEffects">
+                <span class="checkmark"></span>
+              </label>
+              <label class="Q_CategoryItem custom-checkbox">
+                <span>AR & VR</span>
+                <input type="checkbox" value="arvr" data-action="category-filter#filterEffects">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class='O_Effects'>
+      <div class='O_Effects' data-category="photoProcessing" data-category-filter-target="effectSection">
         <div class="M_HeaderEffects">
           <h2 class="A_Header2">Обработка фото</h2>
           <button class='A_buttonWatchAll'>Смотреть все</button>
         </div>
         <div class="C_Effects">
-          <% @effects.first(3).each do |effect| %>
+          <% @effects.select { |effect| effect.categories.pluck(:name).include?('photoProcessing') }.first(3).each do |effect| %>
             <%= render partial: "effects/collection_effect", locals: { effect: effect } %>
           <% end %>
         </div>
       </div>
-      <div class='O_Effects'>
+
+      <div class='O_Effects' data-category="3dGrafics" data-category-filter-target="effectSection">
         <div class="M_HeaderEffects">
           <h2 class="A_Header2">3D-графика</h2>
           <button class='A_buttonWatchAll'>Смотреть все</button>
         </div>
         <div class="C_Effects">
-          <% @effects.first(3).each do |effect| %>
+          <% @effects.select { |effect| effect.categories.pluck(:name).include?('3dGrafics') }.first(3).each do |effect| %>
             <%= render partial: "effects/collection_effect", locals: { effect: effect } %>
           <% end %>
         </div>
       </div>
-      <div class='O_Effects'>
+
+      <div class='O_Effects' data-category="motion" data-category-filter-target="effectSection">
         <div class="M_HeaderEffects">
           <h2 class="A_Header2">Моушен</h2>
           <button class='A_buttonWatchAll'>Смотреть все</button>
         </div>
         <div class="C_Effects">
-          <% @effects.first(3).each do |effect| %>
+          <% @effects.select { |effect| effect.categories.pluck(:name).include?('motion') }.first(3).each do |effect| %>
+            <%= render partial: "effects/collection_effect", locals: { effect: effect } %>
+          <% end %>
+        </div>
+      </div>
+      <div class='O_Effects' data-category="illustration" data-category-filter-target="effectSection" style="display: none;">
+        <div class="M_HeaderEffects">
+          <h2 class="A_Header2">Иллюстрация</h2>
+          <button class='A_buttonWatchAll'>Смотреть все</button>
+        </div>
+        <div class="C_Effects">
+          <% @effects.select { |effect| effect.categories.pluck(:name).include?('illustration') }.first(3).each do |effect| %>
+            <%= render partial: "effects/collection_effect", locals: { effect: effect } %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class='O_Effects' data-category="animation" data-category-filter-target="effectSection" style="display: none;">
+        <div class="M_HeaderEffects">
+          <h2 class="A_Header2">Анимация</h2>
+          <button class='A_buttonWatchAll'>Смотреть все</button>
+        </div>
+        <div class="C_Effects">
+          <% @effects.select { |effect| effect.categories.pluck(:name).include?('animation') }.first(3).each do |effect| %>
+            <%= render partial: "effects/collection_effect", locals: { effect: effect } %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class='O_Effects' data-category="vfx" data-category-filter-target="effectSection" style="display: none;">
+        <div class="M_HeaderEffects">
+          <h2 class="A_Header2">VFX</h2>
+          <button class='A_buttonWatchAll'>Смотреть все</button>
+        </div>
+        <div class="C_Effects">
+          <% vfx_effects = @effects.select { |effect| effect.categories.pluck(:name).include?('vfx') }.first(3) %>
+          <% if vfx_effects.empty? %>
+            <p style="color: red; font-weight: bold;">Нет эффектов с категорией VFX! Всего эффектов: <%= @effects.count %></p>
+            <p style="color: blue;">Категории первых 3 эффектов:</p>
+            <% @effects.first(3).each_with_index do |effect, index| %>
+              <p style="color: blue;">Эффект <%= index + 1 %>: <%= effect.name %> - категории: <%= effect.categories.pluck(:name).join(', ') %></p>
+            <% end %>
+          <% else %>
+            <% vfx_effects.each do |effect| %>
+              <%= render partial: "effects/collection_effect", locals: { effect: effect } %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class='O_Effects' data-category="uiux" data-category-filter-target="effectSection" style="display: none;">
+        <div class="M_HeaderEffects">
+          <h2 class="A_Header2">UI/UX-анимация</h2>
+          <button class='A_buttonWatchAll'>Смотреть все</button>
+        </div>
+        <div class="C_Effects">
+          <% @effects.select { |effect| effect.categories.pluck(:name).include?('uiux') }.first(3).each do |effect| %>
+            <%= render partial: "effects/collection_effect", locals: { effect: effect } %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class='O_Effects' data-category="videoProcessing" data-category-filter-target="effectSection" style="display: none;">
+        <div class="M_HeaderEffects">
+          <h2 class="A_Header2">Обработка видео</h2>
+          <button class='A_buttonWatchAll'>Смотреть все</button>
+        </div>
+        <div class="C_Effects">
+          <% @effects.select { |effect| effect.categories.pluck(:name).include?('videoProcessing') }.first(3).each do |effect| %>
+            <%= render partial: "effects/collection_effect", locals: { effect: effect } %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class='O_Effects' data-category="gamedev" data-category-filter-target="effectSection" style="display: none;">
+        <div class="M_HeaderEffects">
+          <h2 class="A_Header2">Геймдев</h2>
+          <button class='A_buttonWatchAll'>Смотреть все</button>
+        </div>
+        <div class="C_Effects">
+          <% @effects.select { |effect| effect.categories.pluck(:name).include?('gamedev') }.first(3).each do |effect| %>
+            <%= render partial: "effects/collection_effect", locals: { effect: effect } %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class='O_Effects' data-category="arvr" data-category-filter-target="effectSection" style="display: none;">
+        <div class="M_HeaderEffects">
+          <h2 class="A_Header2">AR & VR</h2>
+          <button class='A_buttonWatchAll'>Смотреть все</button>
+        </div>
+        <div class="C_Effects">
+          <% @effects.select { |effect| effect.categories.pluck(:name).include?('arvr') }.first(3).each do |effect| %>
             <%= render partial: "effects/collection_effect", locals: { effect: effect } %>
           <% end %>
         </div>
@@ -154,7 +310,7 @@
       <button class="A_ButtonPrimary A_ButtonPrimaryCreate" data-action="effect-create#open" type="button">Написать пост</button>
       <!-- , scope: :effect -->
       <%= form_with model: @effect, url: effects_path do |f| %>
-        <dialog class="modal" data-effect-create-target="dialog">
+        <dialog class="modal modalEffect" data-effect-create-target="dialog" id="mobile-effect-dialog">
           <button type="button" style="position: absolute; top: 10px; right: 10px; background: #f00; color: white; z-index: 9999;" 
                   onclick="
                     console.log('--- DEBUG INFO ---');
@@ -169,7 +325,7 @@
           <div class="modal-content2">
             <div class="A_HeaderChoice">
               <h3 class="A_Header3">Создание коллекции</h3>
-              <button class="modal-close" data-action="effect-create#close">
+              <button type="button" class="modal-close" data-action="effect-create#close">
                 <%= image_tag("Q_IconClose.svg", alt: "Картинка", class: "Q_IconClose") %>
               </button>
             </div>
@@ -178,8 +334,9 @@
                 Об эффекте
               </p>
               <p class="A_TextTagFeed" data-modal-target="step2">Инструкция</p>
-              <p class="A_TextTagFeed" data-modal-target="step3">Теги и ссылка</p>
-              <p class="A_TextTagFeed" data-modal-target="step4">Модерация</p>
+              <p class="A_TextTagFeed" data-modal-target="step3">Категории</p>
+              <p class="A_TextTagFeed" data-modal-target="step4">Теги</p>
+              <p class="A_TextTagFeed" data-modal-target="step5">Ссылка и превью</p>
             </div>
             <div class='O_CreateEffectInfo'>
               <div class='O_EffectInfo' data-effect-create-target="effectInfo">
@@ -187,7 +344,7 @@
                   <%= f.text_field :name, 
                   class: "A_InputForm", 
                   placeholder: 'Название эффекта',
-                  data: { effect_create_mobile_target: "effectName", action: "input->effect-create#updatePreviewText" } %>
+                  data: { effect_create_target: "effectName", action: "input->effect-create#updatePreviewText" } %>
                   <%= f.text_area :description, 
                    class: 'A_InputForm A_InputFormTextArea', 
                    placeholder: 'Описание эффекта' %>
@@ -205,11 +362,11 @@
                             accept: "image/*", 
                             class: "M_PhotoElementInput", 
                             id: "image_before_field_mobile",
-                            data: { effect_create_mobile_target: "inputBefore", action: "change->effect-create#previewImage" },
+                            data: { effect_create_target: "inputBefore", action: "change->effect-create#previewImage" },
                             hidden: true %>
                         <label for="image_before_field_mobile" class="file-label" style="cursor: pointer; display: block; width: 100%; height: 100%;">
                           <div class="M_PhotoElementPreviewImage">
-                            <%= image_tag("icon-attachment.svg", alt: "Иконка файла", class: "file-icon", data: { effect_create_mobile_target: "outputBefore" }) %>
+                            <%= image_tag("icon-attachment.svg", alt: "Иконка файла", class: "file-icon", data: { effect_create_target: "outputBefore" }) %>
                           </div>
                         </label>
                       </div>
@@ -221,11 +378,11 @@
                             accept: "image/*", 
                             class: "M_PhotoElementInput", 
                             id: "image_after_field_mobile",
-                            data: { effect_create_mobile_target: "inputAfter", action: "change->effect-create#previewImage" },
+                            data: { effect_create_target: "inputAfter", action: "change->effect-create#previewImage" },
                             hidden: true %>
                         <label for="image_after_field_mobile" class="file-label" style="cursor: pointer; display: block; width: 100%; height: 100%;">
                           <div class="M_PhotoElementPreviewImage">
-                            <%= image_tag("icon-attachment.svg", alt: "Иконка файла", class: "file-icon", data: { effect_create_mobile_target: "outputAfter" }) %>
+                            <%= image_tag("icon-attachment.svg", alt: "Иконка файла", class: "file-icon", data: { effect_create_target: "outputAfter" }) %>
                           </div>
                         </label>
                       </div>
@@ -240,12 +397,12 @@
                   <%= f.text_area :manual, 
                   class: 'A_InputForm A_InputFormTextArea A_InputFormTextAreaBig', 
                   placeholder: 'Инструкция по установке и настройке',
-                  data: { effect_create_mobile_target: "instructionText" } %>
+                  data: { effect_create_target: "instructionText" } %>
                 </div>
               </div>
               <div class='W_PreviewArea' data-effect-create-target="previewArea">
                 <h3 class="A_Header3">Превью</h3>
-                <div class='O_EffectCardPreview O_EffectCardPreviewOver'>
+                <div class='O_EffectCardPreview O_EffectCardPreviewOver O_EffectCardPreviewSmall'>
                   <div class='С_PhotoGalleryEffectPreview'>
                     <div class='M_PhotoElement'>
                       <%= image_tag("emptyImage.svg", alt: "Картинка", class: "Q_emptyImage") %>
@@ -258,59 +415,162 @@
                 </div>
               </div>        
             </div>
-            <div class='O_TagsLinkInfo' data-effect-create-target="tagsLinkBlock" style="display: none;">
-              <div class='M_CollectionForm M_CollectionFormThird'>
+            <div class='O_CategoriesInfo' data-effect-create-target="categoriesBlock" style="display: none;">
+              <div class='M_CollectionForm'>
                 <div class="M_CategoriesWrapper">
                   <h3 class="A_Header3">Категория</h3>
-
                   <%= f.hidden_field :programs, value: "blender" %>
                   <%= f.hidden_field :platform, id: "selected_platform" %>
                   <div class="M_CategoriesContainer">
                     <% Effect::ALLOWED_TAGS.each do |category| %>
-                      <div class="M_Choice">
+                      <div class="M_Choice" data-controller="choice" data-action="click->choice#click">
                         <%= f.label "category_list_#{category}", human_readable_category(category), class: 'A_TextButtonSeсondary A_TextButtonSeсondaryBlack' %>
                         <%= f.radio_button :category_list, category %>
                       </div>
                     <% end %>
                   </div> 
                 </div>
-                
-                <div class="O_CreateEffectTagsArea">
+              </div>
+            </div>
+            <div class='O_TagsInfo' data-effect-create-target="tagsBlock" style="display: none;">
+              <div class='M_CollectionForm'>
+                <div class="O_CreateEffectTagsArea" data-controller="effect-tags">
                   <div class="O_TagsCreateEffect">
                     <h3 class="A_Header3">Теги</h3>
-                    <button class='A_Filter A_FilterCategory'>
-                      Задача
-                      <%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
-                    </button>
-                    <button class='A_Filter A_FilterCategory'>
-                      Программа
-                      <%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
-                    </button>
-                    <%= f.text_field :program_version, 
-                    class: 'A_Input A_InputVersion', 
-                    placeholder: 'Минимальная версия' %>
-                    <button class='A_Filter A_FilterCategory'>
-                      Платформа
-                      <%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
-                    </button>
-                  </div>
+                    
+                    <!-- Задачи -->
+                    <div class="Q_FilterDropdown">
+                      <button class='A_Filter A_FilterCategory A_TextTagBig' type="button" data-action="effect-tags#toggleTasks" data-effect-tags-target="taskToggleButton">
+                        Задача
+                        <%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+                      </button>
+                      
+                      <!-- Контейнер для отображения выбранных задач -->
+                      <div class="C_SelectedCategories" data-effect-tags-target="selectedTasks" style="display: none;">
+                        <div class="Q_SelectedCategoriesList" data-effect-tags-target="selectedTasksList">
+                          <!-- Выбранные задачи будут добавляться сюда динамически -->
+                        </div>
+                      </div>
+                      
+                      <div class="Q_CategoryDropdown" data-effect-tags-target="taskDropdown" style="display: none;">
+                        <div class="Q_CategoryList">
+                          <% TaskHelper::TASK_MAPPINGS.each do |task_key, task_label| %>
+                            <label class="Q_CategoryItem custom-checkbox">
+                              <span><%= task_label %></span>
+                              <%= f.check_box "task_list_#{task_key}", { checked: false, data: { action: "effect-tags#selectTask" } }, task_key, "" %>
+                              <span class="checkmark"></span>
+                            </label>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
 
-                  <div class="C_LinkArea">
-                    <h3 class="A_Header3">Ссылка на скачивание</h3>
-                    <p class="A_TextTag A_TextTagBig A_TextTagLight">Добавь действительную ссылку на облако или репозиторий, где можно скачать эффект</p>
-                    <div class='W_linkEffect'>
-                      <%= f.text_field :link_to, 
-                      class: 'A_InputForm A_InputFormLink', 
-                      placeholder: 'Ссылка' %>
-                      <%= image_tag("linkIcon.svg", alt: "Картинка рейтинга", class: "Q_linkIcon") %>
+                    <!-- Программы -->
+                    <div class="Q_FilterDropdown">
+                      <button class='A_Filter A_FilterCategory A_TextTagBig' type="button" data-action="effect-tags#togglePrograms" data-effect-tags-target="programToggleButton">
+                        Программа
+                        <%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+                      </button>
+                      
+                      <!-- Контейнер для отображения выбранных программ -->
+                      <div class="C_SelectedCategories" data-effect-tags-target="selectedPrograms" style="display: none;">
+                        <div class="Q_SelectedCategoriesList" data-effect-tags-target="selectedProgramsList">
+                          <!-- Выбранные программы будут добавляться сюда динамически -->
+                        </div>
+                      </div>
+                      
+                      <div class="Q_CategoryDropdown" data-effect-tags-target="programDropdown" style="display: none;">
+                        <div class="Q_CategoryList">
+                          <% [
+                            ["photoshop", "Photoshop"],
+                            ["lightroom", "Lightroom"],
+                            ["after_effects", "After Effects"],
+                            ["illustrator", "Illustrator"],
+                            ["premiere_pro", "Premiere Pro"],
+                            ["blender", "Blender"],
+                            ["affinity_photo", "Affinity Photo"],
+                            ["capture_one", "Capture One"],
+                            ["maya", "Maya"],
+                            ["cinema_4d", "Cinema 4D"],
+                            ["3ds_max", "3ds Max"],
+                            ["zbrush", "ZBrush"]
+                          ].each do |program_key, program_label| %>
+                            <label class="Q_CategoryItem custom-checkbox">
+                              <div class="Q_ProgramItemContent">
+                                <%= image_tag(program_icon(program_key), alt: program_label, class: "Q_ProgramIconDropdown") if program_icon(program_key) %>
+                                <span><%= program_label %></span>
+                              </div>
+                              <%= f.check_box "program_list_#{program_key}", { checked: false, data: { action: "effect-tags#selectProgram" } }, program_key, "" %>
+                              <span class="checkmark"></span>
+                            </label>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Платформы -->
+                    <div class="Q_FilterDropdown">
+                      <button class='A_Filter A_FilterCategory A_TextTagBig' type="button" data-action="effect-tags#togglePlatforms" data-effect-tags-target="platformToggleButton">
+                        Платформа
+                        <%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+                      </button>
+                      
+                      <!-- Контейнер для отображения выбранных платформ -->
+                      <div class="C_SelectedCategories" data-effect-tags-target="selectedPlatforms" style="display: none;">
+                        <div class="Q_SelectedCategoriesList" data-effect-tags-target="selectedPlatformsList">
+                          <!-- Выбранные платформы будут добавляться сюда динамически -->
+                        </div>
+                      </div>
+                      
+                      <div class="Q_CategoryDropdown" data-effect-tags-target="platformDropdown" style="display: none;">
+                        <div class="Q_CategoryList">
+                          <% [
+                            ["windows", "Windows"],
+                            ["mac", "Mac"]
+                          ].each do |platform_key, platform_label| %>
+                            <label class="Q_CategoryItem custom-checkbox">
+                              <span><%= platform_label %></span>
+                              <%= f.check_box "platform_list_#{platform_key}", { checked: false, data: { action: "effect-tags#selectPlatform effect-create#validateCurrentStep" } }, platform_key, "" %>
+                              <span class="checkmark"></span>
+                            </label>
+                          <% end %>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class='O_ModerationInfo' data-effect-create-target="moderationBlock" style="display: none;">
-              <div class="M_ModerationMessage">
-                <div class="A_ModerationText">Твой эффект опубликуется, когда ссылка пройдет проверку модератором. Мы пришлем уведомление, когда это произойдет. Пока ты можешь посмотреть превью эффекта</div>
+            <div class='O_LinkPreviewInfo' data-effect-create-target="linkPreviewBlock" style="display: none;">
+              <div class='M_CollectionForm'>
+                <div class="C_LinkArea">
+                  <h3 class="A_Header3">Ссылка на скачивание</h3>
+                  <p class="A_TextTag A_TextTagBig A_TextTagLight">Добавь действительную ссылку на облако или репозиторий, где можно скачать эффект</p>
+                  <div class='W_linkEffect'>
+                    <%= f.text_field :link_to, 
+                    class: 'A_InputForm A_InputFormLink', 
+                    placeholder: "Ссылка", data: { action: "input->effect-create#validateCurrentStep" } %>
+                    <%= image_tag("linkIcon.svg", alt: "Картинка рейтинга", class: "Q_linkIcon") %>
+                  </div>
+                </div>
+                
+                <div class='W_PreviewArea'>
+                  <h3 class="A_Header3">Превью эффекта</h3>
+                  <div class='O_EffectCardPreview O_EffectCardPreviewOver O_EffectCardPreviewSmall'>
+                    <div class='С_PhotoGalleryEffectPreview'>
+                      <div class='M_PhotoElement'>
+                        <%= image_tag("emptyImage.svg", alt: "Картинка", class: "Q_emptyImage") %>
+                      </div>
+                      <div class='M_PhotoElement'>
+                        <%= image_tag("emptyImage.svg", alt: "Картинка", class: "Q_emptyImage") %>
+                      </div>
+                    </div>
+                    <p class='A_TextEffectCard A_TextEffectCardPreview' data-effect-create-target="previewText">Название</p>
+                  </div>
+                  <div class="M_ModerationMessage">
+                    <div class="A_ModerationText">Твой эффект опубликуется, когда ссылка пройдет проверку модератором. Мы пришлем уведомление, когда это произойдет.</div>
+                  </div>
+                </div>
               </div>
             </div>
                         <%= f.button 'Далее', 
@@ -328,7 +588,7 @@
     </div>   
   </div>
 
-    <div class='O_allCategories'>
+    <div class='O_allCategories' data-search-collections-target="subscriptionsSection">
       <div class='M_aboutEffects'>
         <div class='W_allCategories'>
           <h1 class='A_Header1'>Коллекции и подписки</h1>
@@ -342,12 +602,14 @@
         <p class='A_TextEffectDescription A_TextEffectDescriptionCollection'>Референсы, ссылки на туториалы и эффекты удобно собирать в коллекции. Ты можешь создавать свои коллекции или подписываться на чужие</p>
       </div>
 
-      <div class='W_inputIcon W_searchInfoFeed'>
-        <input type="text" class='A_searchInput' placeholder='Поиск коллекций'>
+      <div class='W_inputIcon W_searchInfoFeed' data-controller="search-collections">
+        <input type="text" class='A_searchInput' placeholder='Поиск коллекций'
+               data-search-collections-target="input" 
+               data-action="input->search-collections#search">
         <%= image_tag("Q_IconSearch.svg", alt: "Картинка рейтинга", class: "Q_IconSearch") %>
       </div>
 
-      <div class="W_allCollections">
+      <div class="W_allCollections" data-search-collections-target="subscriptionsContainer">
         <div class="C_Collections">
           <% @collections.first(3).each do |collection| %>
             <%= render partial: "collections/collection", locals: { collection: collection, css_classes: { 
@@ -398,11 +660,11 @@
       <button class="A_ButtonPrimary A_ButtonPrimaryCreate" data-action="effect-create#open" type="button">Написать пост</button>
       <!-- , scope: :effect -->
       <%= form_with model: @effect, url: effects_path do |f| %>
-        <dialog class="modal" data-effect-create-target="dialog">
+        <dialog class="modal modalEffect" data-effect-create-target="dialog" id="desktop-effect-dialog">
           <div class="modal-content2">
             <div class="A_HeaderChoice">
-              <h3 class="A_Header3">Создание коллекции</h3>
-              <button class="modal-close" data-action="effect-create#close">
+              <h3 class="A_Header2">Создание эффекта</h3>
+              <button type="button" class="modal-close" data-action="effect-create#close">
                 <%= image_tag("Q_IconClose.svg", alt: "Картинка", class: "Q_IconClose") %>
               </button>
             </div>
@@ -411,19 +673,22 @@
                 Об эффекте
               </p>
               <p class="A_TextTagFeed" data-modal-target="step2">Инструкция</p>
-              <p class="A_TextTagFeed" data-modal-target="step3">Теги и ссылка</p>
-              <p class="A_TextTagFeed" data-modal-target="step4">Модерация</p>
+              <p class="A_TextTagFeed" data-modal-target="step3">Категории</p>
+              <p class="A_TextTagFeed" data-modal-target="step4">Теги</p>
+              <p class="A_TextTagFeed" data-modal-target="step5">Ссылка и превью</p>
             </div>
             <div class='O_CreateEffectInfo'>
               <div class='O_EffectInfo' data-effect-create-target="effectInfo">
                 <div class='M_CollectionForm'>
+                  <h3 class="A_Header3">Описание эффекта</h3>
                   <%= f.text_field :name, 
                   class: "A_InputForm", 
                   placeholder: 'Название эффекта',
-                  data: { effect_create_target: "effectName", action: "input->effect-create#updatePreviewText" } %>
+                  data: { effect_create_target: "effectName", action: "input->effect-create#updatePreviewName" } %>
                   <%= f.text_area :description, 
                    class: 'A_InputForm A_InputFormTextArea', 
-                   placeholder: 'Описание эффекта' %>
+                   placeholder: 'Описание эффекта',
+                   data: { effect_create_target: "effectDescription", action: "input->effect-create#validateCurrentStep" } %>
                 </div>
                 <div class='W_PhotoChoice'>
                   <div class='M_PhotoDescription'>
@@ -462,90 +727,195 @@
                 </div>
               </div>
               <div class='O_InstructionInfo' data-effect-create-target="instructionBlock" style="display: none;">
-                <div class='M_CollectionForm'>
+                <div class='M_CollectionForm M_CollectionFormBig'>
                   <p class="A_TextTag A_TextTagBig A_TextTagLight">Объясни, как импортировать эффект в программу или несколько программ. Опиши особенности использования и настройки эффекта</p>
                   <%= f.text_area :manual, 
                   class: 'A_InputForm A_InputFormTextArea A_InputFormTextAreaBig', 
                   placeholder: 'Инструкция по установке и настройке',
-                  data: { effect_create_target: "instructionText" } %>
+                  data: { effect_create_target: "instructionText", action: "input->effect-create#validateCurrentStep" } %>
                 </div>
-              </div>
-              <div class='W_PreviewArea' data-effect-create-target="previewArea">
-                <h3 class="A_Header3">Превью</h3>
-                <div class='O_EffectCardPreview O_EffectCardPreviewOver'>
-                  <div class='С_PhotoGalleryEffectPreview'>
-                    <div class='M_PhotoElement'>
-                      <%= image_tag("emptyImage.svg", alt: "Картинка", class: "Q_emptyImage") %>
-                    </div>
-                    <div class='M_PhotoElement'>
-                      <%= image_tag("emptyImage.svg", alt: "Картинка", class: "Q_emptyImage") %>
-                    </div>
-                  </div>
-                  <p class='A_TextEffectCard A_TextEffectCardPreview' data-effect-create-target="previewText">Название</p>
-                </div>
-              </div>        
+              </div>      
             </div>
-            <div class='O_TagsLinkInfo' data-effect-create-target="tagsLinkBlock" style="display: none;">
-              <div class='M_CollectionForm M_CollectionFormThird'>
+            <div class='O_CategoriesInfo' data-effect-create-target="categoriesBlock" style="display: none;">
+              <div class='M_CollectionForm M_CollectionFormCategory'>
                 <div class="M_CategoriesWrapper">
-                  <h3 class="A_Header3">Категория</h3>
-
+                  <h3 class="A_Header3">Выбор категории</h3>
                   <%= f.hidden_field :programs, value: "blender" %>
                   <%= f.hidden_field :platform, id: "selected_platform" %>
                   <div class="M_CategoriesContainer">
                     <% Effect::ALLOWED_TAGS.each do |category| %>
-                      <div class="M_Choice">
+                      <div class="M_Choice" data-controller="choice" data-action="click->choice#click">
                         <%= f.label "category_list_#{category}", human_readable_category(category), class: 'A_TextButtonSeсondary A_TextButtonSeсondaryBlack' %>
-                        <%= f.radio_button :category_list, category %>
+                        <%= f.radio_button :category_list, category, data: { action: "change->effect-create#validateCurrentStep" } %>
                       </div>
                     <% end %>
                   </div> 
                 </div>
-                
-                <div class="O_CreateEffectTagsArea">
+              </div>
+            </div>
+            <div class='O_TagsInfo' data-effect-create-target="tagsBlock" style="display: none;">
+              <div class='M_CollectionForm'>
+                <div class="O_CreateEffectTagsArea" data-controller="effect-tags">
                   <div class="O_TagsCreateEffect">
                     <h3 class="A_Header3">Теги</h3>
-                    <button class='A_Filter A_FilterCategory'>
-                      Задача
-                      <%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
-                    </button>
-                    <button class='A_Filter A_FilterCategory'>
-                      Программа
-                      <%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
-                    </button>
-                    <%= f.text_field :program_version, 
-                    class: 'A_Input A_InputVersion', 
-                    placeholder: 'Минимальная версия' %>
-                    <button class='A_Filter A_FilterCategory'>
-                      Платформа
-                      <%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
-                    </button>
-                  </div>
+                    
+                    <!-- Задачи -->
+                    <div class="Q_FilterDropdown">
+                      <button class='A_Filter A_FilterCategory A_TextTagBig' type="button" data-action="effect-tags#toggleTasks" data-effect-tags-target="taskToggleButton">
+                        Задача
+                        <%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+                      </button>
+                      
+                      <!-- Контейнер для отображения выбранных задач -->
+                      <div class="C_SelectedCategories" data-effect-tags-target="selectedTasks" style="display: none;">
+                        <div class="Q_SelectedCategoriesList" data-effect-tags-target="selectedTasksList">
+                          <!-- Выбранные задачи будут добавляться сюда динамически -->
+                        </div>
+                      </div>
+                      
+                      <div class="Q_CategoryDropdown Q_CategoryDropdownScroll" data-effect-tags-target="taskDropdown" style="display: none;">
+                        <div class="Q_CategoryList Q_CategoryListScroll">
+                          <% TaskHelper::TASK_MAPPINGS.each do |task_key, task_label| %>
+                            <label class="Q_CategoryItem custom-checkbox">
+                              <span><%= task_label %></span>
+                              <%= f.check_box "task_list_#{task_key}", { checked: false, data: { action: "effect-tags#selectTask effect-create#validateCurrentStep" } }, task_key, "" %>
+                              <span class="checkmark"></span>
+                            </label>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
 
-                  <div class="C_LinkArea">
-                    <h3 class="A_Header3">Ссылка на скачивание</h3>
-                    <p class="A_TextTag A_TextTagBig A_TextTagLight">Добавь действительную ссылку на облако или репозиторий, где можно скачать эффект</p>
-                    <div class='W_linkEffect'>
-                      <%= f.text_field :link_to, 
-                      class: 'A_InputForm A_InputFormLink', 
-                      placeholder: 'Ссылка' %>
-                      <%= image_tag("linkIcon.svg", alt: "Картинка рейтинга", class: "Q_linkIcon") %>
+                    <!-- Программы -->
+                    <div class="Q_FilterDropdown Q_CategoryDropdownScroll">
+                      <button class='A_Filter A_FilterCategory A_TextTagBig' type="button" data-action="effect-tags#togglePrograms" data-effect-tags-target="programToggleButton">
+                        Программа
+                        <%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+                      </button>
+                      
+                      <!-- Контейнер для отображения выбранных программ -->
+                      <div class="C_SelectedCategories" data-effect-tags-target="selectedPrograms" style="display: none;">
+                        <div class="Q_SelectedCategoriesList" data-effect-tags-target="selectedProgramsList">
+                          <!-- Выбранные программы будут добавляться сюда динамически -->
+                        </div>
+                      </div>
+                      
+                      <div class="Q_CategoryDropdown" data-effect-tags-target="programDropdown" style="display: none;">
+                        <div class="Q_CategoryList Q_CategoryListScrollProgram">
+                          <% [
+                            ["photoshop", "Photoshop"],
+                            ["lightroom", "Lightroom"],
+                            ["after_effects", "After Effects"],
+                            ["illustrator", "Illustrator"],
+                            ["premiere_pro", "Premiere Pro"],
+                            ["blender", "Blender"],
+                            ["affinity_photo", "Affinity Photo"],
+                            ["capture_one", "Capture One"],
+                            ["maya", "Maya"],
+                            ["cinema_4d", "Cinema 4D"],
+                            ["3ds_max", "3ds Max"],
+                            ["zbrush", "ZBrush"]
+                          ].each do |program_key, program_label| %>
+                            <label class="Q_CategoryItem custom-checkbox">
+                              <div class="Q_ProgramItemContent">
+                                <%= image_tag(program_icon(program_key), alt: program_label, class: "Q_ProgramIconDropdown") if program_icon(program_key) %>
+                                <span><%= program_label %></span>
+                              </div>
+                              <%= f.check_box "program_list_#{program_key}", { checked: false, data: { action: "effect-tags#selectProgram effect-create#updatePreviewPrograms effect-create#validateCurrentStep" } }, program_key, "" %>
+                              <span class="checkmark"></span>
+                            </label>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Платформы -->
+                    <div class="Q_FilterDropdown">
+                      <button class='A_Filter A_FilterCategory A_TextTagBig' type="button" data-action="effect-tags#togglePlatforms" data-effect-tags-target="platformToggleButton">
+                        Платформа
+                        <%= image_tag("Q_IconArrowBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+                      </button>
+                      
+                      <!-- Контейнер для отображения выбранных платформ -->
+                      <div class="C_SelectedCategories" data-effect-tags-target="selectedPlatforms" style="display: none;">
+                        <div class="Q_SelectedCategoriesList" data-effect-tags-target="selectedPlatformsList">
+                          <!-- Выбранные платформы будут добавляться сюда динамически -->
+                        </div>
+                      </div>
+                      
+                      <div class="Q_CategoryDropdown" data-effect-tags-target="platformDropdown" style="display: none;">
+                        <div class="Q_CategoryList">
+                          <% [
+                            ["windows", "Windows"],
+                            ["mac", "Mac"]
+                          ].each do |platform_key, platform_label| %>
+                            <label class="Q_CategoryItem custom-checkbox">
+                              <span><%= platform_label %></span>
+                              <%= f.check_box "platform_list_#{platform_key}", { checked: false, data: { action: "effect-tags#selectPlatform effect-create#validateCurrentStep" } }, platform_key, "" %>
+                              <span class="checkmark"></span>
+                            </label>
+                          <% end %>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class='O_ModerationInfo' data-effect-create-target="moderationBlock" style="display: none;">
-              <div class="M_ModerationMessage">
-                <div class="A_ModerationText">Твой эффект опубликуется, когда ссылка пройдет проверку модератором. Мы пришлем уведомление, когда это произойдет. Пока ты можешь посмотреть превью эффекта</div>
+            <div class='O_LinkPreviewInfo' data-effect-create-target="linkPreviewBlock" style="display: none; width: 100%;">
+              <div class='M_CollectionForm M_CollectionFormRow'>
+                <div class="C_LinkArea C_LinkAreaRow">
+                  <h3 class="A_Header3">Ссылка на скачивание</h3>
+                  <p class="A_TextTag A_TextTagBig A_TextTagLight">Добавь действительную ссылку на облако или репозиторий, где можно скачать эффект</p>
+                  <div class='W_linkEffect'>
+                    <%= f.text_field :link_to, 
+                    class: 'A_InputForm A_InputFormLink', 
+                    placeholder: "Ссылка", data: { action: "input->effect-create#validateCurrentStep" } %>
+                    <%= image_tag("linkIcon.svg", alt: "Картинка рейтинга", class: "Q_linkIcon") %>
+                  </div>
+                  <p class="A_TextTag A_TextTagBig A_TextTagLight">Твой эффект опубликуется, когда ссылка пройдет проверку модератором — мы пришлем уведомление</p>
+                  
+                </div>
+                <div class='W_PreviewArea'>
+                  <h3 class="A_Header3">Превью карточки эффекта</h3>
+                  
+                  <!-- Превью карточки эффекта -->
+                  <div class='O_EffectCard O_EffectCardPreview O_EffectCardPreviewSmall' data-effect-create-target="previewCard">
+                    <div class='С_PhotoGalleryEffect С_PhotoGalleryEffectImagesSmall'>
+                      <div class="A_PhotoEffect A_PhotoEffectPreview" data-effect-create-target="previewImageBefore">
+                        <%= image_tag("icon-attachment.svg", alt: "До применения", class: "file-icon") %>
+                        <p class="A_TextTag">До применения</p>
+                      </div>
+                      <div class="A_PhotoEffect A_PhotoEffectPreview" data-effect-create-target="previewImageAfter">
+                        <%= image_tag("icon-attachment.svg", alt: "После применения", class: "file-icon") %>
+                        <p class="A_TextTag">После применения</p>
+                      </div>
+                    </div>
+
+                    <div class='M_TextEffectСard'>
+                      <div class='W_TextEffectTopCard'>
+                        <p class='A_TextEffectCard' data-effect-create-target="previewName">Название эффекта</p>
+                      </div> 
+                    </div>
+                  </div>
+
+                  <p>Смотреть превью</p>
+                </div>
               </div>
             </div>
-            <%= f.button 'Далее', 
-             class: "A_ButtonPrimary A_ButtonPrimaryPreview", 
-             data: { effect_create_target: "nextButton", action: "effect-create#nextStep" },
-             type: "button" %>
+            <div class="W_buttonsSaveEffect">
+              <%= f.button 'Назад', 
+               class: "A_buttonLight", 
+               data: { effect_create_target: "backButton", action: "effect-create#previousStep" },
+               type: "button",
+               style: "display: none;" %>
+              <%= f.button 'Далее', 
+               class: "A_ButtonPrimary", 
+               data: { effect_create_target: "nextButton", action: "effect-create#nextStep" },
+               type: "button" %>
+            </div>
             <%= f.button 'Отправить', 
-             class: "A_ButtonPrimary A_ButtonPrimaryPreview", 
+             class: "A_ButtonPrimary", 
              type: "submit",
              style: "display: none;",
              data: { final_submit: true } %>

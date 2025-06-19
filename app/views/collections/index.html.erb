@@ -8,38 +8,89 @@
 
 <% content_for :title, "Collections" %>
 
-<div class='O_Collections'>
+<div class='O_Collections' data-controller="search-collections">
   <div class='W_allCollectionSections'>
-    <div class='M_collectionSection'>
+    <div class='M_collectionSection' data-search-collections-target="subscriptionsSection">
       <h2 class="A_Header1">Подписки</h2>
-      <% if @subscribed_collections.present? %>
-        <div class="C_Collections C_CollectionsAll">
-          <% @subscribed_collections.each do |collection| %>
-            <%= render partial: "collections/collection", locals: { collection: collection, css_classes: { 
-              header: "A_Blue", 
-              text: "A_White" 
-            }} %>
+
+      <div class='W_inputIcon W_inputIconSubscription'>
+        <input type="text" class='A_searchInput W_inputIconEffectSearch' placeholder='Поиск коллекций'
+               data-search-collections-target="input" 
+               data-action="input->search-collections#search">
+        <%= image_tag("Q_IconSearch.svg", alt: "Картинка рейтинга", class: "Q_IconSearch") %>
+      </div>
+
+      <div class='C_allCollectionsSubscription'>
+        <div class="C_Collections C_CollectionsAll" data-search-collections-target="subscriptionsContainer">
+          <% if @subscribed_collections.present? %>
+            <% @subscribed_collections.each do |collection| %>
+              <%= render partial: "collections/collection", locals: { collection: collection, css_classes: { 
+                header: "A_Blue", 
+                text: "A_White" 
+              }} %>
+            <% end %>
+          <% else %>
+            <p>У вас пока нет подписок на коллекции других пользователей.</p>
           <% end %>
         </div>
-      <% else %>
-        <p>У вас пока нет подписок на коллекции других пользователей.</p>
-      <% end %>
+
+        <!-- Секция "Другие коллекции" появляется только при поиске -->
+        <div class='O_Effects O_EffectsNewsFeed' data-search-collections-target="otherSection" style="display: none;">
+          <div class="M_HeaderEffects">
+            <h2 class="A_Header2">Другие коллекции</h2>
+          </div>
+          <div class="C_Effects C_EffectsTop" data-search-collections-target="otherContainer">
+            <!-- Результаты поиска будут добавляться сюда -->
+          </div>
+        </div>
+
+        <div class='O_Effects O_EffectsNewsFeed'>
+          <div class="M_HeaderEffects">
+            <h2 class="A_Header2">Похожие коллекции</h2>
+            <%= link_to similar_collections_path, class: 'A_buttonWatchAll' do %>
+              Смотреть все
+            <% end %>
+          </div>
+          <div class="C_Effects">
+            <% if @collections.any? %>
+              <% @collections.first(3).each do |collection| %>
+                <%= render partial: "collections/collection", locals: { collection: collection, css_classes: { 
+                  header: "A", 
+                  text: "A" 
+                }} %>
+              <% end %>
+            <% else %>
+              <div style="text-align: center; padding: 2vw;">
+                <p class="A_TextTag A_TextTagBig">Коллекций пока нет. Создайте первую!</p>
+                <%= link_to "Создать коллекцию", new_collection_path, class: "A_ButtonPrimary A_SubscribeButton", style: "margin-top: 1vw;" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>    
+    
 
     <div class='M_collectionSection'>
-      <div class='O_Effects O_EffectsNewsFeed'>
-        <div class="M_HeaderEffects">
-          <h2 class="A_Header2">Похожие коллекции</h2>
+      <div class="M_HeaderEffects">
+        <h2 class="A_Header1">Трендовые коллекции</h2>
+        <%= link_to trending_collections_path do %>
           <button class='A_buttonWatchAll'>Смотреть все</button>
-        </div>
-        <div class="C_Effects">
-          <% @collections.first(3).each do |collection| %>
+        <% end %>
+      </div>
+      <div class="C_Effects C_EffectsTop">
+        <% if @trending_collections&.any? %>
+          <% @trending_collections.each do |collection| %>
             <%= render partial: "collections/collection", locals: { collection: collection, css_classes: { 
               header: "A", 
               text: "A" 
             }} %>
           <% end %>
-        </div>
+        <% else %>
+          <div style="text-align: center; padding: 2vw;">
+            <p class="A_TextTag A_TextTagBig">Трендовых коллекций пока нет</p>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

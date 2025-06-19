@@ -52,13 +52,6 @@
 				<% end %>
 			</div>
 		</div>
-
-		<% if current_user && current_user == @user %>
-			<button class='A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryProfile'>
-				<%= image_tag("changeSettings.svg", alt: "Картинка", class: "Q_changeSettings") %>
-				Изменить настройки ленты
-			</button>
-		<% end %>
 	</div>
 
 	<div class='W_buttonsProfile'>
@@ -66,20 +59,45 @@
 			<%= link_to edit_profile_path(@user), class: "A_ButtonPrimaryProfile" do %>
 				<button class="A_ButtonPrimaryProfile">Редактировать</button>
 			<% end %>
-			<button class="A_ButtonDamage">Выйти</button>
+			<%= link_to destroy_user_session_path, method: :delete do %>
+				<button class="A_ButtonDamage">Выйти</button>
+			<% end %>
 		<% end %>
 	</div>
 
 	<div class='W_postsProfile'>
-		<h3 class="A_Header3">Посты</h3>
 		<% if @user.effects.any? %>
+			<h3 class="A_Header3">
+				<%= current_user == @user ? "Мои эффекты" : "Эффекты" %>
+			</h3>
 			<div class="W_EffectsCollection">
 				<% @user.effects.each do |effect| %>
 					<%= render partial: 'effects/collection_effect', locals: { effect: effect } %>
 				<% end %>
 			</div>
-		<% else %>
-			<p class="A_TextTag A_TextTagBig">Здесь появятся твои опубликованные эффекты</p>
+		<% end %>
+	</div>
+
+	<div class='W_postsProfile'>
+		<% 
+			collections_to_show = if current_user == @user
+				@user.collections
+			else
+				@user.collections.where(status: 'public')
+			end
+		%>
+		<% if collections_to_show.any? %>
+			<h3 class="A_Header3">
+				<%= current_user == @user ? "Мои коллекции" : "Коллекции" %>
+			</h3>
+			<div class="W_EffectsCollection">
+				<% collections_to_show.each do |collection| %>
+					<%= render partial: 'collections/collection', locals: { 
+						collection: collection, 
+						css_classes: { header: "A_Pink", text: "A_White" } 
+					} %>
+				<% end %>
+			</div>
 		<% end %>
 	</div>
 </div>
