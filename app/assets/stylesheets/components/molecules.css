@@ -791,6 +791,14 @@
   gap: 2.083vw;
 }
 
+.M_AuthForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.67vw;
+  width: 100%;
+}
+
 .M_userInfoEdit {
   gap: 3.438vw;
 }
@@ -799,7 +807,69 @@
   display: none;
 }
 
-@media screen and (max-width: 912px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+  .M_Info {
+    gap: 2.344vw;
+  }
+
+  .M_Creators {
+    gap: 1.042vw;
+  }
+
+  .M_PhotoEffect {
+    gap: 0.823vw;
+  }
+
+  .M_createPostCardPC,
+  .M_iphoneBanner {
+    display: none !important;
+  }
+
+  .M_allCategories {
+    width: 95.833vw;
+    border-radius: var(--tablet-button, 0.781vw);
+    padding: 3.125vw 3.906vw 8.333vw 3.906vw;
+  }
+
+  .M_Platforms {
+    width: 100%;
+  }
+
+  .M_Sort {
+    flex-direction: column;
+  }
+
+  .M_collectionSection {
+    padding: 2.474vw 3.906vw 5.527vw 3.906vw;
+    width: 95.833vw;
+    border-radius: var(--tablet-button, 0.781vw);
+  }
+
+  .M_appStore {
+    display: none;
+  }
+
+  .M_HeaderEffect {
+    > h1 {
+      text-align: center;
+    }
+  }
+
+  .M_userInfoSettings {
+    margin-top: 4.167vw;
+  }
+
+  .M_allStaff {
+    margin-top: 2.604vw;
+    gap: 3.125vw;
+  }
+
+  .M_userInfo {
+    gap: 5.99vw;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .M_aboutEffects {
     margin-top: 5.581vw;
     gap: 2.326vw;
@@ -809,10 +879,8 @@
     display: flex;
     padding: 0;
     justify-content: space-between;
-    align-items: flex-start;
-    flex-direction: column;
     gap: 2.326vw;
-    margin-top: 3.256vw;
+    padding-right: 3.077vw;
   }
 
   .M_TagsCollection {
@@ -824,12 +892,16 @@
   }
 
   .M_Info {
-    gap: 7.442vw;
+    gap: 4.615vw;
+  }
+
+  .M_appStore {
+    display: none;
   }
 
   .M_Creators,
   .M_Curators {
-    gap: 2.791vw;
+    gap: 2.051vw;
   }
 
   .M_createPostCard {
@@ -842,8 +914,24 @@
     background: var(--foggy-grey, #f5f5f5);
   }
 
+  .M_collectionSection {
+    padding: 7.949vw 2.051vw 8.485vw 2.051vw;
+    width: 93.846vw;
+    border-radius: var(--mobile-button, 1.538vw);
+
+    > h2 {
+      text-align: start;
+    }
+  }
+
   .M_createPostCardMobile {
     display: flex;
+  }
+
+  .M_HeaderEffect {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .M_createPostCardPC {
@@ -851,15 +939,22 @@
   }
 
   .M_PhotoEffect {
+    gap: 1.621vw;
+
     > p {
-      display: none;
+      font-size: 4.103vw;
     }
 
     > img {
-      width: 88.837vw;
-      height: 50.465vw;
+      width: 89.744vw;
+      height: 50.918vw;
     }
   }
+
+  .M_Buttons {
+    margin-top: 6.154vw;
+  }
+
   .M_Socials {
     gap: 1.86vw;
   }
@@ -871,6 +966,27 @@
     margin-left: 15.116vw;
   }
 
+  .M_MobileSearchResults {
+    margin-top: 7.69vw;
+  }
+
+  .M_MobileMenuContent {
+    width: 93.85vw;
+    min-height: 100vh;
+    height: fit-content;
+    padding: 2.05vw;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .M_MobileMenuContentBurger {
+    height: fit-content;
+    padding: 12.308vw 0;
+    align-items: center;
+    min-height: auto;
+  }
+
   .W_similarEffects .M_HeaderEffects {
     display: flex;
     justify-content: space-between;
@@ -879,8 +995,50 @@
     margin-bottom: 3.721vw;
   }
 
+  .M_HeaderEffectsMargin {
+    margin-bottom: 0 !important;
+  }
+
   .M_allStaff {
     margin-top: 6.977vw;
-    gap: 4.651vw;
+    gap: 6.154vw;
+  }
+
+  .M_allCategories {
+    width: 93.846vw;
+    border-radius: var(--mobile-button, 1.538vw);
+    padding: 7.59vw 2.051vw 12.41vw 2.051vw;
+
+    > h1 {
+      text-align: start;
+    }
+  }
+
+  .M_iphoneBanner {
+    display: none;
+  }
+
+  .M_HeaderEffects {
+    align-items: center;
+  }
+
+  .M_userInfoSettings {
+    margin-top: 6.154vw;
+    justify-content: center;
+  }
+
+  .M_userInfo {
+    flex-direction: column;
+    align-items: center;
+    gap: 3.077vw;
+  }
+
+  .M_HeaderEffectsCategories {
+    gap: 2.564vw;
+
+    > img {
+      width: 4.128vw;
+      height: 3.077vw;
+    }
   }
 }

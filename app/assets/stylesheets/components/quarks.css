@@ -267,6 +267,11 @@
   }
 }
 
+.Q_SectionBlurred {
+  opacity: 0.59;
+  filter: blur(15px);
+}
+
 .Q_roundElement {
   width: 0.417vw;
   height: 0.417vw;
@@ -908,11 +913,105 @@
   pointer-events: none;
 }
 
+.Q_SectionSignUp {
+  min-height: 47.917vw;
+  padding-top: 6.563vw;
+}
+
 .hidden {
   display: none;
 }
 
-@media screen and (max-width: 912px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+  .Q_ProgramIconImage {
+    width: 3.125vw;
+    height: 3.125vw;
+  }
+
+  .Q_StarIconBig,
+  .Q_ProgramIconEffect {
+    width: 4.688vw;
+    height: 4.688vw;
+  }
+
+  .Q_IconSearch {
+    left: 1.563vw;
+    top: 1.172vw;
+    width: 2.344vw;
+    height: 2.344vw;
+  }
+
+  .Q_arrowFollow {
+    width: 1.19vw;
+    height: 1.54vw;
+  }
+
+  .Q_searchIconTablet {
+    display: none;
+  }
+
+  .Q_IconArrowBlack {
+    width: 1.829vw;
+    height: 1.053vw;
+  }
+
+  .Q_RemoveCategoryButton,
+  .Q_CancelFilterIcon {
+    width: 1.791vw;
+    height: 1.791vw;
+  }
+
+  .Q_IconCategory1 {
+    bottom: -0.764vw;
+    left: 25.483vw;
+    width: 20.907vw;
+    height: 21.041vw;
+    border-radius: 1.058vw;
+    box-shadow: 0vw 0vw 1.764vw 0vw rgba(0, 0, 0, 0.15);
+  }
+
+  .Q_IconCategory2 {
+    top: 1.004vw;
+    left: 5.658vw;
+    width: 20.907vw;
+    height: 21.041vw;
+    border-radius: 1.058vw;
+    box-shadow: 0vw 0vw 1.764vw 0vw rgba(0, 0, 0, 0.15);
+  }
+
+  .Q_IconCategory3 {
+    top: 0.613vw;
+    left: 43.355vw;
+    width: 20.907vw;
+    height: 21.041vw;
+    border-radius: 1.058vw;
+    box-shadow: 0vw 0vw 1.764vw 0vw rgba(0, 0, 0, 0.15);
+  }
+
+  .Q_IconCategory4 {
+    bottom: -1.206vw;
+    right: 5.724vw;
+    width: 20.907vw;
+    height: 21.041vw;
+    border-radius: 1.058vw;
+    box-shadow: 0vw 0vw 1.764vw 0vw rgba(0, 0, 0, 0.15);
+  }
+
+  .Q_ButtonSecondary {
+    font-size: 1.823vw;
+  }
+
+  .Q_shareProfile {
+    width: 3.125vw;
+    height: 3.125vw;
+  }
+
+  .Q_NotificationsIcon {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .Q_Section {
     width: 100%;
     padding: 0 0 5.581vw 5.581vw;
@@ -945,10 +1044,40 @@
   }
 
   .Q_burgerMenu {
-    width: 4.186vw;
-    height: 0.465vw;
+    width: 6.154vw;
+    height: 0.641vw;
     background-color: #0e1111;
     border-radius: 2.326vw;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  .Q_roundElement {
+    width: 2.417vw;
+    height: 2.417vw;
+    bottom: 0.9vw;
+    right: -2.427vw;
+  }
+
+  .Q_SearchIconBlack {
+    width: 6.67vw;
+    height: 6.67vw;
+    cursor: pointer;
+  }
+
+  .A_burgerMenu.active .Q_burgerMenu:nth-child(1),
+  .A_burgerMenu.Q_burgerMenuActive .Q_burgerMenu:nth-child(1) {
+    transform: rotate(45deg) translateY(2.179vw);
+  }
+
+  .A_burgerMenu.active .Q_burgerMenu:nth-child(2),
+  .A_burgerMenu.Q_burgerMenuActive .Q_burgerMenu:nth-child(2) {
+    opacity: 0;
+  }
+
+  .A_burgerMenu.active .Q_burgerMenu:nth-child(3),
+  .A_burgerMenu.Q_burgerMenuActive .Q_burgerMenu:nth-child(3) {
+    transform: rotate(-45deg) translateY(-2.179vw);
   }
 
   .Q_registrationFormImage2 {
@@ -977,7 +1106,8 @@
 
   .Q_registrationFormImage3,
   .Q_registrationFormImage6,
-  .Q_registrationFormImage1 {
+  .Q_registrationFormImage1,
+  .Q_NotificationsIcon {
     display: none;
   }
 
@@ -995,19 +1125,19 @@
     height: 9.168vw;
   }
   .Q_ProgramIconEffect {
-    width: 8.372vw;
-    height: 8.372vw;
+    width: 10.769vw;
+    height: 10.769vw;
     border-radius: 100%;
-    border: 0.465vw solid var(--grey-tag, #e1e1e1);
+    border: 0.113vw solid var(--grey-tag, #e1e1e1);
     background: var(--porcelain-white, #fff);
   }
   .Q_arrowFollow {
-    height: 3.279vw;
+    height: 4.615vw;
     width: auto;
   }
   .Q_StarIconBig {
-    width: 7.397vw;
-    height: 7.397vw;
+    width: 9.231vw;
+    height: 9.231vw;
   }
   .Q_StarIconFeedback {
     width: 4.651vw;
@@ -1019,9 +1149,13 @@
   }
 
   .Q_ProgramIconImage {
-    width: 3.721vw;
-    height: 3.721vw;
-    margin-right: 0.93vw;
+    width: 8.447vw;
+    height: 8.447vw;
+  }
+
+  .Q_shareProfile {
+    width: 6.154vw;
+    height: 6.154vw;
   }
 
   .Q_ProgramIconDropdown {

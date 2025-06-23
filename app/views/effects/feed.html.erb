@@ -1,0 +1,67 @@
+<%
+  set_meta_tags(
+    title: "Лента",
+    description: "Эффекты, подобранные специально для вас на основе ваших предпочтений",
+    keywords: "персональная лента, эффекты, пресеты"
+  )
+%>
+
+<% content_for :title, "Personal Feed" %>
+
+<div class='Q_Section Q_SectionActive Q_SectionActiveMyEffect' data-controller="feed-search">
+  <div class="O_myFeed">
+    <div class='M_aboutEffects'>
+      <h1 class='A_Header1'>Лента</h1>
+    </div>
+
+    <div class="W_searchPublishPost">
+        <div class='W_inputIcon'>
+          <input type="text" 
+                class='A_searchInput W_inputIconEffectSearch' 
+                placeholder='Поиск эффектов'
+                data-feed-search-target="searchInput"
+                data-action="input->feed-search#search">
+          <%= image_tag("Q_IconSearch.svg", alt: "Картинка рейтинга", class: "Q_IconSearch") %>
+        </div>
+      </div>
+
+    <% if @effects.any? %>
+      <div class='W_allMyEffects'>
+        <div class="C_Effects C_EffectsMy" data-feed-search-target="effectsContainer">
+          <% @effects.each do |effect| %>
+            <%= render partial: "collection_effect", locals: { effect: effect } %>
+          <% end %>
+        </div>
+        
+        <!-- Сообщение "ничего не найдено" -->
+        <div class="W_noResults" data-feed-search-target="noResults" style="display: none;">
+          <div class="M_EmptyState">
+            <h2 class="A_Header2">Ничего не найдено</h2>
+            <p class="A_TextEffectDescription">
+              По вашему запросу не найдено эффектов в персональной ленте.
+              Попробуйте изменить поисковый запрос.
+            </p>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div class='Q_EmptyState'>
+        <div class='M_EmptyState'>
+          <h2 class="A_Header2">Пока нет эффектов</h2>
+          <p class="A_TextEffectDescription">
+            По вашим настройкам пока нет подходящих эффектов. 
+            Попробуйте изменить предпочтения или загрузите свои эффекты.
+          </p>
+          <div class="W_EmptyStateActions">
+            <%= link_to effects_path, class: "A_ButtonPrimary" do %>
+              Изменить настройки ленты
+            <% end %>
+            <%= link_to new_effect_path, class: "A_ButtonSecondary A_ButtonSecondaryGray" do %>
+              Создать эффект
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

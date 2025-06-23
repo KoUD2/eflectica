@@ -16,6 +16,10 @@
   align-items: flex-end;
 }
 
+.W_AuthorRatingMobile {
+  display: none;
+}
+
 .W_allCategories {
   display: flex;
   justify-content: space-between;
@@ -33,11 +37,16 @@
   position: relative;
 }
 
+.W_mobileIconsHeader {
+  display: none;
+}
+
 .W_ProgressLine {
   width: 100%;
   height: 0.469vw;
   border-radius: 0.417vw;
   margin-bottom: 0.755vw;
+  margin-top: 0.91vw;
   background: var(--soft-grey, #ebebeb);
   position: relative;
 }
@@ -395,6 +404,10 @@
   }
 }
 
+.W_InstructionEffectTablet {
+  display: none;
+}
+
 .W_More {
   margin-top: 2.813vw;
   display: flex;
@@ -439,6 +452,12 @@
   h2 {
     text-align: start;
   }
+}
+
+.W_allCommentsTablet,
+.W_PlatformAreaTablet,
+.W_CategoryAreaTablet {
+  display: none;
 }
 
 .W_CommentArea {
@@ -843,7 +862,7 @@
 
 .W_postsProfile {
   margin-top: 2.813vw;
-  width: 24.271vw;
+  width: 87.917vw;
   display: flex;
   flex-direction: column;
   gap: 0.833vw;
@@ -902,6 +921,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.625vw;
+}
+
+.W_socialTgDescMobile {
+  display: none;
 }
 
 .W_collectionElements {
@@ -994,6 +1017,20 @@
   gap: 0.833vw;
 }
 
+.W_Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
 .W_searchPublishPost {
   display: flex;
   justify-content: space-between;
@@ -1010,7 +1047,141 @@
   display: none;
 }
 
-@media screen and (max-width: 912px) {
+.W_noResults {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 30vh;
+  padding: 2rem;
+}
+
+.W_noResults .M_EmptyState {
+  text-align: center;
+  max-width: 400px;
+}
+
+.W_noResults .A_Header2 {
+  margin-bottom: 1rem;
+  color: var(--charcoal-black);
+}
+
+.W_noResults .A_TextEffectDescription {
+  color: var(--ordinary-grey);
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .W_similarEffects {
+    width: 95.833vw;
+    height: 33.203vw;
+    border-radius: var(--tablet-button, 0.781vw);
+  }
+
+  .W_InstructionEffectTablet,
+  .W_PlatformAreaTablet,
+  .W_allCommentsTablet,
+  .W_CategoryAreaTablet {
+    display: flex;
+  }
+
+  .W_InstructionEffectPC,
+  .W_PlatformAreaPC,
+  .W_CategoryAreaPC,
+  .W_allCommentsPC,
+  .W_ShareAreaNoneTablet {
+    display: none;
+  }
+
+  .W_searchInfo {
+    margin-top: 2.083vw;
+  }
+
+  .W_CategoryAreaTablet {
+    margin-top: 0;
+    gap: 1.042vw;
+  }
+
+  .W_PlatformAreaTablet {
+    gap: 1.302vw;
+  }
+
+  .W_programmsTablet {
+    display: flex;
+    gap: 1.042vw;
+  }
+
+  .W_inputIconEffectSearch {
+    width: 28.646vw;
+  }
+
+  .W_inputIconSubscription {
+    margin-top: 1.563vw;
+  }
+
+  .W_coverCategory {
+    width: 88.021vw;
+    height: 28.646vw;
+    border-radius: var(--tablet-button, 0.781vw);
+  }
+
+  .W_allButtonsCategory {
+    align-items: flex-start;
+  }
+
+  .W_allCollectionSections {
+    gap: 1.042vw;
+  }
+
+  .W_shareRaiting {
+    flex-direction: column;
+    gap: 3.125vw;
+  }
+
+  .W_shareProfile {
+    gap: 3.125vw;
+  }
+
+  .W_nameUser {
+    gap: 1.042vw;
+  }
+
+  .W_userInfo {
+    flex-direction: row;
+    gap: 6.51vw;
+    width: fit-content;
+  }
+
+  .W_socialTgTablet {
+    margin-top: 0;
+  }
+
+  .W_allInfoProfole {
+    flex-direction: column;
+    gap: 3.125vw;
+  }
+
+  .W_buttonsProfile {
+    margin-top: 3.125vw;
+    flex-direction: column;
+    gap: 1.042vw;
+    width: 23.698vw;
+  }
+
+  .W_tgSection {
+    gap: 1.042vw;
+  }
+
+  .W_postsProfile {
+    margin-top: 5.469vw;
+    width: 86.771vw;
+    gap: 1.563vw;
+  }
+
+  .W_collectionElements {
+    gap: 1.563vw;
+  }
+}
+
+@media screen and (max-width: 767px) {
   body,
   html {
     overflow-x: hidden;
@@ -1028,6 +1199,14 @@
     box-sizing: border-box;
   }
 
+  .W_inputIconEffectSearch {
+    width: 89.744vw;
+  }
+
+  .W_inputIconSubscription {
+    margin-top: 3.077vw;
+  }
+
   .W_allSectionsMain {
     gap: 3.428vw;
     width: 100%;
@@ -1043,6 +1222,12 @@
     flex-direction: column;
   }
 
+  .W_shareProfile {
+    flex-direction: column;
+    gap: 3.077vw;
+    align-items: flex-start;
+  }
+
   .W_Effects .C_Effects {
     flex-wrap: nowrap;
     width: 100%;
@@ -1055,6 +1240,7 @@
 
   .W_TextEffectTopCard {
     gap: 2.791vw;
+    padding-left: 3.077vw;
   }
 
   .W_allCategories {
@@ -1069,6 +1255,7 @@
 
   .W_searchInfo {
     gap: 4.651vw;
+    margin-top: 3.077vw;
   }
 
   .W_allCollections {
@@ -1103,7 +1290,7 @@
   .W_allContent {
     align-items: flex-start;
     width: 100vw;
-    padding: 5.581vw;
+    padding: 6.154vw 2.051vw;
   }
   .W_HintModeration {
     display: none;
@@ -1112,34 +1299,41 @@
     width: 100%;
   }
   .W_PlatformArea {
-    margin-top: 6.977vw;
-    gap: 4.651vw;
+    margin-top: 7.179vw;
+    gap: 3.077vw;
   }
   .W_CategoryArea {
-    margin-top: 6.977vw;
-    gap: 4.651vw;
+    margin-top: 6.154vw;
+    gap: 2.051vw;
   }
   .W_InstructionEffect {
-    margin-top: 6.977vw;
-    width: 88.837vw;
-    gap: 4.651vw;
+    margin-top: 10.769vw;
+    width: 89.744vw;
+    gap: 4.103vw;
   }
   .W_shareRaiting {
     flex-direction: column-reverse;
     gap: 4.651vw;
   }
   .W_RatingArea {
-    gap: 4.651vw;
+    gap: 2.051vw;
   }
   .W_RatingAreaMobile {
     gap: 0.465vw;
   }
+  .W_RatingAreaNone {
+    display: none;
+  }
   .W_ShareArea {
-    gap: 4.651vw;
+    gap: 3.077vw;
+  }
+
+  .W_ShareAreaNone {
+    display: none;
   }
   .W_allComments {
-    margin-top: 4.651vw;
-    gap: 4.651vw;
+    margin-top: 6.154vw;
+    gap: 4.103vw;
   }
   .W_CommentArea {
     padding: 3.721vw 5.581vw;
@@ -1147,10 +1341,17 @@
     border-radius: 1.395vw;
   }
 
-  .W_similarEffects {
-    margin-top: 4.651vw;
+  .W_AuthorRatingMobile {
+    margin-top: 6.154vw;
     width: 100%;
-    max-width: 100vw;
+    display: flex;
+    gap: 6.923vw;
+  }
+
+  .W_similarEffects {
+    margin-top: 3.077vw;
+    width: 93.846vw;
+    border-radius: var(--mobile-button, 1.538vw);
     height: auto !important;
     overflow-x: hidden;
     padding: 0 !important;
@@ -1160,6 +1361,10 @@
 
   .W_allButtonsCategory {
     display: none;
+  }
+
+  .W_collectionElements {
+    gap: 3.077vw;
   }
 
   .W_coverCategory {
@@ -1172,7 +1377,64 @@
     background: transparent;
   }
 
-  .W_commonLinksHeader {
+  .W_allInfoProfole {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .W_userInfo {
+    width: fit-content;
+  }
+
+  .W_nameUser {
+    align-items: center;
+  }
+
+  .W_socialTgDesc {
+    margin-top: 4.103vw;
+    gap: 2.051vw;
+    width: 89.744vw;
+  }
+
+  .W_mobileIconsHeader {
+    display: flex;
+    align-items: center;
+    gap: 4.1vw;
+    position: absolute;
+    top: 18.08vw;
+    right: 13vw;
+    z-index: 1001;
+  }
+
+  .W_buttonsProfile {
+    margin-top: 6.154vw;
+    flex-direction: column;
+    gap: 2.051vw;
+    width: 89.744vw;
+  }
+
+  .W_postsProfile {
+    margin-top: 8.205vw;
+    width: 100%;
+    gap: 3.077vw;
+  }
+
+  .W_EffectsCollection {
+    gap: 2.051vw;
+    width: 90vw;
+    flex-wrap: nowrap;
+  }
+
+  .W_commonLinksHeader,
+  .W_socialTgMobile {
     display: none;
+  }
+
+  .W_tgSection {
+    gap: 2.051vw;
+  }
+
+  .W_socialTgDescMobile {
+    display: flex;
   }
 }

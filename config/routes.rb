@@ -119,6 +119,7 @@ Rails.application.routes.draw do
   resources :effects do
     collection do
       get 'my', to: 'effects#my', as: :my
+      get 'feed', to: 'effects#feed', as: :feed
       post 'save_preferences', to: 'effects#save_preferences'
     end
     member do
@@ -159,6 +160,9 @@ Rails.application.routes.draw do
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all
   match "/422", to: "errors#unprocessable_entity", via: :all
+
+  # Static files with CORS headers
+  get '/uploads/*path', to: 'uploads#show', constraints: { path: /.*/ }
 
   # Defines the root path route ("/")
   root "welcome#index"

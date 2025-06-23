@@ -124,7 +124,7 @@
 						<% end %>
 					</div>
 				
-					<div class="C_Effects C_EffectsCategories <%= 'hidden' unless @collection_id && @categories.first(3).include?(category) %>" 
+					<div class="C_Effects C_EffectsCategories C_EffectsCategoriesMobile <%= 'hidden' unless @collection_id && @categories.first(3).include?(category) %>" 
 							 data-category-target="effectsItem" 
 							 data-category-name="<%= category %>">
 						<% @effects.tagged_with(category, on: :categories).approved.each do |effect| %>

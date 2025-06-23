@@ -27,12 +27,15 @@
   <div class='W_allContent'>
     <div class='M_HeaderEffect'>
       <h1 class='A_Header1 A_HeaderDark'><%= @effect.name %></h1>
-      <div class="W_HintModeration">
-        <%= image_tag("HintModeration.svg", alt: "Картинка рейтинга", class: 'A_hintModeration') %>
-        <div class="Q_ModerationTooltip">
-          Ссылка на скачивание проверена модератором и безопасна
+      
+      <% if @effect.is_secure == "Одобрено" %>
+        <div class="W_HintModeration">
+          <%= image_tag("HintModeration.svg", alt: "Картинка рейтинга", class: 'A_hintModeration') %>
+          <div class="Q_ModerationTooltip">
+            Ссылка на скачивание проверена модератором и безопасна
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
     <div class='С_PhotoGalleryEffect2'>
       <div class='M_PhotoEffect'>
@@ -55,95 +58,148 @@
     <div class='O_allContentEffect'>
       <div class='W_infoEffect'>
         <p class='A_TextEffectDescription'><%= @effect.description %></p>
-        <div class='M_Buttons'>
-          <button class='A_ButtonPrimary A_MorePC'>
-            <%= image_tag("DownloadButton.svg", alt: "Картинка рейтинга", class: 'A_DownloadButton') %>
-            Установить
-          </button>
-         
-          <div class="popup-container" data-controller="popup" data-popup-effect-id="<%= @effect.id %>">
-            <button class="A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryPMobile" data-action="click->popup#open">
-              <%= image_tag("AddToCollectionIcon.svg", alt: "Картинка рейтинга", class: "A_AddToCollectionIcon") %>
-              Добавить в коллекцию
+        <% if @effect.is_secure == "Одобрено" %>
+          <div class='M_Buttons'>
+            <button class='A_ButtonPrimary A_MorePC'>
+              <%= image_tag("DownloadButton.svg", alt: "Картинка рейтинга", class: 'A_DownloadButton') %>
+              Установить
             </button>
-            <div class="popup-backdrop hidden" data-popup-target="backdrop"></div>
-            <div id="popup" class="O_ChoiceCollection hidden" data-popup-target="popup" data-effect-collections="<%= @effect_collections.to_json %>">
-              <div class="A_HeaderChoice">
-                <h3 class='A_Header2'>Выбери коллекцию</h3>
-                <button id="closePopup" class="Q_IconClose" data-action="click->popup#close">
-                  <%= image_tag("CloseCollection.svg", alt: "Картинка рейтинга", class: 'A_CloseCollectionIcon') %>
-                </button>
-              </div>
-              <div class="Q_CategoryList Q_CategoryListCollection">
-                <label class="Q_CategoryItem custom-checkbox">
-                  <div class='A_TextCheck'>
-                    <%= image_tag("FavoriteIcon.svg", alt: "Картинка рейтинга", class: 'A_FavoriteCollectionIcon') %>
-                    <p class='A_TextButtonSeсondary A_TextButtonSeсondaryPink'>Избранное</p>
-                  </div>
-                  <input type="checkbox" name="collection" value="favorite" data-popup-target="favoriteCheckbox"
-                         <%= 'checked' if user_signed_in? && current_user.favorites.exists?(effect: @effect) %>>
-                  <span class="checkmark"></span> 
-                </label>
-                <% if @user_collections %>
-                  <% @user_collections.each do |collection| %>
-                    <label class="Q_CategoryItem custom-checkbox">
-                      <p class='A_TextButtonSeсondary A_TextButtonSeсondaryBlack'><%= collection.name %></p>
-                      <input type="checkbox" name="collection" value="<%= collection.id %>" 
-                            data-popup-target="collectionCheckbox"
-                            <%= 'checked' if @effect_collections.include?(collection.id) %>>
-                      <span class="checkmark"></span>
-                    </label>
-                  <% end %>
-                <% end %>
-              </div>
-              <div class='C_allButtonsCollection' data-controller="collection-modal">
-                <button class="A_buttonWatchAll" data-action="click->collection-modal#open">
-                  Создать коллекцию
-                </button>
-                <button class="A_ButtonPrimary A_ButtonPrimarySave" data-action="click->popup#saveCollections">
-                  Сохранить
-                </button>
-                
-                <!-- Modal для создания коллекции -->
-                <div class="modal-overlay hidden" data-collection-modal-target="modal">
-                  <div class="S_FeedSettings">
-                    <div class="A_HeaderChoice">
-                      <h3 class="A_Header2">Создать коллекцию</h3>
-                      <button class="modal-close" data-action="collection-modal#close">
-                        <%= image_tag("Q_IconClose.svg", alt: "Картинка", class: "Q_IconClose") %>
-                      </button>
+          
+            <div class="popup-container" data-controller="popup" data-popup-effect-id="<%= @effect.id %>">
+              <button class="A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryPMobile" data-action="click->popup#open">
+                <%= image_tag("AddToCollectionIcon.svg", alt: "Картинка рейтинга", class: "A_AddToCollectionIcon") %>
+                Добавить в коллекцию
+              </button>
+              <div class="popup-backdrop hidden" data-popup-target="backdrop"></div>
+              <div id="popup" class="O_ChoiceCollection hidden" data-popup-target="popup" data-effect-collections="<%= @effect_collections.to_json %>">
+                <div class="A_HeaderChoice">
+                  <h3 class='A_Header2'>Выбери коллекцию</h3>
+                  <button id="closePopup" class="Q_IconClose" data-action="click->popup#close">
+                    <%= image_tag("CloseCollection.svg", alt: "Картинка рейтинга", class: 'A_CloseCollectionIcon') %>
+                  </button>
+                </div>
+                <div class="Q_CategoryList Q_CategoryListCollection">
+                  <label class="Q_CategoryItem custom-checkbox">
+                    <div class='A_TextCheck'>
+                      <%= image_tag("FavoriteIcon.svg", alt: "Картинка рейтинга", class: 'A_FavoriteCollectionIcon') %>
+                      <p class='A_TextButtonSeсondary A_TextButtonSeсondaryPink'>Избранное</p>
                     </div>
-                    <h3 class="A_Header3 A_Header3CollectionDesc">Описание</h3>
-                    <%= form_with model: Collection.new, url: collections_path, method: :post, local: true do |f| %>
-                      <div class='M_CollectionForm'>
-                        <%= f.text_field :name, placeholder: 'Название коллекции', class: 'A_InputFormName' %>
-                        <%= f.text_area :description, placeholder: 'Описание коллекции', class: 'A_InputFormDescription' %>
-                      </div>
-                      <div class="C_PrivateSettings">
-                        <h3 class="A_Header3">Настройки доступа</h3>
-                        <div class='C_RadioSettings'>
-                          <div class="M_RadioSettings">
-                            <%= f.radio_button :status, 'public', id: 'public' %>
-                            <%= f.label :status, 'Сделать коллекцию публичной', for: 'public', class: 'A_TextTag A_TextTagBig' %>
-                          </div>
-                          <div class="M_RadioSettings">
-                            <%= f.radio_button :status, 'private', id: 'private' %>
-                            <%= f.label :status, 'Сделать коллекцию приватной', for: 'private', class: 'A_TextTag A_TextTagBig' %>
-                          </div>
-                        </div>
-                        <p class="A_TextCaption A_TextCaptionCollection">
-                          Если сделать коллекцию публичной, на нее могут подписаться другие пользователи.
-                        </p>
-                      </div>
-                      <%= f.submit 'Создать', class: 'A_ButtonPrimary A_ButtonPrimaryCollectionCreate' %>
+                    <input type="checkbox" name="collection" value="favorite" data-popup-target="favoriteCheckbox"
+                          <%= 'checked' if user_signed_in? && current_user.favorites.exists?(effect: @effect) %>>
+                    <span class="checkmark"></span> 
+                  </label>
+                  <% if @user_collections %>
+                    <% @user_collections.each do |collection| %>
+                      <label class="Q_CategoryItem custom-checkbox">
+                        <p class='A_TextButtonSeсondary A_TextButtonSeсondaryBlack'><%= collection.name %></p>
+                        <input type="checkbox" name="collection" value="<%= collection.id %>" 
+                              data-popup-target="collectionCheckbox"
+                              <%= 'checked' if @effect_collections.include?(collection.id) %>>
+                        <span class="checkmark"></span>
+                      </label>
                     <% end %>
-                  </div>      
+                  <% end %>
+                </div>
+                <div class='C_allButtonsCollection' data-controller="collection-modal">
+                  <button class="A_buttonWatchAll" data-action="click->collection-modal#open">
+                    Создать коллекцию
+                  </button>
+                  <button class="A_ButtonPrimary A_ButtonPrimarySave" data-action="click->popup#saveCollections">
+                    Сохранить
+                  </button>
+                  
+                  <!-- Modal для создания коллекции -->
+                  <div class="modal-overlay hidden" data-collection-modal-target="modal">
+                    <div class="S_FeedSettings">
+                      <div class="A_HeaderChoice">
+                        <h3 class="A_Header2">Создать коллекцию</h3>
+                        <button class="modal-close" data-action="collection-modal#close">
+                          <%= image_tag("Q_IconClose.svg", alt: "Картинка", class: "Q_IconClose") %>
+                        </button>
+                      </div>
+                      <h3 class="A_Header3 A_Header3CollectionDesc">Описание</h3>
+                      <%= form_with model: Collection.new, url: collections_path, method: :post, local: true do |f| %>
+                        <div class='M_CollectionForm'>
+                          <%= f.text_field :name, placeholder: 'Название коллекции', class: 'A_InputFormName' %>
+                          <%= f.text_area :description, placeholder: 'Описание коллекции', class: 'A_InputFormDescription' %>
+                        </div>
+                        <div class="C_PrivateSettings">
+                          <h3 class="A_Header3">Настройки доступа</h3>
+                          <div class='C_RadioSettings'>
+                            <div class="M_RadioSettings">
+                              <%= f.radio_button :status, 'public', id: 'public' %>
+                              <%= f.label :status, 'Сделать коллекцию публичной', for: 'public', class: 'A_TextTag A_TextTagBig' %>
+                            </div>
+                            <div class="M_RadioSettings">
+                              <%= f.radio_button :status, 'private', id: 'private' %>
+                              <%= f.label :status, 'Сделать коллекцию приватной', for: 'private', class: 'A_TextTag A_TextTagBig' %>
+                            </div>
+                          </div>
+                          <p class="A_TextCaption A_TextCaptionCollection">
+                            Если сделать коллекцию публичной, на нее могут подписаться другие пользователи.
+                          </p>
+                        </div>
+                        <%= f.submit 'Создать', class: 'A_ButtonPrimary A_ButtonPrimaryCollectionCreate' %>
+                      <% end %>
+                    </div>      
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>          
+            </div>          
+          </div>
+        <% end %>
+
+        <div class='W_InstructionEffect W_InstructionEffectTablet'>
+          <p class='A_Header3'>Инструкция по использованию</p>
+          <%= sanitize(@effect.manual.gsub('\\n', "\n").gsub(/\n/, '<br>')) %>
         </div>
-        <div class='W_PlatformArea'>
+
+        <% if @effect.is_secure == "Одобрено" %>
+          <div class='W_allComments W_allCommentsTablet'>
+            <h2 class="A_Header3">Комментарии (<%= @effect.comments.size %>)</h2>
+              <%= render partial: 'comments/my_comment', locals: { effect: @effect, current_user: current_user } %>
+            <div class='C_Comments'>
+              <% 
+                # Исключаем комментарий текущего пользователя из общего списка, 
+                # так как он отображается в my_comment
+                other_comments = current_user ? @effect.comments.where.not(user: current_user) : @effect.comments 
+              %>
+              <%= render partial: 'comments/comment', collection: other_comments %>
+            </div>
+          </div>
+        <% end %>
+        
+        <% if @effect.is_secure == "Одобрено" %>
+          <div class="W_AuthorRatingMobile">
+            <div class='W_ShareArea W_ShareAreaUser'>
+                <h2 class="A_Header3">Автор эффекта</h2>
+                <div class="M_Socials">
+                  <% if @effect.user.present? %>
+                    <%= link_to profile_path(@effect.user), class: "A_UserCard" do %>
+                      <% if @effect.user.avatar.present? %>
+                        <%= image_tag(@effect.user.avatar.url, alt: "User avatar", class: "A_UserAvatar A_UserAvatarSize") %>
+                      <% else %>
+                        <%= image_tag("avatar_default.png", alt: "Default avatar", class: "A_UserAvatar") %>
+                      <% end %>
+                      <span class="A_Username">@<%= @effect.user.email.split('@').first %></span>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            <div class='W_RatingArea'>
+                <h2 class="A_Header3">Рейтинг</h2>
+                <div class='W_RatingArea W_RatingAreaMobile'>
+                  <div class='A_Rating'>
+                    <%= image_tag("Q_StarIcon.svg", alt: "Картинка рейтинга", class: 'Q_StarIconBig') %>
+                    <p class='A_Header1 A_Header1Purple'><%= @effect.average_rating || "Нет рейтинга" %></p>
+                  </div>
+                  <p class='A_TextTag A_TextTagLight'>На основе <%= @effect.ratings.size %> оценок</p>
+                </div>
+              </div>
+          </div>
+        <% end %>
+
+        <div class='W_PlatformArea W_PlatformAreaPC'>
           <p class='A_Header3'>Подойдёт для</p>
           <div class="C_PlatformArea">
             			<% @effect.programs_with_versions.each do |program_data| %>
@@ -172,7 +228,7 @@
             </div>            
           </div>          
         </div>
-        <div class='W_CategoryArea'>
+        <div class='W_CategoryArea W_CategoryAreaPC'>
           <p class='A_Header3'>Категория</p>
           <!-- DEBUG: Category list: <%= @effect.category_list.inspect %> -->
           <!-- DEBUG: Categories from tags: <%= @effect.categories.pluck(:name).inspect %> -->
@@ -189,7 +245,7 @@
           </ul>          
         </div>
         
-        <div class='W_CategoryArea'>
+        <div class='W_CategoryArea W_CategoryAreaPC'>
           <p class='A_Header3'>Задачи</p>
           <!-- DEBUG: Task list: <%= @effect.task_list.inspect %> -->
           <!-- DEBUG: Tasks from tags: <%= @effect.tasks.pluck(:name).inspect %> -->
@@ -205,18 +261,20 @@
           </div>          
         </div>
         
-        <div class='W_InstructionEffect'>
+        <div class='W_InstructionEffect W_InstructionEffectPC'>
           <p class='A_Header2'>Инструкция по использованию</p>
           <%= sanitize(@effect.manual.gsub('\\n', "\n").gsub(/\n/, '<br>')) %>
         </div>
 
-        <div class='W_More M_createPostCardPC'>
-          <h2 class='A_Header2 A_Header2Settings'>Хочешь больше похожих эффектов? <span>Настрой ленту!</span></h2>
-          <div class='M_Buttons M_ButtonsSettings'>
-            <button class='A_ButtonPrimary A_ButtonPrimarySettings'>Перейти к настройке ленты</button>
-            <button class='A_TextButtonSeсondary'>Больше не показывать</button>
+        <% if @effect.is_secure == "Одобрено" %>
+          <div class='W_More M_createPostCardPC'>
+            <h2 class='A_Header2 A_Header2Settings'>Хочешь больше похожих эффектов? <span>Настрой ленту!</span></h2>
+            <div class='M_Buttons M_ButtonsSettings'>
+              <button class='A_ButtonPrimary A_ButtonPrimarySettings'>Перейти к настройке ленты</button>
+              <button class='A_TextButtonSeсondary'>Больше не показывать</button>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
       <div>
         <% if current_user && current_user.is_admin? %>
@@ -239,7 +297,8 @@
             </div>
           </div>
         <% else %>
-          <div class='W_shareRaiting'>
+          <div class='W_shareRaiting W_ShareAreaNone'>
+          <% if @effect.is_secure == "Одобрено" %>
             <div class='W_ShareArea W_ShareAreaUser'>
               <h2 class="A_Header3">Автор эффекта</h2>
               <div class="M_Socials">
@@ -255,7 +314,73 @@
                 <% end %>
               </div>
             </div>
-            <div class='W_ShareArea'>
+            <% end %>
+
+            <div class='W_PlatformArea W_PlatformAreaTablet'>
+              <p class='A_Header3'>Подойдёт для</>
+              <div class="C_PlatformArea">
+                <div class='W_programmsTablet'>
+            			<% @effect.programs_with_versions.each do |program_data| %>
+              <% program_name = program_data[:name].strip %>
+              <% program_version = program_data[:version] %>
+              <div class="A_Program">
+                <% if programs().key?(program_name) %>
+                  <%= image_tag programs()[program_name], alt: program_name, class: "Q_ProgramIconEffect" %>
+                <% end %>
+                <p class="A_ProgramName A_ProgramNameEffect"><%= program_name.gsub('_', ' ').titleize %> <%= program_version %>
+                </p>
+              </div>
+            <% end %>
+            </div>
+            <div class="M_Platforms">
+              <% @effect.platform.split(",").each do |platform_name| %>
+                <% platform_name = platform_name.strip.downcase %>
+                <div class="Q_ProgramIcon Q_ProgramIconEffect Q_ProgramIconEffectPlat">
+                  <% if platforms().key?(platform_name) %>
+                    <%= image_tag platforms()[platform_name], class: "Q_PlatformIcon", alt: platform_name.capitalize %>
+                  <% else %>
+                    <%= image_tag "default_platform_icon.svg", class: "Q_PlatformIcon", alt: platform_name.capitalize %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>            
+          </div>          
+        </div>
+
+        <div class='W_CategoryArea W_CategoryAreaTablet'>
+          <p class='A_Header3'>Категория</p>
+          <!-- DEBUG: Category list: <%= @effect.category_list.inspect %> -->
+          <!-- DEBUG: Categories from tags: <%= @effect.categories.pluck(:name).inspect %> -->
+          <!-- DEBUG: Categories from relation: <%= @effect.categories_list.pluck(:name).inspect %> -->
+          <ul class='A_CategoryList'>
+            <% @effect.category_list.each do |category| %>
+              <a href="/effects/categories?category=<%= category %>">
+                <li class='A_CategoryItem'>
+                  <%= human_readable_category(category) %> 
+                  <%= image_tag("ArrowIcon.svg", alt: "Картинка рейтинга", class:"Q_arrowFollow") %>
+                </li>
+              </a>
+            <% end %>
+          </ul>          
+        </div>
+
+        <div class='W_CategoryArea W_CategoryAreaTablet'>
+          <p class='A_Header3'>Задачи</p>
+          <!-- DEBUG: Task list: <%= @effect.task_list.inspect %> -->
+          <!-- DEBUG: Tasks from tags: <%= @effect.tasks.pluck(:name).inspect %> -->
+          <!-- DEBUG: Tasks from relation: <%= @effect.tasks_list.pluck(:name).inspect %> -->
+          <div class='A_TaskList'>
+            <% if @effect.task_list.any? %>
+            <% @effect.task_list.each do |task| %>
+              <div class='A_TaskItem'><%= human_readable_task(task) %></div>
+              <% end %>
+            <% else %>
+              <div class='A_TaskItem'>Задачи не указаны</div>
+            <% end %>
+          </div>          
+        </div>
+          <% if @effect.is_secure == "Одобрено" %>
+            <div class='W_ShareArea W_ShareAreaNoneTablet'>
               <h2 class="A_Header3">Поделиться</h2>
               <div data-controller="share" class="M_Socials">
                 <button class='A_SocialIcon' data-action="click->share#shareToVK" data-share-target="vk">
@@ -271,7 +396,7 @@
                 </button>
               </div>            
             </div>
-            <div class='W_RatingArea'>
+            <div class='W_RatingArea W_RatingAreaNone'>
               <h2 class="A_Header3">Рейтинг</h2>
               <div class='W_RatingArea W_RatingAreaMobile'>
                 <div class='A_Rating'>
@@ -281,8 +406,11 @@
                 <p class='A_TextTag A_TextTagLight'>На основе <%= @effect.ratings.size %> оценок</p>
               </div>
             </div>
+          <% end %>
           </div>
-          <div class='W_allComments'>
+
+          <% if @effect.is_secure == "Одобрено" %>
+          <div class='W_allComments W_allCommentsPC'>
             <h2 class="A_Header2">Комментарии (<%= @effect.comments.size %>)</h2>
             <%= render partial: 'comments/my_comment', locals: { effect: @effect, current_user: current_user } %>
                       <div class='C_Comments'>
@@ -294,28 +422,31 @@
             <%= render partial: 'comments/comment', collection: other_comments %>
           </div>
           </div>
+          <% end %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
 
-<div class='W_similarEffects'>
-  <div class='O_Effects O_EffectsBarrow'>
-    <div class="M_HeaderEffects">
-      <h2 class="A_Header2">Похожие эффекты</h2>
-      <%= link_to similar_effects_path, class: 'A_buttonWatchAll' do %>
-        Смотреть все
-      <% end %>
-    </div>
-    <% if @effects.present? %>
-      <div class="C_Effects">
-        <% @effects.each do |effect| %>
-          <%= render partial: "collection_effect", locals: { effect: effect } %>
+<% if @effect.is_secure == "Одобрено" %>
+  <div class='W_similarEffects'>
+    <div class='O_Effects O_EffectsBarrow'>
+      <div class="M_HeaderEffects M_HeaderEffectsMargin">
+        <h2 class="A_Header2">Похожие эффекты</h2>
+        <%= link_to similar_effects_path, class: 'A_buttonWatchAll A_buttonWatchAllNone' do %>
+          Смотреть все
         <% end %>
       </div>
-    <% else %>
-      <p class="A_TextEmpty">Нет доступных эффектов</p>
-    <% end %>
+      <% if @effects.present? %>
+        <div class="C_Effects">
+          <% @effects.each do |effect| %>
+            <%= render partial: "collection_effect", locals: { effect: effect } %>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="A_TextEmpty">Нет доступных эффектов</p>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>

@@ -1,19 +1,19 @@
-<%= turbo_frame_tag "subscription_button" do %>
+<%= turbo_frame_tag "subscription_button_#{collection.id}" do %>
   <% if current_user&.subscribed_to?(collection) %>
-    <%= button_to unsubscribe_collection_path(collection), 
-        method: :delete, 
-        class: "A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryGrayFit A_UnsubscribeButton" do %>
+    <button class="A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryGrayFit A_UnsubscribeButton" 
+            data-action="click->subscribe#unsubscribe"
+            data-subscribe-url="<%= unsubscribe_collection_path(collection) %>">
       <%= image_tag("minusIconBlack.svg", alt: "Отписаться", class:"Q_plusMinusIcon") %>
       Отписаться
-    <% end %>
+    </button>
   <% elsif current_user %>
-    <%= button_to subscribe_collection_path(collection), 
-        method: :post, 
-        class: "A_ButtonPrimary A_SubscribeButton",
-        disabled: collection.status == 'private' do %>
+    <button class="A_ButtonPrimary A_SubscribeButton" 
+            data-action="click->subscribe#subscribe"
+            data-subscribe-url="<%= subscribe_collection_path(collection) %>"
+            <%= 'disabled' if collection.status == 'private' %>>
       <%= image_tag("plusIconWhite.svg", alt: "Подписаться", class:"Q_plusMinusIcon") %>
       Подписаться
-    <% end %>
+    </button>
   <% else %>
     <%= link_to "Войти, чтобы подписаться", new_user_session_path, class: "A_ButtonPrimary" %>
   <% end %>

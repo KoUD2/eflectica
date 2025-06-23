@@ -1,5 +1,6 @@
 class EffectsController < ApplicationController
   include ProgramHelper
+  include CategoryHelper
   # load_and_authorize_resource
   # before_action :authenticate_user!
   before_action :authenticate_user!, only: [:save_preferences]
@@ -232,8 +233,11 @@ class EffectsController < ApplicationController
   # POST /effects or /effects.json
   def create
     # Проверяем, что переданы обязательные поля
-    if params[:name].blank? && params[:description].blank? && params[:image_before].blank?
+    if params[:effect][:name].blank? && params[:effect][:description].blank? && params[:effect][:image_before].blank?
       Rails.logger.info "Effect creation cancelled: empty required fields"
+      @effect = Effect.new(effect_params)
+      @effect.user = current_user
+      @effect.errors.add(:base, "Заполните обязательные поля")
       respond_to do |format|
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: { errors: ["Заполните обязательные поля"] }, status: :unprocessable_entity }
@@ -246,7 +250,15 @@ class EffectsController < ApplicationController
     
     # Устанавливаем значения по умолчанию для обязательных полей
     @effect.speed = 5 if @effect.speed.blank?
-    @effect.img = params[:image_before] if @effect.img.blank? && params[:image_before]
+    @effect.img = params[:effect][:image_before] if @effect.img.blank? && params[:effect][:image_before]
+    
+    # Автоматически устанавливаем статус модерации при создании эффекта
+    @effect.is_secure = "На модерации"
+
+    # Если это режим превью, устанавливаем временную ссылку
+    if params[:preview_mode] == 'true' && @effect.link_to.blank?
+      @effect.link_to = "preview_mode_temporary_link"
+    end
 
     respond_to do |format|
       if @effect.save
@@ -254,8 +266,16 @@ class EffectsController < ApplicationController
         attach_programs
         attach_tasks
         attach_categories
-        format.html { redirect_to @effect, notice: "Эффект был успешно создан" }
-        format.json { render :show, status: :created, location: @effect }
+        attach_platforms
+        
+        # Для режима превью возвращаем JSON с ID эффекта
+        if params[:preview_mode] == 'true'
+          format.html { redirect_to @effect }
+          format.json { render json: { id: @effect.id, url: effect_url(@effect) }, status: :created }
+        else
+          format.html { redirect_to @effect, notice: "Эффект был успешно создан" }
+          format.json { render :show, status: :created, location: @effect }
+        end
       else
         Rails.logger.error "Effect creation failed: #{@effect.errors.full_messages}"
         format.html { render :new, status: :unprocessable_entity }
@@ -313,6 +333,35 @@ class EffectsController < ApplicationController
   
   def my
     @effects = current_user.effects.order(created_at: :desc)
+  end
+
+  def feed
+    # Проверяем, что пользователь авторизован и настроил ленту
+    redirect_to root_path unless current_user
+    
+    # Получаем персонализированную ленту эффектов на основе настроек пользователя
+    @effects = current_user.personalized_feed.includes(:images, :user, :ratings)
+                          .where.not(user: current_user) # Исключаем собственные эффекты
+                          .where(is_secure: "Одобрено") # Только одобренные эффекты
+                          .order(created_at: :desc)
+    
+    # Получаем настройки пользователя для отображения
+    @user_categories = current_user.preferred_categories.pluck(:name)
+    @user_programs = current_user.preferred_programs.pluck(:name)
+    
+    # Проверяем, настроена ли лента
+    @feed_configured = @user_categories.any? || @user_programs.any?
+    
+    # Если лента не настроена, перенаправляем на главную
+    unless @feed_configured
+      redirect_to root_path, notice: "Сначала настройте ленту в разделе эффектов"
+      return
+    end
+    
+    # Получаем статистику для отображения
+    @total_effects = @effects.count
+    @categories_display = @user_categories.map { |cat| human_readable_category(cat) }.join(", ")
+    @programs_display = @user_programs.map { |prog| human_readable_program(prog) }.join(", ")
   end
 
   def save_preferences
@@ -399,7 +448,9 @@ class EffectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def effect_params
-      params.permit(:name, :description, :manual, :platform, :category_list, :link_to, :img, :speed)
+      params.require(:effect).permit(
+        :name, :description, :manual, :platform, :category_list, :link_to, :img, :speed
+      )
     end
 
     def set_authorization_flag
@@ -408,33 +459,57 @@ class EffectsController < ApplicationController
     
 
     def attach_images
-      if params[:image_before]
+      if params[:effect][:image_before]
         @effect.images.create(
-          file: params[:image_before],
+          file: params[:effect][:image_before],
           image_type: 'before'
         )
       end
       
-      if params[:image_after]
+      if params[:effect][:image_after]
         @effect.images.create(
-          file: params[:image_after],
+          file: params[:effect][:image_after],
           image_type: 'after'
         )
       end
     end
 
     def attach_programs
+      selected_programs = []
+      
+      # Обрабатываем effect_programs_attributes (если есть)
       if params[:effect] && params[:effect][:effect_programs_attributes]
         params[:effect][:effect_programs_attributes].each do |key, program_data|
           next if program_data[:name].blank?
           
-          # Найти или создать программу
-          effect_program = EffectProgram.find_or_create_by(name: program_data[:name])
-          effect_program.update(version: program_data[:version]) if program_data[:version].present?
-          
-          # Создать связь между эффектом и программой
-          @effect.effect_effect_programs.create(effect_program: effect_program)
+          selected_programs << {
+            name: program_data[:name],
+            version: program_data[:version]
+          }
         end
+      end
+      
+      # Также обрабатываем program_list_* параметры
+      if params[:effect]
+        params[:effect].each do |key, value|
+          if key.start_with?('program_list_') && value.present?
+            program_name = value
+            # Проверяем, что эта программа еще не добавлена
+            unless selected_programs.any? { |p| p[:name] == program_name }
+              selected_programs << { name: program_name, version: nil }
+            end
+            Rails.logger.info "Found program: #{key} = #{value}"
+          end
+        end
+      end
+      
+      # Создаем связи с программами (избегая дублирования)
+      selected_programs.each do |program_data|
+        effect_program = EffectProgram.find_or_create_by(name: program_data[:name])
+        effect_program.update(version: program_data[:version]) if program_data[:version].present?
+        
+        # Используем find_or_create_by для избежания дублирования связей
+        @effect.effect_effect_programs.find_or_create_by(effect_program: effect_program)
       end
     end
 
@@ -442,22 +517,24 @@ class EffectsController < ApplicationController
       # Собираем задачи из параметров вида task_list_*
       selected_tasks = []
       Rails.logger.info "=== ATTACH TASKS DEBUG ==="
-      Rails.logger.info "All params: #{params.keys.grep(/task_list/)}"
+      Rails.logger.info "All params: #{params[:effect].keys.grep(/task_list/) if params[:effect]}"
       
-      params.each do |key, value|
-        if key.start_with?('task_list_') && value.present?
-          task_name = value
-          selected_tasks << task_name
-          Rails.logger.info "Found task: #{key} = #{value}"
+      if params[:effect]
+        params[:effect].each do |key, value|
+          if key.start_with?('task_list_') && value.present?
+            task_name = value
+            selected_tasks << task_name
+            Rails.logger.info "Found task: #{key} = #{value}"
+          end
         end
       end
       
       Rails.logger.info "Selected tasks: #{selected_tasks.inspect}"
       
-      # Создаем связи с задачами
+      # Создаем связи с задачами (избегая дублирования)
       selected_tasks.each do |task_name|
         effect_task = EffectTask.find_or_create_by(name: task_name)
-        relation = @effect.effect_effect_tasks.create(effect_task: effect_task)
+        relation = @effect.effect_effect_tasks.find_or_create_by(effect_task: effect_task)
         Rails.logger.info "Created task relation: #{relation.inspect}, errors: #{relation.errors.full_messages}"
       end
       
@@ -469,12 +546,12 @@ class EffectsController < ApplicationController
 
     def attach_categories
       # Сохраняем категорию из параметра category_list
-      if params[:category_list].present?
+      if params[:effect][:category_list].present?
         Rails.logger.info "=== ATTACH CATEGORIES DEBUG ==="
-        Rails.logger.info "Category from params: #{params[:category_list]}"
+        Rails.logger.info "Category from params: #{params[:effect][:category_list]}"
         
-        effect_category = EffectCategory.find_or_create_by(name: params[:category_list])
-        relation = @effect.effect_effect_categories.create(effect_category: effect_category)
+        effect_category = EffectCategory.find_or_create_by(name: params[:effect][:category_list])
+        relation = @effect.effect_effect_categories.find_or_create_by(effect_category: effect_category)
         
         Rails.logger.info "Created effect_category: #{effect_category.inspect}"
         Rails.logger.info "Created relation: #{relation.inspect}, errors: #{relation.errors.full_messages}"
@@ -483,6 +560,25 @@ class EffectsController < ApplicationController
         @effect.reload
         Rails.logger.info "Effect categories after save: #{@effect.category_list.inspect}"
         Rails.logger.info "=== END ATTACH CATEGORIES DEBUG ==="
+      end
+    end
+
+    def attach_platforms
+      # Обрабатываем platform_list_* параметры
+      if params[:effect]
+        selected_platforms = []
+        params[:effect].each do |key, value|
+          if key.start_with?('platform_list_') && value.present?
+            platform_name = value
+            selected_platforms << platform_name
+            Rails.logger.info "Found platform: #{key} = #{value}"
+          end
+        end
+        
+        # Устанавливаем поле platform для совместимости
+        if selected_platforms.any?
+          @effect.update(platform: selected_platforms.join(', '))
+        end
       end
     end
 end

@@ -33,6 +33,10 @@
   gap: 3.33vw;
 }
 
+.C_buttonsSortMobile {
+  display: none;
+}
+
 .C_EffectsCategories {
   flex-wrap: wrap;
   margin-top: 1.25vw;
@@ -587,6 +591,14 @@
   gap: 31.815vw;
 }
 
+.C_FormAuth {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.42vw;
+  width: 100%;
+}
+
 .C_usersInfo2 {
   display: flex;
   gap: 12.258vw;
@@ -600,11 +612,66 @@
   display: none;
 }
 
-@media screen and (max-width: 912px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+  .C_Info {
+    gap: 3.125vw;
+  }
+
+  .C_Effects {
+    gap: 1.042vw;
+  }
+
+  .С_PhotoGalleryEffect {
+    height: 14.193vw;
+    gap: 0.26vw;
+  }
+
+  .C_PlatformArea {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .С_PhotoGalleryEffect2 {
+    margin: 2.083vw 0 3.125vw 0;
+  }
+
+  .C_EffectsCategory {
+    margin-top: 3.125vw;
+  }
+
+  .C_allCategories {
+    margin-top: 4.167vw;
+    gap: 3.125vw;
+  }
+
+  .C_CollectionsAll {
+    margin-top: 4.167vw;
+    gap: 1.042vw 2.142vw;
+  }
+
+  .C_collectionElements {
+    gap: 1.042vw;
+  }
+
+  .C_LinkInfo {
+    width: 25.521vw;
+    gap: 1.042vw;
+    margin-left: 1.563vw;
+  }
+  
+  .C_Menu {
+    width: 95.833vw;
+  }
+
+  .Q_SelectedCategoriesList {
+    width: 45.78vw;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .С_PhotoGalleryEffect {
     height: 41.628vw;
     gap: 0.593vw;
-    border-radius: 1.781vw;
   }
 
   .W_Effects {
@@ -619,6 +686,20 @@
     display: none;
   }
 
+  .C_CollectionsAll {
+    margin-top: 7.179vw;
+  }
+
+  .C_EffectsColumn {
+    flex-direction: column;
+  }
+
+  .C_PlatformArea {
+    flex-direction: column;
+    gap: 2.051vw;
+    align-items: flex-start;
+  }
+
   .W_Effects .C_Effects {
     display: inline-block !important;
     width: auto !important;
@@ -630,8 +711,19 @@
     margin-top: 0 !important;
   }
 
+  .C_EffectsTopMobile {
+    margin-top: 6.154vw !important;
+  }
+
+  .C_buttonsSortMobile {
+    display: flex;
+    align-items: center;
+    gap: 2.564vw;
+    margin-bottom: 6.154vw;
+  }
+
   .C_Effects > a {
-    display: inline-block !important;
+    display: flex !important;
     white-space: normal;
     vertical-align: top;
   }
@@ -643,9 +735,13 @@
     overflow-y: hidden;
     width: 100%;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
     margin: 0;
     scroll-snap-type: x mandatory;
+  }
+
+  .C_EffectsCategoriesMobile {
+    margin-top: 3.077vw;
   }
 
   .C_Effects::-webkit-scrollbar {
@@ -674,19 +770,22 @@
     justify-content: flex-start;
     align-items: center;
     margin-top: 16.279vw;
+    justify-content: space-between;
   }
 
   .C_Info {
     display: flex;
     align-items: center;
-    gap: 7.442vw;
+    gap: 6.154vw;
   }
 
   .C_Authors {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
-    gap: 5.417vw;
+    gap: inherit;
+    width: 100%;
+    justify-content: space-between;
   }
 
   .C_FormRegistration {
@@ -727,17 +826,17 @@
   }
 
   .С_PhotoGalleryEffect2 {
-    margin: 2.326vw 0 2.791vw 0;
-    gap: 2.791vw;
+    margin: 3.077vw 0 6.205vw 0;
+    gap: 12px;
     flex-direction: column;
   }
 
   .С_CommentOptions {
-    display: none;
+    padding: 0 3.077vw;
   }
 
   .C_Comments {
-    gap: 2.791vw;
+    gap: 4.103vw;
   }
 
   .W_similarEffects .C_Effects {
@@ -749,15 +848,37 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     white-space: nowrap;
-    padding-bottom: 3.721vw !important;
+    padding-bottom: 10.367vw !important;
   }
 
   .W_similarEffects .C_Effects::-webkit-scrollbar {
     display: none;
   }
 
+  .C_collectionElements {
+    gap: 2.051vw;
+  }
+
   .C_EffectsCategory {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .C_LinkInfo {
+    width: 71.282vw;
+    gap: 2.051vw;
+    margin-left: 3.077vw;
+  }
+
+  .C_allCategories {
+    margin-top: 7.179vw;
+    gap: 8.205vw;
+  }
+
+  .C_MobileMenuList {
+    display: flex;
+    flex-direction: column;
+    gap: 9.23vw;
+    align-items: center;
   }
 }

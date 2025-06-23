@@ -1,57 +1,67 @@
-<div class='Q_Section Q_SectionRegister Q_SectionActive'>
-  <div class="A_LogoRegister"><%= image_tag("A_Logo.svg", alt: "Картинка логотипа") %></div>
-
-  <div>
+<!-- Фоновый контент с блюром -->
+<div class='Q_Section Q_SectionActive Q_SectionSignUp Q_SectionBlurred'>
+  <div class='O_Prewiew'>
     <div class='O_Card'>
-      <div class="A_TextM A_TextMCard"><p>Обсуждения</p></div>
-      <div class="A_TextL"><p>Узнавай мнение сообщества и&nbsp;помогай советами</p></div>
+      <div class="A_TextM A_TextMCard"><p>Подписки</p></div>
+      <div class="A_TextL"><p>Сохраняй чужие коллекции полезных пресетов</p></div>
     </div>
-
-    <div class='O_lineCard'>
-      <%= image_tag("O_lineCard.svg", alt: "Картинка линии") %>
-    </div>
-
-    <div class='O_lineCard2'>
-      <%= image_tag("O_lineCard2.svg", alt: "Картинка линии") %>
-    </div>
-
-    <div class='O_lineCard3'>
-      <%= image_tag("O_lineCard3.svg", alt: "Картинка линии") %>
-    </div>
-
-    <div class='O_lineCard4'>
-      <%= image_tag("O_lineCard4.svg", alt: "Картинка линии") %>
-    </div>
-    
-    <div class='O_Card O_CardSimple'>
-      <p>Находи вдохновение и&nbsp;готовые решения для новых проектов</p>
-    </div>
-
-    <div class='O_Card O_CardMedium O_CardMediumRed'>
-      <div class="A_TextM A_TextMCard A_TextMRed"><p>Избранное</p></div>
-      <div class="A_TextL"><p>Узнавай мнение сообщества и&nbsp;помогай советами</p></div>
-    </div>
-
-    <div class='O_Card O_CardSimple O_Card2'>
-      <p>Делись собственными эффектами и&nbsp;пресетами</p>
-    </div>
-
-    <div class='O_Card O_CardSimple O_Card3'>
-      <p>Следи за&nbsp;модными трендами в&nbsp;индустрии и&nbsp;сохраняй&nbsp;их</p>
-    </div>
-
-    <div class='O_Card O_CardMedium O_CardMediumBlack'>
-      <div class="A_TextM A_TextMCard A_TextMBlack"><p>Подписки</p></div>
-      <div class="A_TextL"><p>Узнавай мнение сообщества и&nbsp;помогай советами</p></div>
-    </div>
-
+    <%= image_tag("line1.svg", alt: "Картинка", class: "Q_Line1") %>
     <div class='O_Card O_CardSimple O_Card4'>
-      <p>Кастомизируй свою ленту</p>
+      <p>Находи вдохновение и бесплатные пресеты для проектов</p>
     </div>
+    <div class='O_Card O_CardMedium O_CardMediumRed2'>
+      <div class="A_TextM A_TextMCard A_TextMRed"><p>Эффекты</p></div>
+      <div class="A_TextL"><p>Удобно сортируй эффекты по&nbsp;категориям, задачам и&nbsp;программам</p></div>
+    </div>
+    <%= image_tag("line2.svg", alt: "Картинка", class: "Q_Line2") %>
+    <%= image_tag("MainLogo.svg", alt: "Картинка", class: "A_MainLogo") %>
+    <div class='O_Card O_CardSimple O_Card3'>
+      <p>Следи за модными трендами в&nbsp;индустрии и сохраняй их</p>
+    </div>
+    <div class='O_Card O_CardMedium O_CardMediumRed'>
+      <div class="A_TextM A_TextMCard A_TextMRed"><p>Мои коллекции</p></div>
+      <div class="A_TextL"><p>Сохраняй референсы, туториалы и эффекты в одном месте</p></div>
+    </div>
+    <%= image_tag("line3.svg", alt: "Картинка", class: "Q_Line3") %>
+    <div class='O_Card O_CardProfile'>
+      <div class="A_TextM A_TextMCard"><p>Профиль</p></div>
+      <div class="A_TextL"><p>Создавай портфолио, пополняя сайт своими эффектами</p></div>
+    </div>
+    <%= image_tag("line4.svg", alt: "Картинка", class: "Q_Line4") %>
+    <div class='O_Card O_CardSimple O_Card2'>
+      <p>Кастомизируй свою ленту и развивай сообщество</p>
+    </div>
+  </div>
+</div>
 
-    <div class='O_Card O_CardBlue'>
-      <div class="A_TextM A_TextMCard"><p>Мои коллекции</p></div>
-      <div class="A_TextL"><p>Узнавай мнение сообщества и&nbsp;помогай советами</p></div>
+<!-- Оверлей -->
+<div class="W_Overlay">
+  <!-- Модальное окно регистрации -->
+  <div class="O_Modal O_ModalAuth">
+    <div class="M_AuthForm">
+      <h1 class="A_TitleAuth">Регистрация</h1>
+      
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "C_FormAuth" }) do |f| %>
+        <div class="A_InputGroup">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Адрес почты", class: "A_Input A_InputAuth" %>
+        </div>
+
+        <div class="A_InputGroup">
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "Пароль", class: "A_Input A_InputAuth" %>
+        </div>
+
+        <div class="A_InputGroup">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Пароль еще раз", class: "A_Input A_InputAuth" %>
+        </div>
+
+        <div class="A_ButtonGroup">
+          <%= f.submit "Зарегистрироваться", class: "A_Button A_ButtonPrimary A_ButtonAuth A_ButtonAuthReg" %>
+        </div>
+      <% end %>
+
+      <div class="A_LinkGroup">
+        <%= link_to "Уже есть аккаунт?", new_session_path(resource_name), class: "A_Link A_LinkAuth" %>
+      </div>
     </div>
   </div>
 </div>

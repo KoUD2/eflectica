@@ -1,28 +1,48 @@
-<nav class="O_Menu">
-  <div class='C_Menu'>
-    <div class="A_burgerMenu">
-      <div class="Q_burgerMenu"></div>
-      <div class="Q_burgerMenu"></div>
-      <div class="Q_burgerMenu"></div>
+<div class="W_mobileIconsHeader" data-controller="mobile-search">
+  <%= image_tag("Q_IconSearchBlack.svg", alt: "Искать", class: "Q_SearchIconBlack", "data-action": "click->mobile-search#openSearch") %>
+  
+  <!-- Mobile Search Overlay (same style as burger menu) -->
+  <div class="O_MobileSearchOverlay" 
+       data-mobile-search-target="overlay"
+       data-action="keyup@document->mobile-search#handleEscape">
+    <div class="O_MobileSearchMenu" data-action="click->mobile-search#stopPropagation">
+      <div class="M_MobileMenuContent">
+        <!-- Search Header -->
+        <div class='W_inputIcon W_inputIconSubscription'>
+          <input type="text" class='A_searchInput W_inputIconEffectSearch' placeholder='Поиск'
+                data-mobile-search-target="input" 
+                data-action="input->mobile-search#search click->mobile-search#stopPropagation focus->mobile-search#stopPropagation">
+          <%= image_tag("Q_IconSearch.svg", alt: "Картинка рейтинга", class: "Q_IconSearch") %>
+        </div>
+        
+        <!-- Search Results -->
+        <div class="M_MobileSearchResults" data-mobile-search-target="results">
+          <!-- Search results will appear here -->
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
+<nav class="O_Menu" data-controller="burger-menu">
+  <div class='C_Menu'>
     <div class="W_allLinksHeaderMain">
       <a href="/"><div class='A_Logo2 <%= "A_Logo2Active" if current_page?(root_path) %>'><%= image_tag("A_Logo.svg", alt: "Картинка логотипа") %><svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement'>
         <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
       </svg></div></a>
       <div class="W_commonLinksHeader">
         <div class="A_searchWrapper" data-controller="search">
-          <div data-search-target="icon" data-action="click->search#toggleSearch">
+          <div data-search-target="icon" data-action="click->search#toggleSearch" class='Q_searchIconTablet'>
             <%= image_tag("Q_IconSearchHeader.svg", alt: "Поиск", class: "Q_SearchIcon") %>
           </div>
-          <form action="<%= search_results_path %>" method="get" class="A_searchForm hidden" data-search-target="input">
+          <form action="<%= search_results_path %>" method="get" class="A_searchForm hidden A_searchFormTablet" data-search-target="input">
             <button type="submit" class="A_searchSubmit">
               <%= image_tag("Q_IconSearch.svg", alt: "Искать") %>
             </button>
             <input type="text" name="search" placeholder="Поиск на сайте" class="A_searchInputHeader">
           </form>
         </div>
-        <div class='A_TextM <%= "A_TextMActive" if current_page?(effects_path) %>'>
+        <div class='A_TextM A_TextMNone <%= "A_TextMActive" if current_page?(effects_path) %>'>
           <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement Q_roundElementLeft'>
             <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
           </svg>
@@ -31,7 +51,7 @@
             <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
           </svg>
         </div>
-        <div class='A_TextM <%= "A_TextMActive" if current_page?(collections_path) %>'>
+        <div class='A_TextM A_TextMNone <%= "A_TextMActive" if current_page?(collections_path) %>'>
           <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement Q_roundElementLeft'>
             <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
           </svg>
@@ -45,31 +65,83 @@
     
 
     <div class="M_Menu">
-      <div class='A_TextM <%= "A_TextMActive" if current_page?(my_effects_path) %>'>
-        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement Q_roundElementLeft'>
-          <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
-        </svg>
-        <%= link_to 'Мои эффекты', my_effects_path %>
-        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement'>
-          <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
-        </svg>
-      </div>
-      <div class='A_TextM <%= "A_TextMActive" if current_page?(news_feeds_path) %>'>
-        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement Q_roundElementLeft'>
-          <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
-        </svg>
-        <%= link_to 'Мои коллекции', news_feeds_path %>
-        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement'>
-          <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
-        </svg>
-      </div>
+      <% if user_signed_in? %>
+        <div class='A_TextM A_TextMNone <%= "A_TextMActive" if current_page?(my_effects_path) %>'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement Q_roundElementLeft'>
+            <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
+          </svg>
+          <%= link_to 'Мои эффекты', my_effects_path %>
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement'>
+            <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
+          </svg>
+        </div>
+        <div class='A_TextM A_TextMNone <%= "A_TextMActive" if current_page?(news_feeds_path) %>'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement Q_roundElementLeft'>
+            <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
+          </svg>
+          <%= link_to 'Мои коллекции', news_feeds_path %>
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement'>
+            <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
+          </svg>
+        </div>
+      <% end %>
+
+      <div class='A_TextM A_TextMTabletNone <%= "A_TextMActive" if current_page?(effects_path) %>'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement Q_roundElementLeft'>
+            <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
+          </svg>
+          <%= link_to 'Эффекты', effects_path %>
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement'>
+            <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
+          </svg>
+        </div>
+        <div class='A_TextM A_TextMTabletNone <%= "A_TextMActive" if current_page?(collections_path) %>'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement Q_roundElementLeft'>
+            <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
+          </svg>
+          <%= link_to 'Коллекции', collections_path %>
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement'>
+            <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
+          </svg>
+        </div>
       <div class='A_TextM <%= "A_TextMActive" if user_signed_in? && current_page?(profile_path(current_user)) %>'>
         <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement Q_roundElementLeft'>
           <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
         </svg>
         <%= link_to 'Профиль', user_signed_in? ? profile_path(current_user) : new_user_session_path %>
       </div>      
-    </div>    
+    </div>  
+
+    <div class="A_burgerMenu" data-action="click->burger-menu#toggle" data-burger-menu-target="burger" style="position: relative;">
+      <div class="Q_burgerMenu"></div>
+      <div class="Q_burgerMenu"></div>
+      <div class="Q_burgerMenu"></div>
+      
+      <!-- Mobile Menu -->
+      <div class="O_MobileMenu" data-burger-menu-target="menu">
+        <div class="M_MobileMenuContent M_MobileMenuContentBurger">
+          <div class="C_MobileMenuList">
+            <div class='A_TextMMobile <%= "A_TextMActiveDesktop" if current_page?(effects_path) %>'>
+              <%= link_to 'Эффекты', effects_path %>
+            </div>
+            <div class='A_TextMMobile <%= "A_TextMActiveDesktop" if current_page?(collections_path) %>'>
+              <%= link_to 'Коллекции', collections_path %>
+            </div>
+            <% if user_signed_in? %>
+              <div class='A_TextMMobile <%= "A_TextMActiveDesktop" if current_page?(my_effects_path) %>'>
+                <%= link_to 'Мои эффекты', my_effects_path %>
+              </div>
+              <div class='A_TextMMobile <%= "A_TextMActiveDesktop" if current_page?(news_feeds_path) %>'>
+                <%= link_to 'Мои коллекции', news_feeds_path %>
+              </div>
+            <% end %>
+            <div class='A_TextMMobile <%= "A_TextMActiveDesktop" if user_signed_in? && current_page?(profile_path(current_user)) %>'>
+              <%= link_to 'Профиль', user_signed_in? ? profile_path(current_user) : new_user_session_path %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <%# if user_signed_in? && current_user.admin? %>
   </div>

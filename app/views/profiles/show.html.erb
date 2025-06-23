@@ -1,8 +1,8 @@
-<div class='S_Profile'>
+<div class='S_Profile' data-controller="share">
 	<div class='W_interfaceItemsProfile'>
 		<div class='W_shareProfile'>
 			<h1 class="A_Header1">Профиль</h1>
-			<button class='A_buttonShareProfile'>
+			<button class='A_buttonShareProfile' data-action="click->share#copyLink" data-share-target="link">
 				<%= image_tag("shareProfile.svg", alt: "Картинка рейтинга", class:"Q_shareProfile") %>
 				<p class="A_TextButtonPrimary">Поделиться портфолио</p>
 			</button>
@@ -33,7 +33,7 @@
 						<% end %>
 					</div>
 					<% if @user.contact.present? %>
-						<div class='W_socialTg'>
+						<div class='W_socialTg W_socialTgMobile W_socialTgTablet'>
 							<h3 class="A_Header3">Написать мне</h3>
 							<div class='W_tgSection'>
 								<%= image_tag("A_SocialIcon.svg", alt: "Иконка социальной сети", class:"A_SocialIconProfile") %>
@@ -46,10 +46,20 @@
 				</div>
 				<% if @user.bio.present? %>
 					<div class='W_socialTg W_socialTgDesc'>
-						<h3 class="A_Header3">Описание</h3>
+						<h3 class="A_Header3">Обо мне</h3>
 						<p class="A_TextTag A_TextTagBig"><%= @user.bio %></p>
 					</div>
 				<% end %>
+
+				<% if @user.contact.present? %>
+						<div class='W_socialTg W_socialTgDesc W_socialTgDescMobile'>
+							<h3 class="A_Header3">Написать мне</h3>
+							<div class='W_tgSection'>
+								<%= image_tag("A_SocialIcon.svg", alt: "Иконка социальной сети", class:"A_SocialIconProfile") %>
+								<p class="A_TextTag A_TextTagBig A_TextTagLight"><%= @user.contact %></p>
+							</div>
+						</div>
+					<% end %>
 			</div>
 		</div>
 	</div>
@@ -67,9 +77,14 @@
 
 	<div class='W_postsProfile'>
 		<% if @user.effects.any? %>
-			<h3 class="A_Header3">
-				<%= current_user == @user ? "Мои эффекты" : "Эффекты" %>
-			</h3>
+			<div class='M_HeaderEffects'>
+				<h3 class="A_Header3">
+					<%= current_user == @user ? "Мои эффекты" : "Эффекты" %>
+				</h3>
+				<%= link_to my_effects_path do %>
+					<button class='A_More'>Смотреть все</button>
+				<% end %>
+			</div>
 			<div class="W_EffectsCollection">
 				<% @user.effects.each do |effect| %>
 					<%= render partial: 'effects/collection_effect', locals: { effect: effect } %>
@@ -87,9 +102,14 @@
 			end
 		%>
 		<% if collections_to_show.any? %>
-			<h3 class="A_Header3">
-				<%= current_user == @user ? "Мои коллекции" : "Коллекции" %>
-			</h3>
+			<div class='M_HeaderEffects'>
+				<h3 class="A_Header3">
+					<%= current_user == @user ? "Мои коллекции" : "Коллекции" %>
+				</h3>
+				<%= link_to news_feeds_path do %>
+					<button class='A_More'>Смотреть все</button>
+				<% end %>
+			</div>
 			<div class="W_EffectsCollection">
 				<% collections_to_show.each do |collection| %>
 					<%= render partial: 'collections/collection', locals: { 

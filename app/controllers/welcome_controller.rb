@@ -3,6 +3,7 @@ class WelcomeController < ApplicationController
   def index
     @effects = Effect.includes(:user, :ratings).order(created_at: :desc).limit(3)
     @collections = Collection.all
+    @effect = Effect.new
   end
 
   def about
@@ -32,6 +33,19 @@ class WelcomeController < ApplicationController
       @my_collections = []
       @subscriptions = []
       @all_collections = []
+    end
+
+    # Handle AJAX requests
+    if request.xhr?
+      render partial: 'search_results', 
+             locals: { 
+               query: @query,
+               my_effects: @my_effects,
+               all_effects: @all_effects,
+               my_collections: @my_collections,
+               subscriptions: @subscriptions,
+               all_collections: @all_collections
+             }
     end
   end
 

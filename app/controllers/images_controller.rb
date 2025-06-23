@@ -1,7 +1,8 @@
 class ImagesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
   before_action :set_collection, only: [:create]
   before_action :set_image, only: [:show, :update, :destroy]
+  before_action :set_cors_headers, only: [:show]
 
   def create
     @image = Image.new(image_params)
@@ -17,15 +18,14 @@ class ImagesController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      format.json do
-        render json: {
-          id: @image.id,
-          title: @image.title,
-          description: @image.description,
-          file_url: @image.file.present? ? @image.file.url : nil
-        }
-      end
+    if @image.file.present?
+      # Отправляем файл с правильными заголовками
+      send_file @image.file.path, 
+                type: @image.file.content_type,
+                disposition: 'inline',
+                filename: @image.file.filename
+    else
+      head :not_found
     end
   end
 
@@ -73,5 +73,11 @@ class ImagesController < ApplicationController
 
   def image_update_params
     params.require(:image).permit(:title, :description, :file)
+  end
+
+  def set_cors_headers
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, OPTIONS, HEAD'
+    response.headers['Access-Control-Allow-Headers'] = '*'
   end
 end

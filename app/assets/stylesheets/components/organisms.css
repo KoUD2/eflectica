@@ -646,6 +646,20 @@
   }
 }
 
+.O_MobileMenu {
+  display: none;
+  position: absolute;
+  top: 160%;
+  right: 0;
+  width: 93.85vw;
+  background: #f3f3f3;
+  z-index: 1000;
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
 .O_collectionsAbout {
   margin-top: 9.603vw;
   display: flex;
@@ -776,6 +790,28 @@
   position: relative;
 }
 
+.O_myFeed {
+  display: flex;
+  flex-direction: column;
+  gap: 0.833vw;
+}
+
+.O_MobileMenuOverlay {
+  display: none;
+}
+
+.O_ModalAuth {
+  display: flex;
+  width: 20.83vw;
+  padding: 2.08vw;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.67vw;
+  border-radius: var(--desktop-main, 0.63vw);
+  border: var(--desktop-border, 0.1vw) solid var(--grey-tag, #e1e1e1);
+  background: #fff;
+}
+
 .O_SelectedCategoryTag {
   display: flex;
   height: 2.5vw;
@@ -787,11 +823,105 @@
   background: var(--porcelain-white, #fff);
 }
 
+.O_MobileSearchMenu {
+  display: none;
+  position: absolute;
+  top: 7.69vw;
+  right: -10vw;
+  width: 93.85vw;
+  background: #f3f3f3;
+  z-index: 1000;
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.O_MobileSearchOverlay.O_MobileSearchOpen .O_MobileSearchMenu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.O_MobileMenu.O_MobileMenuVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.O_MobileSearchOverlay {
+  display: none;
+}
+
 .hidden {
   display: none;
 }
 
-@media screen and (max-width: 912px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+  .O_footer {
+    display: flex;
+    width: 95.833vw;
+    margin: 1.042vw auto 2.604vw auto;
+    padding: 2.083vw 3.125vw 3.125vw 3.125vw;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    flex-direction: row;
+    border-radius: var(--tablet-button, 0.781vw);
+    background: var(--foggy-grey, #f3f3f3);
+  }
+
+  .O_EffectCollectionCard {
+    width: 28.646vw;
+    height: 20.964vw;
+    border-radius: var(--tablet-main, 1.042vw);
+    gap: 1.042vw;
+  }
+
+  .O_Category {
+    width: 95.833vw;
+    padding: 4.167vw 3.906vw;
+    border-radius: var(--tablet-button, 0.781vw);
+  }
+
+  .O_SelectedCategoryTag {
+    height: 4.688vw;
+    padding: 1.042vw 1.563vw;
+    gap: 1.563vw;
+    border-radius: var(--tablet-button, 0.781vw);
+    border: var(--desktop-border, 0.26vw) solid var(--computer-blue, #0638bd);
+  }
+
+  .O_CollectionCard {
+    width: 43.49vw;
+    height: 34.837vw;
+    border-radius: var(--tablet-main, 1.042vw);
+    border: var(--tablet-border, 0.195vw) solid var(--grey-tag, #e1e1e1);
+  }
+
+  .O_effectPage {
+    width: 95.833vw;
+    border-radius: var(--tablet-button, 0.781vw);
+  }
+
+  .O_LinkCard {
+    width: 28.646vw;
+    padding-bottom: 1.563vw;
+    gap: 1.042vw;
+    border-radius: var(--tablet-main, 1.042vw);
+    border: var(--tablet-border, 0.195vw) solid var(--grey-tag, #e1e1e1);
+  }
+
+  .O_ReferenceCard {
+    width: 28.646vw;
+    height: 20.964vw;
+    padding-bottom: 2.083vw;
+    gap: 2.083vw;
+    border-radius: var(--tablet-main, 1.042vw);
+    border: var(--tablet-border, 0.195vw) solid var(--grey-tag, #e1e1e1);
+  }
+}
+
+@media screen and (max-width: 767px) {
   .O_Prewiew {
     display: none;
   }
@@ -810,7 +940,7 @@
     width: 83.721vw;
     height: 62.326vw;
     aspect-ratio: 29.375 / 17.083;
-    display: inline-block;
+    display: flex;
     vertical-align: top;
   }
 
@@ -821,6 +951,15 @@
 
   .O_EffectCard {
     margin-right: 2.326vw;
+  }
+
+  .O_ReferenceCard {
+    width: 77.436vw;
+    height: 53.751vw;
+    padding-bottom: 0.625vw;
+    gap: 4.615vw;
+    border-radius: var(--mobile-main, 2.051vw);
+    border: var(--mobile-border, 0.513vw) solid var(--grey-tag, #e1e1e1);
   }
 
   .O_allCategories {
@@ -849,20 +988,22 @@
 
   .O_Menu {
     width: 100vw;
-    height: 29.767vw;
+    height: 25.64vw;
+    padding: 0 3.08vw;
   }
 
   .O_footer {
     display: flex;
-    width: 100vw;
-    padding: 10.233vw 0 12.326vw 5.581vw;
-    height: fit-content;
-    border-radius: 0;
-    margin-top: 3.721vw;
+    width: 93.846vw;
+    padding: 4.103vw 2.051vw 6.154vw 2.051vw;
+    flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;
-    gap: 7.442vw;
-    margin-left: 0;
+    gap: 6.154vw;
+    border-radius: var(--mobile-button, 1.538vw);
+    background: var(--foggy-grey, #f3f3f3);
+    margin: 2.051vw auto 9.479vw auto;
+    height: fit-content;
+    gap: 6.154vw;
   }
 
   .O_FormRegistration {
@@ -887,13 +1028,16 @@
 
   .O_EffectCollectionCard {
     margin-right: 0 !important;
-    width: 83.721vw !important;
-    border: none;
-    background: transparent;
+    width: 77.436vw !important;
+    border-radius: var(--mobile-main, 2.051vw);
+    height: 51.941vw;
+    padding-bottom: 3.077vw;
   }
 
   .O_effectPage {
     padding: 0;
+    border-radius: var(--mobile-button, 1.538vw);
+    width: 93.846vw;
   }
 
   .O_allContentEffect {
@@ -911,13 +1055,29 @@
 
   .O_Comment {
     width: 88.837vw;
-    gap: 5.581vw;
+    gap: 3.077vw;
+  }
+
+  .O_LinkCard {
+    width: 77.436vw;
+    padding-bottom: 3.133vw;
+    gap: 2.051vw;
+    border-radius: var(--mobile-main, 2.051vw);
+    border: var(--mobile-border, 0.513vw) solid var(--grey-tag, #e1e1e1);
   }
 
   .O_Category {
-    width: 100vw;
-    padding: 5.581vw;
-    border-radius: 0;
+    width: 93.846vw;
+    padding: 8.631vw 2.051vw 6.203vw 2.051vw;
+    border-radius: var(--mobile-button, 1.538vw);
+  }
+
+  .O_MobileMenu {
+    display: block;
+  }
+
+  .O_MobileSearchOverlay {
+    display: block;
   }
 }
 
@@ -930,4 +1090,15 @@
   display: flex;
   flex-direction: column;
   gap: 1.25vw;
+}
+.O_ModalAuth {
+  display: flex;
+  width: 20.83vw;
+  padding: 2.08vw;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.67vw;
+  border-radius: var(--desktop-main, 0.63vw);
+  border: var(--desktop-border, 0.1vw) solid var(--grey-tag, #e1e1e1);
+  background: #fff;
 }

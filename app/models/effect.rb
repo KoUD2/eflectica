@@ -26,6 +26,9 @@ class Effect < ApplicationRecord
 
   acts_as_taggable_on :categories, :tasks
 
+  # Автоматически устанавливаем статус "На модерации" при создании эффекта
+  before_create :set_moderation_status
+
   scope :approved, -> { where(is_secure: "Одобрено") }
 
   validates :name, presence: true
@@ -97,6 +100,11 @@ class Effect < ApplicationRecord
   # validate :validate_tags
 
   private
+
+  # Устанавливаем статус "На модерации" при создании эффекта, если статус не был задан
+  def set_moderation_status
+    self.is_secure = "На модерации" if self.is_secure.blank?
+  end
 
   # def validate_tags
   #   invalid_tags = tag_list - ALLOWED_TAGS

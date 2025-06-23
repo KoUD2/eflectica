@@ -123,121 +123,66 @@ class CollectionsController < ApplicationController
   end
 
   def subscribe
-    @collection = Collection.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    render 'errors/not_found', status: 404, layout: 'errors' and return
+    begin
+      @collection = Collection.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render 'errors/not_found', status: 404, layout: 'errors' and return
+    end
     
     if @collection.status != 'private' && !current_user.subscribed_to?(@collection)
       subscription = SubCollection.new(user: current_user, collection: @collection)
       
       if subscription.save
         respond_to do |format|
-          format.html { 
-            flash[:notice] = 'Вы успешно подписались на коллекцию'
-            if turbo_frame_request?
-              render partial: 'collections/subscription_button', locals: { collection: @collection }
-            else
-              redirect_to @collection
-            end
-          }
-          format.turbo_stream { 
-            render turbo_stream: turbo_stream.replace('subscription_button', 
-            partial: 'collections/subscription_button', 
-            locals: { collection: @collection })
-          }
+          format.html { redirect_to @collection }
           format.json { 
             html = render_to_string(partial: 'collections/subscription_button', locals: { collection: @collection }, formats: [:html])
-            render json: { status: 'success', message: 'Вы успешно подписались на коллекцию', html: html } 
+            render json: { status: 'success', html: html } 
           }
         end
       else
         respond_to do |format|
-          format.html { 
-            flash[:alert] = 'Не удалось подписаться на коллекцию'
-            if turbo_frame_request?
-              render partial: 'collections/subscription_button', locals: { collection: @collection }
-            else
-              redirect_to @collection
-            end
-          }
-          format.turbo_stream { 
-            render turbo_stream: turbo_stream.replace('subscription_button', 
-            partial: 'collections/subscription_button', 
-            locals: { collection: @collection })
-          }
+          format.html { redirect_to @collection, alert: 'Не удалось подписаться на коллекцию' }
           format.json { 
             html = render_to_string(partial: 'collections/subscription_button', locals: { collection: @collection }, formats: [:html])
-            render json: { status: 'error', message: 'Не удалось подписаться на коллекцию', html: html }, status: :unprocessable_entity
+            render json: { status: 'error', html: html }, status: :unprocessable_entity
           }
         end
       end
     else
       respond_to do |format|
-        format.html { 
-          flash[:alert] = 'Вы не можете подписаться на эту коллекцию'
-          if turbo_frame_request?
-            render partial: 'collections/subscription_button', locals: { collection: @collection }
-          else
-            redirect_to @collection
-          end
-        }
-        format.turbo_stream { 
-          render turbo_stream: turbo_stream.replace('subscription_button', 
-          partial: 'collections/subscription_button', 
-          locals: { collection: @collection })
-        }
+        format.html { redirect_to @collection, alert: 'Вы не можете подписаться на эту коллекцию' }
         format.json { 
           html = render_to_string(partial: 'collections/subscription_button', locals: { collection: @collection }, formats: [:html])
-          render json: { status: 'error', message: 'Вы не можете подписаться на эту коллекцию', html: html }, status: :unprocessable_entity
+          render json: { status: 'error', html: html }, status: :unprocessable_entity
         }
       end
     end
   end  
 
   def unsubscribe
-    @collection = Collection.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    render 'errors/not_found', status: 404, layout: 'errors' and return
+    begin
+      @collection = Collection.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render 'errors/not_found', status: 404, layout: 'errors' and return
+    end
+    
     subscription = current_user.sub_collections.find_by(collection: @collection)
     
     if subscription&.destroy
       respond_to do |format|
-        format.html { 
-          flash[:notice] = 'Вы успешно отписались от коллекции'
-          if turbo_frame_request?
-            render partial: 'collections/subscription_button', locals: { collection: @collection }
-          else
-            redirect_to @collection
-          end
-        }
-        format.turbo_stream { 
-          render turbo_stream: turbo_stream.replace('subscription_button', 
-          partial: 'collections/subscription_button', 
-          locals: { collection: @collection })
-        }
+        format.html { redirect_to @collection }
         format.json { 
           html = render_to_string(partial: 'collections/subscription_button', locals: { collection: @collection }, formats: [:html])
-          render json: { status: 'unsubscribed', html: html } 
+          render json: { status: 'success', html: html }
         }
       end
     else
       respond_to do |format|
-        format.html { 
-          flash[:alert] = 'Не удалось отписаться от коллекции'
-          if turbo_frame_request?
-            render partial: 'collections/subscription_button', locals: { collection: @collection }
-          else
-            redirect_to @collection
-          end
-        }
-        format.turbo_stream { 
-          render turbo_stream: turbo_stream.replace('subscription_button', 
-          partial: 'collections/subscription_button', 
-          locals: { collection: @collection })
-        }
+        format.html { redirect_to @collection, alert: 'Не удалось отписаться от коллекции' }
         format.json { 
           html = render_to_string(partial: 'collections/subscription_button', locals: { collection: @collection }, formats: [:html])
-          render json: { error: 'Не удалось отписаться', html: html }, status: :unprocessable_entity
+          render json: { status: 'error', html: html }, status: :unprocessable_entity
         }
       end
     end
@@ -269,7 +214,7 @@ class CollectionsController < ApplicationController
   def update
     respond_to do |format|
       if @collection.update(collection_params)
-        format.html { redirect_to @collection, notice: "Коллекция была обновлена" }
+        format.html { redirect_to @collection }
         format.json { render :show, status: :ok, location: @collection }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -283,7 +228,7 @@ class CollectionsController < ApplicationController
     @collection.destroy!
 
     respond_to do |format|
-      format.html { redirect_to collections_path, status: :see_other, notice: "Коллекция была удалена" }
+      format.html { redirect_to collections_path, status: :see_other }
       format.json { head :no_content }
     end
   end

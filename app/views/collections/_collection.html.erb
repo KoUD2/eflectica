@@ -47,28 +47,33 @@
         
 
         <% unless css_classes[:header] == "A_Pink" %>
-          <% if current_user && current_user.subscribed_to?(collection) %>
-            <%= button_to unsubscribe_collection_path(collection), 
-                method: :delete, 
-                remote: true, 
-                class: "A_ButtonSecondary A_UnsubscribeButton", 
-                form: { data: { controller: "subscribe" } } do %>
-              <%= image_tag("Minus.svg", alt: "Удалить подписку", class: "A_folowCollectionImage") %>
-              <p class='Q_ButtonSecondary Q_ButtonSecondaryDark'>Отписаться</p>
+          <div data-controller="subscribe" data-subscribe-collection-id="<%= collection.id %>">
+            <%= turbo_frame_tag "subscription_button_#{collection.id}" do %>
+              <% if current_user && current_user.subscribed_to?(collection) %>
+                <button class="A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryGrayFit A_UnsubscribeButton" 
+                        data-action="click->subscribe#unsubscribe"
+                        data-subscribe-url="<%= unsubscribe_collection_path(collection) %>">
+                  <%= image_tag("minusIconBlack.svg", alt: "Отписаться", class:"Q_plusMinusIcon") %>
+                  Отписаться
+                </button>
+              <% elsif current_user %>
+                <button class="A_ButtonPrimary A_SubscribeButton" 
+                        data-action="click->subscribe#subscribe"
+                        data-subscribe-url="<%= subscribe_collection_path(collection) %>"
+                        <%= 'disabled' if collection.status == 'private' %>>
+                  <%= image_tag("plusIconWhite.svg", alt: "Подписаться", class:"Q_plusMinusIcon") %>
+                  Подписаться
+                </button>
+              <% else %>
+               <button class="A_ButtonSecondary A_SubscribeButton">
+                <%= image_tag("Plus.svg", alt: "Подписаться", class: "A_folowCollectionImage") %>
+                <p class='Q_ButtonSecondary'>
+                  Подписаться
+                </p>
+                </button>
+              <% end %>
             <% end %>
-          <% else %>
-            <%= button_to subscribe_collection_path(collection), 
-                method: :post, 
-                remote: true, 
-                class: "A_ButtonSecondary A_SubscribeButton", 
-                form: { data: { controller: "subscribe" } },
-                disabled: collection.status == 'private' do %>
-              <%= image_tag("Plus.svg", alt: "Подписаться", class: "A_folowCollectionImage") %>
-              <p class='Q_ButtonSecondary'>
-                Подписаться
-              </p>
-            <% end %>
-          <% end %>
+          </div>
         <% end %>
       </div>
     </div>

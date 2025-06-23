@@ -47,11 +47,16 @@
         <div class='O_Effects O_EffectsNewsFeed'>
           <div class="M_HeaderEffects">
             <h2 class="A_Header2">Похожие коллекции</h2>
-            <%= link_to similar_collections_path, class: 'A_buttonWatchAll' do %>
+            <%= link_to similar_collections_path, class: 'A_buttonWatchAll A_buttonWatchAllMobile' do %>
               Смотреть все
             <% end %>
+
+            <%= link_to similar_collections_path, class: 'A_buttonWatchAll A_buttonWatchAllAlign' do %>
+              Все
+              <%= image_tag("ArrowIcon.svg", alt: "Картинка рейтинга", class: "Q_QRIcon") %>       
+            <% end %>
           </div>
-          <div class="C_Effects">
+          <div class="C_Effects C_EffectsColumn">
             <% if @collections.any? %>
               <% @collections.first(3).each do |collection| %>
                 <%= render partial: "collections/collection", locals: { collection: collection, css_classes: { 
@@ -75,10 +80,10 @@
       <div class="M_HeaderEffects">
         <h2 class="A_Header1">Трендовые коллекции</h2>
         <%= link_to trending_collections_path do %>
-          <button class='A_buttonWatchAll'>Смотреть все</button>
+          <button class='A_buttonWatchAll A_buttonWatchAllNone'>Смотреть все</button>
         <% end %>
       </div>
-      <div class="C_Effects C_EffectsTop">
+      <div class="C_Effects C_EffectsTop C_EffectsColumn C_EffectsTopMobile">
         <% if @trending_collections&.any? %>
           <% @trending_collections.each do |collection| %>
             <%= render partial: "collections/collection", locals: { collection: collection, css_classes: { 

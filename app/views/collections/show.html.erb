@@ -23,10 +23,10 @@
 %>
 
 <div class='S_Collection' data-controller="collection collection-edit" data-collection-id="<%= @collection.id %>">
-  <h1 class="A_Header1 A_Header1Collection"><%= @collection.name %></h1>
+  <h1 class="A_Header1 A_Header1Collection A_Header1CollectionCenter"><%= @collection.name %></h1>
   <% if @collection.user == current_user %>
     <div class='W_editCollection'>
-      <button class="A_ButtonPrimary A_SubscribeButton" data-action="click->collection#open">
+      <button class="A_ButtonPrimar A_SubscribeButton" data-action="click->collection#open">
         <%= image_tag("plusIconWhite.svg", alt: "Картинка рейтинга", class: "Q_plusIconBlack") %>
         Добавить элемент
       </button>

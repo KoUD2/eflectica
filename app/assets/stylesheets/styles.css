@@ -132,6 +132,12 @@ dialog::backdrop {
   z-index: 1000;
 }
 
+.modal.modalEffect {
+  opacity: 0;
+  transform: scale(0.9) translateY(-30px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
 .modal {
   display: inline-flex;
   padding: 1.667vw 2.083vw 2.083vw 2.083vw;
@@ -465,6 +471,15 @@ a {
   display: none;
 }
 
+body[data-controller="devise/sessions"] body,
+body[data-controller="devise/registrations"] body {
+  overflow: hidden;
+}
+
+body:has(.W_Overlay) {
+  overflow: hidden;
+}
+
 .star-button {
   background: none;
   border: none;
@@ -496,7 +511,13 @@ header {
   justify-content: space-between;
 }
 
-@media screen and (max-width: 912px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+  body {
+    padding: 2.604vw 0 1.25vw 0;
+  }
+} 
+
+@media screen and (max-width: 767px) {
   body {
     padding: 0;
   }

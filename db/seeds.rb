@@ -54,7 +54,7 @@ def create_effect_categories
 end
 
 def create_effect_programs
-  programs = ["photoshop", "lightroom", "after_effects", "illustrator", "premiere_pro", "blender", "affinity_photo", "capture_one", "maya", "cinema_4d", "3ds_max", "zbrush"]
+  programs = ["photoshop", "lightroom", "after_effects", "premiere_pro", "blender", "affinity_photo", "capture_one", "maya", "cinema_4d", "3ds_max", "zbrush", "unreal", "davinci", "substance", "protopie", "krita", "sketch", "animate", "figma", "clip", "nuke", "fc", "procreate", "godot", "lens", "rive", "unity", "spark", "spine", "toon"]
   
   programs.each do |program_name|
     begin
@@ -169,7 +169,7 @@ def create_effects(quantity)
 
   all_categories = ["photoProcessing", "3dGrafics", "motion", "illustration", "animation", "uiux", "videoProcessing", "vfx", "gamedev", "arvr"]
   all_tasks = ["portraitRetouching", "colorCorrection", "improvePhotoQuality", "preparationForPrinting", "socialMediaContent", "advertisingProcessing", "stylization", "backgroundEditing", "graphicContent", "setLight", "simulation3d", "atmosphereWeather"]
-  all_programs = ["photoshop", "lightroom", "after_effects", "illustrator", "premiere_pro", "blender", "affinity_photo", "capture_one", "maya", "cinema_4d", "3ds_max", "zbrush"]
+  all_programs = ["photoshop", "lightroom", "after_effects", "premiere_pro", "blender", "affinity_photo", "capture_one", "maya", "cinema_4d", "3ds_max", "zbrush", "unreal", "davinci", "substance", "protopie", "krita", "sketch", "animate", "figma", "clip", "nuke", "fc", "procreate", "godot", "lens", "rive", "unity", "spark", "spine", "toon"]
 
   effects_data.sample(quantity).each do |effect_data|
     begin

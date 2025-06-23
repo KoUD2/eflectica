@@ -329,14 +329,12 @@
                 <%= image_tag("Q_IconClose.svg", alt: "Картинка", class: "Q_IconClose") %>
               </button>
             </div>
-            <div class="M_SettingsNavigation M_SettingsNavigationEffect">
-              <p class="A_TextTagFeed A_TextTagFeedActive" data-modal-target="step1">
-                Об эффекте
-              </p>
-              <p class="A_TextTagFeed" data-modal-target="step2">Инструкция</p>
-              <p class="A_TextTagFeed" data-modal-target="step3">Категории</p>
-              <p class="A_TextTagFeed" data-modal-target="step4">Теги</p>
-              <p class="A_TextTagFeed" data-modal-target="step5">Ссылка и превью</p>
+            <div class="M_ProgressBar">
+              <div class="W_ProgressContainer">
+                <div class="W_ProgressLine">
+                  <div class="Q_ProgressFill" data-effect-create-target="progressBar" style="width: 20%;"></div>
+                </div>
+              </div>
             </div>
             <div class='O_CreateEffectInfo'>
               <div class='O_EffectInfo' data-effect-create-target="effectInfo">
@@ -359,7 +357,7 @@
                     <div class='M_PhotoElementPreview'>
                       <div class="M_PhotoElementLabel">
                         <%= f.file_field :image_before, 
-                            accept: "image/*", 
+                            accept: "image/*,.gif", 
                             class: "M_PhotoElementInput", 
                             id: "image_before_field_mobile",
                             data: { effect_create_target: "inputBefore", action: "change->effect-create#previewImage" },
@@ -375,7 +373,7 @@
                     <div class='M_PhotoElementPreview'>
                       <div class="M_PhotoElementLabel">
                         <%= f.file_field :image_after, 
-                            accept: "image/*", 
+                            accept: "image/*,.gif", 
                             class: "M_PhotoElementInput", 
                             id: "image_after_field_mobile",
                             data: { effect_create_target: "inputAfter", action: "change->effect-create#previewImage" },
@@ -485,7 +483,6 @@
                             ["photoshop", "Photoshop"],
                             ["lightroom", "Lightroom"],
                             ["after_effects", "After Effects"],
-                            ["illustrator", "Illustrator"],
                             ["premiere_pro", "Premiere Pro"],
                             ["blender", "Blender"],
                             ["affinity_photo", "Affinity Photo"],
@@ -493,7 +490,26 @@
                             ["maya", "Maya"],
                             ["cinema_4d", "Cinema 4D"],
                             ["3ds_max", "3ds Max"],
-                            ["zbrush", "ZBrush"]
+                            ["zbrush", "ZBrush"],
+                            ["unreal", "Unreal Engine"],
+                            ["davinci", "DaVinci Resolve"],
+                            ["substance", "Substance Painter"],
+                            ["protopie", "ProtoPie"],
+                            ["krita", "Krita"],
+                            ["sketch", "Sketch"],
+                            ["animate", "Adobe Animate"],
+                            ["figma", "Figma"],
+                            ["clip", "Clip Studio Paint"],
+                            ["nuke", "Nuke"],
+                            ["fc", "Final Cut Pro"],
+                            ["procreate", "Procreate"],
+                            ["godot", "Godot"],
+                            ["lens", "Lens Studio"],
+                            ["rive", "Rive"],
+                            ["unity", "Unity"],
+                            ["spark", "Spark AR"],
+                            ["spine", "Spine"],
+                            ["toon", "Toon Boom Harmony"]
                           ].each do |program_key, program_label| %>
                             <label class="Q_CategoryItem custom-checkbox">
                               <div class="Q_ProgramItemContent">
@@ -668,14 +684,12 @@
                 <%= image_tag("Q_IconClose.svg", alt: "Картинка", class: "Q_IconClose") %>
               </button>
             </div>
-            <div class="M_SettingsNavigation M_SettingsNavigationEffect">
-              <p class="A_TextTagFeed A_TextTagFeedActive" data-modal-target="step1">
-                Об эффекте
-              </p>
-              <p class="A_TextTagFeed" data-modal-target="step2">Инструкция</p>
-              <p class="A_TextTagFeed" data-modal-target="step3">Категории</p>
-              <p class="A_TextTagFeed" data-modal-target="step4">Теги</p>
-              <p class="A_TextTagFeed" data-modal-target="step5">Ссылка и превью</p>
+            <div class="M_ProgressBar">
+              <div class="W_ProgressContainer">
+                <div class="W_ProgressLine">
+                  <div class="Q_ProgressFill" data-effect-create-target="progressBar" style="width: 20%;"></div>
+                </div>
+              </div>
             </div>
             <div class='O_CreateEffectInfo'>
               <div class='O_EffectInfo' data-effect-create-target="effectInfo">
@@ -700,7 +714,7 @@
                     <div class='M_PhotoElementPreview'>
                       <%= f.label :image_before, class: "M_PhotoElementLabel" do %>
                         <%= f.file_field :image_before, 
-                            accept: "image/*", 
+                            accept: "image/*,.gif", 
                             class: "M_PhotoElementInput", 
                             data: { effect_create_target: "inputBefore", action: "change->effect-create#previewImage" },
                             hidden: true %>
@@ -713,7 +727,7 @@
                     <div class='M_PhotoElementPreview'>
                       <%= f.label :image_after, class: "M_PhotoElementLabel" do %>
                         <%= f.file_field :image_after, 
-                            accept: "image/*", 
+                            accept: "image/*,.gif", 
                             class: "M_PhotoElementInput", 
                             data: { effect_create_target: "inputAfter", action: "change->effect-create#previewImage" },
                             hidden: true %>
@@ -806,7 +820,6 @@
                             ["photoshop", "Photoshop"],
                             ["lightroom", "Lightroom"],
                             ["after_effects", "After Effects"],
-                            ["illustrator", "Illustrator"],
                             ["premiere_pro", "Premiere Pro"],
                             ["blender", "Blender"],
                             ["affinity_photo", "Affinity Photo"],
@@ -814,7 +827,26 @@
                             ["maya", "Maya"],
                             ["cinema_4d", "Cinema 4D"],
                             ["3ds_max", "3ds Max"],
-                            ["zbrush", "ZBrush"]
+                            ["zbrush", "ZBrush"],
+                            ["unreal", "Unreal Engine"],
+                            ["davinci", "DaVinci Resolve"],
+                            ["substance", "Substance Painter"],
+                            ["protopie", "ProtoPie"],
+                            ["krita", "Krita"],
+                            ["sketch", "Sketch"],
+                            ["animate", "Adobe Animate"],
+                            ["figma", "Figma"],
+                            ["clip", "Clip Studio Paint"],
+                            ["nuke", "Nuke"],
+                            ["fc", "Final Cut Pro"],
+                            ["procreate", "Procreate"],
+                            ["godot", "Godot"],
+                            ["lens", "Lens Studio"],
+                            ["rive", "Rive"],
+                            ["unity", "Unity"],
+                            ["spark", "Spark AR"],
+                            ["spine", "Spine"],
+                            ["toon", "Toon Boom Harmony"]
                           ].each do |program_key, program_label| %>
                             <label class="Q_CategoryItem custom-checkbox">
                               <div class="Q_ProgramItemContent">
@@ -899,7 +931,9 @@
                     </div>
                   </div>
 
-                  <p>Смотреть превью</p>
+                  <button type="button" class="A_More" data-action="click->effect-create#previewAndCreate">
+                    Смотреть превью
+                  </button>
                 </div>
               </div>
             </div>
@@ -910,7 +944,7 @@
                type: "button",
                style: "display: none;" %>
               <%= f.button 'Далее', 
-               class: "A_ButtonPrimary", 
+               class: "A_ButtonPrimary A_ButtonPrimaryMargin", 
                data: { effect_create_target: "nextButton", action: "effect-create#nextStep" },
                type: "button" %>
             </div>
