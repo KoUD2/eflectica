@@ -9,3 +9,19 @@ json.set! :author do
     json.nil!
   end
 end
+
+# Категории эффекта
+json.categories effect.category_list
+
+# Задачи эффекта
+json.tasks effect.task_list
+
+# Программы с версиями
+json.programs effect.programs_with_versions
+
+# Средний рейтинг
+json.average_rating effect.average_rating
+
+# Before и After изображения
+json.before_image effect.before_image
+json.after_image effect.after_image

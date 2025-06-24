@@ -179,7 +179,7 @@ def create_effects(quantity)
       img: upload_effect_image("animationMotion.png"),
       description: "Специальный эффект анимации с использованием GIF",
       speed: 9,
-      platform: "Photoshop",
+      platform: "windows,mac",
       manual: "Руководство по созданию анимационных эффектов",
       link_to: "#",
       is_secure: "Одобрено"
