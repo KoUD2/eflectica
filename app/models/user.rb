@@ -35,13 +35,13 @@ class User < ApplicationRecord
   validates :portfolio, length: { maximum: 255 }, allow_blank: true
 
   def personalized_feed
-    return Effect.all if preferred_categories.empty? && preferred_programs.empty?
+    return Effect.approved if preferred_categories.empty? && preferred_programs.empty?
     
     effect_ids = []
     
     # Получаем эффекты по категориям
     if preferred_categories.any?
-      category_effect_ids = Effect.joins(:categories_list)
+      category_effect_ids = Effect.approved.joins(:categories_list)
                                   .where(effect_categories: { id: preferred_categories.ids })
                                   .pluck(:id)
       effect_ids.concat(category_effect_ids)
@@ -49,14 +49,14 @@ class User < ApplicationRecord
     
     # Получаем эффекты по программам (новый способ через таблицы связей)
     if preferred_programs.any?
-      program_effect_ids = Effect.joins(:effect_programs)
+      program_effect_ids = Effect.approved.joins(:effect_programs)
                                  .where(effect_programs: { id: preferred_programs.ids })
                                  .pluck(:id)
       effect_ids.concat(program_effect_ids)
     end
     
-    # Возвращаем эффекты по найденным ID
-    Effect.where(id: effect_ids.uniq)
+    # Возвращаем одобренные эффекты по найденным ID
+    Effect.approved.where(id: effect_ids.uniq)
   end
 
   def subscribed_to?(collection)

@@ -1,7 +1,8 @@
 class WelcomeController < ApplicationController
   include ProgramHelper
   def index
-    @effects = Effect.includes(:user, :ratings).order(created_at: :desc).limit(3)
+    # Загружаем больше одобренных эффектов для показа по категориям
+    @effects = Effect.approved.includes(:user, :ratings, :categories).order(created_at: :desc).limit(50)
     @collections = Collection.all
     @effect = Effect.new
   end
@@ -16,7 +17,7 @@ class WelcomeController < ApplicationController
       # Поиск в моих эффектах (если пользователь авторизован)
       @my_effects = current_user ? search_effects(current_user.effects, @query) : []
       
-      # Поиск во всех эффектах
+      # Поиск во всех одобренных эффектах
       @all_effects = search_effects(Effect.approved, @query)
       
       # Поиск в моих коллекциях (если пользователь авторизован)

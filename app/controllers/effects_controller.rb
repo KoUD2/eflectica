@@ -4,12 +4,12 @@ class EffectsController < ApplicationController
   # load_and_authorize_resource
   # before_action :authenticate_user!
   before_action :authenticate_user!, only: [:save_preferences]
-  before_action :set_effect, only: [:show, :edit, :update, :destroy, :approve, :reject]
+  before_action :set_effect, only: [:show, :edit, :update, :destroy, :approve, :reject, :resubmit]
 
   # GET /effects or /effects.json
   def index
-    @top_effects = Effect.limit(5)
-    @effects = Effect.search(params[:search]).page(params[:page]).per(12)
+    @top_effects = Effect.approved.limit(5)
+    @effects = Effect.approved.search(params[:search]).page(params[:page]).per(12)
     @services = YAML.load_file(Rails.root.join("config/services/app.yml"))["services"]
 
     @collections = Collection.includes(effects: :images).limit(3)
@@ -38,7 +38,7 @@ class EffectsController < ApplicationController
     if @feed_configured
       @filtered_effects = current_user.personalized_feed.limit(9)
       @collectionsFeed = Collection.joins(effects: :collection_effects)
-        .where(effects: { id: @filtered_effects.ids })
+        .where(effects: { id: @filtered_effects.ids, is_secure: "Одобрено" })
         .distinct
         .limit(3)
     else
@@ -49,15 +49,18 @@ class EffectsController < ApplicationController
       program_ids = [photoshop_program&.id, lightroom_program&.id].compact
       
       if program_ids.any?
-        effect_ids = EffectEffectProgram.where(effect_program_id: program_ids).pluck(:effect_id)
+        # Получаем только одобренные эффекты
+        approved_effect_ids = Effect.approved.joins(:effect_effect_programs)
+          .where(effect_effect_programs: { effect_program_id: program_ids })
+          .pluck(:id)
         @collectionsFeed = Collection.joins(:effects)
-          .where(effects: { id: effect_ids })
+          .where(effects: { id: approved_effect_ids })
           .distinct
           .limit(3)
-        @filtered_effects = Effect.where(id: effect_ids)
+        @filtered_effects = Effect.approved.where(id: approved_effect_ids)
       else
         @collectionsFeed = Collection.limit(3)
-        @filtered_effects = Effect.none
+        @filtered_effects = Effect.approved.none
       end
     end
   
@@ -77,9 +80,9 @@ class EffectsController < ApplicationController
   def categorie
     @category = params[:category]
     
-    # Ищем эффекты как в тегах, так и в связанных таблицах
-    effects_from_tags = Effect.includes(:ratings).tagged_with(@category, on: :categories)
-    effects_from_relations = Effect.includes(:ratings)
+    # Ищем одобренные эффекты как в тегах, так и в связанных таблицах
+    effects_from_tags = Effect.approved.includes(:ratings).tagged_with(@category, on: :categories)
+    effects_from_relations = Effect.approved.includes(:ratings)
       .joins(:effect_effect_categories)
       .joins('JOIN effect_categories ON effect_categories.id = effect_effect_categories.effect_category_id')
       .where('effect_categories.name = ?', @category)
@@ -124,7 +127,7 @@ class EffectsController < ApplicationController
   end
 
   def categories
-    @effects = Effect.includes(:images, :taggings)
+    @effects = Effect.approved.includes(:images, :taggings)
     
     # Получаем категории как из тегов, так и из связанных таблиц
     categories_from_tags = ActsAsTaggableOn::Tag
@@ -147,8 +150,8 @@ class EffectsController < ApplicationController
   end
 
   def trending
-    # Получаем трендовые эффекты (по количеству лайков за последний месяц)
-    trending_effect_ids = Effect.joins(:ratings)
+    # Получаем трендовые одобренные эффекты (по количеству лайков за последний месяц)
+    trending_effect_ids = Effect.approved.joins(:ratings)
       .where(ratings: { created_at: 1.month.ago..Time.current, number: 4..5 })
       .group('effects.id')
       .order('COUNT(ratings.id) DESC')
@@ -156,12 +159,12 @@ class EffectsController < ApplicationController
       .pluck(:id)
     
     if trending_effect_ids.any?
-      @effects = Effect.where(id: trending_effect_ids)
+      @effects = Effect.approved.where(id: trending_effect_ids)
         .includes(:images, :ratings)
         .order(Arel.sql("array_position(ARRAY[#{trending_effect_ids.join(',')}], effects.id)"))
     else
-      # Если нет эффектов с высокими рейтингами, берем самые новые
-      @effects = Effect.order(created_at: :desc).includes(:images, :ratings).limit(50)
+      # Если нет эффектов с высокими рейтингами, берем самые новые одобренные
+      @effects = Effect.approved.order(created_at: :desc).includes(:images, :ratings).limit(50)
     end
     
     # Получаем уникальные задачи для трендовых эффектов
@@ -180,8 +183,8 @@ class EffectsController < ApplicationController
   end
 
   def similar
-    # Получаем похожие эффекты (отсортированные по популярности)
-    @effects = Effect.left_joins(:ratings)
+    # Получаем похожие одобренные эффекты (отсортированные по популярности)
+    @effects = Effect.approved.left_joins(:ratings)
       .group('effects.id')
       .order('COUNT(ratings.id) DESC, effects.created_at DESC')
       .includes(:images, :ratings)
@@ -205,14 +208,14 @@ class EffectsController < ApplicationController
   end
 
   def by_tag
-    @effects = Effect.tagged_with(params[:tag])
+    @effects = Effect.approved.tagged_with(params[:tag])
     render :index
   end
 
   # GET /effects/1 or /effects/1.json
   def show
     @effect = Effect.includes(comments: { user: :ratings }).find(params[:id])
-    @effects = Effect.where.not(id: @effect.id).limit(4)
+    @effects = Effect.approved.where.not(id: @effect.id).limit(4)
     @user_collections = current_user.collections if current_user
     @effect_collections = current_user ? @effect.collections.where(user: current_user).pluck(:id) : []
     @comment = Comment.new
@@ -328,6 +331,18 @@ class EffectsController < ApplicationController
       redirect_to @effect, notice: 'Эффект отклонен'
     else
       redirect_to @effect, alert: 'Ошибка отклонения'
+    end
+  end
+
+  def resubmit
+    if @effect.is_secure == "Не одобрено"
+      if @effect.update(is_secure: "На модерации")
+        redirect_to @effect, notice: 'Эффект отправлен на повторную модерацию'
+      else
+        redirect_to @effect, alert: 'Ошибка отправки на модерацию'
+      end
+    else
+      redirect_to @effect, alert: 'Можно отправить на модерацию только отклоненные эффекты'
     end
   end
   

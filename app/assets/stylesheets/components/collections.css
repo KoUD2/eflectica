@@ -63,6 +63,13 @@
   align-self: stretch;
 }
 
+.C_buttonsModeration {
+  display: flex;
+  align-items: center;
+  margin-top: 2.81vw;
+  gap: 0.83vw;
+}
+
 .C_LinkAreaRow {
   width: 26.46vw;
 }
@@ -658,9 +665,23 @@
     gap: 1.042vw;
     margin-left: 1.563vw;
   }
-  
+
   .C_Menu {
     width: 95.833vw;
+  }
+
+  .C_PrivateSettings {
+    margin-top: 2.083vw;
+    gap: 1.438vw;
+
+    > p {
+      font-size: 1.563vw;
+      line-height: 1.823vw;
+    }
+  }
+
+  .C_RadioSettings {
+    gap: 1.078vw;
   }
 
   .Q_SelectedCategoriesList {
@@ -875,10 +896,31 @@
     gap: 8.205vw;
   }
 
+  .C_PrivateSettings {
+    margin-top: 4.103vw;
+    gap: 2.564vw;
+
+    > p {
+      font-size: 3.59vw;
+    }
+  }
+
+  .C_RadioSettings {
+    gap: 1.997vw;
+  }
+
   .C_MobileMenuList {
     display: flex;
     flex-direction: column;
     gap: 9.23vw;
     align-items: center;
+  }
+
+  .C_buttonsModeration {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10.769vw;
+    gap: 2.05vw;
   }
 }

@@ -864,8 +864,17 @@
     gap: 3.125vw;
   }
 
+  .M_CollectionForm {
+    gap: 1.042vw;
+    width: 42.708vw;
+  }
+
   .M_userInfo {
     gap: 5.99vw;
+  }
+
+  .M_CollectionFormVideo {
+    width: 100%;
   }
 }
 
@@ -985,6 +994,7 @@
     padding: 12.308vw 0;
     align-items: center;
     min-height: auto;
+    display: none;
   }
 
   .W_similarEffects .M_HeaderEffects {
@@ -1022,6 +1032,15 @@
     align-items: center;
   }
 
+  .M_CollectionForm {
+    gap: 2.051vw;
+    width: 78.974vw;
+  }
+
+  .M_RadioSettings {
+    gap: 1.997vw;
+  }
+
   .M_userInfoSettings {
     margin-top: 6.154vw;
     justify-content: center;
@@ -1031,6 +1050,10 @@
     flex-direction: column;
     align-items: center;
     gap: 3.077vw;
+  }
+
+  .M_CollectionFormVideo {
+    flex-direction: column;
   }
 
   .M_HeaderEffectsCategories {

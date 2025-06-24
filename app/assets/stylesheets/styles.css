@@ -515,6 +515,11 @@ header {
   body {
     padding: 2.604vw 0 1.25vw 0;
   }
+
+  input[type="radio"] {
+    width: 1.823vw;
+    height: 1.823vw;
+  }
 } 
 
 @media screen and (max-width: 767px) {
@@ -569,6 +574,11 @@ header {
   #show-registration-form {
     font-size: 3.721vw;
     line-height: 6.047vw;
+  }
+
+  input[type="radio"] {
+    width: 3.59vw;
+    height: 3.59vw;
   }
 }
 

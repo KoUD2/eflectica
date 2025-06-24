@@ -905,6 +905,11 @@
   }
 }
 
+.Q_IconPencil {
+  width: 1.25vw;
+  height: 1.25vw;
+}
+
 .Q_SortItem:last-child {
   border-bottom: none;
 }
@@ -1004,6 +1009,16 @@
   .Q_shareProfile {
     width: 3.125vw;
     height: 3.125vw;
+  }
+
+  .Q_IconClose {
+    width: 2.156vw;
+    height: 2.156vw;
+  }
+
+  .Q_imageSkrepka {
+    width: 2.589vw !important;
+    height: 2.589vw !important;
   }
 
   .Q_NotificationsIcon {
@@ -1151,6 +1166,16 @@
   .Q_ProgramIconImage {
     width: 8.447vw;
     height: 8.447vw;
+  }
+
+  .Q_IconClose {
+    width: 6.154vw;
+    height: 6.154vw;
+  }
+
+  .Q_imageSkrepka {
+    width: 5.096vw !important;
+    height: 5.096vw !important;
   }
 
   .Q_shareProfile {

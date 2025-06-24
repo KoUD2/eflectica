@@ -1827,6 +1827,22 @@
   margin-top: 1.25vw;
 }
 
+.A_ButtonPrimaryCollectionSub {
+  display: flex;
+  padding: 0.417vw 0.625vw;
+  height: 2.083vw;
+  width: 8.646vw;
+  align-items: center;
+  gap: 0.417vw;
+  border-radius: var(--desktop-button, 0.417vw);
+  border: var(--desktop-border, 0.104vw) solid var(--computer-blue, #0638bd);
+  background: var(--porcelain-white, #fff);
+  color: var(--computer-blue, #0638bd);
+  font-size: 0.938vw;
+  font-weight: 500;
+  line-height: 0.938vw;
+}
+
 .A_Blue {
   background: var(--computer-blue, #0638bd);
 }
@@ -2198,8 +2214,26 @@
   width: 14.58vw;
 }
 
+.A_ButtonSecondaryCollection {
+  height: 2.083vw;
+  font-size: 0.938vw;
+  font-weight: 500;
+  line-height: 0.938vw;
+}
+
+.A_ButtonPrimaryModeration {
+  width: 15.16vw;
+}
+
 .A_SubscribeButtonAdd {
   margin: 0 0 0 auto;
+}
+
+.A_ButtonSecondaryGrayEdit {
+  width: 10.81vw;
+  color: var(--charcoal-black, #0e1111);
+  border-radius: var(--desktop-button, 0.42vw);
+  border: var(--desktop-border, 0.1vw) solid var(--grey-tag, #e1e1e1);
 }
 
 .hidden {
@@ -2286,6 +2320,11 @@
       width: 3.125vw;
       height: 3.125vw;
     }
+  }
+
+  .A_ButtonPrimaryTablet {
+    width: 24.698vw;
+    padding: 0;
   }
 
   .A_UserCard {
@@ -2406,7 +2445,17 @@
     padding: 1.042vw;
     gap: 1.042vw;
     border-radius: var(--tablet-button, 0.781vw);
-    border: var(--tablet-border, 0.195vw) solid var(--computer-blue, #0638bd);
+    border: var(--tablet-border, 0.195vw) solid #e1e1e1;
+    font-size: 1.823vw;
+    line-height: 2.083vw;
+  }
+
+  .A_ButtonSecondaryTablet {
+    width: 26.832vw;
+    display: flex;
+    padding: 1.042vw;
+    align-items: center;
+    justify-content: center;
   }
 
   .A_folowCollectionImage {
@@ -2490,8 +2539,74 @@
     height: 3.646vw;
   }
 
+  .A_InputFormName {
+    height: 4.688vw;
+    padding: 1.563vw;
+    gap: 1.496vw;
+    border-radius: var(--tablet-button, 0.781vw);
+    border: var(--tablet-border, 0.195vw) solid var(--grey-tag, #e1e1e1);
+    font-size: 1.823vw;
+    line-height: 2.344vw;
+  }
+
+  .A_InputFormDescription {
+    height: 11.198vw;
+    padding: 1.563vw;
+    gap: 1.496vw;
+    border-radius: var(--tablet-button, 0.781vw);
+    border: var(--tablet-border, 0.195vw) solid var(--grey-tag, #e1e1e1);
+    font-size: 1.823vw;
+    line-height: 2.344vw;
+  }
+
+  .A_TextCaptionCollection {
+    width: 42.708vw;
+  }
+
+  .A_ButtonPrimaryCollection {
+    width: 25.91vw !important;
+    padding: 0;
+  }
+
+  .A_ButtonPrimaryCollectionCreate {
+    margin: 2.083vw 0 0 auto;
+    padding: 0;
+    height: 5.208vw;
+    width: 17.057vw;
+  }
+
+  .A_imagePreviewLink {
+    width: 36.979vw;
+  }
+
+  .A_InputTextCollection {
+    height: 4.427vw;
+    padding: 1.563vw;
+    border-radius: var(--desktop-button, 0.42vw);
+    border: var(--desktop-border, 0.1vw) solid var(--grey-tag, #e1e1e1);
+    font-size: 1.823vw;
+  }
+
+  .A_TextareaCollection {
+    padding: 1.563vw;
+    height: 17.188vw;
+  }
+
   .A_ButtonDamage {
     border: var(--border, 0.195vw) solid var(--damage, #ea0004);
+  }
+
+  .A_ButtonDelete {
+    margin: 0 0 0 auto;
+    font-size: 1.823vw;
+    line-height: 2.083vw;
+  }
+
+  .A_InputTextCollectionLinkNone {
+    padding-left: 3.13vw;
+    cursor: pointer;
+    border: none;
+    color: var(--computer-blue, #0638bd);
   }
 }
 
@@ -2836,14 +2951,97 @@
     border: var(--border, 0.513vw) solid var(--damage, #ea0004);
   }
 
+  .A_HeaderChoice {
+    > h3 {
+      font-size: 6.154vw;
+    }
+  }
+
+  .A_InputFormName {
+    height: 11.282vw;
+    padding: 3.077vw 4.103vw;
+    gap: 2.051vw;
+    border-radius: var(--mobile-button, 1.538vw);
+    border: var(--desktop-border, 0.513vw) solid var(--grey-tag, #e1e1e1);
+    font-size: 4.103vw;
+    line-height: 5.641vw;
+  }
+
   .A_SocialIconProfile {
     width: 10.769vw;
     height: 10.769vw;
   }
 
+  .A_InputFormDescription {
+    height: 22.051vw;
+    padding: 3.077vw 4.103vw;
+    gap: 2.051vw;
+    border-radius: var(--mobile-button, 1.538vw);
+    border: var(--desktop-border, 0.513vw) solid var(--grey-tag, #e1e1e1);
+    font-size: 4.103vw;
+    line-height: 5.641vw;
+  }
+
+  .A_TextCaptionCollection {
+    width: 78.974vw;
+  }
+
   .A_FilterSearch,
   .A_More {
     display: none;
+  }
+
+  .A_ButtonPrimaryCollectionCreate {
+    margin-top: 4.103vw;
+    height: 11.282vw;
+    padding: 3.077vw 10.769vw;
+    width: 81.538vw;
+  }
+
+  .A_imagePreviewLink {
+    width: 82.821vw;
+  }
+
+  .A_InputTextCollection {
+    height: 12.308vw;
+    padding: 3.077vw 4.103vw;
+    gap: 2.051vw;
+    border-radius: var(--mobile-button, 1.538vw);
+    border: var(--desktop-border, 0.513vw) solid var(--grey-tag, #e1e1e1);
+    font-size: 4.103vw;
+  }
+
+  .A_TextareaCollection {
+    padding: 12px 16px;
+    height: 34.359vw;
+  }
+
+  .A_InputTextCollectionLinkNone {
+    padding-left: 6.13vw;
+    cursor: pointer;
+    border: none;
+    color: var(--computer-blue, #0638bd);
+  }
+
+  .A_ButtonDelete {
+    margin: 0 0 0 auto;
+    font-size: 3.59vw;
+    line-height: 4.103vw;
+  }
+
+  .A_ButtonSecondaryGrayEdit {
+    font-size: 4.103vw;
+    line-height: normal;
+    width: 40vw;
+    height: 12.308vw;
+    border-radius: var(--mobile-button, 1.538vw);
+    color: var(--charcoal-black, #0e1111);
+    border: var(--desktop-border, 0.1vw) solid var(--grey-tag, #e1e1e1);
+
+    > img {
+      width: 3.81vw;
+      height: 3.81vw;
+    }
   }
 
   .A_TextMMobile {

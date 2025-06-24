@@ -136,7 +136,7 @@ class CollectionsController < ApplicationController
         respond_to do |format|
           format.html { redirect_to @collection }
           format.json { 
-            html = render_to_string(partial: 'collections/subscription_button', locals: { collection: @collection }, formats: [:html])
+            html = render_to_string(partial: 'collections/subscription_button', locals: { collection: @collection, is_collection_context: is_collection_card_context? }, formats: [:html])
             render json: { status: 'success', html: html } 
           }
         end
@@ -144,7 +144,7 @@ class CollectionsController < ApplicationController
         respond_to do |format|
           format.html { redirect_to @collection, alert: 'Не удалось подписаться на коллекцию' }
           format.json { 
-            html = render_to_string(partial: 'collections/subscription_button', locals: { collection: @collection }, formats: [:html])
+            html = render_to_string(partial: 'collections/subscription_button', locals: { collection: @collection, is_collection_context: is_collection_card_context? }, formats: [:html])
             render json: { status: 'error', html: html }, status: :unprocessable_entity
           }
         end
@@ -153,7 +153,7 @@ class CollectionsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to @collection, alert: 'Вы не можете подписаться на эту коллекцию' }
         format.json { 
-          html = render_to_string(partial: 'collections/subscription_button', locals: { collection: @collection }, formats: [:html])
+          html = render_to_string(partial: 'collections/subscription_button', locals: { collection: @collection, is_collection_context: is_collection_card_context? }, formats: [:html])
           render json: { status: 'error', html: html }, status: :unprocessable_entity
         }
       end
@@ -173,7 +173,7 @@ class CollectionsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to @collection }
         format.json { 
-          html = render_to_string(partial: 'collections/subscription_button', locals: { collection: @collection }, formats: [:html])
+          html = render_to_string(partial: 'collections/subscription_button', locals: { collection: @collection, is_collection_context: is_collection_card_context? }, formats: [:html])
           render json: { status: 'success', html: html }
         }
       end
@@ -181,7 +181,7 @@ class CollectionsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to @collection, alert: 'Не удалось отписаться от коллекции' }
         format.json { 
-          html = render_to_string(partial: 'collections/subscription_button', locals: { collection: @collection }, formats: [:html])
+          html = render_to_string(partial: 'collections/subscription_button', locals: { collection: @collection, is_collection_context: is_collection_card_context? }, formats: [:html])
           render json: { status: 'error', html: html }, status: :unprocessable_entity
         }
       end
@@ -416,6 +416,15 @@ class CollectionsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def collection_params
       params.require(:collection).permit(:name, :description, :status, :user_id)
+    end
+
+    def is_collection_card_context?
+      # Проверяем, что запрос НЕ со страницы show коллекции
+      referer = request.referer
+      return false if referer.nil?
+      
+      # Если referrer содержит путь к странице коллекции /collection/ID, то это НЕ контекст карточки
+      !referer.include?("/collection/#{@collection.id}")
     end
 
     def create_sample_collections

@@ -50,18 +50,18 @@
           <div data-controller="subscribe" data-subscribe-collection-id="<%= collection.id %>">
             <%= turbo_frame_tag "subscription_button_#{collection.id}" do %>
               <% if current_user && current_user.subscribed_to?(collection) %>
-                <button class="A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryGrayFit A_UnsubscribeButton" 
+                <button class="A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryGrayFit A_UnsubscribeButton A_ButtonSecondaryCollection" 
                         data-action="click->subscribe#unsubscribe"
                         data-subscribe-url="<%= unsubscribe_collection_path(collection) %>">
                   <%= image_tag("minusIconBlack.svg", alt: "Отписаться", class:"Q_plusMinusIcon") %>
                   Отписаться
                 </button>
               <% elsif current_user %>
-                <button class="A_ButtonPrimary A_SubscribeButton" 
+                <button class="A_ButtonPrimary A_SubscribeButton A_ButtonPrimaryCollectionSub" 
                         data-action="click->subscribe#subscribe"
                         data-subscribe-url="<%= subscribe_collection_path(collection) %>"
                         <%= 'disabled' if collection.status == 'private' %>>
-                  <%= image_tag("plusIconWhite.svg", alt: "Подписаться", class:"Q_plusMinusIcon") %>
+                  <%= image_tag("Plus.svg", alt: "Подписаться", class:"Q_plusMinusIcon") %>
                   Подписаться
                 </button>
               <% else %>

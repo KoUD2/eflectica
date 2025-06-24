@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
   before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user_for_json!, only: [:show]
   before_action :set_collection, only: [:create]
   before_action :set_image, only: [:show, :update, :destroy]
   before_action :set_cors_headers, only: [:show]
@@ -18,14 +19,28 @@ class ImagesController < ApplicationController
   end
 
   def show
-    if @image.file.present?
-      # Отправляем файл с правильными заголовками
-      send_file @image.file.path, 
-                type: @image.file.content_type,
-                disposition: 'inline',
-                filename: @image.file.filename
-    else
-      head :not_found
+    respond_to do |format|
+      format.html do
+        if @image.file.present?
+          # Отправляем файл с правильными заголовками
+          send_file @image.file.path, 
+                    type: @image.file.content_type,
+                    disposition: 'inline',
+                    filename: @image.file.filename
+        else
+          head :not_found
+        end
+      end
+      
+      format.json do
+        render json: {
+          id: @image.id,
+          title: @image.title,
+          description: @image.description,
+          file_url: @image.file.present? ? image_path(@image) : nil,
+          created_at: @image.created_at
+        }
+      end
     end
   end
 
@@ -52,18 +67,35 @@ class ImagesController < ApplicationController
 
   private
 
+  def authenticate_user_for_json!
+    if request.format.json? && !user_signed_in?
+      render json: { error: 'Требуется авторизация' }, status: :unauthorized
+    end
+  end
+
   def set_collection
     @collection = current_user.collections.find(params[:collection_id])
   end
 
   def set_image
     @image = Image.find(params[:id])
-    # Проверяем, что пользователь имеет доступ к изображению через его коллекции
-    collection = @image.collection_images.joins(:collection).where(collections: { user: current_user }).first&.collection
     
-    unless collection
-      render json: { error: 'Доступ запрещен' }, status: :forbidden
-      return
+    # Проверяем, что пользователь имеет доступ к изображению через его коллекции (только для аутентифицированных пользователей)
+    if user_signed_in?
+      collection = @image.collection_images.joins(:collection).where(collections: { user: current_user }).first&.collection
+      
+      unless collection
+        respond_to do |format|
+          format.html { head :forbidden }
+          format.json { render json: { error: 'Доступ запрещен' }, status: :forbidden }
+        end
+        return
+      end
+    end
+  rescue ActiveRecord::RecordNotFound
+    respond_to do |format|
+      format.html { head :not_found }
+      format.json { render json: { error: 'Изображение не найдено' }, status: :not_found }
     end
   end
 

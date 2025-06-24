@@ -13,11 +13,10 @@
 		 <% if @collection_id %>data-effect-selection-collection-id-value="<%= @collection_id %>"<% end %>>
 	<div class='W_coverCategory'>
 		<%= image_tag("imageCategory5.png", alt: "Картинка рейтинга", class: "Q_IconCategory5") %>
-		<%= image_tag("imageCategory2.png", alt: "Картинка рейтинга", class: "Q_IconCategory2") %>
-		<%= image_tag("imageCategory3.png", alt: "Картинка рейтинга", class: "Q_IconCategory3") %>
-		<%= image_tag("imageCategory1.png", alt: "Картинка рейтинга", class: "Q_IconCategory1") %>
 		<%= image_tag("imageCategory6.png", alt: "Картинка рейтинга", class: "Q_IconCategory6") %>
-		<%= image_tag("imageCategory4.png", alt: "Картинка рейтинга", class: "Q_IconCategory4") %>
+		<% category_images(@category).each_with_index do |image, index| %>
+			<%= image_tag(image, alt: "Картинка категории", class: "Q_IconCategory#{[2, 3, 1, 4][index]}") %>
+		<% end %>
 	</div>
 
 	<h1 class="A_Header1 A_Header1Category"><%= category_name %></h1>

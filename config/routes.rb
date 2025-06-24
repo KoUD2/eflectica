@@ -125,6 +125,7 @@ Rails.application.routes.draw do
     member do
       patch :approve
       patch :reject
+      patch :resubmit
     end
     collection do
       get 'categories', to: 'effects#categories'

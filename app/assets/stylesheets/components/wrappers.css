@@ -955,6 +955,7 @@
 }
 
 .W_allButtonsCategory {
+  width: 88.542vw;
   margin-top: 2.813vw;
   display: flex;
   align-items: flex-end;
@@ -1176,6 +1177,14 @@
     gap: 1.563vw;
   }
 
+  .W_linkFormInputsPreview {
+    width: 28.646vw;
+  }
+
+  .W_editCollection {
+    margin-top: 2.083vw;
+  }
+
   .W_collectionElements {
     gap: 1.563vw;
   }
@@ -1310,6 +1319,8 @@
     margin-top: 10.769vw;
     width: 89.744vw;
     gap: 4.103vw;
+    font-size: 4.1vw;
+    line-height: 5.64vw;
   }
   .W_shareRaiting {
     flex-direction: column-reverse;
@@ -1403,7 +1414,7 @@
     position: absolute;
     top: 18.08vw;
     right: 13vw;
-    z-index: 1001;
+    z-index: 1000;
   }
 
   .W_buttonsProfile {
@@ -1428,6 +1439,11 @@
   .W_commonLinksHeader,
   .W_socialTgMobile {
     display: none;
+  }
+
+  .W_linkFormInputsPreview {
+    width: 82.821vw;
+    gap: 2.051vw;
   }
 
   .W_tgSection {

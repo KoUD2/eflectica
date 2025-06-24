@@ -266,6 +266,20 @@
           <%= sanitize(@effect.manual.gsub('\\n', "\n").gsub(/\n/, '<br>')) %>
         </div>
 
+        <% if @effect.is_secure == "На модерации" || @effect.is_secure == "Не одобрено" %>
+          <div class='C_buttonsModeration'>
+            <% if @effect.is_secure == "Не одобрено" %>
+              <%= link_to resubmit_effect_path(@effect), method: :patch, class: "A_ButtonPrimary A_ButtonPrimaryModeration" do %>
+                Отправить на модерацию
+              <% end %>
+            <% end %>
+            <button class="A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryGrayEdit">
+              <%= image_tag("Q_IconPencil.svg", alt: "Картинка редактирования эффекта", class: "Q_IconPencil") %>
+              Редактировать
+            </button>
+          </div>
+        <% end %>
+
         <% if @effect.is_secure == "Одобрено" %>
           <div class='W_More M_createPostCardPC'>
             <h2 class='A_Header2 A_Header2Settings'>Хочешь больше похожих эффектов? <span>Настрой ленту!</span></h2>

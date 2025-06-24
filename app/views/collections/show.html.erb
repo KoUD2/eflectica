@@ -26,11 +26,11 @@
   <h1 class="A_Header1 A_Header1Collection A_Header1CollectionCenter"><%= @collection.name %></h1>
   <% if @collection.user == current_user %>
     <div class='W_editCollection'>
-      <button class="A_ButtonPrimar A_SubscribeButton" data-action="click->collection#open">
+      <button class="A_ButtonPrimary A_SubscribeButton A_ButtonPrimaryTablet" data-action="click->collection#open">
         <%= image_tag("plusIconWhite.svg", alt: "Картинка рейтинга", class: "Q_plusIconBlack") %>
         Добавить элемент
       </button>
-      <button class="A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryFit" data-action="click->collection-edit#open">Редактировать коллекцию</button>
+      <button class="A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryFit A_ButtonSecondaryTablet" data-action="click->collection-edit#open">Редактировать коллекцию</button>
     </div>
   <% elsif @collection.status == 'public' %>
     <%= render 'collections/subscription_button', collection: @collection %>
@@ -342,7 +342,7 @@
 
             <!-- Поле для отображения текущего файла -->
             <div style="position: relative;">
-              <%= image_tag("icon-attachment2.svg", alt: "Иконка ссылки", class: "file-icon" , style: "position: absolute; top: 50%; transform: translateY(-50%); width: 1.67vw; height: 1.67vw; z-index: 1;") %>
+              <%= image_tag("icon-attachment2.svg", alt: "Иконка ссылки", class: "file-icon Q_imageSkrepka" , style: "position: absolute; top: 50%; transform: translateY(-50%); width: 1.67vw; height: 1.67vw; z-index: 1;") %>
               <input type="text" 
                      class="A_InputText A_InputTextCollection A_InputTextCollectionLink A_InputTextCollectionLinkNone" 
                      placeholder="Текущий файл" 
