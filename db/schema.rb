@@ -155,25 +155,11 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_19_130100) do
     t.index ["user_id"], name: "index_effects_on_user_id"
   end
 
-  create_table "favorite_images", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "title", null: false
-    t.text "notes"
-    t.string "image_url"
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_favorite_images_on_user_id"
-  end
-
   create_table "favorite_links", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "name"
+    t.string "name", null: false
     t.text "notes"
-    t.string "url"
+    t.string "url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_favorite_links_on_user_id"
@@ -343,7 +329,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_19_130100) do
   add_foreign_key "effect_effect_tasks", "effect_tasks"
   add_foreign_key "effect_effect_tasks", "effects"
   add_foreign_key "effects", "users"
-  add_foreign_key "favorite_images", "users"
   add_foreign_key "favorite_links", "users"
   add_foreign_key "favorites", "effects"
   add_foreign_key "favorites", "users"

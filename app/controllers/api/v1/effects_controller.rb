@@ -3,23 +3,17 @@ class Api::V1::EffectsController < Api::V1::BaseController
   before_action :find_user_effect, only: [:destroy]
 
   def index
-    @effects = Effect.includes(:images, :comments, :ratings).all
-    render json: @effects.as_json(
-      only: [:id, :name, :img, :description, :speed, :platform, :manual, :created_at],
-      methods: [:category_list, :task_list, :programs_with_versions, :average_rating, :before_image, :after_image]
-    )
+    @effects = Effect.includes(:images, :comments, :ratings, :user).approved
+    # Используем Jbuilder шаблон для единообразия
   end
 
   def show
-    @effect = Effect.includes(:images, :comments, :ratings).find(params[:id])
-    render json: @effect.as_json(
-      only: [:id, :name, :img, :description, :speed, :platform, :manual, :created_at],
-      methods: [:category_list, :task_list, :programs_with_versions, :average_rating, :before_image, :after_image]
-    )
+    @effect = Effect.includes(:images, :comments, :ratings, :user).find(params[:id])
+    # Используем Jbuilder шаблон для единообразия
   end
 
   def my_effects
-    @effects = current_user.effects.includes(:images, :comments, :ratings)
+    @effects = current_user.effects.includes(:images, :comments, :ratings, :user)
     render json: @effects.as_json(
       only: [:id, :name, :img, :description, :speed, :platform, :manual, :is_secure, :created_at, :updated_at],
       methods: [:category_list, :task_list, :programs_with_versions, :average_rating, :before_image, :after_image],

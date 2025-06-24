@@ -171,6 +171,62 @@ def create_effects(quantity)
   all_tasks = ["portraitRetouching", "colorCorrection", "improvePhotoQuality", "preparationForPrinting", "socialMediaContent", "advertisingProcessing", "stylization", "backgroundEditing", "graphicContent", "setLight", "simulation3d", "atmosphereWeather"]
   all_programs = ["photoshop", "lightroom", "after_effects", "premiere_pro", "blender", "affinity_photo", "capture_one", "maya", "cinema_4d", "3ds_max", "zbrush", "unreal", "davinci", "substance", "protopie", "krita", "sketch", "animate", "figma", "clip", "nuke", "fc", "procreate", "godot", "lens", "rive", "unity", "spark", "spine", "toon"]
 
+  # Создаем специальный эффект с гифкой и статусом "Одобрено"
+  begin
+    special_effect = Effect.new(
+      name: "GIF Animation Effect",
+      user: users.sample,
+      img: upload_effect_image("animationMotion.png"),
+      description: "Специальный эффект анимации с использованием GIF",
+      speed: 9,
+      platform: "Photoshop",
+      manual: "Руководство по созданию анимационных эффектов",
+      link_to: "#",
+      is_secure: "Одобрено"
+    )
+
+    # Сохраняем старые теги для совместимости
+    special_effect.category_list = ["animation", "motion"].join(', ')
+    special_effect.task_list = ["graphicContent", "stylization"].join(', ')
+
+    if special_effect.save!
+      puts "✅ Специальный GIF эффект ##{special_effect.id} создан с статусом 'Одобрено'."
+      
+      # Создаем связи с программами через связующую таблицу
+      selected_programs = EffectProgram.where(name: ["after_effects", "photoshop"])
+      selected_programs.each do |program|
+        program_version = "2024.1.0"
+        program.update!(version: program_version)
+        
+        EffectEffectProgram.create!(effect: special_effect, effect_program: program)
+        puts "  ✅ Связь с программой '#{program.name}' (версия #{program_version}) создана"
+      end
+      
+      # Создаем связи с категориями
+      selected_categories = EffectCategory.where(name: ["animation", "motion"])
+      selected_categories.each do |category|
+        EffectEffectCategory.create!(effect: special_effect, effect_category: category)
+        puts "  ✅ Связь с категорией '#{category.name}' создана"
+      end
+      
+      # Создаем связи с задачами
+      selected_tasks = EffectTask.where(name: ["graphicContent", "stylization"])
+      selected_tasks.each do |task|
+        EffectEffectTask.create!(effect: special_effect, effect_task: task)
+        puts "  ✅ Связь с задачей '#{task.name}' создана"
+      end
+      
+      # Передаем данные с гифкой как before_image
+      create_dependencies(special_effect, {"before_image" => "gifExample.gif", "after_image" => "gifExample.gif"}, comments_data)
+    else
+      puts "❌ Ошибки валидации специального эффекта: #{special_effect.errors.full_messages}"
+    end
+
+  rescue => e
+    puts "🔥 Критическая ошибка при создании специального эффекта: #{e.message}"
+    puts e.backtrace.join("\n")
+  end
+
   effects_data.sample(quantity).each do |effect_data|
     begin
       effect = Effect.new(
