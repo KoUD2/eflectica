@@ -1,4 +1,4 @@
-json.extract! @effect, :id, :name, :img, :description, :speed, :platform, :manual, :program_version, :user_id, :created_at
+json.extract! @effect, :id, :name, :img, :description, :speed, :platform, :manual, :user_id, :created_at
 
 # Информация об авторе эффекта
 json.set! :author do
