@@ -1066,6 +1066,12 @@
   color: var(--charcoal-black);
 }
 
+.W_descCreatePost {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
 .W_noResults .A_TextEffectDescription {
   color: var(--ordinary-grey);
 }
@@ -1103,6 +1109,24 @@
 
   .W_PlatformAreaTablet {
     gap: 1.302vw;
+  }
+
+  .W_feedSettingsButtons {
+    margin-top: 3.906vw;
+    gap: 1.172vw;
+
+    button:nth-child(1) {
+      padding: 0;
+      width: 33.594vw;
+    }
+    button:nth-child(2) {
+      padding: 0;
+      display: flex;
+      height: 5.207vw;
+      width: 18.229vw;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   .W_programmsTablet {
@@ -1185,8 +1209,64 @@
     margin-top: 2.083vw;
   }
 
+  .W_Effects {
+    gap: 1.466vw;
+  }
+
+  .W_TextEffectTopCard {
+    > p {
+      max-width: 21.094vw;
+    }
+  }
+
+  .W_registrationForm {
+    padding: 4.167vw 0 5.99vw 0;
+    border-radius: var(--tablet-button, 0.781vw);
+    height: 45.443vw;
+    width: 95.833vw;
+  }
+
+  .W_categoriesCreatePost {
+    margin-top: 1.042vw;
+    width: 95.833vw;
+  }
+
   .W_collectionElements {
     gap: 1.563vw;
+  }
+
+  .W_allCategoriesBanner {
+    margin-top: 1.563vw;
+    flex-direction: column;
+  }
+
+  .W_descCreatePost {
+    margin-top: 2.604vw;
+    align-items: flex-start;
+  }
+
+  .W_Agitation {
+    gap: 1.563vw;
+    margin-bottom: 3.125vw;
+    width: 32.552vw;
+
+    > p {
+      width: 100%;
+    }
+  }
+
+  .W_descCreateAllPost {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .W_feedSettings {
+    gap: 0.651vw;
+
+    > p {
+      width: 52.995vw;
+    }
   }
 }
 
@@ -1253,6 +1333,12 @@
   }
 
   .W_allCategories {
+    width: 88.205vw;
+
+    > h1 {
+      text-align: start;
+    }
+
     > a {
       display: none;
     }
@@ -1275,9 +1361,9 @@
   }
 
   .W_registrationForm {
-    padding: 6.512vw 0 9.767vw 0;
-    height: 120vw;
-    border-radius: 0;
+    padding: 6.154vw 0 97.179vw 0;
+    border-radius: var(--mobile-button, 1.538vw);
+    height: 206.154vw;
   }
 
   .W_raitingCreateEffect {
@@ -1446,11 +1532,57 @@
     gap: 2.051vw;
   }
 
+  .W_allCategoriesBanner {
+    margin-top: 3.077vw;
+    flex-direction: column;
+  }
+
   .W_tgSection {
     gap: 2.051vw;
   }
 
   .W_socialTgDescMobile {
     display: flex;
+  }
+
+  .W_feedSettingsButtons {
+    margin-top: 4.615vw;
+    width: fit-content;
+    align-items: center;
+    gap: 5.128vw;
+    flex-direction: column;
+
+    button:nth-child(1) {
+      padding: 0;
+      width: 66.154vw;
+    }
+    button:nth-child(2) {
+      color: #0638bd;
+      font-size: 4.103vw;
+      font-weight: 500;
+      padding: 0;
+      line-height: 5.128vw;
+      width: 33.846vw;
+      background-color: transparent;
+      border: none;
+    }
+  }
+
+  .W_Agitation {
+    width: 74.359vw;
+    gap: 3.077vw;
+    margin-bottom: 6.154vw;
+
+    > p {
+      width: 100%;
+    }
+  }
+
+  .W_feedSettings {
+    gap: 3.077vw;
+
+    > h2 {
+      text-align: start;
+    }
   }
 }

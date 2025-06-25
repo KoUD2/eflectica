@@ -875,6 +875,7 @@
     height: 20.964vw;
     border-radius: var(--tablet-main, 1.042vw);
     gap: 1.042vw;
+    padding-bottom: 0;
   }
 
   .O_Category {
@@ -911,6 +912,43 @@
     border: var(--tablet-border, 0.195vw) solid var(--grey-tag, #e1e1e1);
   }
 
+  .O_EffectCard {
+    width: 43.49vw;
+    height: 27.474vw;
+    gap: 0.781vw;
+
+    > div:first-child {
+      height: 21.484vw;
+    }
+  }
+
+  .O_FormRegistration {
+    width: 28.646vw;
+    gap: 2.083vw;
+  }
+
+  .O_allCategories {
+    width: 95.833vw;
+    overflow-x: hidden;
+    border-radius: var(--tablet-button, 0.781vw);
+    padding: 4.167vw 3.906vw;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+
+  .O_Effects {
+    margin-top: 3.125vw;
+  }
+
+  .O_bannerCreate {
+    margin-top: 1.042vw;
+    padding: 4.167vw 1.953vw 4.167vw 4.102vw;
+    width: 95.833vw;
+    height: 43.49vw;
+    border-radius: var(--tablet-button, 0.781vw);
+    align-items: flex-start;
+  }
+
   .O_ReferenceCard {
     width: 28.646vw;
     height: 20.964vw;
@@ -945,7 +983,7 @@
   }
 
   .W_Effects .O_EffectCard {
-    display: inline-block !important;
+    display: inline-flex !important;
     white-space: normal;
   }
 
@@ -963,12 +1001,13 @@
   }
 
   .O_allCategories {
-    width: 100%;
+    width: 93.846vw;
     max-width: 100vw;
     overflow-x: hidden;
-    border-radius: 0;
-    padding: 0 5.581vw 5.581vw 5.581vw;
+    border-radius: var(--mobile-button, 1.538vw);
+    padding: 0.513vw 2.051vw 6.154vw 2.051vw;
     box-sizing: border-box;
+    margin: 0 auto;
   }
 
   .O_Effects {
@@ -1007,8 +1046,8 @@
   }
 
   .O_FormRegistration {
-    width: 69.767vw;
-    gap: 5.581vw;
+    width: 89.744vw;
+    gap: 6.154vw;
   }
 
   .O_Effects .O_EffectCollectionCard,
@@ -1074,6 +1113,19 @@
 
   .O_MobileMenu {
     display: block;
+  }
+
+  .O_bannerCreate {
+    margin-top: 3.077vw;
+    padding: 6.154vw 0 8.205vw 0;
+    width: 93.846vw;
+    height: 143.59vw;
+    border-radius: var(--mobile-button, 1.538vw);
+    overflow: hidden;
+
+    > h2 {
+      width: 67.179vw;
+    }
   }
 
   .O_MobileSearchOverlay {

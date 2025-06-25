@@ -520,6 +520,27 @@ header {
     width: 1.823vw;
     height: 1.823vw;
   }
+  
+  .registration-form,
+  .login-form {
+    width: 28.646vw;
+    gap: 3.125vw;
+
+    > h2 {
+      width: 58.333vw;
+    }
+  }
+
+  .modalEffect {
+    display: none;
+  }
+
+
+  #show-login-form,
+  #show-registration-form {
+    font-size: 1.823vw;
+    line-height: 2.083vw;
+  }
 } 
 
 @media screen and (max-width: 767px) {
@@ -529,8 +550,12 @@ header {
 
   .registration-form,
   .login-form {
-    width: 64.186vw;
-    gap: 11.163vw;
+    width: 89.744vw;
+    gap: 8.205vw;
+
+    > h2 {
+      font-size: 6.154vw;
+    }
   }
 
   .userComment2 {

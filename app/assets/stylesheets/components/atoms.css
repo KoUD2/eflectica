@@ -246,9 +246,10 @@
   font-style: normal;
   font-weight: 500;
   line-height: 1.146vw;
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .A_TextEffectCardPreview {
@@ -2236,7 +2237,8 @@
   border: var(--desktop-border, 0.1vw) solid var(--grey-tag, #e1e1e1);
 }
 
-.hidden {
+.hidden,
+.A_buttonWatchAllAlign {
   display: none;
 }
 
@@ -2273,6 +2275,10 @@
   .A_TextEffectCard {
     font-size: 1.823vw;
     line-height: 2.083vw;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
   }
 
   .A_Header1 {
@@ -2301,6 +2307,7 @@
   .A_TextEffectDescription {
     font-size: 2.083vw;
     line-height: 2.865vw;
+    width: 45.833vw;
   }
 
   .A_Program {
@@ -2343,6 +2350,16 @@
       width: 2.083vw;
       height: 2.083vw;
     }
+  }
+
+  .A_Input {
+    width: 28.646vw;
+    height: 4.427vw;
+    padding: 1.563vw;
+    border-radius: var(--tablet-button, 0.781vw);
+    border: var(--tablet-border, 0.195vw) solid var(--grey-tag, #E1E1E1);
+    font-size: 1.823vw;
+    line-height: 2.344vw;
   }
 
   .A_searchInputHeader {
@@ -2614,12 +2631,13 @@
   .A_Header1 {
     font-size: 8.205vw;
     text-align: center;
+    line-height: 105%;
   }
 
   .A_TextEffectDescription {
     font-size: 4.615vw;
     line-height: 5.641vw;
-    width: auto;
+    width: 84.615vw;
   }
 
   .A_ProgramName {
@@ -2640,6 +2658,10 @@
   .A_TextEffectCard {
     font-size: 4.103vw;
     line-height: normal;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
   }
 
   .A_PhotoEffect {
@@ -2907,7 +2929,8 @@
   }
 
   .A_buttonWatchAllAlign {
-    display: flex;
+    display: flex !important;
+    font-size: 5.128vw;
     gap: 1.538vw;
     align-items: center;
 

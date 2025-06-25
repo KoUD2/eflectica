@@ -17,6 +17,11 @@
   gap: 0.833vw;
 }
 
+.M_aboutEffectsRow {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .M_allCategories {
   padding: 4.479vw 2.833vw 4.688vw 3.229vw;
   width: 72.396vw;
@@ -873,6 +878,18 @@
     gap: 5.99vw;
   }
 
+  .M_aboutEffects {
+    margin-top: 0;
+  }
+
+  .M_feedSettings {
+    margin: 1.563vw auto 0 auto;
+    padding: 3.125vw 0 16.406vw 3.906vw;
+    width: 95.833vw;
+    height: 41.016vw;
+    border-radius: var(--tablet-button, 0.781vw);
+  }
+
   .M_CollectionFormVideo {
     width: 100%;
   }
@@ -880,6 +897,7 @@
 
 @media screen and (max-width: 767px) {
   .M_aboutEffects {
+    width: 99.231vw;
     margin-top: 5.581vw;
     gap: 2.326vw;
   }
@@ -934,7 +952,7 @@
   }
 
   .M_createPostCardMobile {
-    display: flex;
+    display: none;
   }
 
   .M_HeaderEffect {
@@ -1054,6 +1072,14 @@
 
   .M_CollectionFormVideo {
     flex-direction: column;
+  }
+
+  .M_feedSettings {
+    margin: 3.077vw auto 0 auto;
+    padding: 6.154vw 0 54.872vw 2.051vw;
+    width: 93.846vw;
+    height: 122.051vw;
+    border-radius: var(--mobile-button, 1.538vw);
   }
 
   .M_HeaderEffectsCategories {

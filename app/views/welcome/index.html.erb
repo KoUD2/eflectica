@@ -91,6 +91,11 @@
               Больше категорий
               <%= image_tag("ArrowIcon.svg", alt: "Картинка рейтинга", class: "Q_arrowFollow") %>
             </button>
+
+            <%= link_to categories_effects_path, class: 'A_buttonWatchAll A_buttonWatchAllAlign' do %>
+              Все
+              <%= image_tag("ArrowIcon.svg", alt: "Картинка рейтинга", class: "Q_QRIcon") %>       
+            <% end %>
           <% end %>
         </div>
         <p class='A_TextEffectDescription'>Выбери направление, в&nbsp;котором работаешь. Это&nbsp;поможет найти нужный эффект</p>
@@ -168,7 +173,7 @@
       <div class='O_Effects' data-category="photoProcessing" data-category-filter-target="effectSection">
         <div class="M_HeaderEffects">
           <h2 class="A_Header2">Обработка фото</h2>
-          <button class='A_buttonWatchAll'>Смотреть все</button>
+          <button class='A_buttonWatchAll A_buttonWatchAllMobile'>Смотреть все</button>
         </div>
         <div class="C_Effects">
           <% @effects.select { |effect| effect.categories.pluck(:name).include?('photoProcessing') }.first(3).each do |effect| %>
@@ -180,7 +185,7 @@
       <div class='O_Effects' data-category="3dGrafics" data-category-filter-target="effectSection">
         <div class="M_HeaderEffects">
           <h2 class="A_Header2">3D-графика</h2>
-          <button class='A_buttonWatchAll'>Смотреть все</button>
+          <button class='A_buttonWatchAll A_buttonWatchAllMobile'>Смотреть все</button>
         </div>
         <div class="C_Effects">
           <% @effects.select { |effect| effect.categories.pluck(:name).include?('3dGrafics') }.first(3).each do |effect| %>
@@ -192,7 +197,7 @@
       <div class='O_Effects' data-category="motion" data-category-filter-target="effectSection">
         <div class="M_HeaderEffects">
           <h2 class="A_Header2">Моушен</h2>
-          <button class='A_buttonWatchAll'>Смотреть все</button>
+          <button class='A_buttonWatchAll A_buttonWatchAllMobile'>Смотреть все</button>
         </div>
         <div class="C_Effects">
           <% @effects.select { |effect| effect.categories.pluck(:name).include?('motion') }.first(3).each do |effect| %>
@@ -203,7 +208,7 @@
       <div class='O_Effects' data-category="illustration" data-category-filter-target="effectSection" style="display: none;">
         <div class="M_HeaderEffects">
           <h2 class="A_Header2">Иллюстрация</h2>
-          <button class='A_buttonWatchAll'>Смотреть все</button>
+          <button class='A_buttonWatchAll A_buttonWatchAllMobile'>Смотреть все</button>
         </div>
         <div class="C_Effects">
           <% @effects.select { |effect| effect.categories.pluck(:name).include?('illustration') }.first(3).each do |effect| %>
@@ -215,7 +220,7 @@
       <div class='O_Effects' data-category="animation" data-category-filter-target="effectSection" style="display: none;">
         <div class="M_HeaderEffects">
           <h2 class="A_Header2">Анимация</h2>
-          <button class='A_buttonWatchAll'>Смотреть все</button>
+          <button class='A_buttonWatchAll A_buttonWatchAllMobile'>Смотреть все</button>
         </div>
         <div class="C_Effects">
           <% @effects.select { |effect| effect.categories.pluck(:name).include?('animation') }.first(3).each do |effect| %>
@@ -227,7 +232,7 @@
       <div class='O_Effects' data-category="vfx" data-category-filter-target="effectSection" style="display: none;">
         <div class="M_HeaderEffects">
           <h2 class="A_Header2">VFX</h2>
-          <button class='A_buttonWatchAll'>Смотреть все</button>
+          <button class='A_buttonWatchAll A_buttonWatchAllMobile'>Смотреть все</button>
         </div>
         <div class="C_Effects">
           <% vfx_effects = @effects.select { |effect| effect.categories.pluck(:name).include?('vfx') }.first(3) %>
@@ -607,15 +612,20 @@
     <div class='O_allCategories' data-search-collections-target="subscriptionsSection">
       <div class='M_aboutEffects'>
         <div class='W_allCategories'>
-          <h1 class='A_Header1'>Коллекции и подписки</h1>
+          <h1 class='A_Header1'>Коллекции и&nbsp;подписки</h1>
           <%= link_to news_feeds_path do %>
             <button class='A_More'>
               Больше коллекций
               <%= image_tag("ArrowIcon.svg", alt: "Картинка рейтинга", class: "Q_arrowFollow") %>
             </button>
+
+            <%= link_to news_feeds_path, class: 'A_buttonWatchAll A_buttonWatchAllAlign' do %>
+              Все
+              <%= image_tag("ArrowIcon.svg", alt: "Картинка рейтинга", class: "Q_QRIcon") %>       
+            <% end %>
           <% end %>
         </div>
-        <p class='A_TextEffectDescription A_TextEffectDescriptionCollection'>Референсы, ссылки на туториалы и эффекты удобно собирать в коллекции. Ты можешь создавать свои коллекции или подписываться на чужие</p>
+        <p class='A_TextEffectDescription A_TextEffectDescriptionCollection'>Референсы, ссылки на&nbsp;туториалы и&nbsp;эффекты удобно собирать в&nbsp;коллекции. Ты&nbsp;можешь создавать свои коллекции или подписываться на&nbsp;чужие</p>
       </div>
 
       <div class='W_inputIcon W_searchInfoFeed' data-controller="search-collections">

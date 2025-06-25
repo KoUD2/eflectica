@@ -923,11 +923,28 @@
   padding-top: 6.563vw;
 }
 
-.hidden {
+.hidden, .Q_FeedbacksTablet {
   display: none;
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
+  .Q_Section {
+    width: 95.833vw;
+    overflow: hidden;
+    padding: 0 3.906vw 5.339vw 3.906vw;
+    border-radius: var(--tablet-button, 0.781vw);
+    margin: 0 auto;
+  }
+
+  .Q_SectionTablet {
+    padding-top: 4.167vw;
+    padding-bottom: 1.776vw;
+  }
+
+  .Q_SectionActive {
+    border-top-left-radius: 0;
+  }
+
   .Q_ProgramIconImage {
     width: 3.125vw;
     height: 3.125vw;
@@ -1021,22 +1038,170 @@
     height: 2.589vw !important;
   }
 
+  .Q_FavoriteSection {
+    padding: 2.083vw 1.563vw 2.474vw 1.563vw;
+    width: 91.146vw;
+    height: 61.979vw;
+    /* margin-left: -2.083vw; */
+    border: 1px solid var(--computer-blue);
+    background: transparent;
+    position: relative;
+    margin-top: 1.719vw;
+    margin-bottom: 2.5vw;
+  }
+
+  .Q_Particle {
+    width: 1.458vw;
+    height: 1.458vw;
+
+    &:nth-child(2) {
+      top: -0.716vw;
+      left: -0.716vw;
+    }
+    &:nth-child(3) {
+      top: -0.716vw;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &:nth-child(4) {
+      top: -0.716vw;
+      right: -0.716vw;
+    }
+    &:nth-child(5) {
+      bottom: -0.716vw;
+      left: -0.716vw;
+    }
+    &:nth-child(6) {
+      bottom: -0.716vw;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &:nth-child(7) {
+      bottom: -0.716vw;
+      right: -0.716vw;
+    }
+  }
+
   .Q_NotificationsIcon {
     display: none;
+  }
+
+  .Q_registrationFormImage1 {
+    height: 31.38vw;
+    width: auto;
+  }
+
+  .Q_registrationFormImage2 {
+    left: 1.622vw;
+    width: 16.325vw;
+    transform: rotate(3.332deg);
+    bottom: 12.536vw;
+    border-radius: 0.94vw;
+  }
+
+  .Q_registrationFormImage3 {
+    left: 11.253vw;
+    width: 18.579vw;
+    transform: rotate(-13.612deg);
+    bottom: 0.389vw;
+    border-radius: 0.94vw;
+  }
+
+  .Q_registrationFormImage4 {
+    height: 35.016vw;
+    width: auto;
+  }
+
+  .Q_registrationFormImage5 {
+    right: 8.426vw;
+    width: 19.658vw;
+    transform: rotate(11.974deg);
+    bottom: 8.057vw;
+    border-radius: 0.94vw;
+  }
+
+  .Q_registrationFormImage6 {
+    right: -2.906vw;
+    width: 17.253vw;
+    transform: rotate(22.517deg);
+    bottom: -0.698vw;
+    border-radius: 0.94vw;
+  }
+
+  .Q_feedImage1 {
+    display: none;
+  }
+
+  .Q_feedImage4 {
+    width: 28.557vw;
+    top: 12.63vw;
+    left: 60.677vw;
+  }
+
+  .Q_feedImage2 {
+    width: 18.778vw;
+    height: 18.058vw;
+    transform: rotate(11.205deg);
+    border-radius: 1.082vw;
+    box-shadow: 0vw 0vw 1.803vw 0vw rgba(0, 0, 0, 0.15);
+    bottom: -11.477vw;
+    left: 46.488vw;
+  }
+
+  .Q_feedImage3 {
+    width: 21.371vw;
+    height: 21.508vw;
+    transform: rotate(-13.612deg);
+    border-radius: 1.082vw;
+    box-shadow: 0vw 0vw 1.803vw 0vw rgba(0, 0, 0, 0.15);
+    bottom: -10.889vw;
+    left: 25.238vw;
+  }
+
+  .Q_feedImage5 {
+    width: 21.363vw;
+    height: 20.407vw;
+    transform: rotate(-24.321deg);
+    border-radius: 1.082vw;
+    box-shadow: 0vw 0vw 1.803vw 0vw rgba(0, 0, 0, 0.15);
+    bottom: -6.202vw;
+    right: 9.628vw;
+  }
+
+  .Q_Feedbacks {
+    display: none;
+  }
+
+  .Q_FeedbacksTablet {
+    display: block;
+    width: 50.521vw;
+  }
+
+  .Q_feedImage6 {
+    width: 18.749vw;
+    height: 21.291vw;
+    transform: rotate(22.517deg);
+    border-radius: 1.082vw;
+    box-shadow: 0vw 0vw 1.803vw 0vw rgba(0, 0, 0, 0.15);
+    top: 15.279vw;
+    right: -1.839vw;
   }
 }
 
 @media screen and (max-width: 767px) {
   .Q_Section {
-    width: 100%;
-    padding: 0 0 5.581vw 5.581vw;
+    width: 93.846vw;
+    overflow: hidden;
+    padding: 0 2.051vw 8.303vw 2.051vw;
+    border-radius: var(--mobile-button, 1.538vw);
+    margin: 0 auto;
   }
 
   .Q_FavoriteSection {
     border: none;
     padding: 0;
     width: 94.419vw;
-    height: auto;
+    height: 49.903vw;
     margin-left: 0;
     margin-top: 3.721vw;
     margin-bottom: 9.833vw;
@@ -1096,31 +1261,48 @@
   }
 
   .Q_registrationFormImage2 {
-    left: -8.756vw;
-    width: 22.017vw;
-    transform: rotate(11.861deg);
-    bottom: auto;
-    top: -8.428vw;
-    border-radius: 1.268vw;
+    left: -7.09vw;
+    width: 32.149vw;
+    transform: rotate(-13.516deg);
+    bottom: 45.756vw;
+    border-radius: 1.852vw;
+    z-index: 10;
   }
 
   .Q_registrationFormImage5 {
-    right: -12.998vw;
-    width: 35.025vw;
-    transform: rotate(11.974deg);
-    bottom: -9.051vw;
-    border-radius: 1.773vw;
+    right: 13.515vw;
+    width: 38.71vw;
+    transform: rotate(6.309deg);
+    bottom: 42.741vw;
+    border-radius: 1.96vw;
+    z-index: 12;
   }
 
   .Q_registrationFormImage4 {
     right: auto;
-    left: -21.86vw;
-    width: 48.259vw;
-    bottom: 0;
+    left: 20vw;
+    width: 53.664vw;
+    bottom: 7.297vw;
   }
 
-  .Q_registrationFormImage3,
-  .Q_registrationFormImage6,
+  .Q_registrationFormImage3 {
+    left: 11.118vw;
+    width: 36.587vw;
+    transform: rotate(-13.612deg);
+    bottom: 25.026vw;
+    border-radius: 1.852vw;
+    z-index: 11;
+  }
+
+  .Q_registrationFormImage6 {
+    right: -8.8vw;
+    width: 33.974vw;
+    transform: rotate(15deg);
+    bottom: 22.938vw;
+    border-radius: 1.852vw;
+    z-index: 13;
+  }
+
   .Q_registrationFormImage1,
   .Q_NotificationsIcon {
     display: none;
@@ -1158,6 +1340,16 @@
     width: 4.651vw;
     height: 4.651vw;
   }
+
+  .Q_SectionTablet {
+    padding-top: 2.564vw;
+    padding-bottom: 1.776vw;
+
+    > div > h1 {
+      text-align: start;
+    }
+  }
+
   .Q_StarIconBigFeedback {
     width: 4.651vw;
     height: 4.651vw;
@@ -1181,6 +1373,56 @@
   .Q_shareProfile {
     width: 6.154vw;
     height: 6.154vw;
+  }
+
+  .Q_feedImage4, .Q_feedImage1 {
+    display: none;
+  }
+
+  .Q_feedImage2 {
+    width: 33.086vw;
+    height: 31.817vw;
+    transform: rotate(11.205deg);
+    border-radius: 1.906vw;
+    box-shadow: 0vw 0vw 3.176vw 0vw rgba(0, 0, 0, 0.15);
+    bottom: 9.023vw;
+    left: 21.369vw;
+  }
+
+  .Q_feedImage3 {
+    width: 37.654vw;
+    height: 37.896vw;
+    transform: rotate(-13.612deg);
+    border-radius: 1.906vw;
+    box-shadow: 0vw 0vw 3.176vw 0vw rgba(0, 0, 0, 0.15);
+    bottom: 10.059vw;
+    left: -16.069vw;
+  }
+
+  .Q_feedImage5 {
+    width: 37.641vw;
+    height: 35.955vw;
+    transform: rotate(-24.321deg);
+    border-radius: 1.906vw;
+    box-shadow: 0vw 0vw 3.176vw 0vw rgba(0, 0, 0, 0.15);
+    bottom: 18.318vw;
+    right: 2.497vw;
+  }
+
+  .Q_feedImage6 {
+    width: 33.035vw;
+    height: 37.513vw;
+    transform: rotate(22.517deg);
+    border-radius: 1.906vw;
+    box-shadow: 0vw 0vw 3.176vw 0vw rgba(0, 0, 0, 0.15);
+    top: 47.459vw;
+    right: -17.705vw;
+  }
+
+  .Q_Feedbacks {
+    margin-top: 0.26vw;
+    width: 96.026vw;
+    height: 54.103vw;
   }
 
   .Q_ProgramIconDropdown {

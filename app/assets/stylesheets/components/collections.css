@@ -625,12 +625,27 @@
   }
 
   .C_Effects {
-    gap: 1.042vw;
+    gap: 0.742vw;
+  }
+
+  .W_Effects .C_Effects > *:nth-child(n + 3) {
+    display: none;
+  }
+
+  /* Скрываем третью коллекцию в каждом контейнере C_Collections на планшетах */
+  .W_allCollections .C_Collections > *:nth-child(n + 3) {
+    display: none;
+  }
+
+  .C_FormRegistration {
+    gap: 0.781vw;
   }
 
   .С_PhotoGalleryEffect {
     height: 14.193vw;
     gap: 0.26vw;
+    border-top-right-radius: var(--tablet-main, 1.042vw);
+    border-top-left-radius: var(--tablet-main, 1.042vw);
   }
 
   .C_PlatformArea {
@@ -687,12 +702,21 @@
   .Q_SelectedCategoriesList {
     width: 45.78vw;
   }
+
+  .C_ButtonRedistration {
+    gap: 1.693vw;
+
+    > input {
+      width: 100%;
+    }
+  }
 }
 
 @media screen and (max-width: 767px) {
   .С_PhotoGalleryEffect {
     height: 41.628vw;
     gap: 0.593vw;
+    border-radius: 2.051vw;
   }
 
   .W_Effects {
@@ -812,10 +836,18 @@
   .C_FormRegistration {
     z-index: 2;
     gap: 1.86vw;
+
+    > input {
+      width: 89.744vw;
+    }
   }
 
   .C_ButtonRedistration {
-    gap: 2.791vw;
+    gap: 6.154vw;
+
+    > input {
+      width: 100%;
+    }
   }
 
   /* Стили для горизонтального скролла в категориях */

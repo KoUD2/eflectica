@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 <% 
   # Проверяем, есть ли у пользователя уже созданный комментарий к этому эффекту
   existing_comment = current_user ? @effect.comments.find_by(user: current_user) : nil
@@ -149,5 +150,11 @@
         Отправить
       </button>
     </div>
+  </div>
+<% end %>
+<% else %>
+  <!-- Сообщение для неавторизованных пользователей -->
+  <div class="O_CommentMy">
+    <p class="A_TextCaption">Войдите в систему, чтобы оставить комментарий</p>
   </div>
 <% end %>

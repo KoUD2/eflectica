@@ -3,12 +3,12 @@ class Api::V1::EffectsController < Api::V1::BaseController
   before_action :find_user_effect, only: [:destroy]
 
   def index
-    @effects = Effect.includes(:images, :comments, :ratings, :user).approved
+    @effects = Effect.includes(:images, :ratings, :user, comments: :user).approved
     # Используем Jbuilder шаблон для единообразия
   end
 
   def show
-    @effect = Effect.includes(:images, :comments, :ratings, :user).find(params[:id])
+    @effect = Effect.includes(:images, :ratings, :user, comments: :user).find(params[:id])
     # Используем Jbuilder шаблон для единообразия
   end
 
@@ -30,13 +30,19 @@ class Api::V1::EffectsController < Api::V1::BaseController
     
     # Если у пользователя нет предпочтений, возвращаем популярные эффекты
     if user_program_ids.empty? && user_category_ids.empty?
+      # Сначала получаем ID эффектов с их рейтингами
+      effect_ids_with_avg_rating = Effect.where(is_secure: "Одобрено")
+                                          .where.not(user_id: current_user.id)
+                                          .joins(:ratings)
+                                          .group('effects.id')
+                                          .order('AVG(ratings.number) DESC, effects.created_at DESC')
+                                          .limit(20)
+                                          .pluck(:id)
+      
+      # Затем загружаем эффекты с нужными ассоциациями
       @effects = Effect.includes(:images, :comments, :ratings, :user)
-                       .where(is_secure: "Одобрено")
-                       .where.not(user_id: current_user.id)
-                       .joins(:ratings)
-                       .group('effects.id')
-                       .order('AVG(ratings.number) DESC, effects.created_at DESC')
-                       .limit(20)
+                       .where(id: effect_ids_with_avg_rating)
+                       .order(Arel.sql("CASE effects.id #{effect_ids_with_avg_rating.map.with_index { |id, index| "WHEN #{id} THEN #{index}" }.join(' ')} END"))
     else
       # Строим запрос для поиска эффектов на основе предпочтений
       effect_ids_from_programs = []

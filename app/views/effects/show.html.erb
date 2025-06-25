@@ -217,13 +217,11 @@
             <div class="M_Platforms">
               <% @effect.platform.split(",").each do |platform_name| %>
                 <% platform_name = platform_name.strip.downcase %>
-                <div class="Q_ProgramIcon Q_ProgramIconEffect Q_ProgramIconEffectPlat">
-                  <% if platforms().key?(platform_name) %>
+                <% if platforms().key?(platform_name) %>
+                  <div class="Q_ProgramIcon Q_ProgramIconEffect Q_ProgramIconEffectPlat">
                     <%= image_tag platforms()[platform_name], class: "Q_PlatformIcon", alt: platform_name.capitalize %>
-                  <% else %>
-                    <%= image_tag "default_platform_icon.svg", class: "Q_PlatformIcon", alt: platform_name.capitalize %>
-                  <% end %>
-                </div>
+                  </div>
+                <% end %>
               <% end %>
             </div>            
           </div>          
@@ -349,13 +347,11 @@
             <div class="M_Platforms">
               <% @effect.platform.split(",").each do |platform_name| %>
                 <% platform_name = platform_name.strip.downcase %>
-                <div class="Q_ProgramIcon Q_ProgramIconEffect Q_ProgramIconEffectPlat">
-                  <% if platforms().key?(platform_name) %>
+                <% if platforms().key?(platform_name) %>
+                  <div class="Q_ProgramIcon Q_ProgramIconEffect Q_ProgramIconEffectPlat">
                     <%= image_tag platforms()[platform_name], class: "Q_PlatformIcon", alt: platform_name.capitalize %>
-                  <% else %>
-                    <%= image_tag "default_platform_icon.svg", class: "Q_PlatformIcon", alt: platform_name.capitalize %>
-                  <% end %>
-                </div>
+                  </div>
+                <% end %>
               <% end %>
             </div>            
           </div>          
