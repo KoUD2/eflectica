@@ -1,4 +1,5 @@
-<div class='O_EffectCollectionCard O_EffectSelectableCard' 
+<!-- DEBUG Wide: <%= defined?(wide) ? wide.inspect : 'undefined' %> -->
+<div class="O_EffectCollectionCard O_EffectSelectableCard#{ ' O_EffectCollectionCardWide' if defined?(wide) && wide }" 
      data-effect-id="<%= effect.id %>"
      data-categories="<%= effect.category_list.join(',') %>"
      data-tasks="<%= effect.task_list.join(',') %>"

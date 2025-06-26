@@ -42,7 +42,7 @@
             <input type="text" name="search" placeholder="Поиск на сайте" class="A_searchInputHeader">
           </form>
         </div>
-        <div class='A_TextM A_TextMNone <%= "A_TextMActive" if current_page?(effects_path) %>'>
+        <div class='A_TextM A_TextMNone <%= "A_TextMActive" if request.path.include?("effects") %>'>
           <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement Q_roundElementLeft'>
             <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
           </svg>
@@ -51,7 +51,7 @@
             <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
           </svg>
         </div>
-        <div class='A_TextM A_TextMNone <%= "A_TextMActive" if current_page?(collections_path) %>'>
+        <div class='A_TextM A_TextMNone <%= "A_TextMActive" if request.path.include?("collection") %>'>
           <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement Q_roundElementLeft'>
             <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
           </svg>
@@ -86,7 +86,7 @@
         </div>
       <% end %>
 
-      <div class='A_TextM A_TextMTabletNone <%= "A_TextMActive" if current_page?(effects_path) %>'>
+      <div class='A_TextM A_TextMTabletNone A_TextMTabletPad <%= "A_TextMActive" if request.path.include?("effects") %>'>
           <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement Q_roundElementLeft'>
             <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
           </svg>
@@ -95,7 +95,7 @@
             <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
           </svg>
         </div>
-        <div class='A_TextM A_TextMTabletNone <%= "A_TextMActive" if current_page?(collections_path) %>'>
+        <div class='A_TextM A_TextMTabletNone A_TextMTabletPad <%= "A_TextMActive" if request.path.include?("collection") %>'>
           <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement Q_roundElementLeft'>
             <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
           </svg>
@@ -104,7 +104,7 @@
             <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
           </svg>
         </div>
-      <div class='A_TextM <%= "A_TextMActive" if user_signed_in? && current_page?(profile_path(current_user)) %>'>
+      <div class='A_TextM A_TextMTabletPad <%= "A_TextMActive" if user_signed_in? && current_page?(profile_path(current_user)) %>'>
         <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class='Q_roundElement Q_roundElementLeft'>
           <path d="M0 0L0.735089 2.20527C1.53137 4.59411 3.40589 6.46863 5.79473 7.26491L8 8H0V0Z" fill="#FFF"/>
         </svg>
@@ -121,10 +121,10 @@
       <div class="O_MobileMenu" data-burger-menu-target="menu">
         <div class="M_MobileMenuContent M_MobileMenuContentBurger">
           <div class="C_MobileMenuList">
-            <div class='A_TextMMobile <%= "A_TextMActiveDesktop" if current_page?(effects_path) %>'>
+            <div class='A_TextMMobile <%= "A_TextMActiveDesktop" if request.path.include?("effects") %>'>
               <%= link_to 'Эффекты', effects_path %>
             </div>
-            <div class='A_TextMMobile <%= "A_TextMActiveDesktop" if current_page?(collections_path) %>'>
+            <div class='A_TextMMobile <%= "A_TextMActiveDesktop" if request.path.include?("collection") %>'>
               <%= link_to 'Коллекции', collections_path %>
             </div>
             <% if user_signed_in? %>

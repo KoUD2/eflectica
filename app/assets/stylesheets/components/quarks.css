@@ -923,7 +923,12 @@
   padding-top: 6.563vw;
 }
 
-.hidden, .Q_FeedbacksTablet {
+.hidden,
+.Q_FeedbacksTablet,
+.Q_Line1Tablet,
+.Q_Line2Tablet,
+.Q_Line3Tablet,
+.Q_Line4Tablet {
   display: none;
 }
 
@@ -948,6 +953,43 @@
   .Q_ProgramIconImage {
     width: 3.125vw;
     height: 3.125vw;
+  }
+
+  .Q_Line1Tablet {
+    display: block;
+    position: absolute;
+    top: 16.213vw;
+    left: 36.015vw;
+    width: 15.099vw;
+    height: 20.05vw;
+  }
+
+  .Q_Line2Tablet {
+    display: block;
+    position: absolute;
+    top: 13.193vw;
+    left: 25.927vw;
+    width: 28.385vw;
+    height: 20.182vw;
+  }
+
+  .Q_Line3Tablet {
+    display: block;
+    position: absolute;
+    top: 41.797vw;
+    left: 29.297vw;
+    width: 21.484vw;
+    height: 25.781vw;
+    z-index: 10;
+  }
+
+  .Q_Line4Tablet {
+    display: block;
+    position: absolute;
+    top: 41.927vw;
+    left: 28.646vw;
+    width: 41.406vw;
+    height: 17.578vw;
   }
 
   .Q_StarIconBig,
@@ -1082,7 +1124,11 @@
     }
   }
 
-  .Q_NotificationsIcon {
+  .Q_NotificationsIcon,
+  .Q_Line1,
+  .Q_Line2,
+  .Q_Line3,
+  .Q_Line4 {
     display: none;
   }
 
@@ -1185,6 +1231,22 @@
     box-shadow: 0vw 0vw 1.803vw 0vw rgba(0, 0, 0, 0.15);
     top: 15.279vw;
     right: -1.839vw;
+  }
+
+  .Q_changeSettings {
+    width: 2.35vw;
+    height: 2.35vw;
+  }
+
+  .Q_plusMinusIcon,
+  .Q_plusMinusIconMobile {
+    width: 2.34vw !important;
+    height: 2.34vw !important;
+  }
+
+  .Q_SectionSimilar {
+    padding-top: 2.474vw;
+    gap: 4.167vww;
   }
 }
 
@@ -1375,7 +1437,8 @@
     height: 6.154vw;
   }
 
-  .Q_feedImage4, .Q_feedImage1 {
+  .Q_feedImage4,
+  .Q_feedImage1 {
     display: none;
   }
 
@@ -1425,9 +1488,64 @@
     height: 54.103vw;
   }
 
+  .Q_Line1 {
+    top: 22.923vw;
+    right: 18.538vw;
+    left: auto;
+    width: 17.179vw;
+    height: 58.718vw;
+  }
+
+  .Q_Line2 {
+    top: 59.205vw;
+    left: 13.885vw;
+    width: 21.923vw;
+    height: 21.538vw;
+    z-index: 13;
+  }
+
+  .Q_Line3 {
+    top: 88.056vw;
+    z-index: 10;
+    left: 22.456vw;
+    width: 11.269vw;
+    height: 70.41vw;
+    transform: rotate(-6deg);
+  }
+
+  .Q_Line4 {
+    top: 89.256vw;
+    right: 1.838vw;
+    left: auto;
+    bottom: auto;
+    z-index: 13;
+    width: 34.103vw;
+    height: 32.308vw;
+  }
+
+  .Q_plusMinusIcon {
+    width: 4.62vw;
+    height: 4.62vw;
+  }
+
+  .Q_IconHeart {
+    width: 4.042vw;
+    height: 2.885vw;
+  }
+
+  .Q_changeSettings {
+    width: 6.25vw;
+    height: 5.25vw;
+  }
+
   .Q_ProgramIconDropdown {
     width: 4.651vw;
     height: 4.651vw;
     margin-right: 1.86vw;
+  }
+
+  .Q_SectionSimilar {
+    padding-top: 7.949vw;
+    gap: 7.179vw;
   }
 }

@@ -15,14 +15,18 @@
       
       <div class="W_buttonMyCollection">
         <div class='W_inputIcon W_searchInfoFeed'>
-          <input type="text" class='A_searchInput' placeholder='Поиск коллекций'
+          <input type="text" class='A_searchInput A_searchInputMeCollection' placeholder='Поиск коллекций'
                 data-search-collections-target="input" 
                 data-action="input->search-collections#search">
           <%= image_tag("Q_IconSearch.svg", alt: "Картинка рейтинга", class: "Q_IconSearch") %>
         </div>
-        <button class="A_ButtonPrimary A_ButtonPrimaryCollection" data-action="collection-modal#open">
+        <button class="A_ButtonPrimary A_ButtonPrimaryCollection A_ButtonPrimaryCollectionMobileNone" data-action="collection-modal#open">
           <%= image_tag("Q_IconPlusWhite.svg", alt: "Картинка рейтинга", class: "Q_IconPlusWhite") %>
           Создать коллекцию
+        </button>
+
+        <button class="A_ButtonPrimary A_ButtonPrimaryCollection A_ButtonPrimaryCollectionMobileCreate" data-action="collection-modal#open">
+          <%= image_tag("Q_IconPlusWhite.svg", alt: "Картинка рейтинга", class: "Q_IconPlusWhite") %>
         </button>
       </div>
 
@@ -61,7 +65,7 @@
         </div>      
       </div>      
 
-      <div class="C_Collections C_CollectionsAll" data-search-collections-target="subscriptionsContainer">
+      <div class="C_Collections C_CollectionsAll C_CollectionsAllTablet" data-search-collections-target="subscriptionsContainer">
         <%= render partial: "favorites/favorite", 
             locals: { favorite_effects: @favorite_effects } %>
       

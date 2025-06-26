@@ -85,8 +85,8 @@ export default class extends Controller {
     }
 
     if (dialog) {
-      // Убеждаемся, что диалог видим перед открытием
-      dialog.style.display = "";
+      // Показываем модалку с flex и открываем её
+      dialog.style.display = "flex";
       dialog.showModal();
 
       // Добавляем небольшую задержку для плавной анимации
@@ -510,6 +510,7 @@ export default class extends Controller {
 
       if (this.hasNextButtonTarget) {
         this.nextButtonTarget.textContent = "Отправить на модерацию";
+        this.nextButtonTarget.classList.add("submit-button");
       }
 
       // Обновляем превью карточки при переходе на последний шаг
@@ -555,6 +556,7 @@ export default class extends Controller {
 
       if (this.hasNextButtonTarget) {
         this.nextButtonTarget.textContent = "Далее";
+        this.nextButtonTarget.classList.remove("submit-button");
       }
       this.updateProgressBar(80);
     }

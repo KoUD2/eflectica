@@ -6,22 +6,26 @@
   )
 %>
 
-<div class='Q_Section Q_SectionActive Q_SectionActiveMyEffect' data-controller="my-effects-search">
+<div class='Q_Section Q_SectionActiveMyEffect' data-controller="my-effects-search">
   <div class="O_myEffects">
-    <h1 class="A_Header1">Мои эффекты</h1>
+    <h1 class="A_Header1 A_Header1Top">Мои эффекты</h1>
 
     <div class="W_searchPublishPost">
-      <div class='W_inputIcon'>
+      <div class='W_inputIcon W_inputIconSearchMyEffects'>
         <input type="text" 
-               class='A_searchInput W_inputIconEffectSearch' 
+               class='A_searchInput W_inputIconEffectSearch W_inputIconSearchMyEffects' 
                placeholder='Поиск эффектов'
                data-my-effects-search-target="searchInput"
                data-action="input->my-effects-search#search">
         <%= image_tag("Q_IconSearch.svg", alt: "Картинка рейтинга", class: "Q_IconSearch") %>
       </div>
-      <button class='A_ButtonPrimary A_MorePC' data-action="effect-create#open" type="button">
+      <button class='A_ButtonPrimary A_MorePC A_ButtonPrimaryTabletCreatePost A_ButtonPrimaryTabletCreatePostNone' data-action="effect-create#open" type="button">
         <%= image_tag("Q_IconCreateEffect.svg", alt: "Картинка рейтинга", class: 'A_DownloadButton') %>
         Написать пост
+      </button>
+
+      <button class='A_ButtonPrimary A_MorePC A_ButtonPrimaryTabletCreatePost A_ButtonPrimaryMobileCreatePost' data-action="effect-create#open" type="button">
+        <%= image_tag("Q_IconCreateEffect.svg", alt: "Картинка рейтинга", class: 'A_DownloadButton') %>
       </button>
     </div>
 
@@ -29,7 +33,7 @@
       <% if @effects.present? %>
         <div class="C_Effects C_EffectsMy" data-my-effects-search-target="effectsContainer">
           <% @effects.each do |effect| %>
-            <%= render partial: "effects/collection_effect", locals: { effect: effect } %>
+            <%= render partial: "effects/collection_effect", locals: { effect: effect, wide: true } %>
           <% end %>
         </div>
       <% else %>

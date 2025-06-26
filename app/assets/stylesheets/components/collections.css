@@ -14,13 +14,11 @@
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.625vw;
+  gap: 0.325vw;
 }
 
 .C_EffectsMy {
   width: 100%;
-  gap: inherit;
-  justify-content: space-between;
 }
 
 .C_EffectsTop {
@@ -44,6 +42,7 @@
 
 .C_EffectsCategory {
   margin-top: 1.25vw;
+  gap: 0.625vw;
   flex-wrap: wrap;
 }
 
@@ -703,6 +702,10 @@
     width: 45.78vw;
   }
 
+  .C_CollectionsAllTablet {
+    gap: 1.042vw;
+  }
+
   .C_ButtonRedistration {
     gap: 1.693vw;
 
@@ -716,7 +719,8 @@
   .С_PhotoGalleryEffect {
     height: 41.628vw;
     gap: 0.593vw;
-    border-radius: 2.051vw;
+    border-top-right-radius: var(--tablet-main, 2.051vw);
+    border-top-left-radius: var(--tablet-main, 2.051vw);
   }
 
   .W_Effects {
@@ -928,6 +932,10 @@
     gap: 8.205vw;
   }
 
+  .C_EffectsMy {
+    flex-direction: column;
+  }
+
   .C_PrivateSettings {
     margin-top: 4.103vw;
     gap: 2.564vw;
@@ -954,5 +962,10 @@
     align-items: flex-start;
     margin-top: 10.769vw;
     gap: 2.05vw;
+  }
+
+  .C_buttonsSortMobileEffect {
+    margin-bottom: 0;
+    margin-left: 1.795vw;
   }
 }

@@ -135,7 +135,7 @@
   padding-right: 0.104vw;
   justify-content: space-between;
   align-items: flex-end;
-  width: 100%;
+  width: 66.25vw;
 }
 
 .M_HeaderEffectsCategories {
@@ -808,6 +808,18 @@
   gap: 3.438vw;
 }
 
+.M_HeaderEffectsPC {
+  width: 87.81vw;
+}
+
+.M_HeaderEffectsTrends {
+  width: 65.65vw;
+}
+
+.M_HeaderEffectsWidth {
+  width: 87.917vw;
+}
+
 .hidden {
   display: none;
 }
@@ -888,6 +900,10 @@
     width: 95.833vw;
     height: 41.016vw;
     border-radius: var(--tablet-button, 0.781vw);
+  }
+
+  .M_HeaderEffects {
+    width: 87.76vw;
   }
 
   .M_CollectionFormVideo {
@@ -1012,7 +1028,6 @@
     padding: 12.308vw 0;
     align-items: center;
     min-height: auto;
-    display: none;
   }
 
   .W_similarEffects .M_HeaderEffects {
@@ -1089,5 +1104,13 @@
       width: 4.128vw;
       height: 3.077vw;
     }
+  }
+
+  .M_HeaderEffects {
+    width: 93.25vw;
+  }
+
+  .M_HeaderEffectsTrends {
+    width: 88.25vw;
   }
 }

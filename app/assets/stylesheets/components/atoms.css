@@ -242,7 +242,7 @@
 .A_TextEffectCard {
   color: var(--charcoal-black, #0e1111);
   font-family: "Basis Grotesque Pro";
-  font-size: 100%;
+  font-size: 1.04vw;
   font-style: normal;
   font-weight: 500;
   line-height: 1.146vw;
@@ -278,7 +278,7 @@
 .A_HeaderCollectionText {
   color: var(--charcoal-black, #0e1111);
   font-family: "Basis Grotesque Pro";
-  font-size: 100%;
+  font-size: 1.04vw;
   font-style: normal;
   font-weight: 500;
   line-height: 100%;
@@ -2237,8 +2237,14 @@
   border: var(--desktop-border, 0.1vw) solid var(--grey-tag, #e1e1e1);
 }
 
+.A_ButtonSecondaryFitGray {
+  color: var(--charcoal-black, #0e1111);
+}
+
 .hidden,
-.A_buttonWatchAllAlign {
+.A_buttonWatchAllAlign,
+.A_ButtonPrimaryCollectionMobileCreate,
+.A_ButtonPrimaryMobileCreatePost {
   display: none;
 }
 
@@ -2357,7 +2363,7 @@
     height: 4.427vw;
     padding: 1.563vw;
     border-radius: var(--tablet-button, 0.781vw);
-    border: var(--tablet-border, 0.195vw) solid var(--grey-tag, #E1E1E1);
+    border: var(--tablet-border, 0.195vw) solid var(--grey-tag, #e1e1e1);
     font-size: 1.823vw;
     line-height: 2.344vw;
   }
@@ -2521,11 +2527,25 @@
   }
 
   .A_TextM {
-    padding: 0.472vw 1.555vw 0 1.555vw;
-    border-top-left-radius: 0.781vw;
-    border-top-right-radius: 0.781vw;
+    padding: 1.367vw 0;
+    border-radius: var(--tablet-button, 6px) var(--tablet-button, 6px) 0px 0px;
 
     > a,
+    > p {
+      font-size: 1.823vw;
+      line-height: 2.083vw;
+    }
+  }
+
+  .A_TextL {
+    padding: 2.083vw;
+    gap: 1.496vw;
+    border-radius: 0vw 0vw var(--tablet-button, 0.781vw)
+      var(--tablet-button, 0.781vw);
+    border-right: var(--tablet-border, 0.195vw) solid var(--grey-tag, #e1e1e1);
+    border-bottom: var(--tablet-border, 0.195vw) solid var(--grey-tag, #e1e1e1);
+    border-left: var(--tablet-border, 0.195vw) solid var(--grey-tag, #e1e1e1);
+
     > p {
       font-size: 1.823vw;
       line-height: 2.344vw;
@@ -2619,11 +2639,40 @@
     line-height: 2.083vw;
   }
 
+  .A_MainLogo {
+    margin-top: 31.901vw;
+    width: 62.474vw;
+    height: 13.802vw;
+  }
+
+  .A_TextMTabletPad {
+    padding: 0 0.625vw;
+  }
+
+  .A_searchInputMeCollection {
+    width: 21.88vw !important;
+  }
+
+  .A_ButtonPrimaryTabletCreatePost {
+    width: 27.698vw;
+  }
+
   .A_InputTextCollectionLinkNone {
     padding-left: 3.13vw;
     cursor: pointer;
     border: none;
     color: var(--computer-blue, #0638bd);
+  }
+
+  .A_ButtonPrimaryMobileSub {
+    padding: 1.04vw 1.56vw;
+    width: 17.71vw;
+    height: 4.43vw;
+  }
+
+  .A_HeaderCollectionText {
+    font-size: 1.82vw;
+    line-height: 2.08vw;
   }
 }
 
@@ -2638,6 +2687,10 @@
     font-size: 4.615vw;
     line-height: 5.641vw;
     width: 84.615vw;
+  }
+
+  .A_ButtonPrimaryMobileDownload {
+    height: 12.308vw;
   }
 
   .A_ProgramName {
@@ -2721,6 +2774,8 @@
     gap: 1.708vw;
     border-radius: 1.75vw;
     border: var(--border, 0.465vw) solid var(--computer-blue, #0638bd);
+    font-size: 4.1vw;
+    line-height: 5.13vw;
   }
 
   .A_folowCollectionImage {
@@ -3079,5 +3134,90 @@
       color: inherit;
       text-decoration: none;
     }
+  }
+
+  .A_buttonSortMobileEffect {
+    width: 12.308vw;
+    height: 12.308vw;
+
+    > img {
+      width: 5.846vw;
+      height: 5.538vw;
+    }
+  }
+
+  .A_MainLogo {
+    margin-top: 75.897vw;
+    width: 86.83vw;
+    height: 19.183vw;
+  }
+
+  .A_TextMCard {
+    display: flex;
+    padding: 2.692vw 0;
+    border-radius: var(--tablet-button, 1.538vw) var(--tablet-button, 1.538vw)
+      0vw 0vw;
+
+    > p {
+      font-size: 3.59vw;
+      line-height: 4.103vw;
+    }
+  }
+
+  .A_HeaderCollectionText {
+    font-size: 4.1vw;
+    line-height: 5.13vw;
+  }
+
+  .A_searchInputMeCollection {
+    width: 46.88vw !important;
+  }
+
+  .A_ButtonPrimaryCollectionMobileCreate {
+    display: flex;
+  }
+
+  .A_TextL {
+    padding: 4.103vw;
+    gap: 2.945vw;
+    border-radius: 0vw 0vw var(--tablet-button, 1.538vw)
+      var(--tablet-button, 1.538vw);
+
+    > p {
+      font-size: 3.59vw;
+      line-height: 4.615vw;
+    }
+  }
+
+  .A_ButtonPrimaryTabletCreatePostNone {
+    display: none;
+  }
+
+  .A_ButtonPrimaryCollectionMobileNone {
+    display: none;
+  }
+
+  .A_TextCaptionCollectionMobile {
+    margin-top: 4.103vw;
+  }
+
+  .A_ButtonPrimaryMobileCreatePost {
+    display: flex;
+    width: 10.76vw;
+    height: 10.76vw;
+  }
+
+  .A_Header1Top {
+    margin-top: 8.21vw;
+  }
+
+  .A_ButtonSecondary {
+    border: var(--border, 0.465vw) solid #e1e1e1;
+  }
+
+  .A_ButtonPrimaryMobileSub {
+    width: 37.95vw;
+    height: 9.23vw;
+    padding: 2.05vw 3.08vw;
   }
 }

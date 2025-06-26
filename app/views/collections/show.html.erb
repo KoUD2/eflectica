@@ -171,7 +171,7 @@
     <div class='W_collectionElements'>
       <h2 class="A_Header2">Эффекты</h2>
       <% if @collection.effects.any? %>
-        <div class='C_collectionElements'>
+        <div class='C_collectionElements C_Effects'>
           <% @collection.effects.each do |effect| %>
             <%= render partial: 'effects/collection_effect', locals: { effect: effect, programs: @programs } %>
           <% end %>
@@ -183,7 +183,7 @@
     <div class='W_collectionElements'>
       <h2 class="A_Header2">Референсы</h2>
       <% if @collection.images.any? && @collection.images.any? { |image| image.file.present? } %>
-        <div class='C_collectionElements'>
+        <div class='C_collectionElements C_Effects'>
           <% @collection.images.each do |image| %>
             <%= render partial: 'refs', locals: { image: image, collection_id: @collection.id } %>
           <% end %>

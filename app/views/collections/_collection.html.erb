@@ -57,11 +57,11 @@
                   Отписаться
                 </button>
               <% elsif current_user %>
-                <button class="A_ButtonPrimary A_SubscribeButton A_ButtonPrimaryCollectionSub" 
+                <button class="A_ButtonPrimary A_SubscribeButton A_ButtonPrimaryCollectionSub A_ButtonPrimaryMobileSub" 
                         data-action="click->subscribe#subscribe"
                         data-subscribe-url="<%= subscribe_collection_path(collection) %>"
                         <%= 'disabled' if collection.status == 'private' %>>
-                  <%= image_tag("Plus.svg", alt: "Подписаться", class:"Q_plusMinusIcon") %>
+                  <%= image_tag("Plus.svg", alt: "Подписаться", class:"Q_plusMinusIcon Q_plusMinusIconMobile") %>
                   Подписаться
                 </button>
               <% else %>

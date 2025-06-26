@@ -133,9 +133,16 @@ dialog::backdrop {
 }
 
 .modal.modalEffect {
+  display: none;
   opacity: 0;
   transform: scale(0.9) translateY(-30px);
   transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal.modalEffect[open] {
+  display: flex;
+  opacity: 1;
+  transform: scale(1) translateY(0);
 }
 
 .modal {
@@ -520,7 +527,7 @@ header {
     width: 1.823vw;
     height: 1.823vw;
   }
-  
+
   .registration-form,
   .login-form {
     width: 28.646vw;
@@ -531,17 +538,20 @@ header {
     }
   }
 
-  .modalEffect {
+  .modal.modalEffect {
     display: none;
   }
 
+  .modal.modalEffect[open] {
+    display: flex;
+  }
 
   #show-login-form,
   #show-registration-form {
     font-size: 1.823vw;
     line-height: 2.083vw;
   }
-} 
+}
 
 @media screen and (max-width: 767px) {
   body {
@@ -604,6 +614,14 @@ header {
   input[type="radio"] {
     width: 3.59vw;
     height: 3.59vw;
+  }
+
+  .modal.modalEffect {
+    display: none;
+  }
+
+  .modal.modalEffect[open] {
+    display: flex;
   }
 }
 

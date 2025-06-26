@@ -1,5 +1,6 @@
 <!-- DEBUG: Effect categories: <%= effect.category_list.inspect %> -->
-<%= link_to effect_path(effect), class: 'O_EffectCollectionCard', 
+<!-- DEBUG Wide: <%= defined?(wide) ? wide.inspect : 'undefined' %> -->
+<%= link_to effect_path(effect), class: "O_EffectCollectionCard#{ ' O_EffectCollectionCardWide' if defined?(wide) && wide }", 
                      data: { 
                        categories: effect.category_list.join(','),
                        tasks: effect.task_list.join(','),

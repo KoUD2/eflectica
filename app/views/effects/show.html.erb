@@ -60,10 +60,19 @@
         <p class='A_TextEffectDescription'><%= @effect.description %></p>
         <% if @effect.is_secure == "Одобрено" %>
           <div class='M_Buttons'>
-            <button class='A_ButtonPrimary A_MorePC'>
+            <button class='A_ButtonPrimary A_MorePC A_ButtonPrimaryMobileDownload'>
               <%= image_tag("DownloadButton.svg", alt: "Картинка рейтинга", class: 'A_DownloadButton') %>
               Установить
             </button>
+
+            <div class='C_buttonsSortMobile C_buttonsSortMobileEffect'>
+              <button class='A_buttonSortMobile A_buttonSortMobileEffect'>
+                <%= image_tag("plusIconBlack.svg", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+              </button>
+              <button class='A_buttonSortMobile A_buttonSortMobileEffect'>
+                <%= image_tag("downloadMobikeIcon", alt: "Картинка рейтинга", class: "Q_IconArrowBlack") %>
+              </button>
+            </div>
           
             <div class="popup-container" data-controller="popup" data-popup-effect-id="<%= @effect.id %>">
               <button class="A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryPMobile" data-action="click->popup#open">
@@ -279,13 +288,15 @@
         <% end %>
 
         <% if @effect.is_secure == "Одобрено" %>
-          <div class='W_More M_createPostCardPC'>
-            <h2 class='A_Header2 A_Header2Settings'>Хочешь больше похожих эффектов? <span>Настрой ленту!</span></h2>
-            <div class='M_Buttons M_ButtonsSettings'>
-              <button class='A_ButtonPrimary A_ButtonPrimarySettings'>Перейти к настройке ленты</button>
-              <button class='A_TextButtonSeсondary'>Больше не показывать</button>
+          <% unless current_user&.is_admin? %>
+            <div class='W_More M_createPostCardPC'>
+              <h2 class='A_Header2 A_Header2Settings'>Хочешь больше похожих эффектов? <span>Настрой ленту!</span></h2>
+              <div class='M_Buttons M_ButtonsSettings'>
+                <button class='A_ButtonPrimary A_ButtonPrimarySettings'>Перейти к настройке ленты</button>
+                <button class='A_TextButtonSeсondary'>Больше не показывать</button>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
       <div>
@@ -293,18 +304,16 @@
           <div class='W_adminControls'>
             <h2 class='A_Header2 A_Header2Start'>Администрирование эффекта</h2>
             <div class='M_Buttons'>
-              <%= form_for @effect, url: approve_effect_path(@effect), method: :patch do |f| %>
-                <%= f.hidden_field :is_secure, value: "Одобрено" %>
-                <button class='A_ButtonPrimary'>   
-                  Одобрить эффект
-                </button>
+              <%= link_to approve_effect_path(@effect), method: :patch, 
+                  class: "A_ButtonPrimary", 
+                  data: { confirm: "Одобрить этот эффект?" } do %>
+                Одобрить эффект
               <% end %>
 
-              <%= form_for @effect, url: reject_effect_path(@effect), method: :patch do |f| %>
-                <%= f.hidden_field :is_secure, value: "Не одобрено" %>
-                <button class='A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryFit'>
-                  Не одобрить
-                </button>
+              <%= link_to reject_effect_path(@effect), method: :patch, 
+                  class: "A_ButtonSecondary A_ButtonSecondaryGray A_ButtonSecondaryFit A_ButtonSecondaryFitGray", 
+                  data: { confirm: "Отклонить этот эффект?" } do %>
+                Не одобрить
               <% end %>
             </div>
           </div>

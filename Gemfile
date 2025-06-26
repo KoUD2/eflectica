@@ -47,6 +47,13 @@ gem "russian"
 gem "devise-jwt"
 gem "jwt"
 
+gem "capistrano"
+gem "capistrano-rbenv"
+gem "capistrano-rails"
+gem "capistrano-bundler"
+gem "capistrano3-puma"
+gem "sshkit-sudo"
+
 gem 'kaminari'
 
 group :development, :test do

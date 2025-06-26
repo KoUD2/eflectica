@@ -294,11 +294,24 @@
 }
 
 .W_buttonsSaveEffect {
-  width: 100%;
+  width: 52.03vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 1.67vw;
+  position: absolute;
+  bottom: 2.08vw;
+  right: 2.08vw;
+}
+
+/* Кнопка "Далее" когда она становится "Отправить на модерацию" */
+.A_ButtonPrimary.submit-button {
+  width: 14.06vw !important;
+}
+
+/* Альтернативный селектор для кнопки отправки */
+.A_ButtonPrimary[data-final-submit="true"] {
+  width: 14.06vw !important;
 }
 
 .W_linkFormInputs {
@@ -1006,6 +1019,10 @@
   display: flex;
 }
 
+.W_commonLinksHeader {
+  align-items: center;
+}
+
 .W_allMyEffects {
   margin-top: 0.833vw;
 }
@@ -1259,6 +1276,11 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+  }
+
+  .W_buttonMyCollection {
+    margin-top: 2.1vw;
+    padding-right: 0;
   }
 
   .W_feedSettings {
@@ -1576,6 +1598,31 @@
     > p {
       width: 100%;
     }
+  }
+
+  .W_searchPublishPost {
+    margin-top: 4.1vw;
+  }
+
+  .W_buttonMyCollection {
+    margin-top: 4.1vw;
+    padding-right: 2.05vw;
+  }
+
+  .W_inputIconSearchMyEffects {
+    width: 46.744vw;
+  }
+
+  .W_allMyEffects {
+    margin-top: 4.1vw;
+  }
+
+  .W_nameMainFeedMobile {
+    gap: 32.246vw;
+  }
+
+  .W_EffectsCollectionMobile {
+    flex-direction: column;
   }
 
   .W_feedSettings {

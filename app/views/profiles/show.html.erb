@@ -77,7 +77,7 @@
 
 	<div class='W_postsProfile'>
 		<% if @user.effects.any? %>
-			<div class='M_HeaderEffects'>
+			<div class='M_HeaderEffects M_HeaderEffectsPC'>
 				<h3 class="A_Header3">
 					<%= current_user == @user ? "Мои эффекты" : "Эффекты" %>
 				</h3>
@@ -86,9 +86,11 @@
 				<% end %>
 			</div>
 			<div class="W_EffectsCollection">
-				<% @user.effects.each do |effect| %>
-					<%= render partial: 'effects/collection_effect', locals: { effect: effect } %>
-				<% end %>
+				<div class="C_Effects">
+					<% @user.effects.each do |effect| %>
+						<%= render partial: 'effects/collection_effect', locals: { effect: effect } %>
+					<% end %>
+				</div>
 			</div>
 		<% end %>
 	</div>
@@ -102,7 +104,7 @@
 			end
 		%>
 		<% if collections_to_show.any? %>
-			<div class='M_HeaderEffects'>
+			<div class='M_HeaderEffects M_HeaderEffectsPC'>
 				<h3 class="A_Header3">
 					<%= current_user == @user ? "Мои коллекции" : "Коллекции" %>
 				</h3>
@@ -110,7 +112,7 @@
 					<button class='A_More'>Смотреть все</button>
 				<% end %>
 			</div>
-			<div class="W_EffectsCollection">
+			<div class="W_EffectsCollection W_EffectsCollectionMobile">
 				<% collections_to_show.each do |collection| %>
 					<%= render partial: 'collections/collection', locals: { 
 						collection: collection, 

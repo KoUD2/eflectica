@@ -1,6 +1,5 @@
 <%
   set_meta_tags(
-    title: "Эффекты",
     description: "Все самые лучшие эффекты на Eflectica",
     keywords: "эффекты, пресеты"
   )
@@ -15,14 +14,16 @@
       <div class="A_TextL"><p>Сохраняй чужие коллекции полезных пресетов</p></div>
     </div>
     <%= image_tag("line1.svg", alt: "Картинка", class: "Q_Line1") %>
+    <%= image_tag("line1Tablet.svg", alt: "Картинка", class: "Q_Line1Tablet") %>
     <div class='O_Card O_CardSimple O_Card4'>
       <p>Находи вдохновение и бесплатные пресеты для проектов</p>
     </div>
     <div class='O_Card O_CardMedium O_CardMediumRed2'>
       <div class="A_TextM A_TextMCard A_TextMRed"><p>Эффекты</p></div>
-      <div class="A_TextL"><p>Удобно сортируй эффекты по&nbsp;категориям, задачам и&nbsp;программам</p></div>
+      <div class="A_TextL"><p>Удобно сортируй эффекты по категориям, задачам и&nbsp;программам</p></div>
     </div>
     <%= image_tag("line2.svg", alt: "Картинка", class: "Q_Line2") %>
+    <%= image_tag("line2Tablet.svg", alt: "Картинка", class: "Q_Line2Tablet") %>
     <%= image_tag("MainLogo.svg", alt: "Картинка", class: "A_MainLogo") %>
     <div class='O_Card O_CardSimple O_Card3'>
       <p>Следи за модными трендами в&nbsp;индустрии и сохраняй их</p>
@@ -32,11 +33,46 @@
       <div class="A_TextL"><p>Сохраняй референсы, туториалы и эффекты в одном месте</p></div>
     </div>
     <%= image_tag("line3.svg", alt: "Картинка", class: "Q_Line3") %>
+    <%= image_tag("line3Tablet.svg", alt: "Картинка", class: "Q_Line3Tablet") %>
     <div class='O_Card O_CardProfile'>
       <div class="A_TextM A_TextMCard"><p>Профиль</p></div>
       <div class="A_TextL"><p>Создавай портфолио, пополняя сайт своими эффектами</p></div>
     </div>
     <%= image_tag("line4.svg", alt: "Картинка", class: "Q_Line4") %>
+    <%= image_tag("line4Tablet.svg", alt: "Картинка", class: "Q_Line4Tablet") %>
+    <div class='O_Card O_CardSimple O_Card2'>
+      <p>Кастомизируй свою ленту и развивай сообщество</p>
+    </div>
+  </div>
+
+  <div class='O_PrewiewMobile'>
+    <div class='O_Card'>
+      <div class="A_TextM A_TextMCard"><p>Подписки</p></div>
+      <div class="A_TextL"><p>Сохраняй чужие коллекции полезных пресетов</p></div>
+    </div>
+    <%= image_tag("line1Mobile.svg", alt: "Картинка", class: "Q_Line1") %>
+    <div class='O_Card O_CardSimple O_Card4'>
+      <p>Находи вдохновение и бесплатные пресеты для проектов</p>
+    </div>
+    <div class='O_Card O_CardMedium O_CardMediumRed2'>
+      <div class="A_TextM A_TextMCard A_TextMRed"><p>Эффекты</p></div>
+      <div class="A_TextL"><p>Удобно сортируй эффекты по&nbsp;категориям, задачам и&nbsp;программам</p></div>
+    </div>
+    <%= image_tag("line2Mobile.svg", alt: "Картинка", class: "Q_Line2") %>
+    <%= image_tag("MainLogo.svg", alt: "Картинка", class: "A_MainLogo") %>
+    <div class='O_Card O_CardSimple O_Card3'>
+      <p>Следи за модными трендами в&nbsp;индустрии и сохраняй их</p>
+    </div>
+    <div class='O_Card O_CardMedium O_CardMediumRed'>
+      <div class="A_TextM A_TextMCard A_TextMRed"><p>Мои коллекции</p></div>
+      <div class="A_TextL"><p>Сохраняй референсы, туториалы и эффекты в одном месте</p></div>
+    </div>
+    <%= image_tag("line3Mobile.svg", alt: "Картинка", class: "Q_Line3") %>
+    <div class='O_Card O_CardProfile'>
+      <div class="A_TextM A_TextMCard"><p>Профиль</p></div>
+      <div class="A_TextL"><p>Создавай портфолио, пополняя сайт своими эффектами</p></div>
+    </div>
+    <%= image_tag("line4Mobile.svg", alt: "Картинка", class: "Q_Line4") %>
     <div class='O_Card O_CardSimple O_Card2'>
       <p>Кастомизируй свою ленту и развивай сообщество</p>
     </div>
@@ -958,7 +994,7 @@
                data: { effect_create_target: "nextButton", action: "effect-create#nextStep" },
                type: "button" %>
             </div>
-            <%= f.button 'Отправить', 
+            <%= f.button 'Отправить',
              class: "A_ButtonPrimary", 
              type: "submit",
              style: "display: none;",

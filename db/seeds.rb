@@ -5,12 +5,13 @@ def seed
     create_effect_categories
     create_effect_programs
     create_effect_tasks
+    create_admin_user
     create_users(10)
-    create_effects(18)
+    create_effects(7)
     create_user_preferences
     create_favorites
-    create_collections(15)
-    create_subscriptions(15)
+    create_collections(5)
+    create_subscriptions(5)
     create_sub_collections
 end
 
@@ -130,6 +131,31 @@ def upload_random_user_avatar
   uploader = UserImageUploader.new(User.new, :avatar)
   uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/user', '*')).sample))
   uploader
+end
+
+def create_admin_user
+  begin
+    # Проверяем, существует ли уже админ пользователь
+    existing_admin = User.find_by(email: "admin@admin.ru")
+    if existing_admin
+      puts "✅ Admin user already exists with email: #{existing_admin.email}"
+      return
+    end
+
+    admin = User.create!(
+      username: "admin",
+      email: "admin@admin.ru",
+      password: "admin123",
+      password_confirmation: "admin123",
+      is_admin: true,
+      bio: "Администратор системы",
+      name: "Administrator"
+    )
+    puts "✅ Admin user created with email: #{admin.email}"
+  rescue ActiveRecord::RecordInvalid => e
+    puts "❌ Error creating admin user: #{e.message}"
+    puts "Full error details: #{e.record.errors.full_messages.join(', ')}"
+  end
 end
 
 def create_users(quantity)

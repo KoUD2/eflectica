@@ -133,12 +133,14 @@
 		</div>
 	</div>
 
+	<!-- DEBUG: params[:wide] = <%= params[:wide].inspect %> -->
+	<!-- DEBUG: params[:wide] == 'true' = <%= (params[:wide] == 'true').inspect %> -->
 	<div class='C_Effects C_EffectsCategory' data-task-filter-target="effectSection" data-sort-filter-target="effectSection">
     <% @effects.each do |effect| %>
       <% if @collection_id %>
-        <%= render partial: 'effects/selectable_effect', locals: { effect: effect, collection_effect_ids: @collection_effect_ids } %>
+        <%= render partial: 'effects/selectable_effect', locals: { effect: effect, collection_effect_ids: @collection_effect_ids, wide: true } %>
       <% else %>
-        <%= render partial: 'effects/collection_effect', locals: { effect: effect } %>
+        <%= render partial: 'effects/collection_effect', locals: { effect: effect, wide: true } %>
       <% end %>
     <% end %>
   </div>

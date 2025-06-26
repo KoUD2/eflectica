@@ -8,6 +8,12 @@ class EffectsController < ApplicationController
 
   # GET /effects or /effects.json
   def index
+    # Если пользователь админ, показываем эффекты на модерации в формате "мои эффекты"
+    if current_user&.is_admin?
+      @effects = Effect.where(is_secure: "На модерации").order(created_at: :desc)
+      render 'admin_moderation' and return
+    end
+    
     @top_effects = Effect.approved.limit(5)
     @effects = Effect.approved.search(params[:search]).page(params[:page]).per(12)
     @services = YAML.load_file(Rails.root.join("config/services/app.yml"))["services"]
@@ -320,7 +326,7 @@ class EffectsController < ApplicationController
 
   def approve
     if @effect.update(is_secure: "Одобрено")
-      redirect_to @effect, notice: 'Эффект одобрен'
+      redirect_to effects_path, notice: 'Эффект одобрен'
     else
       redirect_to @effect, alert: 'Ошибка одобрения'
     end
@@ -328,7 +334,7 @@ class EffectsController < ApplicationController
   
   def reject
     if @effect.update(is_secure: "Не одобрено")
-      redirect_to @effect, notice: 'Эффект отклонен'
+      redirect_to effects_path, notice: 'Эффект отклонен'
     else
       redirect_to @effect, alert: 'Ошибка отклонения'
     end

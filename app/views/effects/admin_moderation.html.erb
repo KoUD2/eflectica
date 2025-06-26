@@ -1,0 +1,40 @@
+<%
+  set_meta_tags(
+    title: "Модерация эффектов",
+    description: "Эффекты на модерации",
+    keywords: "модерация, эффекты"
+  )
+%>
+
+<div class='Q_Section Q_SectionActiveMyEffect' data-controller="my-effects-search">
+  <div class="O_myEffects">
+    <h1 class="A_Header1 A_Header1Top">Модерация эффектов</h1>
+
+    <div class="W_searchPublishPost">
+      <div class='W_inputIcon W_inputIconSearchMyEffects'>
+        <input type="text" 
+               class='A_searchInput W_inputIconEffectSearch W_inputIconSearchMyEffects' 
+               placeholder='Поиск эффектов на модерации'
+               data-my-effects-search-target="searchInput"
+               data-action="input->my-effects-search#search">
+        <%= image_tag("Q_IconSearch.svg", alt: "Картинка рейтинга", class: "Q_IconSearch") %>
+      </div>
+      
+      <div class="W_moderationStats">
+        <p class="A_TextTag A_TextTagBig">Всего на модерации: <%= @effects.count %></p>
+      </div>
+    </div>
+
+    <div class="W_allMyEffects">
+      <% if @effects.present? %>
+        <div class="C_Effects C_EffectsMy" data-my-effects-search-target="effectsContainer">
+          <% @effects.each do |effect| %>
+            <%= render partial: "effects/collection_effect", locals: { effect: effect, wide: true } %>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="A_TextEffectDescription">Нет эффектов на модерации.</p>
+      <% end %>
+    </div>
+  </div>
+</div> 

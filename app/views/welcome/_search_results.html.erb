@@ -5,9 +5,9 @@
       <div class="M_HeaderEffects">
         <h3 class="A_Header3">Мои эффекты</h3>
       </div>
-      <div class="C_Effects">
+      <div class="C_Effects C_EffectsColumn">
         <% my_effects.each do |effect| %>
-          <%= render partial: "effects/collection_effect", locals: { effect: effect } %>
+          <%= render partial: "effects/collection_effect", locals: { effect: effect, wide: true } %>
         <% end %>
       </div>
     </div>
@@ -18,13 +18,10 @@
     <div class="W_searchSection">
       <div class="M_HeaderEffects">
         <h3 class="A_Header3">Все эффекты</h3>
-        <%= link_to effects_path(search: query), class: 'A_buttonWatchAll' do %>
-          Смотреть все
-        <% end %>
       </div>
-      <div class="C_Effects">
+      <div class="C_Effects C_EffectsColumn">
         <% all_effects.each do |effect| %>
-          <%= render partial: "effects/collection_effect", locals: { effect: effect } %>
+          <%= render partial: "effects/collection_effect", locals: { effect: effect, wide: true } %>
         <% end %>
       </div>
     </div>
@@ -36,7 +33,7 @@
       <div class="M_HeaderEffects">
         <h3 class="A_Header3">Мои коллекции</h3>
       </div>
-      <div class="C_Collections">
+      <div class="C_Collections C_EffectsColumn">
         <% my_collections.each do |collection| %>
           <%= render partial: "collections/collection", locals: { 
             collection: collection, 
@@ -53,7 +50,7 @@
       <div class="M_HeaderEffects">
         <h3 class="A_Header3">Подписки</h3>
       </div>
-      <div class="C_Collections">
+      <div class="C_Collections C_EffectsColumn">
         <% subscriptions.each do |collection| %>
           <%= render partial: "collections/collection", locals: { 
             collection: collection, 
@@ -69,11 +66,8 @@
     <div class="W_searchSection">
       <div class="M_HeaderEffects">
         <h3 class="A_Header3">Все коллекции</h3>
-        <%= link_to collections_path, class: 'A_buttonWatchAll' do %>
-          Смотреть все
-        <% end %>
       </div>
-      <div class="C_Collections">
+      <div class="C_Collections C_EffectsColumn">
         <% all_collections.each do |collection| %>
           <%= render partial: "collections/collection", locals: { 
             collection: collection, 
